@@ -1,0 +1,100 @@
+unit meterMaster;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, NxCollection, StdCtrls, NxEdit, ExtCtrls, Grids, DBGrids, CRGrid, DB,
+  MemDS, DBAccess, MyAccess, Menus, frxClass, frxDBSet;
+
+type
+  TmeterMasterRecord = class(TForm)
+    Panel1: TPanel;
+    Search: TNxEdit;
+    Button2: TNxButton;
+    Label1: TLabel;
+    CRDBGrid1: TCRDBGrid;
+    NxButton1: TNxButton;
+    meterMasterQ: TMyQuery;
+    meterMasterDS: TMyDataSource;
+    NxHeaderPanel1: TNxHeaderPanel;
+    NxLinkLabel1: TNxLinkLabel;
+    PopupMenu1: TPopupMenu;
+    MeterHistory1: TMenuItem;
+    meterHistoryQ: TMyQuery;
+    meterHistoryDS: TMyDataSource;
+    CRDBGrid2: TCRDBGrid;
+    NxLinkLabel2: TNxLinkLabel;
+    meterHis_DS: TfrxDBDataset;
+    meterMaster_DS: TfrxDBDataset;
+    frxReport1: TfrxReport;
+    RadioGroup1: TRadioGroup;
+    procedure NxButton1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure NxLinkLabel1Click(Sender: TObject);
+    procedure MeterHistory1Click(Sender: TObject);
+    procedure NxLinkLabel2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  meterMasterRecord: TmeterMasterRecord;
+
+implementation
+
+uses Data;
+
+{$R *.dfm}
+
+procedure TmeterMasterRecord.Button2Click(Sender: TObject);
+var
+  serachOption : String;
+begin
+  case RadioGroup1.ItemIndex of
+    0:serachOption := 'accountnumber';
+  end;
+
+  meterMasterQ.Close;
+  meterMasterQ.FilterSQL := ' like '+quotedstr('%'+Search.Text+'%')+' ';
+  meterMasterQ.Open;
+end;
+
+procedure TmeterMasterRecord.FormShow(Sender: TObject);
+begin
+  meterMasterQ.Close;
+  meterMasterQ.Open;
+end;
+
+procedure TmeterMasterRecord.MeterHistory1Click(Sender: TObject);
+begin
+  meterHistoryQ.Close;
+  meterHistoryQ.ParamByName('serial').Text := meterMasterQ.FieldByName('MeterSerial').Text;
+  meterHistoryQ.Open;
+
+  NxHeaderPanel1.Top  := 71;
+  NxHeaderPanel1.Left := 37;
+  NxHeaderPanel1.BringToFront;
+  NxHeaderPanel1.Caption :='Meter History ( serial: '+ meterMasterQ.FieldByName('MeterSerial').Text+' )';
+  NxHeaderPanel1.Visible := true;
+end;
+
+procedure TmeterMasterRecord.NxButton1Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TmeterMasterRecord.NxLinkLabel1Click(Sender: TObject);
+begin
+  NxHeaderPanel1.Visible := false;
+end;
+
+procedure TmeterMasterRecord.NxLinkLabel2Click(Sender: TObject);
+begin
+  frxReport1.ShowReport;
+end;
+
+end.

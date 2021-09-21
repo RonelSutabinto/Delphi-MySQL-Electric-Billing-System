@@ -1,0 +1,774 @@
+object UnpostedSpotBill: TUnpostedSpotBill
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Finalize Spot Bill'
+  ClientHeight = 380
+  ClientWidth = 634
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Gauge2: TGauge
+    Left = 517
+    Top = 176
+    Width = 72
+    Height = 64
+    BorderStyle = bsNone
+    Kind = gkPie
+    Progress = 0
+  end
+  object Label2: TLabel
+    Left = 23
+    Top = 64
+    Width = 31
+    Height = 14
+    Caption = 'From:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4210816
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 167
+    Top = 64
+    Width = 18
+    Height = 14
+    Caption = 'To:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4210816
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 634
+    Height = 39
+    Align = alTop
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 553
+    object Image1: TImage
+      Left = 8
+      Top = 3
+      Width = 35
+      Height = 32
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+        00200806000000737A7AF4000007F14944415478DAAD97696C54D715C7FFF7DD
+        B7CCCC9B19AF18626802292E2D52494893A6424DA256209AE64352A9695351BA
+        7C6855952E529100754B0B0D69BA917C41A1698520412905629660430099C5C5
+        546C868400C6786382C19EF18C3DE39979DBBD3D6FC6843AF6B84EE8959EC69A
+        F17BE777FEFF73CFB98F81D68A4DAD12FF87D53730C4C2415DE14CE80F372F90
+        199B63C8521D5591822EFC68BB33E61E760BE0F7DFBAEF8E82AFDA7CAEF099C2
+        14A6A81ABEB0BF06399721EF2A85EF7D802B03265E782B5D1AC011104C81025F
+        0F01DC9285C9DB7FFB774821416942A3670FA612B8D0DA224E9CF897FF0B8B9F
+        FEC7EB736E74EFD1EA82ED8E95B76D97BD2BC11C8DFB00213CBF3F531AC076C7
+        498DDDFE53FA145280AB0A72D9611CDBF5328E35BE2A7B3B2FB2A82165A5E162
+        4AD46011D5236897E4E748E5B546BA6B0957642AE3A858BB2F234B02A428EB72
+        8D6E723C3894DD9F47641D6FCDBEB111DD6D17C04406A61D93A61747A541815D
+        470C3B1C494B95E4BF9718E646DA56D72A9EF78B800EE595E3836242800F2E93
+        8D0FF0E32FCDC55D11156A740AEC7C02110C50D6121AF24867B23299E32C99E5
+        DE709EC1537867C0B33FE141918EA663C7C9BED200CCAF190FE06487A1DFD2DE
+        77B7F8C9E8D3B15C74FC7305A65504309475F0E6E133985E7B1774AEE0F2D50E
+        5CEDBC82F4B0236D8F2A4F4A26194BC5C355F3EA067A62C940746200DF8241DB
+        4396BE7F694B690B9657EE00E31C5AC084A169703D0FAEE3C2CAE5B0ADF1180E
+        1C3F8D80A67A520A2E993240A11EA4609D04C30840960498EC721A7E052D6882
+        A93AA943B2D1CE705D92CE7571BDB7176B376C852784C72039FD9418B2C4FD65
+        011EF3434EA88045CF62930051F73F0B3518210502641B275B1C78232A24E371
+        BCF0CA56C49369C1B9428B5D5718BB9B403CFFDEFF69419F53F83FFCE5B5D216
+        ACACDE066E56400F060A56D87902A0FB3C5220114FC8C3FF3E8FBADA6A6F7753
+        0BEFEA4BED89F50F3E39736AF928F9C7005C4B7A93B6C03CFE6B28A10AEA091A
+        29A050F6D4C5E8B2A899E473166CDB01B3F2CEF68683DA5FEBCF3C13AE605BE7
+        CCA856DE38D55F7A1BC60647072914FE48F57F70694D2BA1852BA923EA050021
+        041C57C2260BEC9C255DD71537633DFC6FF56F5D7E6CC95716BCF4DC868119D5
+        65683C97404980CB29604E15C7E54451898DBB4B5BB02CB0195AA80CAA6ED053
+        383CE9D71F419002966D0B61E571F4D47967FDDED6E5E7DB0FAE7FA46EBE2C0B
+        47B1B7353E31C06417DBFD531854808AE6D780469B4019D98A8EBF1B642E7193
+        252A3E3DB46257EF9273DBBF7648E39FC92D9E573D31C0F91C101CBEFDA3504B
+        03E41BD7401DEA211B2A0840A57E43754065EE5B313C9812016633FBDE8599A7
+        D7EC7CA6BB657A43A46A3B4F27AEF9FECB85DFDC8683AF3D3DB1050A75C2BF37
+        94B6C05F5FEFFB1D109E4A75C001AA037F58E533C370B26939E39E69E0B316C8
+        5FD62B7B4F35F5AEB9FF89074E36AEDE85C7573FAEC4DBE2EF17E22880E6EEDC
+        A42DB874AE17EAC97598AB75C032AA8B5B31370CD7CAA2BAB606E5E551CC78EC
+        3BE28DE44C6547E38521AB23FEEA9B2FEF5EBB68E9E2EB34CC59786A44F65FBC
+        F1D101BEF77C13640DC3F7D5A3F854E63CF2F92C152447597525A2114396CFBC
+        0F558FFE90D527A4D7356C73BB7F18D74EF5DC7CEFF4B595A4C0A6F0D430E33A
+        97A3004EBCE7E273771B387269A810A4B1A57DDCE0CD677AF136CD5635A8E189
+        799FC4D2B6DFE27A6B3DAA677C1CE1701065D3E7A076E1727487A6CB037D432C
+        A073C1B8225C21D5F6235771F550DB32D534D6974F2FE36300ACAC3561E67B0F
+        B461DDD9182A6BCBC9400F5F9D5F8765357D787BE76F28F3082A66CDC7B487BE
+        81DEF034342753D00C958615A7992499E5082FEF497661CF3BD9584BD703B14B
+        FD573E34C0CF5E3C8CB3BA8E29A6864048C39C2911AC7A642E6A952C6D436AC7
+        6615DAB2395CCCA561D03C0F075468640D55A8CCE6A849D1CCBAD935A0BDB3F5
+        CC1FCBAA422BC6B5E0444F1162E7A10B630036B5C47093E4AFA2E0D1B0810005
+        985D6D62715D2D8D5F8E8E4C1A8334CDCA4CA3103C60D0C8568B3BC4A6319FB3
+        3D2F9DB195AE23ED6797AFFAFCC3A3004ED1B074993BA1028FAEDE0711D21125
+        FF232103E5611DA1A09FA582287D5F455065F49D39129CE487CAFD73AEA4562D
+        64DEF26051EDC78E77DAAFFFE4D98F7D68800504C082064C830252967ED0A8A9
+        53C61AC20415F22F0A1C1A01D0297BAEB0C238A1F8B0F21E6CC6BCBE7331DEBE
+        A1F9A131000FDEC371B8AB380BF6358D6D447F38DA0D2512281CBFFCC091907F
+        1583DFBA82018E80AE162C51555600F097E7F9C3CA93540732D91967A9A35797
+        8C01C838C5E157E22C8A2FAED909561E864A2DD7F403FB00412A36B2C1F4B3A7
+        CC433E8056CC5EF515604505FC56EDD099C1F6CFD23D034ABAA96DE9B80013AD
+        9FFFA901276CEAA4E475901E1EA1A06670B4FCB4EFE9403B223F29A5B0623A42
+        48E9D0B1CD1152E45379382D1DEBC6004C66BDB8B1198D1DFD48521106C98E0A
+        AA8510050CD29E0F1A23D9EBC5EAF7E5A723995F834CF80A48E93904E4C6525C
+        3FD9F9DC1DBF1B4EFD418318A47E16AE0AC12418D3075115A6AB0440DBDF57C0
+        3FB0D06958FA6F7B226773D69786D615DF226C67D9FB001F29FA7FADD6F62462
+        698BB6289D0FA83638A94152D08B8AA4770C173CEF42C958D052D9E35ADFE07A
+        6B56CD16C947D7DA67EF0460D197BFFBED8059D7DD9B12111EA99ACD8DF06C92
+        406742D2ABA4D6CD5D792C7AB27377FD9555EF2E7A6A339C7B6BB81BD4C47F00
+        C4E83B54E8E9C9160000000049454E44AE426082}
+    end
+    object Label1: TLabel
+      Left = 59
+      Top = 9
+      Width = 126
+      Height = 18
+      Caption = 'Unposted Spot Bills'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4210816
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+  end
+  object AdvGroupBox1: TAdvGroupBox
+    Left = -12
+    Top = 50
+    Width = 670
+    Height = 2
+    TabOrder = 1
+  end
+  object AdvGroupBox2: TAdvGroupBox
+    Left = -10
+    Top = 359
+    Width = 677
+    Height = 2
+    TabOrder = 2
+  end
+  object DBGrid1: TDBGrid1
+    Left = 23
+    Top = 88
+    Width = 442
+    Height = 249
+    Ctl3D = False
+    DataSource = BillingData.BillSource
+    FixedColor = 15329769
+    ParentCtl3D = False
+    TabOrder = 3
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Sequence'
+        Title.Alignment = taCenter
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'AccountNumber'
+        Title.Alignment = taCenter
+        Title.Caption = 'Account Number'
+        Width = 110
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'OEBRNumber'
+        Title.Alignment = taCenter
+        Width = 150
+        Visible = True
+      end>
+  end
+  object PDJSillyLabel14: TNxButton
+    Left = 490
+    Top = 255
+    Width = 129
+    Height = 29
+    Cursor = 1
+    Caption = 'Execute'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+  end
+  object PDJSillyLabel15: TNxButton
+    Left = 490
+    Top = 285
+    Width = 129
+    Height = 29
+    Cursor = 1
+    Caption = 'Close'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+  end
+  object AdvSmoothDatePicker1: TAdvSmoothDatePicker
+    Left = 59
+    Top = 58
+    Width = 94
+    Height = 21
+    Flat = False
+    LabelFont.Charset = DEFAULT_CHARSET
+    LabelFont.Color = clWindowText
+    LabelFont.Height = -11
+    LabelFont.Name = 'Tahoma'
+    LabelFont.Style = []
+    Lookup.Separator = ';'
+    Color = clWindow
+    Enabled = True
+    ReadOnly = False
+    TabOrder = 6
+    Text = '07/18/2014'
+    Visible = True
+    Version = '2.2.0.0'
+    ButtonStyle = bsDropDown
+    ButtonWidth = 16
+    Etched = False
+    Glyph.Data = {
+      DA020000424DDA0200000000000036000000280000000D0000000D0000000100
+      200000000000A402000000000000000000000000000000000000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F00000000000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000000000000000000000000000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F0000000000000000000000000000000000000000000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F0000000000000000000000000000000
+      0000000000000000000000000000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000}
+    HideCalendarAfterSelection = True
+    Calendar.Fill.Color = 15984090
+    Calendar.Fill.ColorTo = 15785680
+    Calendar.Fill.ColorMirror = clNone
+    Calendar.Fill.ColorMirrorTo = clNone
+    Calendar.Fill.GradientType = gtVertical
+    Calendar.Fill.GradientMirrorType = gtSolid
+    Calendar.Fill.BorderColor = clNone
+    Calendar.Fill.Rounding = 0
+    Calendar.Fill.ShadowOffset = 0
+    Calendar.Fill.Glow = gmNone
+    Calendar.Animation = True
+    Calendar.ShowCurrentDate = True
+    Calendar.DateAppearance.DateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DateFont.Color = clBlack
+    Calendar.DateAppearance.DateFont.Height = -11
+    Calendar.DateAppearance.DateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DateFont.Style = []
+    Calendar.DateAppearance.DateFill.Color = 16773091
+    Calendar.DateAppearance.DateFill.ColorTo = 16768452
+    Calendar.DateAppearance.DateFill.ColorMirror = 16765357
+    Calendar.DateAppearance.DateFill.ColorMirrorTo = 16767936
+    Calendar.DateAppearance.DateFill.GradientType = gtVertical
+    Calendar.DateAppearance.DateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.DateFill.BorderColor = clNone
+    Calendar.DateAppearance.DateFill.Rounding = 0
+    Calendar.DateAppearance.DateFill.ShadowOffset = 0
+    Calendar.DateAppearance.DateFill.Glow = gmNone
+    Calendar.DateAppearance.DayOfWeekFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DayOfWeekFont.Color = clBlack
+    Calendar.DateAppearance.DayOfWeekFont.Height = -11
+    Calendar.DateAppearance.DayOfWeekFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DayOfWeekFont.Style = []
+    Calendar.DateAppearance.DayOfWeekFill.Color = 15984090
+    Calendar.DateAppearance.DayOfWeekFill.ColorTo = 15785680
+    Calendar.DateAppearance.DayOfWeekFill.ColorMirror = clNone
+    Calendar.DateAppearance.DayOfWeekFill.ColorMirrorTo = clNone
+    Calendar.DateAppearance.DayOfWeekFill.GradientType = gtVertical
+    Calendar.DateAppearance.DayOfWeekFill.GradientMirrorType = gtSolid
+    Calendar.DateAppearance.DayOfWeekFill.BorderColor = clNone
+    Calendar.DateAppearance.DayOfWeekFill.Rounding = 0
+    Calendar.DateAppearance.DayOfWeekFill.ShadowOffset = 0
+    Calendar.DateAppearance.DayOfWeekFill.Glow = gmNone
+    Calendar.DateAppearance.SelectedDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.SelectedDateFont.Color = clBlack
+    Calendar.DateAppearance.SelectedDateFont.Height = -11
+    Calendar.DateAppearance.SelectedDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.SelectedDateFont.Style = []
+    Calendar.DateAppearance.SelectedDateFill.Color = 11196927
+    Calendar.DateAppearance.SelectedDateFill.ColorTo = 7257087
+    Calendar.DateAppearance.SelectedDateFill.ColorMirror = 4370174
+    Calendar.DateAppearance.SelectedDateFill.ColorMirrorTo = 8053246
+    Calendar.DateAppearance.SelectedDateFill.GradientType = gtVertical
+    Calendar.DateAppearance.SelectedDateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.SelectedDateFill.BorderColor = 4370174
+    Calendar.DateAppearance.SelectedDateFill.Rounding = 0
+    Calendar.DateAppearance.SelectedDateFill.ShadowOffset = 0
+    Calendar.DateAppearance.SelectedDateFill.Glow = gmNone
+    Calendar.DateAppearance.CurrentDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.CurrentDateFont.Color = clBlack
+    Calendar.DateAppearance.CurrentDateFont.Height = -11
+    Calendar.DateAppearance.CurrentDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.CurrentDateFont.Style = []
+    Calendar.DateAppearance.CurrentDateFill.Color = 7778289
+    Calendar.DateAppearance.CurrentDateFill.ColorTo = 4296947
+    Calendar.DateAppearance.CurrentDateFill.ColorMirror = 946929
+    Calendar.DateAppearance.CurrentDateFill.ColorMirrorTo = 5021693
+    Calendar.DateAppearance.CurrentDateFill.GradientType = gtVertical
+    Calendar.DateAppearance.CurrentDateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.CurrentDateFill.BorderColor = 4548219
+    Calendar.DateAppearance.CurrentDateFill.Rounding = 0
+    Calendar.DateAppearance.CurrentDateFill.ShadowOffset = 0
+    Calendar.DateAppearance.CurrentDateFill.Glow = gmNone
+    Calendar.DateAppearance.WeekendFill.Color = 16773091
+    Calendar.DateAppearance.WeekendFill.ColorTo = 16768452
+    Calendar.DateAppearance.WeekendFill.ColorMirror = 16765357
+    Calendar.DateAppearance.WeekendFill.ColorMirrorTo = 16767936
+    Calendar.DateAppearance.WeekendFill.GradientType = gtVertical
+    Calendar.DateAppearance.WeekendFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.WeekendFill.BorderColor = clNone
+    Calendar.DateAppearance.WeekendFill.Rounding = 0
+    Calendar.DateAppearance.WeekendFill.ShadowOffset = 0
+    Calendar.DateAppearance.WeekendFill.Glow = gmNone
+    Calendar.DateAppearance.WeekendFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.WeekendFont.Color = clBlack
+    Calendar.DateAppearance.WeekendFont.Height = -11
+    Calendar.DateAppearance.WeekendFont.Name = 'Tahoma'
+    Calendar.DateAppearance.WeekendFont.Style = []
+    Calendar.DateAppearance.HoverDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.HoverDateFont.Color = clBlack
+    Calendar.DateAppearance.HoverDateFont.Height = -11
+    Calendar.DateAppearance.HoverDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.HoverDateFont.Style = []
+    Calendar.DateAppearance.HoverDateFill.Color = 15465983
+    Calendar.DateAppearance.HoverDateFill.ColorTo = 11332863
+    Calendar.DateAppearance.HoverDateFill.ColorMirror = 5888767
+    Calendar.DateAppearance.HoverDateFill.ColorMirrorTo = 10807807
+    Calendar.DateAppearance.HoverDateFill.GradientType = gtVertical
+    Calendar.DateAppearance.HoverDateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.HoverDateFill.BorderColor = 10079963
+    Calendar.DateAppearance.HoverDateFill.Rounding = 0
+    Calendar.DateAppearance.HoverDateFill.ShadowOffset = 0
+    Calendar.DateAppearance.HoverDateFill.Glow = gmNone
+    Calendar.DateAppearance.MonthDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.MonthDateFont.Color = clBlack
+    Calendar.DateAppearance.MonthDateFont.Height = -11
+    Calendar.DateAppearance.MonthDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.MonthDateFont.Style = []
+    Calendar.DateAppearance.YearDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.YearDateFont.Color = clBlack
+    Calendar.DateAppearance.YearDateFont.Height = -11
+    Calendar.DateAppearance.YearDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.YearDateFont.Style = []
+    Calendar.DateAppearance.WeekNumbers.Font.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.WeekNumbers.Font.Color = clWindowText
+    Calendar.DateAppearance.WeekNumbers.Font.Height = -11
+    Calendar.DateAppearance.WeekNumbers.Font.Name = 'Tahoma'
+    Calendar.DateAppearance.WeekNumbers.Font.Style = []
+    Calendar.DateAppearance.WeekNumbers.Fill.Color = 15984090
+    Calendar.DateAppearance.WeekNumbers.Fill.ColorTo = 15785680
+    Calendar.DateAppearance.WeekNumbers.Fill.ColorMirror = clNone
+    Calendar.DateAppearance.WeekNumbers.Fill.ColorMirrorTo = clNone
+    Calendar.DateAppearance.WeekNumbers.Fill.GradientType = gtVertical
+    Calendar.DateAppearance.WeekNumbers.Fill.GradientMirrorType = gtSolid
+    Calendar.DateAppearance.WeekNumbers.Fill.BorderColor = clNone
+    Calendar.DateAppearance.WeekNumbers.Fill.Rounding = 0
+    Calendar.DateAppearance.WeekNumbers.Fill.ShadowOffset = 0
+    Calendar.DateAppearance.WeekNumbers.Fill.Glow = gmNone
+    Calendar.DateAppearance.DisabledDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DisabledDateFont.Color = clGray
+    Calendar.DateAppearance.DisabledDateFont.Height = -11
+    Calendar.DateAppearance.DisabledDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DisabledDateFont.Style = []
+    Calendar.DateAppearance.DisabledDateFill.Color = 15921906
+    Calendar.DateAppearance.DisabledDateFill.ColorTo = 11974326
+    Calendar.DateAppearance.DisabledDateFill.ColorMirror = 11974326
+    Calendar.DateAppearance.DisabledDateFill.ColorMirrorTo = 15921906
+    Calendar.DateAppearance.DisabledDateFill.GradientType = gtVertical
+    Calendar.DateAppearance.DisabledDateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.DisabledDateFill.BorderColor = clNone
+    Calendar.DateAppearance.DisabledDateFill.Rounding = 0
+    Calendar.DateAppearance.DisabledDateFill.ShadowOffset = 0
+    Calendar.DateAppearance.DisabledDateFill.Glow = gmNone
+    Calendar.DateAppearance.DateBeforeFill.Color = clNone
+    Calendar.DateAppearance.DateBeforeFill.ColorMirror = clNone
+    Calendar.DateAppearance.DateBeforeFill.ColorMirrorTo = clNone
+    Calendar.DateAppearance.DateBeforeFill.GradientType = gtVertical
+    Calendar.DateAppearance.DateBeforeFill.GradientMirrorType = gtSolid
+    Calendar.DateAppearance.DateBeforeFill.BorderColor = clNone
+    Calendar.DateAppearance.DateBeforeFill.Rounding = 0
+    Calendar.DateAppearance.DateBeforeFill.ShadowOffset = 0
+    Calendar.DateAppearance.DateBeforeFill.Glow = gmNone
+    Calendar.DateAppearance.DateAfterFill.Color = clNone
+    Calendar.DateAppearance.DateAfterFill.ColorMirror = clNone
+    Calendar.DateAppearance.DateAfterFill.ColorMirrorTo = clNone
+    Calendar.DateAppearance.DateAfterFill.GradientType = gtVertical
+    Calendar.DateAppearance.DateAfterFill.GradientMirrorType = gtSolid
+    Calendar.DateAppearance.DateAfterFill.BorderColor = clNone
+    Calendar.DateAppearance.DateAfterFill.Rounding = 0
+    Calendar.DateAppearance.DateAfterFill.ShadowOffset = 0
+    Calendar.DateAppearance.DateAfterFill.Glow = gmNone
+    Calendar.DateAppearance.DateBeforeFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DateBeforeFont.Color = clSilver
+    Calendar.DateAppearance.DateBeforeFont.Height = -11
+    Calendar.DateAppearance.DateBeforeFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DateBeforeFont.Style = []
+    Calendar.DateAppearance.DateAfterFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DateAfterFont.Color = clSilver
+    Calendar.DateAppearance.DateAfterFont.Height = -11
+    Calendar.DateAppearance.DateAfterFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DateAfterFont.Style = []
+    Calendar.StatusAppearance.Fill.Color = clRed
+    Calendar.StatusAppearance.Fill.ColorMirror = clNone
+    Calendar.StatusAppearance.Fill.ColorMirrorTo = clNone
+    Calendar.StatusAppearance.Fill.GradientType = gtSolid
+    Calendar.StatusAppearance.Fill.GradientMirrorType = gtSolid
+    Calendar.StatusAppearance.Fill.BorderColor = clGray
+    Calendar.StatusAppearance.Fill.Rounding = 0
+    Calendar.StatusAppearance.Fill.ShadowOffset = 0
+    Calendar.StatusAppearance.Fill.Glow = gmNone
+    Calendar.StatusAppearance.Font.Charset = DEFAULT_CHARSET
+    Calendar.StatusAppearance.Font.Color = clWhite
+    Calendar.StatusAppearance.Font.Height = -11
+    Calendar.StatusAppearance.Font.Name = 'Tahoma'
+    Calendar.StatusAppearance.Font.Style = []
+    Calendar.Footer.Fill.Color = 16773091
+    Calendar.Footer.Fill.ColorTo = 16765615
+    Calendar.Footer.Fill.ColorMirror = clNone
+    Calendar.Footer.Fill.ColorMirrorTo = clNone
+    Calendar.Footer.Fill.GradientType = gtVertical
+    Calendar.Footer.Fill.GradientMirrorType = gtSolid
+    Calendar.Footer.Fill.BorderColor = 16765615
+    Calendar.Footer.Fill.Rounding = 0
+    Calendar.Footer.Fill.ShadowOffset = 0
+    Calendar.Footer.Fill.Glow = gmNone
+    Calendar.Footer.Font.Charset = DEFAULT_CHARSET
+    Calendar.Footer.Font.Color = 7485192
+    Calendar.Footer.Font.Height = -11
+    Calendar.Footer.Font.Name = 'Tahoma'
+    Calendar.Footer.Font.Style = []
+    Calendar.Header.Fill.Color = 16773091
+    Calendar.Header.Fill.ColorTo = 16765615
+    Calendar.Header.Fill.ColorMirror = clNone
+    Calendar.Header.Fill.ColorMirrorTo = clNone
+    Calendar.Header.Fill.GradientType = gtVertical
+    Calendar.Header.Fill.GradientMirrorType = gtSolid
+    Calendar.Header.Fill.BorderColor = 16765615
+    Calendar.Header.Fill.Rounding = 0
+    Calendar.Header.Fill.ShadowOffset = 0
+    Calendar.Header.Fill.Glow = gmNone
+    Calendar.Header.ArrowColor = 7485192
+    Calendar.Header.Font.Charset = DEFAULT_CHARSET
+    Calendar.Header.Font.Color = 7485192
+    Calendar.Header.Font.Height = -11
+    Calendar.Header.Font.Name = 'Tahoma'
+    Calendar.Header.Font.Style = []
+    Calendar.Width = 257
+    Calendar.Height = 249
+    Calendar.ShowHint = False
+    Date = 41838.000000000000000000
+  end
+  object AdvSmoothDatePicker2: TAdvSmoothDatePicker
+    Left = 189
+    Top = 58
+    Width = 94
+    Height = 21
+    Flat = False
+    LabelFont.Charset = DEFAULT_CHARSET
+    LabelFont.Color = clWindowText
+    LabelFont.Height = -11
+    LabelFont.Name = 'Tahoma'
+    LabelFont.Style = []
+    Lookup.Separator = ';'
+    Color = clWindow
+    Enabled = True
+    ReadOnly = False
+    TabOrder = 7
+    Text = '07/18/2014'
+    Visible = True
+    Version = '2.2.0.0'
+    ButtonStyle = bsDropDown
+    ButtonWidth = 16
+    Etched = False
+    Glyph.Data = {
+      DA020000424DDA0200000000000036000000280000000D0000000D0000000100
+      200000000000A402000000000000000000000000000000000000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F00000000000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000000000000000000000000000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F0000000000000000000000000000000000000000000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F0000000000000000000000000000000
+      0000000000000000000000000000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0
+      F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000F0F0F000}
+    HideCalendarAfterSelection = True
+    Calendar.Fill.Color = 15984090
+    Calendar.Fill.ColorTo = 15785680
+    Calendar.Fill.ColorMirror = clNone
+    Calendar.Fill.ColorMirrorTo = clNone
+    Calendar.Fill.GradientType = gtVertical
+    Calendar.Fill.GradientMirrorType = gtSolid
+    Calendar.Fill.BorderColor = clNone
+    Calendar.Fill.Rounding = 0
+    Calendar.Fill.ShadowOffset = 0
+    Calendar.Fill.Glow = gmNone
+    Calendar.Animation = True
+    Calendar.ShowCurrentDate = True
+    Calendar.DateAppearance.DateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DateFont.Color = clBlack
+    Calendar.DateAppearance.DateFont.Height = -11
+    Calendar.DateAppearance.DateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DateFont.Style = []
+    Calendar.DateAppearance.DateFill.Color = 16773091
+    Calendar.DateAppearance.DateFill.ColorTo = 16768452
+    Calendar.DateAppearance.DateFill.ColorMirror = 16765357
+    Calendar.DateAppearance.DateFill.ColorMirrorTo = 16767936
+    Calendar.DateAppearance.DateFill.GradientType = gtVertical
+    Calendar.DateAppearance.DateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.DateFill.BorderColor = clNone
+    Calendar.DateAppearance.DateFill.Rounding = 0
+    Calendar.DateAppearance.DateFill.ShadowOffset = 0
+    Calendar.DateAppearance.DateFill.Glow = gmNone
+    Calendar.DateAppearance.DayOfWeekFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DayOfWeekFont.Color = clBlack
+    Calendar.DateAppearance.DayOfWeekFont.Height = -11
+    Calendar.DateAppearance.DayOfWeekFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DayOfWeekFont.Style = []
+    Calendar.DateAppearance.DayOfWeekFill.Color = 15984090
+    Calendar.DateAppearance.DayOfWeekFill.ColorTo = 15785680
+    Calendar.DateAppearance.DayOfWeekFill.ColorMirror = clNone
+    Calendar.DateAppearance.DayOfWeekFill.ColorMirrorTo = clNone
+    Calendar.DateAppearance.DayOfWeekFill.GradientType = gtVertical
+    Calendar.DateAppearance.DayOfWeekFill.GradientMirrorType = gtSolid
+    Calendar.DateAppearance.DayOfWeekFill.BorderColor = clNone
+    Calendar.DateAppearance.DayOfWeekFill.Rounding = 0
+    Calendar.DateAppearance.DayOfWeekFill.ShadowOffset = 0
+    Calendar.DateAppearance.DayOfWeekFill.Glow = gmNone
+    Calendar.DateAppearance.SelectedDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.SelectedDateFont.Color = clBlack
+    Calendar.DateAppearance.SelectedDateFont.Height = -11
+    Calendar.DateAppearance.SelectedDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.SelectedDateFont.Style = []
+    Calendar.DateAppearance.SelectedDateFill.Color = 11196927
+    Calendar.DateAppearance.SelectedDateFill.ColorTo = 7257087
+    Calendar.DateAppearance.SelectedDateFill.ColorMirror = 4370174
+    Calendar.DateAppearance.SelectedDateFill.ColorMirrorTo = 8053246
+    Calendar.DateAppearance.SelectedDateFill.GradientType = gtVertical
+    Calendar.DateAppearance.SelectedDateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.SelectedDateFill.BorderColor = 4370174
+    Calendar.DateAppearance.SelectedDateFill.Rounding = 0
+    Calendar.DateAppearance.SelectedDateFill.ShadowOffset = 0
+    Calendar.DateAppearance.SelectedDateFill.Glow = gmNone
+    Calendar.DateAppearance.CurrentDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.CurrentDateFont.Color = clBlack
+    Calendar.DateAppearance.CurrentDateFont.Height = -11
+    Calendar.DateAppearance.CurrentDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.CurrentDateFont.Style = []
+    Calendar.DateAppearance.CurrentDateFill.Color = 7778289
+    Calendar.DateAppearance.CurrentDateFill.ColorTo = 4296947
+    Calendar.DateAppearance.CurrentDateFill.ColorMirror = 946929
+    Calendar.DateAppearance.CurrentDateFill.ColorMirrorTo = 5021693
+    Calendar.DateAppearance.CurrentDateFill.GradientType = gtVertical
+    Calendar.DateAppearance.CurrentDateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.CurrentDateFill.BorderColor = 4548219
+    Calendar.DateAppearance.CurrentDateFill.Rounding = 0
+    Calendar.DateAppearance.CurrentDateFill.ShadowOffset = 0
+    Calendar.DateAppearance.CurrentDateFill.Glow = gmNone
+    Calendar.DateAppearance.WeekendFill.Color = 16773091
+    Calendar.DateAppearance.WeekendFill.ColorTo = 16768452
+    Calendar.DateAppearance.WeekendFill.ColorMirror = 16765357
+    Calendar.DateAppearance.WeekendFill.ColorMirrorTo = 16767936
+    Calendar.DateAppearance.WeekendFill.GradientType = gtVertical
+    Calendar.DateAppearance.WeekendFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.WeekendFill.BorderColor = clNone
+    Calendar.DateAppearance.WeekendFill.Rounding = 0
+    Calendar.DateAppearance.WeekendFill.ShadowOffset = 0
+    Calendar.DateAppearance.WeekendFill.Glow = gmNone
+    Calendar.DateAppearance.WeekendFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.WeekendFont.Color = clBlack
+    Calendar.DateAppearance.WeekendFont.Height = -11
+    Calendar.DateAppearance.WeekendFont.Name = 'Tahoma'
+    Calendar.DateAppearance.WeekendFont.Style = []
+    Calendar.DateAppearance.HoverDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.HoverDateFont.Color = clBlack
+    Calendar.DateAppearance.HoverDateFont.Height = -11
+    Calendar.DateAppearance.HoverDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.HoverDateFont.Style = []
+    Calendar.DateAppearance.HoverDateFill.Color = 15465983
+    Calendar.DateAppearance.HoverDateFill.ColorTo = 11332863
+    Calendar.DateAppearance.HoverDateFill.ColorMirror = 5888767
+    Calendar.DateAppearance.HoverDateFill.ColorMirrorTo = 10807807
+    Calendar.DateAppearance.HoverDateFill.GradientType = gtVertical
+    Calendar.DateAppearance.HoverDateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.HoverDateFill.BorderColor = 10079963
+    Calendar.DateAppearance.HoverDateFill.Rounding = 0
+    Calendar.DateAppearance.HoverDateFill.ShadowOffset = 0
+    Calendar.DateAppearance.HoverDateFill.Glow = gmNone
+    Calendar.DateAppearance.MonthDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.MonthDateFont.Color = clBlack
+    Calendar.DateAppearance.MonthDateFont.Height = -11
+    Calendar.DateAppearance.MonthDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.MonthDateFont.Style = []
+    Calendar.DateAppearance.YearDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.YearDateFont.Color = clBlack
+    Calendar.DateAppearance.YearDateFont.Height = -11
+    Calendar.DateAppearance.YearDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.YearDateFont.Style = []
+    Calendar.DateAppearance.WeekNumbers.Font.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.WeekNumbers.Font.Color = clWindowText
+    Calendar.DateAppearance.WeekNumbers.Font.Height = -11
+    Calendar.DateAppearance.WeekNumbers.Font.Name = 'Tahoma'
+    Calendar.DateAppearance.WeekNumbers.Font.Style = []
+    Calendar.DateAppearance.WeekNumbers.Fill.Color = 15984090
+    Calendar.DateAppearance.WeekNumbers.Fill.ColorTo = 15785680
+    Calendar.DateAppearance.WeekNumbers.Fill.ColorMirror = clNone
+    Calendar.DateAppearance.WeekNumbers.Fill.ColorMirrorTo = clNone
+    Calendar.DateAppearance.WeekNumbers.Fill.GradientType = gtVertical
+    Calendar.DateAppearance.WeekNumbers.Fill.GradientMirrorType = gtSolid
+    Calendar.DateAppearance.WeekNumbers.Fill.BorderColor = clNone
+    Calendar.DateAppearance.WeekNumbers.Fill.Rounding = 0
+    Calendar.DateAppearance.WeekNumbers.Fill.ShadowOffset = 0
+    Calendar.DateAppearance.WeekNumbers.Fill.Glow = gmNone
+    Calendar.DateAppearance.DisabledDateFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DisabledDateFont.Color = clGray
+    Calendar.DateAppearance.DisabledDateFont.Height = -11
+    Calendar.DateAppearance.DisabledDateFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DisabledDateFont.Style = []
+    Calendar.DateAppearance.DisabledDateFill.Color = 15921906
+    Calendar.DateAppearance.DisabledDateFill.ColorTo = 11974326
+    Calendar.DateAppearance.DisabledDateFill.ColorMirror = 11974326
+    Calendar.DateAppearance.DisabledDateFill.ColorMirrorTo = 15921906
+    Calendar.DateAppearance.DisabledDateFill.GradientType = gtVertical
+    Calendar.DateAppearance.DisabledDateFill.GradientMirrorType = gtVertical
+    Calendar.DateAppearance.DisabledDateFill.BorderColor = clNone
+    Calendar.DateAppearance.DisabledDateFill.Rounding = 0
+    Calendar.DateAppearance.DisabledDateFill.ShadowOffset = 0
+    Calendar.DateAppearance.DisabledDateFill.Glow = gmNone
+    Calendar.DateAppearance.DateBeforeFill.Color = clNone
+    Calendar.DateAppearance.DateBeforeFill.ColorMirror = clNone
+    Calendar.DateAppearance.DateBeforeFill.ColorMirrorTo = clNone
+    Calendar.DateAppearance.DateBeforeFill.GradientType = gtVertical
+    Calendar.DateAppearance.DateBeforeFill.GradientMirrorType = gtSolid
+    Calendar.DateAppearance.DateBeforeFill.BorderColor = clNone
+    Calendar.DateAppearance.DateBeforeFill.Rounding = 0
+    Calendar.DateAppearance.DateBeforeFill.ShadowOffset = 0
+    Calendar.DateAppearance.DateBeforeFill.Glow = gmNone
+    Calendar.DateAppearance.DateAfterFill.Color = clNone
+    Calendar.DateAppearance.DateAfterFill.ColorMirror = clNone
+    Calendar.DateAppearance.DateAfterFill.ColorMirrorTo = clNone
+    Calendar.DateAppearance.DateAfterFill.GradientType = gtVertical
+    Calendar.DateAppearance.DateAfterFill.GradientMirrorType = gtSolid
+    Calendar.DateAppearance.DateAfterFill.BorderColor = clNone
+    Calendar.DateAppearance.DateAfterFill.Rounding = 0
+    Calendar.DateAppearance.DateAfterFill.ShadowOffset = 0
+    Calendar.DateAppearance.DateAfterFill.Glow = gmNone
+    Calendar.DateAppearance.DateBeforeFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DateBeforeFont.Color = clSilver
+    Calendar.DateAppearance.DateBeforeFont.Height = -11
+    Calendar.DateAppearance.DateBeforeFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DateBeforeFont.Style = []
+    Calendar.DateAppearance.DateAfterFont.Charset = DEFAULT_CHARSET
+    Calendar.DateAppearance.DateAfterFont.Color = clSilver
+    Calendar.DateAppearance.DateAfterFont.Height = -11
+    Calendar.DateAppearance.DateAfterFont.Name = 'Tahoma'
+    Calendar.DateAppearance.DateAfterFont.Style = []
+    Calendar.StatusAppearance.Fill.Color = clRed
+    Calendar.StatusAppearance.Fill.ColorMirror = clNone
+    Calendar.StatusAppearance.Fill.ColorMirrorTo = clNone
+    Calendar.StatusAppearance.Fill.GradientType = gtSolid
+    Calendar.StatusAppearance.Fill.GradientMirrorType = gtSolid
+    Calendar.StatusAppearance.Fill.BorderColor = clGray
+    Calendar.StatusAppearance.Fill.Rounding = 0
+    Calendar.StatusAppearance.Fill.ShadowOffset = 0
+    Calendar.StatusAppearance.Fill.Glow = gmNone
+    Calendar.StatusAppearance.Font.Charset = DEFAULT_CHARSET
+    Calendar.StatusAppearance.Font.Color = clWhite
+    Calendar.StatusAppearance.Font.Height = -11
+    Calendar.StatusAppearance.Font.Name = 'Tahoma'
+    Calendar.StatusAppearance.Font.Style = []
+    Calendar.Footer.Fill.Color = 16773091
+    Calendar.Footer.Fill.ColorTo = 16765615
+    Calendar.Footer.Fill.ColorMirror = clNone
+    Calendar.Footer.Fill.ColorMirrorTo = clNone
+    Calendar.Footer.Fill.GradientType = gtVertical
+    Calendar.Footer.Fill.GradientMirrorType = gtSolid
+    Calendar.Footer.Fill.BorderColor = 16765615
+    Calendar.Footer.Fill.Rounding = 0
+    Calendar.Footer.Fill.ShadowOffset = 0
+    Calendar.Footer.Fill.Glow = gmNone
+    Calendar.Footer.Font.Charset = DEFAULT_CHARSET
+    Calendar.Footer.Font.Color = 7485192
+    Calendar.Footer.Font.Height = -11
+    Calendar.Footer.Font.Name = 'Tahoma'
+    Calendar.Footer.Font.Style = []
+    Calendar.Header.Fill.Color = 16773091
+    Calendar.Header.Fill.ColorTo = 16765615
+    Calendar.Header.Fill.ColorMirror = clNone
+    Calendar.Header.Fill.ColorMirrorTo = clNone
+    Calendar.Header.Fill.GradientType = gtVertical
+    Calendar.Header.Fill.GradientMirrorType = gtSolid
+    Calendar.Header.Fill.BorderColor = 16765615
+    Calendar.Header.Fill.Rounding = 0
+    Calendar.Header.Fill.ShadowOffset = 0
+    Calendar.Header.Fill.Glow = gmNone
+    Calendar.Header.ArrowColor = 7485192
+    Calendar.Header.Font.Charset = DEFAULT_CHARSET
+    Calendar.Header.Font.Color = 7485192
+    Calendar.Header.Font.Height = -11
+    Calendar.Header.Font.Name = 'Tahoma'
+    Calendar.Header.Font.Style = []
+    Calendar.Width = 257
+    Calendar.Height = 249
+    Calendar.ShowHint = False
+    Date = 41838.000000000000000000
+  end
+  object SpotBillQuery: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Select * from collection '
+      'where billmonth = '#39'0714'#39' and -- :billmonth and '
+      '      OPDescription = '#39'SPOT BILL'#39)
+    Left = 304
+    Top = 192
+  end
+end

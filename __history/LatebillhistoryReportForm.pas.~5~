@@ -1,0 +1,42 @@
+unit LatebillhistoryReportForm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, NxCollection, Vcl.StdCtrls, Vcl.Mask,
+  AdvSmoothEdit, AdvSmoothEditButton, AdvSmoothDatePicker, AdvPanel,
+  Vcl.ExtCtrls;
+
+type
+  TlatebillhistoryFrm = class(TForm)
+    AdvPanel1: TAdvPanel;
+    AdvPanelStyler1: TAdvPanelStyler;
+    AdvSmoothDatePicker1: TAdvSmoothDatePicker;
+    AdvSmoothDatePicker2: TAdvSmoothDatePicker;
+    Label1: TLabel;
+    Label2: TLabel;
+    preview_btn: TNxButton;
+    Panel1: TPanel;
+    Label3: TLabel;
+    close_btn: TNxButton;
+    procedure close_btnClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  latebillhistoryFrm: TlatebillhistoryFrm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TlatebillhistoryFrm.close_btnClick(Sender: TObject);
+begin
+  Close;
+end;
+
+end.

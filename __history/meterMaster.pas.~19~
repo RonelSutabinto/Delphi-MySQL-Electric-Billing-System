@@ -1,0 +1,77 @@
+unit meterMaster;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, NxCollection, StdCtrls, NxEdit, ExtCtrls, Grids, DBGrids, CRGrid, DB,
+  MemDS, DBAccess, MyAccess, Menus;
+
+type
+  TmeterMasterRecord = class(TForm)
+    Panel1: TPanel;
+    Search: TNxEdit;
+    Button2: TNxButton;
+    Label1: TLabel;
+    CRDBGrid1: TCRDBGrid;
+    NxButton1: TNxButton;
+    meterMasterQ: TMyQuery;
+    meterMasterDS: TMyDataSource;
+    NxHeaderPanel1: TNxHeaderPanel;
+    CRDBGrid2: TCRDBGrid;
+    NxLinkLabel1: TNxLinkLabel;
+    PopupMenu1: TPopupMenu;
+    MeterHistory1: TMenuItem;
+    meterHistoryQ: TMyQuery;
+    procedure NxButton1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure NxLinkLabel1Click(Sender: TObject);
+    procedure MeterHistory1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  meterMasterRecord: TmeterMasterRecord;
+
+implementation
+
+uses Data;
+
+{$R *.dfm}
+
+procedure TmeterMasterRecord.Button2Click(Sender: TObject);
+begin
+  meterMasterQ.Close;
+  meterMasterQ.FilterSQL := ' serial like '+quotedstr('%'+Search.Text+'%')+' ';
+  meterMasterQ.Open;
+end;
+
+procedure TmeterMasterRecord.FormShow(Sender: TObject);
+begin
+  meterMasterQ.Close;
+  meterMasterQ.Open;
+end;
+
+procedure TmeterMasterRecord.MeterHistory1Click(Sender: TObject);
+begin
+  NxHeaderPanel1.Top  := 71;
+  NxHeaderPanel1.Left := 37;
+  NxHeaderPanel1.BringToFront;
+  NxHeaderPanel1.Visible := true;
+end;
+
+procedure TmeterMasterRecord.NxButton1Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TmeterMasterRecord.NxLinkLabel1Click(Sender: TObject);
+begin
+  NxHeaderPanel1.Visible := false;
+end;
+
+end.

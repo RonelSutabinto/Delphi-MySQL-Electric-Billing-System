@@ -1,0 +1,667 @@
+unit MSInterface;
+
+interface
+
+uses
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  ExtCtrls,
+  StdCtrls,
+  DB,
+  Mask,
+  DBCtrls,
+  PDJSillyLabel,
+  Grids,
+  DBGrids,
+  CRGrid,
+  Gauges,
+  MemDS,
+  DBAccess,
+  MyAccess,
+  ComCtrls, NxCollection, CRDBGrid1;
+
+type
+  TMeterServiceForm = class(TForm)
+    Panel3: TPanel;
+    PDJSillyLabel1: TButton;
+    PDJSillyLabel2: TButton;
+    PDJSillyLabel3: TButton;
+    DBEdit1: TDBEdit;
+    DSMSR: TDataSource;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    DBEdit2: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
+    DBEdit10: TDBEdit;
+    DBEdit11: TDBEdit;
+    Label11: TLabel;
+    PDJSillyLabel4: TButton;
+    PDJSillyLabel5: TButton;
+    PDJSillyLabel6: TButton;
+    GroupBox1: TGroupBox;
+    Label12: TLabel;
+    Label13: TLabel;
+    SelectArea: TEdit;
+    SelectBook: TEdit;
+    PDJSillyLabel7: TButton;
+    RadioGroup1: TRadioGroup;
+    Bevel2: TBevel;
+    Edit1: TEdit;
+    PDJSillyLabel8: TButton;
+    Bevel3: TBevel;
+    PDJSillyLabel9: TButton;
+    PDJSillyLabel10: TButton;
+    PDJSillyLabel11: TButton;
+    PDJSillyLabel12: TButton;
+    PDJSillyLabel15: TButton;
+    MMaster: TMyQuery;
+    MMasterCode: TIntegerField;
+    MMasterArea: TStringField;
+    MMasterBook: TStringField;
+    MMasterSequence: TStringField;
+    MMasterAccountNumber: TStringField;
+    MMasterName: TStringField;
+    MMasterAddress: TStringField;
+    MMasterRateCode: TStringField;
+    MMasterConsCode: TStringField;
+    MMasterConnCode: TStringField;
+    MMasterTransformer: TStringField;
+    MMasterMeterBrand: TStringField;
+    MMasterSerial: TStringField;
+    MMasterMultiplier: TFloatField;
+    MMasterNewConnectionDate: TDateField;
+    MMasterReconnectionDate: TDateField;
+    MMasterDisconnectionDate: TDateField;
+    MMasterPreviousReadingDate: TDateField;
+    MMasterPresentReadingDate: TDateField;
+    MMasterPreviousReadingKWH: TFloatField;
+    MMasterPresentReadingKWH: TFloatField;
+    MMasterDiff: TFloatField;
+    MMasterDemand: TFloatField;
+    MMasterFlatRateWattage: TFloatField;
+    MMasterFeedBackCode: TStringField;
+    MMasterCM: TStringField;
+    MMasterCMMultiplier: TFloatField;
+    MMasterCMPreviousReadingKWH: TFloatField;
+    MMasterCMPresentReadingKWH: TFloatField;
+    MMasterCMKilowattHour: TFloatField;
+    MMasterCMDemand: TFloatField;
+    MMasterKilowattHour: TFloatField;
+    MMasterKilowattUsed: TFloatField;
+    MMasterGenSysCharge: TFloatField;
+    MMasterHostCommCharge: TFloatField;
+    MMasterForexCharge: TFloatField;
+    MMasterTCDemandCharge: TFloatField;
+    MMasterTCTransSystemCharge: TFloatField;
+    MMasterSystemLossCharge: TFloatField;
+    MMasterDCDemandCharge: TFloatField;
+    MMasterDCDistributionCharge: TFloatField;
+    MMasterSCRetCustCharge: TFloatField;
+    MMasterSCSupplySysCharge: TFloatField;
+    MMasterMCRetailCustCharge: TFloatField;
+    MMasterMCSystemCharge: TFloatField;
+    MMasterUCNPCStrandedDebts: TFloatField;
+    MMasterUCNPCStrandedContCost: TFloatField;
+    MMasterUCDUStrandedContCost: TFloatField;
+    MMasterUCME: TFloatField;
+    MMasterUCEqTaxesAndRoyalties: TFloatField;
+    MMasterUCEC: TFloatField;
+    MMasterUCCrossSubRemoval: TFloatField;
+    MMasterICCrossSubsidyCharge: TFloatField;
+    MMasterPowerActRateRed: TFloatField;
+    MMasterLifelineDiscSubs: TFloatField;
+    MMasterLoanCondo: TFloatField;
+    MMasterTransformerRental: TFloatField;
+    MMasterOCCode1: TStringField;
+    MMasterOCAmount1: TFloatField;
+    MMasterOCMo1: TFloatField;
+    MMasterOCTotal1: TFloatField;
+    MMasterOCCode2: TStringField;
+    MMasterOCAmount2: TFloatField;
+    MMasterOCMo2: TFloatField;
+    MMasterOCTotal2: TFloatField;
+    MMasterOCCode3: TStringField;
+    MMasterOCAmount3: TFloatField;
+    MMasterOCMo3: TFloatField;
+    MMasterOCTotal3: TFloatField;
+    MMasterTotalBill: TFloatField;
+    MMasterBillNumber: TStringField;
+    MMasterOEBRNumber: TStringField;
+    MMasterBillMonth: TStringField;
+    MMasterPoleNumber: TStringField;
+    MMasterFeederNumber: TStringField;
+    MMasterAge30: TFloatField;
+    MMasterAge60: TFloatField;
+    MMasterAge90: TFloatField;
+    MMasterAge120: TFloatField;
+    MMasterAgeOver120: TFloatField;
+    MMasterAgeTotal: TFloatField;
+    MMasterTotalPayments: TFloatField;
+    MMasterARBalance: TFloatField;
+    MMasterLCCustMo: TFloatField;
+    MMasterVATDist: TFloatField;
+    MMasterVATGenCO: TFloatField;
+    MMasterVATTransCO: TFloatField;
+    MMasterVATSystemLossGenCO: TFloatField;
+    MMasterVATSystemLossTransCO: TFloatField;
+    MMasterVAT: TFloatField;
+    AP: TMyQuery;
+    PostingPanel: TNxHeaderPanel;
+    Label15: TLabel;
+    Animate1: TAnimate;
+    Memo1: TMemo;
+    PrintMSR: TMyQuery;
+    PrintMSRId: TIntegerField;
+    PrintMSRCode: TFloatField;
+    PrintMSRArea: TStringField;
+    PrintMSRBook: TStringField;
+    PrintMSRSequence: TStringField;
+    PrintMSRAccountNumber: TStringField;
+    PrintMSRName: TStringField;
+    PrintMSRAddress: TStringField;
+    PrintMSRRateCode: TStringField;
+    PrintMSRConnCode: TStringField;
+    PrintMSRMeterBrand: TStringField;
+    PrintMSRSerial: TStringField;
+    PrintMSRMultiplier: TIntegerField;
+    PrintMSRRequest: TStringField;
+    PrintMSRRequestDate: TDateField;
+    PrintMSRRequestStatus: TStringField;
+    PrintMSRFollowUps: TIntegerField;
+    DBEdit3: TDBEdit;
+    Label31: TLabel;
+    DBEdit12: TDBEdit;
+    Label32: TLabel;
+    FromDate: TDateTimePicker;
+    Label33: TLabel;
+    Label34: TLabel;
+    ToDate: TDateTimePicker;
+    Label35: TLabel;
+    Bevel10: TBevel;
+    PDJSillyLabel18: TButton;
+    ServiceRequestPanel: TNxHeaderPanel;
+    Bevel5: TBevel;
+    Bevel6: TBevel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label3: TLabel;
+    Label30: TLabel;
+    PDJSillyLabel13: TButton;
+    PDJSillyLabel14: TButton;
+    FindAccount: TLabeledEdit;
+    VolgaDBEdit1: TDBEdit;
+    VolgaDBEdit2: TDBEdit;
+    VolgaDBEdit3: TDBEdit;
+    VolgaDBEdit4: TDBEdit;
+    VolgaDBEdit5: TDBEdit;
+    VolgaDBEdit6: TDBEdit;
+    VolgaDBEdit9: TDBEdit;
+    VolgaDBEdit10: TDBEdit;
+    VolgaDBEdit11: TDBEdit;
+    VolgaDBEdit12: TDBEdit;
+    VolgaDBEdit7: TDBEdit;
+    PrintPanel: TNxHeaderPanel;
+    Gauge1: TGauge;
+    Label36: TLabel;
+    PDJSillyLabel16: TButton;
+    PDJSillyLabel17: TButton;
+    ReportOption: TRadioGroup;
+    Panel2: TNxHeaderPanel;
+    Label27: TLabel;
+    Label28: TLabel;
+    DateFrom: TDateTimePicker;
+    DateTo: TDateTimePicker;
+    ComboBox1: TComboBox;
+    DBRadioGroup1: TDBRadioGroup;
+    CRDBGrid1: TCRDBGrid1;
+    procedure PDJSillyLabel1Click(Sender: TObject);
+    procedure FindAccountKeyPress(Sender: TObject; var Key: Char);
+    procedure PDJSillyLabel13Click(Sender: TObject);
+    procedure PDJSillyLabel14Click(Sender: TObject);
+    procedure PDJSillyLabel2Click(Sender: TObject);
+    procedure PDJSillyLabel3Click(Sender: TObject);
+    procedure PDJSillyLabel9Click(Sender: TObject);
+    procedure PDJSillyLabel10Click(Sender: TObject);
+    procedure PDJSillyLabel15Click(Sender: TObject);
+    procedure PDJSillyLabel11Click(Sender: TObject);
+    procedure PDJSillyLabel7Click(Sender: TObject);
+    procedure PDJSillyLabel8Click(Sender: TObject);
+    procedure PDJSillyLabel4Click(Sender: TObject);
+    procedure PDJSillyLabel5Click(Sender: TObject);
+    procedure PDJSillyLabel12Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure PDJSillyLabel16Click(Sender: TObject);
+    procedure PDJSillyLabel17Click(Sender: TObject);
+    procedure PDJSillyLabel6Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure PDJSillyLabel18Click(Sender: TObject);
+    procedure ReportOptionClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  MeterServiceForm: TMeterServiceForm;
+
+implementation
+
+uses Data, ModTools;
+
+Var
+Lst                : Text     ;
+HeadingSW          : Boolean  ;
+TotalConsumer      : Word     ;
+LineCount          : Word     ;
+PageCount          : Word     ;
+
+{$R *.dfm}
+
+procedure TMeterServiceForm.PDJSillyLabel1Click(Sender: TObject);
+begin
+   Panel3.Enabled              := False;
+   ServiceRequestPanel.Left    := 149;
+   ServiceRequestPanel.Top     := 31;
+   ServiceRequestPanel.Visible := True;
+   FindAccount.Enabled         := True;
+   FindAccount.SetFocus;
+   BillingData.MSRRequestDate.EditMask   := '!99/99/00;1;_';
+   BillingData.MSRDateCompleted.EditMask := '!99/99/00;1;_';
+   BillingData.MSR.Append;
+end;
+
+procedure TMeterServiceForm.FindAccountKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  If Key = #13 then
+    begin
+        MMaster.Close;
+        MMaster.SQL.Clear;
+        MMaster.SQL.Add('select * from master where accountnumber = :accountnumber');
+        MMaster.ParamByName('accountnumber').Text := FindAccount.text;
+        MMaster.Open;
+
+        If MMaster.IsEmpty then
+          begin
+            MessageDlg('No records match..', mtError, [mbOK], 0);
+            MMaster.Close;
+            Exit;
+          end;
+
+       With BillingData do
+       begin
+        MSRCode.Text          := MMasterCode.Text;
+        MSRArea.Text          := MMasterArea.Text;
+        MSRBook.Text          := MMasterBook.Text;
+        MSRSequence.Text      := MMasterSequence.Text;
+        MSRAccountNumber.Text := MMasterAccountNumber.Text;
+        MSRName.Text          := MMasterName.Text;
+        MSRAddress.Text       := MMasterAddress.Text;
+        MSRRateCode.Text      := MMasterRateCode.Text;
+        MSRConnCode.Text      := MMasterConnCode.Text;
+        MSRMeterBrand.Text    := MMasterMeterBrand.Text;
+        MSRSerial.Text        := MMasterSerial.Text;
+        MSRMultiplier.Text    := MMasterMultiplier.Text;
+       end;
+       VolgaDBEdit7.SetFocus;
+    end;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel13Click(Sender: TObject);
+begin
+  If (BillingData.MSR.State = dsinsert) or
+     (BillingData.MSR.State = dsedit) then BillingData.MSR.Post;
+  ServiceRequestPanel.Visible := False;
+  Panel3.Enabled              := True;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel14Click(Sender: TObject);
+begin
+  BillingData.MSR.Cancel;
+  ServiceRequestPanel.Visible := False;
+  Panel3.Enabled              := True;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel2Click(Sender: TObject);
+begin
+   Panel3.Enabled              := False;
+   ServiceRequestPanel.Left    := 149;
+   ServiceRequestPanel.Top     := 31;
+   ServiceRequestPanel.Visible := True;
+   FindAccount.Enabled         := False;
+   BillingData.MSRRequestDate.EditMask   := '!99/99/00;1;_';
+   BillingData.MSRDateCompleted.EditMask := '!99/99/00;1;_';
+   BillingData.MSR.Edit;
+   VolgaDBEdit1.SetFocus;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel3Click(Sender: TObject);
+begin
+ if (MessageDlg('Are you sure?', mtConfirmation, [mbYes, mbNo], 0) = mrNo) then exit;
+ BillingData.MSR.Delete;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel9Click(Sender: TObject);
+begin
+  With BillingData do
+   begin
+     MSR.Close;
+     MSR.SQL.Clear;
+     MSR.SQL.Add('select * from msrequest where RequestStatus = ''3''');
+     MSR.Open;
+   end;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel10Click(Sender: TObject);
+begin
+  With BillingData do
+   begin
+     MSR.Close;
+     MSR.SQL.Clear;
+     MSR.SQL.Add('select * from msrequest where RequestStatus = ''1''');
+     MSR.Open;
+   end;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel15Click(Sender: TObject);
+begin
+  With BillingData do
+   begin
+     MSR.Close;
+     MSR.SQL.Clear;
+     MSR.SQL.Add('select * from msrequest where RequestStatus = ''2''');
+     MSR.Open;
+   end;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel11Click(Sender: TObject);
+begin
+  With BillingData do
+   begin
+     MSR.Close;
+     MSR.SQL.Clear;
+     MSR.SQL.Add('select * from msrequest');
+     MSR.Open;
+   end;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel7Click(Sender: TObject);
+begin
+  With BillingData do
+   begin
+     MSR.Close;
+     MSR.SQL.Clear;
+     MSR.SQL.Add('select * from msrequest where Area = :area and Book = :book');
+     MSR.ParamByName('area').Text := SelectArea.Text;
+     MSR.ParamByName('book').Text := SelectBook.Text;
+     MSR.Open;
+   end;
+
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel8Click(Sender: TObject);
+begin
+  With BillingData do
+   begin
+     MSR.Close;
+     MSR.SQL.Clear;
+     MSR.SQL.Add('select * from msrequest');
+     If RadioGroup1.ItemIndex = 0 then
+     MSR.SQL.Add('where accountnumber like :PParam') else MSR.SQL.Add('where name like :PParam');
+     MSR.ParamByName('PParam').Text := Edit1.Text;
+     MSR.Open;
+   end;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel4Click(Sender: TObject);
+begin
+  if (MessageDlg('This will automatically increment the number of follow ups made on the'+#13+#10+
+                 'meter services request currently on file.  Don''t run this if you don''t intend'+#13+#10+
+                 'to print a follow up report. Proceed?', mtInformation, [mbYes, mbCancel], 0) = mrCancel) then exit;
+  AP.Close;
+  AP.SQL.Clear;
+  AP.SQL.Add('Update MSRequest set FollowUps = FollowUps + 1');
+  AP.SQL.Add(' where requeststatus <> ''3''');
+  AP.Execute;
+
+  MessageDlg('Followup counter increment done....'+#10+#13+
+             'Records affected '+IntToStr(AP.RowsAffected), mtInformation, [mbOK], 0);
+  BillingData.MSR.Refresh;
+
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel5Click(Sender: TObject);
+begin
+if (MessageDlg('This will transfer all completed request to the Meter Service '+#13+#10+
+               'Request archive for future verification. You may find this data'+#13+#10+
+               'in the Consumer History in the Billing Master Interface. Proceed?', mtConfirmation, [mbYes, mbCancel], 0) = mrCancel) then exit;
+
+  PostingPanel.Left    := 223;
+  PostingPanel.Top     := 24;
+  PostingPanel.Visible := True;
+  Animate1.Active      := True;
+  Application.ProcessMessages;
+  Memo1.Clear;
+
+  AP.Close;
+  AP.SQL.Clear;
+  AP.SQL.Add('Insert into MSComplete select * from MSRequest');
+  AP.SQL.Add(' where requeststatus = ''3''');
+  AP.Execute;
+  Memo1.Lines.Add('Completed service request transferred.... '+IntToStr(AP.RowsAffected));
+
+  AP.Close;
+  AP.SQL.Clear;
+  AP.SQL.Add('delete from MSRequest');
+  AP.SQL.Add(' where requeststatus = ''3''');
+  AP.Execute;
+  Memo1.Lines.Add('Deleted from Active service request.... '+IntToStr(AP.RowsAffected));
+
+  BillingData.MSR.Refresh;
+  PostingPanel.Visible := False;
+
+  MessageDlg('Post Completed Request done..', mtInformation, [mbOK], 0);
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel12Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TMeterServiceForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+   Action := caFree;
+   MeterServiceForm := Nil;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel16Click(Sender: TObject);
+
+Procedure PrintHeading;
+begin
+ With BillingData do
+ begin
+  Write(Lst,#18);
+  Writeln(lst,#27 + 'P'+'PAGE # '+IntToStr(PageCount));
+  Writeln(lst,#27 + '4'+'METER SERVICE REQUEST'+#27+'5');
+  Case ReportOption.ItemIndex of
+  0 : Writeln(lst,'REQUEST FOR IMMEDIATE ACTION');
+  1 : Writeln(lst,'REQUEST FOR INVESTIGATION');
+  2 : Writeln(lst,'COMPLETED SERVICE REQUEST');
+  3 : Writeln(lst,'SERVICE REQUEST : '+ComboBox1.Text);
+  end;
+  Writeln(Lst,'PERIOD COVERED : ',DateToStr(DateFrom.Date)+' to '+DateToStr(DateTo.Date));
+  Writeln(Lst,'PRINT DATE ',DateToStr(now));
+  Write(Lst,#15);
+  Writeln(lst,'------------------------------------------------------------------------------------------------------------------------------');
+  Writeln(lst,'|  Acct #  |        Consumer Name         |      Address       |    Serial     |       Service Request        |   Date   |NOF|');
+  Writeln(lst,'------------------------------------------------------------------------------------------------------------------------------');
+ end;
+end;
+
+begin
+  PrintMSR.Close;
+  PrintMSR.SQL.Clear;
+  PrintMSR.SQL.Add('Select * from MSRequest');
+  Case ReportOption.ItemIndex of
+  0 : PrintMSR.SQL.Add('   where RequestStatus = ''1''');
+  1 : PrintMSR.SQL.Add('   where RequestStatus = ''2''');
+  2 : begin
+       PrintMSR.SQL.Clear;
+       PrintMSR.SQL.Add('Select * from MSComplete');
+       PrintMSR.SQL.Add('   where RequestStatus = ''3''');
+      end;
+  3 : begin
+       PrintMSR.SQL.Add('   where Request like :Request');
+       PrintMSR.ParamByName('Request').Text := '%'+ComboBox1.text+'%';
+      end;
+  end;
+  PrintMSR.SQL.Add('and requestdate between :datefrom and :dateto');
+  PrintMSR.ParamByName('datefrom').AsDate := DateFrom.Date;
+  PrintMSR.ParamByName('dateto').AsDate   := DateTo.Date;
+  PrintMSR.SQL.Add('order by accountnumber');
+  PrintMSR.Open;
+
+  If PrintMSR.IsEmpty then
+    begin
+     MessageDlg('No records to print...', mtError, [mbOK], 0);
+     exit;
+    end;
+
+  Gauge1.Progress       := 0;
+  Gauge1.MinValue       := 0;
+  Gauge1.MaxValue       := PrintMSR.RecordCount;
+
+  TotalConsumer         := 0;
+  LineCount             := 0;
+  PageCount             := 1;
+
+  AssignFile(Lst,'LPT1');
+  Rewrite(Lst);
+  If IOResult <> 0 then
+    begin
+     ShowMessage('Printer not Ready');
+     Exit;
+    end;
+
+  HeadingSW := True;
+
+  While not PrintMSR.Eof do
+  begin
+
+    Gauge1.AddProgress(1);
+    Application.ProcessMessages;
+
+    If HeadingSW then
+      begin
+       PrintHeading;
+       HeadingSW := False;
+      end;
+
+    Writeln(lst,'|',JustStr(PrintMSRAccountNumber.Text,' ',10,0)     ,'|',
+                    JustStr(PrintMSRName.Text,' ',30,0)              ,'|',
+                    JustStr(PrintMSRAddress.Text,' ',20,0)           ,'|',
+                    JustStr(PrintMSRSerial.Text,' ',15,0)            ,'|',
+                    JustStr(PrintMSRRequest.Text,' ',30,0)           ,'|',
+                    JustStr(PrintMSRRequestDate.Text,' ',10,0)       ,'|',
+                    JustStr(PrintMSRFollowUps.Text,' ',3,0)          ,'|');
+    Inc(TotalConsumer);
+
+    Inc(LineCount);
+    If LineCount = 50 then
+     begin
+       LineCount := 0;
+       Inc(PageCount);
+       Writeln(lst,'------------------------------------------------------------------------------------------------------------------------------');
+       Write(Lst,#12);
+       HeadingSW := True;
+     end; { end if Line Count }
+
+   PrintMSR.Next;
+
+  end;
+
+  Writeln(lst,'------------------------------------------------------------------------------------------------------------------------------');
+  Writeln(Lst,'TOTAL CONSUMERS : '+IntToStr(TotalConsumer));
+  Write(lst,#18,#12);
+
+  PrintMSR.Close;
+  CloseFile(Lst);
+  MessageDlg('Printing done...', mtInformation, [mbOK], 0);
+
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel17Click(Sender: TObject);
+begin
+  PrintPanel.Visible := False;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel6Click(Sender: TObject);
+begin
+  DateFrom.Date      := now;
+  DateTo.Date        := now;
+  PrintPanel.Left    := 143;
+  PrintPanel.Top     := 161;
+  PrintPanel.Visible := True;
+end;
+
+procedure TMeterServiceForm.FormShow(Sender: TObject);
+begin
+  BillingData.MSR.Open;
+  FromDate.Date := Now;
+  ToDate.Date   := Now;
+end;
+
+procedure TMeterServiceForm.PDJSillyLabel18Click(Sender: TObject);
+begin
+  With BillingData do
+   begin
+     MSR.Close;
+     MSR.SQL.Clear;
+     MSR.SQL.Add('select * from msrequest where requestdate between :datefrom and :dateto');
+     MSR.ParamByName('datefrom').AsDate := FromDate.Date;
+     MSR.ParamByName('dateto').AsDate   := ToDate.Date;
+     MSR.Open;
+   end;
+end;
+
+procedure TMeterServiceForm.ReportOptionClick(Sender: TObject);
+begin
+  If ReportOption.ItemIndex = 3 then
+    begin
+     ComboBox1.Enabled := True;
+     ComboBox1.SetFocus;      
+    end
+    else
+     ComboBox1.Enabled := False;
+
+end;
+
+end.

@@ -1,0 +1,116 @@
+object gramFrm: TgramFrm
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'gramFrm'
+  ClientHeight = 179
+  ClientWidth = 325
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object AdvPanel1: TAdvPanel
+    Left = 0
+    Top = 0
+    Width = 325
+    Height = 33
+    Align = alTop
+    BevelOuter = bvNone
+    Color = 16760962
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    UseDockManager = True
+    Version = '2.3.0.0'
+    BorderColor = clGray
+    BorderShadow = True
+    Caption.Color = clHighlight
+    Caption.ColorTo = clBlue
+    Caption.Font.Charset = DEFAULT_CHARSET
+    Caption.Font.Color = clWindowText
+    Caption.Font.Height = -11
+    Caption.Font.Name = 'Tahoma'
+    Caption.Font.Style = []
+    Caption.Indent = 2
+    CollapsColor = clBtnFace
+    CollapsDelay = 0
+    ColorTo = 16768185
+    ShadowColor = clBlack
+    ShadowOffset = 0
+    StatusBar.BorderColor = clSilver
+    StatusBar.BorderStyle = bsSingle
+    StatusBar.Font.Charset = DEFAULT_CHARSET
+    StatusBar.Font.Color = clBlack
+    StatusBar.Font.Height = -11
+    StatusBar.Font.Name = 'Tahoma'
+    StatusBar.Font.Style = []
+    StatusBar.Color = 14938354
+    StatusBar.ColorTo = clWhite
+    Text = ''
+    ExplicitWidth = 472
+    FullHeight = 200
+    object AdvSmoothButton1: TAdvSmoothButton
+      Left = 279
+      Top = 2
+      Width = 36
+      Height = 26
+      Appearance.PictureAlignment = taCenter
+      Appearance.Font.Charset = DEFAULT_CHARSET
+      Appearance.Font.Color = clBlack
+      Appearance.Font.Height = -13
+      Appearance.Font.Name = 'Tahoma'
+      Appearance.Font.Style = [fsBold]
+      Appearance.Spacing = 1
+      Appearance.Rounding = 2
+      Status.Caption = '0'
+      Status.Appearance.Fill.Color = clRed
+      Status.Appearance.Fill.ColorMirror = clNone
+      Status.Appearance.Fill.ColorMirrorTo = clNone
+      Status.Appearance.Fill.GradientType = gtSolid
+      Status.Appearance.Fill.GradientMirrorType = gtSolid
+      Status.Appearance.Fill.BorderColor = clGray
+      Status.Appearance.Fill.Rounding = 0
+      Status.Appearance.Fill.ShadowOffset = 0
+      Status.Appearance.Fill.Glow = gmNone
+      Status.Appearance.Font.Charset = DEFAULT_CHARSET
+      Status.Appearance.Font.Color = clWhite
+      Status.Appearance.Font.Height = -11
+      Status.Appearance.Font.Name = 'Tahoma'
+      Status.Appearance.Font.Style = []
+      Bevel = False
+      BevelColor = clBlack
+      Color = 8404992
+      ParentFont = False
+      Picture.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000473424954080808087C086488000000097048597300000B1300000B
+        1301009A9C180000014C49444154388DC592CF6AC24010C6BF4D45425B25EC4D
+        8808E696431EA1410FA5D0225ED487F46F3DD44B8BD052DACB3E42A09243F1E4
+        45644761B7A78475137A754EBB33F3FBF86676814BC7957909C3F0B65EAF77A3
+        28FAD96C36CAAA556BB5DA7DB3D9FCDD6EB7A72CEF983011AD01ACD2349D8661
+        583561229A31C65EF6FBFD5BA3D1B8CE6A2C3B0441F0006095DDB5D64BD77507
+        00404433008F86A16E9224EB3307BEEFBF6AAD97B932633D29E5584A39B1E079
+        9224EF0507995529E59831D62B5B1880B9E779232144BE036677FC235280CF46
+        B0A220AC942AE44A4720A22980A7B266A5D482733E345D38163CB3E0B9526A91
+        373B4E7FB7DB4DE238AE140488A8036BDB9EE78D38E743A5D4736E99B15E9AA6
+        770581C3E1F0A1B5FE366121C4490871E29C0F8C27FE3C1E8F5F6523228AA29B
+        76BBDD85F5C501208EE34A10049D56ABE596C2178B3FFDBC909FF29B00430000
+        000049454E44AE426082}
+      DisabledColor = 8404992
+      TabOrder = 0
+      ShowFocus = False
+      Version = '2.0.1.0'
+      OnClick = AdvSmoothButton1Click
+    end
+  end
+end

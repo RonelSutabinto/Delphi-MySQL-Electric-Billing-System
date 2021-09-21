@@ -1,0 +1,93 @@
+unit Disconnection;
+
+interface
+
+uses
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  StdCtrls,
+  Buttons,
+  DBCtrls,
+  Grids,
+  DBGrids,
+  ExtCtrls,
+  DB,
+  PDJSillyLabel,
+  PDJSillyTools,
+  DsFancyButton,
+  CRGrid,
+  NxCollection, CRDBGrid1;
+
+type
+  TDisconnectionForm = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    PDJSillyLabel1: TButton;
+    Edit1: TEdit;
+    Option: TRadioGroup;
+    VolgaDBGrid1: TCRDBGrid1;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Edit1Change(Sender: TObject);
+    procedure PDJSillyLabel1Click(Sender: TObject);
+    procedure OptionClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DisconnectionForm: TDisconnectionForm;
+
+implementation
+
+uses Data;
+
+{$R *.dfm}
+
+procedure TDisconnectionForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  BillingData.Disco.Active := False;
+  Action := caFree;
+  DisconnectionForm := nil;
+end;
+
+procedure TDisconnectionForm.Edit1Change(Sender: TObject);
+begin
+  with BillingData do
+    begin
+      case Option.ItemIndex of
+        1: Disco.Locate('AccountNumber',Edit1.Text,[]);
+        2: Disco.Locate('Name',Edit1.Text,[loPartialKey]);
+        3: Disco.Locate('SerialNumber',Edit1.Text,[]);
+      end;
+    end;
+end;
+
+procedure TDisconnectionForm.PDJSillyLabel1Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TDisconnectionForm.OptionClick(Sender: TObject);
+begin
+  with BillingData do
+    begin
+      case Option.ItemIndex of
+        1: Disco.IndexFieldNames := 'AccountNumber';
+        2: Disco.IndexFieldNames := 'Name';
+        3: Disco.IndexFieldNames := 'SerialNumber';
+      end;
+      Edit1.SetFocus;
+    end;
+end;
+
+end.

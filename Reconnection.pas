@@ -1,0 +1,149 @@
+unit Reconnection;
+
+interface
+
+uses
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  StdCtrls,
+  Buttons,
+  DBCtrls,
+  Grids,
+  DBGrids,
+  ExtCtrls,
+  DB, 
+  PDJSillyLabel,
+  PDJSillyTools,
+  CRGrid, CRDBGrid1, NxCollection, NxEdit, frxClass, frxDBSet, MemDS, DBAccess,
+  MyAccess,Mask,DateUtils;
+
+type
+  TReconnectionForm = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Edit1: TEdit;
+    Option: TRadioGroup;
+    VolgaDBGrid1: TCRDBGrid1;
+    Panel3: TPanel;
+    PDJSillyLabel11: TNxButton;
+    NxButton1: TNxButton;
+    Panel4: TPanel;
+    NxDatePicker1: TNxDatePicker;
+    NxDatePicker2: TNxDatePicker;
+    NxLinkLabel1: TNxLinkLabel;
+    NxLinkLabel2: TNxLinkLabel;
+    Label1: TLabel;
+    Label2: TLabel;
+    reconQ: TMyQuery;
+    reconQEntry: TIntegerField;
+    reconQCode: TFloatField;
+    reconQDate: TDateField;
+    reconQArea: TStringField;
+    reconQBook: TStringField;
+    reconQSequence: TStringField;
+    reconQAccountNumber: TStringField;
+    reconQName: TStringField;
+    reconQInitialReading: TFloatField;
+    reconQMeterBrand: TStringField;
+    reconQSerialNumber: TStringField;
+    reconQcollectorcode: TStringField;
+    reconQornumber: TStringField;
+    reconFrx: TfrxDBDataset;
+    reconR: TfrxReport;
+    reconQdateF: TStringField;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Edit1Change(Sender: TObject);
+    procedure OptionClick(Sender: TObject);
+    procedure PDJSillyLabel11Click(Sender: TObject);
+    procedure NxLinkLabel2Click(Sender: TObject);
+    procedure NxButton1Click(Sender: TObject);
+    procedure NxLinkLabel1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ReconnectionForm: TReconnectionForm;
+
+implementation
+
+uses Data, MODTOOLS;
+
+{$R *.dfm}
+
+procedure TReconnectionForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  BillingData.Recon.Active := False;
+  Action := caFree;
+  ReconnectionForm := nil;
+end;
+
+procedure TReconnectionForm.NxButton1Click(Sender: TObject);
+begin
+  panel4.Left := 114;
+  panel4.Top := 44;
+  panel4.BringToFront;
+  panel4.Visible := true;
+
+  NxDatePicker1.Date := StartOfTheMonth(now);
+  NxDatePicker2.Date := EndOfTheMonth(now);
+end;
+
+procedure TReconnectionForm.NxLinkLabel1Click(Sender: TObject);
+begin
+  reconQ.Close;
+  reconQ.ParamByName('datefrom').Text := FormatDateTime('YYYY-MM-DD',NxDatePicker1.Date);
+  reconQ.ParamByName('dateto').Text := FormatDateTime('YYYY-MM-DD',NxDatePicker2.Date);
+  reconQ.ParamByName('datefromA').text := FormatDateTime('m/d/yyyy',NxDatePicker1.Date);
+  reconQ.ParamByName('datetoA').text :=  FormatDateTime('m/d/yyyy',NxDatePicker2.Date);
+  reconQ.Open;
+
+  reconR.ShowReport;
+end;
+
+procedure TReconnectionForm.NxLinkLabel2Click(Sender: TObject);
+begin
+  Panel4.Visible := false;
+end;
+
+procedure TReconnectionForm.Edit1Change(Sender: TObject);
+begin
+  with BillingData do
+    begin
+      case Option.ItemIndex of
+        1: Recon.Locate('AccountNumber',Edit1.Text,[]);
+        2: Recon.Locate('Name',Edit1.Text,[loPartialKey]);
+        3: Recon.Locate('SerialNumber',Edit1.Text,[]);
+      end;
+    end;
+end;
+
+procedure TReconnectionForm.OptionClick(Sender: TObject);
+begin
+  with BillingData do
+    begin
+      case Option.ItemIndex of
+        1: Recon.IndexFieldNames := 'AccountNumber';
+        2: Recon.IndexFieldNames := 'Name';
+        3: Recon.IndexFieldNames := 'SerialNumber';
+      end;
+    Edit1.SetFocus;
+    end;
+end;
+
+procedure TReconnectionForm.PDJSillyLabel11Click(Sender: TObject);
+begin
+    Close;
+end;
+
+end.

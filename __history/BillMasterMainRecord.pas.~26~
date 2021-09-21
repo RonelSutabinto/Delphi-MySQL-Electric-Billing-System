@@ -1,0 +1,297 @@
+unit BillMasterMainRecord;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, DBCtrls, ExtCtrls, Buttons, PDJSillyLabel,
+  Grids, DBGrids, DB, DsFancyButton, NxEdit,
+  NxCollection, NxColumns, NxDBColumns, NxScrollControl,
+  NxCustomGridControl, NxCustomGrid, NxDBGrid, MemDS, DBAccess, MyAccess, CRGrid,
+  DateUtils, CRDBGrid1, DBGrid1;
+
+type
+  TBillMasterMainRecordForm = class(TForm)
+    Panel1: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Save: TNxButton;
+    Cancel: TNxButton;
+    Book: TNxEdit;
+    Sequence: TNxEdit;
+    AccountNumber: TNxEdit;
+    CName: TNxEdit;
+    Address: TNxEdit;
+    Transformer: TNxEdit;
+    MeterBrand: TNxEdit;
+    Serial: TNxEdit;
+    Label15: TLabel;
+    Label1: TLabel;
+    Label16: TLabel;
+    Label18: TLabel;
+    XFormerQTY: TNxEdit;
+    Label19: TLabel;
+    Label20: TLabel;
+    XFormerKVA: TNxEdit;
+    PoleNumber: TNxEdit;
+    Label21: TLabel;
+    Area: TNxButtonEdit;
+    RateCode: TNxComboBox;
+    CType: TNxComboBox;
+    ConnCode: TNxComboBox;
+    NewConnectionDate: TNxDatePicker;
+    DiscountRate: TNxNumberEdit;
+    InsertMaster: TMyQuery;
+    Multiplier: TNxNumberEdit;
+    PresentReading: TNxNumberEdit;
+    Demand: TNxNumberEdit;
+    UpdateMaster: TMyQuery;
+    WRateCode: TNxComboBox;
+    Label22: TLabel;
+    CipherBookRange: TMyQuery;
+    Label23: TLabel;
+    CBook: TNxButtonEdit;
+    CipherBookPanel: TNxHeaderPanel;
+    dsCipherBookRange: TMyDataSource;
+    NxLinkLabel1: TNxLinkLabel;
+    NxLinkLabel2: TNxLinkLabel;
+    CipherBookRangearea: TStringField;
+    CipherBookRangebook: TStringField;
+    CipherBookRangecbook: TStringField;
+    CipherBookRangestartacct: TStringField;
+    CipherBookRangeEndAcct: TStringField;
+    InsertMasterAudit: TMyQuery;
+    CRDBGrid1: TCRDBGrid1;
+    DBGrid1: TDBGrid1;
+    CRDBGrid4: TCRDBGrid1;
+    CRDBGrid2: TCRDBGrid1;
+    Panel2: TPanel;
+    Label17: TLabel;
+    Panel3: TPanel;
+    Label27: TLabel;
+    Label28: TLabel;
+    cipherRangeQ: TMyQuery;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    CipherBookRangeaddress: TStringField;
+    StringField3: TStringField;
+    StringField4: TStringField;
+    CipherBookRangetcons: TLargeintField;
+    cipherRangeS: TMyDataSource;
+    dsCipherBookMaster: TMyDataSource;
+    CipherBookMaster: TMyQuery;
+    CipherBookMasterarea: TStringField;
+    CipherBookMasterbook: TStringField;
+    CipherBookMasteraccountnumber: TStringField;
+    CipherBookMastername: TStringField;
+    CipherBookMasteraddress: TStringField;
+    cipherRangeQcbook: TStringField;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SaveClick(Sender: TObject);
+    procedure CancelClick(Sender: TObject);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure AreaCustomDlg(Sender: TObject);
+    procedure DBGrid1Exit(Sender: TObject);
+    procedure BookKeyPress(Sender: TObject; var Key: Char);
+    procedure CBookButtonClick(Sender: TObject);
+    procedure NxLinkLabel2Click(Sender: TObject);
+    procedure NxLinkLabel1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+   AccountCode : Integer;
+  end;
+
+var
+  BillMasterMainRecordForm: TBillMasterMainRecordForm;
+
+implementation
+
+uses Data, BillMaster, ReadingCompute;
+
+{$R *.dfm}
+
+procedure TBillMasterMainRecordForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+   Action := CAFree;
+   BillMasterMainRecordForm := Nil;
+end;
+
+procedure TBillMasterMainRecordForm.NxLinkLabel1Click(Sender: TObject);
+begin
+   CBook.Text := CipherBookRangecbook.Text;
+   CipherBookRange.Close;
+   CipherBookPanel.Visible := False;
+end;
+
+procedure TBillMasterMainRecordForm.NxLinkLabel2Click(Sender: TObject);
+begin
+  CipherBookRange.Close;
+  CipherBookPanel.Visible := False;
+end;
+
+procedure TBillMasterMainRecordForm.SaveClick(Sender: TObject);
+begin
+  if CBook.Text = '0' then
+    begin
+       if (MessageDlg('Cipher Book has not yet been assigned.... Proceed anyway?', mtConfirmation, [mbYes, mbCancel], 0) = mrCancel) then exit;
+    end;
+
+  If AccountCode = 0 then
+    begin
+      InsertMaster.ParamByName('Area').Text                  := Area.Text;
+      InsertMaster.ParamByName('Book').Text                  := Book.Text;
+      InsertMaster.ParamByName('Sequence').Text              := Sequence.Text;
+      InsertMaster.ParamByName('AccountNumber').Text         := AccountNumber.Text;
+      InsertMaster.ParamByName('Name').Text                  := CName.Text;
+      InsertMaster.ParamByName('Address').Text               := Address.Text;
+      InsertMaster.ParamByName('RateCode').Text              := Ratecode.Text;
+      InsertMaster.ParamByName('WRateCode').Text             := WRatecode.Text;
+      InsertMaster.ParamByName('VATDisc').AsFloat            := DiscountRate.AsFloat;
+      InsertMaster.ParamByName('ConsCode').Text              := IntToStr(CType.ItemIndex+1);
+
+      If ConnCode.ItemIndex = 0 then
+      InsertMaster.ParamByName('ConnCode').Text              := '1' else
+      InsertMaster.ParamByName('ConnCode').Text              := '4';
+
+      InsertMaster.ParamByName('Transformer').Text           := Transformer.Text;
+      InsertMaster.ParamByName('PoleNumber').Text            := PoleNumber.Text;
+      InsertMaster.ParamByName('MeterBrand').Text            := MeterBrand.Text;
+      InsertMaster.ParamByName('Serial').Text                := Serial.Text;
+      InsertMaster.ParamByName('Multiplier').AsInteger       := Multiplier.AsInteger;
+      InsertMaster.ParamByName('NewConnectionDate').AsDate   := NewConnectionDate.Date;
+      InsertMaster.ParamByName('PresentReadingDate').AsDate  := NewConnectionDate.Date;
+      InsertMaster.ParamByName('PresentReadingKWH').AsFloat  := PresentReading.AsFloat;
+      InsertMaster.ParamByName('Demand').AsFloat             := Demand.AsFloat;
+      InsertMaster.ParamByName('XFormerQty').Text            := XFormerQTY.Text;
+      InsertMaster.ParamByName('XFormerKVA').Text            := XFormerKVA.Text;
+      InsertMaster.ParamByName('CBook').Text                 := CBook.Text;
+      try
+       InsertMaster.Execute;
+      except
+        on E: Exception do
+          begin
+            MessageDlg('Error....'+#10+#13+'E.Message', mtError, [mbOK], 0);
+            exit;
+          end;
+      end;
+
+      If BillingData.Master.Active = true then BillingData.Master.Refresh;
+      If Assigned(ReadingComputeForm) then ReadingComputeForm.AccountNumber := AccountNumber.Text;
+      ModalResult := MrOK;
+      close;
+    end else
+    begin
+
+      InsertMasterAudit.ParamByName('Code').AsInteger        := AccountCode;
+      InsertMasterAudit.ParamByName('DateEdited').AsDate     := Now;
+      InsertMasterAudit.ParamByName('Remarks').Text          := BillingData.DeleteUser+' '+DateToStr(Now)+' '+TimeToStr(Now);
+      InsertMasterAudit.Execute;
+
+      UpdateMaster.ParamByName('Area').Text                  := Area.Text;
+      UpdateMaster.ParamByName('Book').Text                  := Book.Text;
+      UpdateMaster.ParamByName('Sequence').Text              := Sequence.Text;
+      UpdateMaster.ParamByName('AccountNumber').Text         := AccountNumber.Text;
+      UpdateMaster.ParamByName('Name').Text                  := CName.Text;
+      UpdateMaster.ParamByName('Address').Text               := Address.Text;
+      UpdateMaster.ParamByName('RateCode').Text              := Ratecode.Text;
+      UpdateMaster.ParamByName('WRateCode').Text             := WRatecode.Text;
+      UpdateMaster.ParamByName('VATDisc').AsFloat            := DiscountRate.AsFloat;
+      UpdateMaster.ParamByName('ConsCode').Text              := IntToStr(CType.ItemIndex+1);
+
+      If ConnCode.ItemIndex = 0 then
+      UpdateMaster.ParamByName('ConnCode').Text              := '1' else
+      UpdateMaster.ParamByName('ConnCode').Text              := '4';
+
+      UpdateMaster.ParamByName('Transformer').Text           := Transformer.Text;
+      UpdateMaster.ParamByName('PoleNumber').Text            := PoleNumber.Text;
+      UpdateMaster.ParamByName('MeterBrand').Text            := MeterBrand.Text;
+      UpdateMaster.ParamByName('Serial').Text                := Serial.Text;
+      UpdateMaster.ParamByName('Multiplier').AsInteger       := Multiplier.AsInteger;
+      UpdateMaster.ParamByName('NewConnectionDate').AsDate   := NewConnectionDate.Date;
+      UpdateMaster.ParamByName('PresentReadingKWH').AsFloat  := PresentReading.AsFloat;
+      UpdateMaster.ParamByName('Demand').AsFloat             := Demand.AsFloat;
+      UpdateMaster.ParamByName('XFormerQty').Text            := XFormerQTY.Text;
+      UpdateMaster.ParamByName('XFormerKVA').Text            := XFormerKVA.Text;
+      UpdateMaster.ParamByName('code').AsInteger             := AccountCode;
+      UpdateMaster.ParamByName('cbook').Text                 := CBook.Text;
+      UpdateMaster.Execute;
+      If BillingData.Master.Active = true then BillingData.Master.Refresh;
+      close;
+    end;
+end;
+
+procedure TBillMasterMainRecordForm.CancelClick(Sender: TObject);
+begin
+  ModalResult := MrCancel;
+  Hide;
+end;
+
+procedure TBillMasterMainRecordForm.CBookButtonClick(Sender: TObject);
+begin
+  CipherBookPanel.Left      := 78;
+  CipherBookPanel.Top       := 35;
+  CipherBookPanel.Visible   := True;
+  CipherBookPanel.BringToFront;
+  CipherBookRange.ParamByName('Area').Text := Area.Text;
+  CipherBookRange.ParamByName('Book').Text := Book.Text;
+  CipherBookRange.Open;
+  CRDBGrid1.SetFocus;
+end;
+
+procedure TBillMasterMainRecordForm.DBGrid1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+   If Key = #13 then
+     begin
+          Area.Text        := BillingData.VicinityArea.Text;
+          Book.Text        := BillingData.VicinityBook.Text;
+          Address.Text     := BillingData.VicinityAddress.Text;
+          DBGrid1.Visible  := False;
+          Book.SetFocus;
+     end;
+end;
+
+procedure TBillMasterMainRecordForm.AreaCustomDlg(Sender: TObject);
+begin
+   BillingData.Vicinity.Close;
+   BillingData.Vicinity.FilterSQL := 'Area like '+quotedStr(concat('%',Area.Text));
+   BillingData.Vicinity.Open;
+
+   DBGrid1.Left    := 117;
+   DBGrid1.Top     := 44;
+   DBGrid1.Visible := True;
+   DBGrid1.BringToFront;
+   DBGrid1.SetFocus;
+end;
+
+procedure TBillMasterMainRecordForm.DBGrid1Exit(Sender: TObject);
+begin
+   DBGrid1.Visible := False;
+end;
+
+procedure TBillMasterMainRecordForm.BookKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  If Key = #13 then
+    begin
+      Perform(CM_DIALOGKEY,VK_TAB,0);
+      Key := #0;
+    end;
+end;
+
+end.
+

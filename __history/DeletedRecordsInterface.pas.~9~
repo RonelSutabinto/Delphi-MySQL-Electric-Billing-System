@@ -1,0 +1,351 @@
+und: TFloatField;
+    AdjVATTransAncRefund: TFloatField;
+    BillTransSysAncRefund: TFloatField;
+    BillTransDemAncRefund: TFloatField;
+    BillVATTransAncRefund: TFloatField;
+    PBillTransSysAncRefund: TFloatField;
+    PBillTransDemAncRefund: TFloatField;
+    PBillVATTransAncRefund: TFloatField;
+    MRateTransSysAncRefundTitle: TStringField;
+    MRateTransSysAncRefund: TFloatField;
+    MRateTransDemAncRefundTitle: TStringField;
+    MRateTransDemAncRefund: TFloatField;
+    MRateVATTransAncRefundTitle: TStringField;
+    MRateVATTransAncRefund: TFloatField;
+    TSalesLateBillsTransSysAncRefund: TFloatField;
+    TSalesLateBillsTransDemAncRefund: TFloatField;
+    TSalesLateBillsVATTransAncRefund: TFloatField;
+    TSalesTotalLateBillsTransSysAncRefund: TFloatField;
+    TSalesTotalLateBillsTransDemAncRefund: TFloatField;
+    TSalesTotalLateBillsVATTransAncRefund: TFloatField;
+    TSalesTransSysAncRefund: TFloatField;
+    TSalesTransDemAncRefund: TFloatField;
+    TSalesVATTransAncRefund: TFloatField;
+    TSalesTotalTransSysAncRefund: TFloatField;
+    TSalesTotalTransDemAncRefund: TFloatField;
+    TSalesTotalVATTransAncRefund: TFloatField;
+    SC: TMyQuery;
+    MasterSCDisc: TFloatField;
+    MasterWRateCode: TStringField;
+    CollectionSCDisc: TFloatField;
+    CollectionWRateCode: TStringField;
+    AdjABSCDisc: TFloatField;
+    AdjSCDisc: TFloatField;
+    BillSCDisc: TFloatField;
+    BillWRateCode: TStringField;
+    PBillSCDisc: TFloatField;
+    PBillWRateCode: TStringField;
+    MRateSCDiscApply: TStringField;
+    MRateWRateCode: TStringField;
+    MRateSCDiscPercent: TFloatField;
+    UnPBSCDisc: TFloatField;
+    UnPBWRateCode: TStringField;
+    PRateTransSysAncRefundTitle: TStringField;
+    PRateTransSysAncRefund: TFloatField;
+    PRateTransDemAncRefundTitle: TStringField;
+    PRateTransDemAncRefund: TFloatField;
+    PRateVATTransAncRefundTitle: TStringField;
+    PRateVATTransAncRefund: TFloatField;
+    PRateSCDiscApply: TStringField;
+    PRateWRateCode: TStringField;
+    PRateSCDiscPercent: TFloatField;
+    MasterSCAmt4Disc: TFloatField;
+    AdjSCAmt4Disc: TFloatField;
+    BillSCAmt4Disc: TFloatField;
+    PBillSCAmt4Disc: TFloatField;
+    TSalesSCDisc: TFloatField;
+    TSalesSCDiscSubs: TFloatField;
+    TSalesTotalSCDisc: TFloatField;
+    TSalesTotalSCDiscSubs: TFloatField;
+    TSalesTotalLateBillsSCDisc: TFloatField;
+    TSalesTotalLateBillsSCDiscSubs: TFloatField;
+    TSalesLateBillsSCDisc: TFloatField;
+    TSalesLateBillsSCDiscSubs: TFloatField;
+    MRateSCDiscSubs: TFloatField;
+    PRateSCDiscSubs: TFloatField;
+    MasterSCInd: TStringField;
+    MRatePantawidRecovApply: TStringField;
+    PRatePantawidRecovApply: TStringField;
+    RemoveMeter: TMyQuery;
+    RemoveMeterCode: TFloatField;
+    RemoveMeterDate: TDateField;
+    RemoveMeterArea: TStringField;
+    RemoveMeterBook: TStringField;
+    RemoveMeterSequence: TStringField;
+    RemoveMeterAccountNumber: TStringField;
+    RemoveMeterName: TStringField;
+    RemoveMeterLastReading: TFloatField;
+    RemoveMeterMeterBrand: TStringField;
+    RemoveMeterSerialNumber: TStringField;
+    RemoveMeterDateRemoved: TDateTimeField;
+    RemoveMeterAccomplished: TStringField;
+    RemoveMeterPosted: TStringField;
+    dsRemoveMeter: TMyDataSource;
+    RemoveMeterstatus: TStringField;
+    RemoveMeterDiscoDate: TDateField;
+    RemoveMeterLocation: TStringField;
+    MRateWRSw: TStringField;
+    PRateWRSw: TStringField;
+    MasterDWLEN1: TFloatField;
+    MasterDWLEN2: TFloatField;
+    MasterCBook: TStringField;
+    BillCBook: TStringField;
+    PBillCBook: TStringField;
+    ChangeMeterPosted: TStringField;
+    ChangeMeterSealNumber: TStringField;
+    SCidSCDisc: TLongWordField;
+    SCSCode: TFloatField;
+    SCArea: TStringField;
+    SCBook: TStringField;
+    SCSequence: TStringField;
+    SCAccountNumber: TStringField;
+    SCBillingName: TStringField;
+    SCName: TStringField;
+    SCBDay: TDateField;
+    SCCPNo: TStringField;
+    SCSCIDNo: TStringField;
+    SCSpouseSCIDNo: TStringField;
+    SCDateApplied: TDateField;
+    SCExpirationDate: TDateField;
+    SCRemarks: TStringField;
+    SCAddress: TStringField;
+    SCstillvalid: TLargeintField;
+    PRateSCDiscKWHR: TLongWordField;
+    MRateSCDiscKWHR: TLongWordField;
+    CollectorEntry: TIntegerField;
+    CollectorORCount: TLongWordField;
+    CollectorAccountCode: TStringField;
+    CollectorEnrolled: TStringField;
+    CollectorEnrollDate: TDateField;
+    RCwratecode: TStringField;
+    MasterRPTax: TFloatField;
+    MasterBTax: TFloatField;
+    CollectionRPTax: TFloatField;
+    AdjABRPTax: TFloatField;
+    AdjRPTax: TFloatField;
+    AdjBTax: TFloatField;
+    PBillRPTax: TFloatField;
+    PBillBTax: TFloatField;
+    UnPBRPTax: TFloatField;
+    AreaTax: TMyQuery;
+    dsAreaTax: TMyDataSource;
+    BillRPTax: TFloatField;
+    AreaTaxIDAreaTax: TLongWordField;
+    AreaTaxArea: TStringField;
+    AreaTaxBillMonth: TStringField;
+    AreaTaxDesc1: TStringField;
+    AreaTaxRate1: TFloatField;
+    AreaTaxDesc2: TStringField;
+    AreaTaxRate2: TFloatField;
+    CollectionEntry: TIntegerField;
+    AdjEntry: TIntegerField;
+    AreaTaxDesc3: TStringField;
+    AreaTaxRate3: TFloatField;
+    AreaTaxDesc4: TStringField;
+    AreaTaxRate4: TFloatField;
+    BillRateOrder: TStringField;
+    RpTaxQuery: TMyQuery;
+    RpTaxQueryarea: TStringField;
+    RpTaxQuerybillmonth: TStringField;
+    RpTaxQueryrateamnt: TFloatField;
+    RpTaxQueryrateorder: TStringField;
+    AdjRateOrder: TStringField;
+    UnPBRateOrder: TStringField;
+    MRateOtherGenRateAdj: TFloatField;
+    MRateOtherTransCostAdj: TFloatField;
+    MRateOtherTransDemandCostAdj: TFloatField;
+    MRateOtherSystemLossCostAdj: TFloatField;
+    MRateOtherLifelineRateCostAdj: TFloatField;
+    MRateOtherSeniorCitizenRateAdj: TFloatField;
+    BillOtherGenRateAdj: TFloatField;
+    BillOtherTransCostAdj: TFloatField;
+    BillOtherTransDemandCostAdj: TFloatField;
+    BillOtherSystemLossCostAdj: TFloatField;
+    BillOtherLifelineRateCostAdj: TFloatField;
+    BillOtherSeniorCitizenRateAdj: TFloatField;
+    userBaseMyConnection: TMyConnection;
+    userBaseQ: TMyQuery;
+    userBaseQEntry: TIntegerField;
+    userBaseQCollectorCode: TStringField;
+    userBaseQPassword: TStringField;
+    userBaseQUserType: TStringField;
+    userBaseQPicture: TBlobField;
+    userBaseQName: TStringField;
+    userBaseQORCount: TLongWordField;
+    userBaseQAccountCode: TStringField;
+    userBaseQEnrolled: TStringField;
+    userBaseQEnrollDate: TDateField;
+    userBaseQIsActive: TBooleanField;
+    userBaseQarea: TStringField;
+    userBaseQmcashier: TBooleanField;
+    userBaseQmatchCode: TStringField;
+    InsertIntegratedColl: TMyQuery;
+    InsertOPintegrated: TMyQuery;
+    RemittanceUpdateCollIntegrated: TMyQuery;
+    DeleteCollintegrated: TMyQuery;
+    txwithheldIntegration: TMyQuery;
+    txwithheldIntegrationUpdate: TMyQuery;
+    TWheldActiveQ: TMyQuery;
+    TWheldActiveQEntry: TIntegerField;
+    TWheldActiveQReceiptNumber: TStringField;
+    TWheldActiveQAccountCode: TFloatField;
+    TWheldActiveQArea: TStringField;
+    TWheldActiveQBook: TStringField;
+    TWheldActiveQSequence: TStringField;
+    TWheldActiveQAccountNumber: TStringField;
+    TWheldActiveQName: TStringField;
+    TWheldActiveQAddress: TStringField;
+    TWheldActiveQBillMonth: TStringField;
+    TWheldActiveQKilowattHour: TFloatField;
+    TWheldActiveQTotalBill: TFloatField;
+    TWheldActiveQCollectorCode: TStringField;
+    TWheldActiveQDatePaid: TDateField;
+    TWheldActiveQOPDescription: TStringField;
+    TWheldActiveQTellerORNumber: TStringField;
+    TWheldActiveQoccode1: TStringField;
+    TWheldActiveQoccode2: TStringField;
+    TWheldActiveQoccode3: TStringField;
+    TWheldActiveQTaxBaseAmnt: TFloatField;
+    TWheldActiveQFinalTaxRate: TFloatField;
+    TWheldActiveQFinalTaxWithheld: TFloatField;
+    TWheldActiveQCreditableTaxRate: TFloatField;
+    TWheldActiveQCreditableTaxWithheld: TFloatField;
+    TWheldActiveQtinFinal: TStringField;
+    TWheldActiveQPayorsNameFinal: TStringField;
+    TWheldActiveQtinCreditable: TStringField;
+    TWheldActiveQPayorsNameCreditable: TStringField;
+    TWheldActiveQOCAmount1: TFloatField;
+    TWheldActiveQOC1Finalvat: TFloatField;
+    TWheldActiveQOC1WithholdingTax: TFloatField;
+    TWheldActiveQOCAmount2: TFloatField;
+    TWheldActiveQOC2Finalvat: TFloatField;
+    TWheldActiveQOC2WithholdingTax: TFloatField;
+    TWheldActiveQOCAmount3: TFloatField;
+    TWheldActiveQOC3Finalvat: TFloatField;
+    TWheldActiveQOC3WithholdingTax: TFloatField;
+    quedb: TMyConnection;
+    procedure CollectionBeforeDelete(DataSet: TDataSet);
+    procedure ARBeforeDelete(DataSet: TDataSet);
+    procedure MasterBeforeDelete(DataSet: TDataSet);
+    procedure UnPBBeforeDelete(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
+    procedure BillBeforeDelete(DataSet: TDataSet);
+    procedure MasterCalcFields(DataSet: TDataSet);
+    procedure RemoveMeterCalcFields(DataSet: TDataSet);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    DeleteUser : String;
+  end;
+
+var
+  BillingData: TBillingData;
+
+implementation
+
+uses
+  Dialogs;
+
+{$R *.dfm}
+
+procedure TBillingData.CollectionBeforeDelete(DataSet: TDataSet);
+begin
+  If CollectionPosted.Text = '2' then
+    begin
+      MessageDlg('Cannot delete collection that is already posted....', mtError, [mbOK], 0);
+      abort;
+    end;
+end;
+
+procedure TBillingData.ARBeforeDelete(DataSet: TDataSet);
+begin
+  AP.Close;
+  AP.SQL.Clear;
+  AP.SQL.Add('insert into deletedarledger');
+  AP.SQL.Add('select * from arledger where entry = :entrynumber');
+  AP.ParamByName('entrynumber').text := DataSet.FieldValues['Entry'];
+  AP.Execute;
+
+  If DeleteUser <> '' then
+  begin
+    AP.Close;
+    AP.SQL.Clear;
+    AP.SQL.Add('update deletedarledger set deleteremarks = :deleteremarks');
+    AP.SQL.Add('where entry = :entrynumber');
+    AP.ParamByName('entrynumber').text   := DataSet.FieldValues['Entry'];
+    AP.ParamByName('deleteremarks').text := DeleteUser+' '+DateToStr(Now)+' '+TimeToStr(Now);
+    AP.Execute;
+  end;
+
+end;
+
+procedure TBillingData.MasterBeforeDelete(DataSet: TDataSet);
+begin
+  AP.Close;
+  AP.SQL.Clear;
+  AP.SQL.Add('insert into deletedmaster');
+  AP.SQL.Add('select * from master where code = :code');
+  AP.ParamByName('code').text := DataSet.FieldValues['code'];
+  AP.Execute;
+
+  If DeleteUser <> '' then
+  begin
+    AP.Close;
+    AP.SQL.Clear;
+    AP.SQL.Add('update deletedmaster set deleteremarks = :deleteremarks');
+    AP.SQL.Add('where code = :code');
+    AP.ParamByName('code').text          := DataSet.FieldValues['code'];
+    AP.ParamByName('deleteremarks').text := DeleteUser+' '+DateToStr(Now)+' '+TimeToStr(Now);
+    AP.Execute;
+  end;
+
+end;
+
+procedure TBillingData.UnPBBeforeDelete(DataSet: TDataSet);
+begin
+  AP.Close;
+  AP.SQL.Clear;
+  AP.SQL.Add('insert into DeletedUnpaidbills');
+  AP.SQL.Add('select * from UnpaidBills where entry = :entrynumber');
+  AP.ParamByName('entrynumber').text := DataSet.FieldValues['Entry'];
+  AP.Execute;
+
+  If DeleteUser <> '' then
+  begin
+    AP.Close;
+    AP.SQL.Clear;
+    AP.SQL.Add('update unpaidbills set deleteremarks = :deleteremarks');
+    AP.SQL.Add('where entry = :entrynumber');
+    AP.ParamByName('entrynumber').text   := DataSet.FieldValues['Entry'];
+    AP.ParamByName('deleteremarks').text := DeleteUser+' '+DateToStr(Now)+' '+TimeToStr(Now);
+    AP.Execute;
+  end;
+
+end;
+
+procedure TBillingData.DataModuleCreate(Sender: TObject);
+begin
+  DeleteUser := '';
+end;
+
+procedure TBillingData.BillBeforeDelete(DataSet: TDataSet);
+begin
+  AP.SQL.Clear;
+  AP.SQL.Add('Update restunpaid set restbillmonth = null where code = :code and restbillmonth = :billmonth');
+  AP.ParamByName('BillMonth').Text := BillBillMonth.Text;
+  AP.ParamByName('code').Text      := BillCode.Text;
+  AP.Execute;
+end;
+
+procedure TBillingData.MasterCalcFields(DataSet: TDataSet);
+begin
+  SC.Close;
+  SC.ParamByName('scode').Text                 := MasterCode.Text;
+  SC.ParamByName('PresentReadingDate').AsDate  := Now;
+  SC.Open;
+  MasterSCInd.Text := '';
+  If (not SC.IsEmpty) then MasterSCInd.Text := 'SC '+InttoStr(SCstillvalid.AsInteger);
+end;
+
+procedure TBillingData.Remove

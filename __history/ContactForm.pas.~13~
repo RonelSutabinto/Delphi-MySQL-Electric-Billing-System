@@ -1,0 +1,54 @@
+unit ContactForm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, NxCollection, Vcl.Mask,
+  Vcl.DBCtrls, Data.DB, MemDS, DBAccess, MyAccess;
+
+type
+  TForm2 = class(TForm)
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    NxButton19: TNxButton;
+    DBEdit1: TDBEdit;
+    cotactQ: TMyQuery;
+    procedure FormShow(Sender: TObject);
+    procedure NxButton19Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+uses Data;
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+ cotactQ.Close;
+ cotactQ.Open;
+
+end;
+
+procedure TForm2.NxButton19Click(Sender: TObject);
+begin
+try
+  cotactQ.Edit;
+  cotactQ.post;
+
+  ShowMessage('ZANECO office contact number successfully saved...');
+  close;
+except
+end;
+
+end;
+
+end.

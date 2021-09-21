@@ -1,0 +1,1085 @@
+unit MCCSumm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, MemDS, DBAccess, MyAccess, Grids, DBGrids, CRGrid,
+  NxCollection, StdCtrls, Mask, DBCtrls, NxEdit, ExtCtrls, QuickRpt,
+  QRCtrls, Gauges, NxPageControl, ComCtrls, CRDBGrid1;
+
+type
+  TMCCSummaryForm = class(TForm)
+    MCCSumm: TMyQuery;
+    MCCSummDescription: TStringField;
+    MCCSummBillMonth: TStringField;
+    MCCSummDateFrom: TDateField;
+    MCCSummDateTo: TDateField;
+    MCCDetail: TMyQuery;
+    dsmccsumm: TMyDataSource;
+    dsmccdetail: TMyDataSource;
+    NxLinkLabel1: TNxLinkLabel;
+    NxLinkLabel2: TNxLinkLabel;
+    NxLinkLabel3: TNxLinkLabel;
+    MCCDetailArea: TStringField;
+    MCCDetailMunicipality: TStringField;
+    MCCDetailPrevKwhr: TFloatField;
+    MCCDetailPrevAmount: TFloatField;
+    MCCDetailCurrKwhr: TFloatField;
+    MCCDetailCurrAmount: TFloatField;
+    MCCDetailAdjDrKwhr: TFloatField;
+    MCCDetailAdjDrAmount: TFloatField;
+    MCCDetailAdjCrKwhr: TFloatField;
+    MCCDetailAdjCrAmount: TFloatField;
+    MCCDetailTKwhr: TFloatField;
+    MCCDetailTAmount: TFloatField;
+    MCCDetailCollKwhr: TFloatField;
+    MCCDetailCollAmount: TFloatField;
+    MCCDetailBalKwhr: TFloatField;
+    MCCDetailBalAmount: TFloatField;
+    NxLinkLabel4: TNxLinkLabel;
+    NxLinkLabel5: TNxLinkLabel;
+    MCCPanel: TNxHeaderPanel;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+    NxLinkLabel6: TNxLinkLabel;
+    NxLinkLabel7: TNxLinkLabel;
+    MCCDetailidmccsumm: TFloatField;
+    RetrievePanel: TNxHeaderPanel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    Bevel1: TBevel;
+    NxButton1: TNxButton;
+    NxLinkLabel8: TNxLinkLabel;
+    CreateMCC: TMyQuery;
+    MCCFB: TMyQuery;
+    Adj: TMyQuery;
+    Adjarea: TStringField;
+    Adjdebitamount: TFloatField;
+    AdjCreditamount: TFloatField;
+    Panel1: TPanel;
+    MCCDetailPercent: TCurrencyField;
+    NxLinkLabel9: TNxLinkLabel;
+    RadioGroup1: TRadioGroup;
+    MCCFBArea: TStringField;
+    MCCFBMunicipality: TStringField;
+    MCCFBPrevAmount: TFloatField;
+    MCCFBCurrAmount: TFloatField;
+    MCCFBAdjDrAmount: TFloatField;
+    MCCFBAdjCrAmount: TFloatField;
+    MCCFBTAmount: TFloatField;
+    MCCFBCollAmount: TFloatField;
+    MCCFBBalAmount: TFloatField;
+    MCCFBsummcode: TStringField;
+    Gauge1: TGauge;
+    MCCDetailsummcode: TStringField;
+    MCCDetailReportType: TStringField;
+    EditFBPanel: TNxHeaderPanel;
+    NxLinkLabel10: TNxLinkLabel;
+    NxLinkLabel11: TNxLinkLabel;
+    Label9: TLabel;
+    DBEdit9: TDBEdit;
+    Label10: TLabel;
+    DBEdit10: TDBEdit;
+    Label11: TLabel;
+    DBEdit11: TDBEdit;
+    Label12: TLabel;
+    DBEdit12: TDBEdit;
+    DBEdit13: TDBEdit;
+    DBEdit14: TDBEdit;
+    Label13: TLabel;
+    Label14: TLabel;
+    NxPageControl1: TNxPageControl;
+    NxTabSheet1: TNxTabSheet;
+    CreateCollEff: TMyQuery;
+    CollEffDetail: TMyQuery;
+    NxTabSheet2: TNxTabSheet;
+    CollEffDetailidmccsumm: TFloatField;
+    CollEffDetailDistrict: TStringField;
+    CollEffDetailArea: TStringField;
+    CollEffDetailMunicipality: TStringField;
+    CollEffDetailArrearsAmount: TFloatField;
+    CollEffDetailCurrentAmount: TFloatField;
+    CollEffDetailAdjDrAmount: TFloatField;
+    CollEffDetailAdjCrAmount: TFloatField;
+    CollEffDetailNetReceivables: TFloatField;
+    CollEffDetailArrearsColl: TFloatField;
+    CollEffDetailCurrentColl: TFloatField;
+    dsCollEffDetail: TMyDataSource;
+    NxLinkLabel13: TNxLinkLabel;
+    NxButton2: TNxButton;
+    CollEffDetailArrearsBalance: TFloatField;
+    CollEffDetailCurrentBalance: TFloatField;
+    CollFB: TMyQuery;
+    CollFBidmccsumm: TFloatField;
+    CollFBDistrict: TStringField;
+    CollFBArea: TStringField;
+    CollFBMunicipality: TStringField;
+    CollFBArrearsAmount: TFloatField;
+    CollFBCurrentAmount: TFloatField;
+    CollFBAdjDrAmount: TFloatField;
+    CollFBAdjCrAmount: TFloatField;
+    CollFBNetReceivables: TFloatField;
+    CollFBArrearsColl: TFloatField;
+    CollFBCurrentColl: TFloatField;
+    CollFBArrearsBalance: TFloatField;
+    CollFBCurrentBalance: TFloatField;
+    AdjColl: TMyQuery;
+    CollEffColl: TMyQuery;
+    CollEffCollarea: TStringField;
+    CollEffCollCurrentCollection: TFloatField;
+    CollEffCollArrearsCollection: TFloatField;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    QuickRep1: TQuickRep;
+    TitleBand1: TQRBand;
+    QRSysData1: TQRSysData;
+    QRLabel1: TQRLabel;
+    CurrentMonthLabel: TQRLabel;
+    PeriodCoveredLabel: TQRLabel;
+    DetailBand1: TQRBand;
+    QRDBText1: TQRDBText;
+    QRDBText2: TQRDBText;
+    QRDBText4: TQRDBText;
+    QRDBText6: TQRDBText;
+    QRDBText8: TQRDBText;
+    QRDBText10: TQRDBText;
+    QRDBText12: TQRDBText;
+    QRDBText14: TQRDBText;
+    QRDBText16: TQRDBText;
+    QRDBText17: TQRDBText;
+    QRLabel29: TQRLabel;
+    SummaryBand1: TQRBand;
+    QRLabel28: TQRLabel;
+    QRExpr2: TQRExpr;
+    QRExpr4: TQRExpr;
+    QRExpr6: TQRExpr;
+    QRExpr8: TQRExpr;
+    QRExpr10: TQRExpr;
+    QRExpr12: TQRExpr;
+    QRExpr14: TQRExpr;
+    QRGroup1: TQRGroup;
+    QRDBText3: TQRDBText;
+    QRLabel3: TQRLabel;
+    QRLabel4: TQRLabel;
+    QRLabel5: TQRLabel;
+    QRLabel8: TQRLabel;
+    QRLabel16: TQRLabel;
+    QRLabel17: TQRLabel;
+    QRLabel18: TQRLabel;
+    QRLabel21: TQRLabel;
+    QRLabel24: TQRLabel;
+    QRLabel27: TQRLabel;
+    TabSheet2: TTabSheet;
+    QuickRep2: TQuickRep;
+    QRBand1: TQRBand;
+    QRSysData2: TQRSysData;
+    QRLabel2: TQRLabel;
+    QRLabel6: TQRLabel;
+    QRLabel7: TQRLabel;
+    QRBand2: TQRBand;
+    QRDBText5: TQRDBText;
+    QRDBText7: TQRDBText;
+    QRDBText9: TQRDBText;
+    QRDBText11: TQRDBText;
+    QRDBText13: TQRDBText;
+    QRDBText15: TQRDBText;
+    QRDBText18: TQRDBText;
+    QRDBText19: TQRDBText;
+    QRDBText20: TQRDBText;
+    QRDBText21: TQRDBText;
+    QRLabel9: TQRLabel;
+    QRBand3: TQRBand;
+    QRLabel10: TQRLabel;
+    QRExpr1: TQRExpr;
+    QRExpr3: TQRExpr;
+    QRExpr5: TQRExpr;
+    QRExpr7: TQRExpr;
+    QRExpr9: TQRExpr;
+    QRExpr11: TQRExpr;
+    QRExpr13: TQRExpr;
+    QRLabel11: TQRLabel;
+    QRLabel12: TQRLabel;
+    QRLabel13: TQRLabel;
+    QRLabel14: TQRLabel;
+    QRLabel15: TQRLabel;
+    QRLabel19: TQRLabel;
+    QRLabel20: TQRLabel;
+    QRLabel22: TQRLabel;
+    QRLabel23: TQRLabel;
+    QRLabel25: TQRLabel;
+    QRLabel26: TQRLabel;
+    QRLabel30: TQRLabel;
+    QRLabel31: TQRLabel;
+    QRLabel32: TQRLabel;
+    QRDBText22: TQRDBText;
+    QRDBText23: TQRDBText;
+    QRLabel33: TQRLabel;
+    QRLabel34: TQRLabel;
+    DistrictEff: TQRLabel;
+    QRExpr15: TQRExpr;
+    QRExpr16: TQRExpr;
+    CollEffDetailCollEff: TFloatField;
+    QRExpr17: TQRExpr;
+    DP: TMyQuery;
+    DPDistrict: TStringField;
+    DPDP: TFloatField;
+    AdjCollarea: TStringField;
+    AdjColldebitamount: TFloatField;
+    AdjCollCreditamount: TFloatField;
+    EditFBNetPanel: TNxHeaderPanel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label18: TLabel;
+    NxLinkLabel12: TNxLinkLabel;
+    NxLinkLabel14: TNxLinkLabel;
+    DBEdit15: TDBEdit;
+    DBEdit16: TDBEdit;
+    DBEdit18: TDBEdit;
+    Label17: TLabel;
+    DBEdit17: TDBEdit;
+    MCCFBidmccdetail: TLongWordField;
+    MCCFBPrevKwhr: TFloatField;
+    MCCFBCurrKwhr: TFloatField;
+    MCCFBAdjDrKwhr: TFloatField;
+    MCCFBAdjCrKwhr: TFloatField;
+    MCCFBTKwhr: TFloatField;
+    MCCFBCollKwhr: TFloatField;
+    MCCFBBalKwhr: TFloatField;
+    MCCFBidmccsumm: TFloatField;
+    CollEffDetailidcolleffdetail: TLongWordField;
+    CollFBidcolleffdetail: TLongWordField;
+    MCCSummidmccsumm: TLongWordField;
+    MCCDetailidmccdetail: TLongWordField;
+    CRDBGrid2: TCRDBGrid1;
+    CRDBGrid3: TCRDBGrid1;
+    CRDBGrid1: TCRDBGrid1;
+    CollectionOUquery: TMyQuery;
+    OUquery: TMyQuery;
+    OUqueryEntry2: TIntegerField;
+    OUqueryEntry: TIntegerField;
+    OUqueryReceiptNumber: TStringField;
+    OUqueryAccountCode: TFloatField;
+    OUqueryArea: TStringField;
+    OUqueryBook: TStringField;
+    OUquerySequence: TStringField;
+    OUqueryAccountNumber: TStringField;
+    OUqueryName: TStringField;
+    OUqueryBillMonth: TStringField;
+    OUqueryTotalBill: TFloatField;
+    OUqueryMembership: TFloatField;
+    OUqueryPenalty: TFloatField;
+    OUquerySecurity: TFloatField;
+    OUqueryMeterDeposit: TFloatField;
+    OUqueryTransformerRental: TFloatField;
+    OUquerySundries: TStringField;
+    OUquerySundriesAmount: TFloatField;
+    OUqueryUCNPCSD: TFloatField;
+    OUqueryUCNPCSCC: TFloatField;
+    OUqueryUCDUSCC: TFloatField;
+    OUqueryUCME: TFloatField;
+    OUqueryUCETR: TFloatField;
+    OUqueryUCEC: TFloatField;
+    OUqueryUCCSR: TFloatField;
+    OUqueryLoanCondo: TFloatField;
+    OUqueryTotal: TFloatField;
+    OUqueryCollectorCode: TStringField;
+    OUqueryDatePaid: TDateField;
+    OUqueryDateRemitted: TDateField;
+    OUqueryEncoderCode: TStringField;
+    OUqueryPosted: TStringField;
+    OUqueryKilowattHour: TFloatField;
+    OUqueryAddress: TStringField;
+    OUqueryOPDescription: TStringField;
+    OUqueryOPAmount: TFloatField;
+    OUqueryTellerORNumber: TStringField;
+    OUqueryVATDiscAmt: TFloatField;
+    OUqueryVATDistDiscAmt: TFloatField;
+    OUqueryVATGenCoDiscAmt: TFloatField;
+    OUqueryVATTransCoDiscAmt: TFloatField;
+    OUqueryVATSystemLossDiscAmt: TFloatField;
+    OUqueryVATDist: TFloatField;
+    OUqueryVATGenCO: TFloatField;
+    OUqueryVATTransCO: TFloatField;
+    OUqueryVATSystemLossGenCO: TFloatField;
+    OUqueryVATSystemLossTransCO: TFloatField;
+    OUqueryVAT: TFloatField;
+    OUquerySystemLossCharge: TFloatField;
+    OUqueryPKVRAmount: TFloatField;
+    OUquerySCDisc: TFloatField;
+    OUqueryWRateCode: TStringField;
+    OUqueryRPTax: TFloatField;
+    OUqueryRateOrder: TStringField;
+    OUqueryBTax: TFloatField;
+    OUqueryOtherSystemLossCostAdj: TFloatField;
+    OUqueryOtherSeniorCitizenRateAdj: TFloatField;
+    OUqueryOtherGenRateAdj: TFloatField;
+    OUqueryOtherTransCostAdj: TFloatField;
+    OUqueryOtherTransDemandCostAdj: TFloatField;
+    OUqueryOtherLifelineRateCostAdj: TFloatField;
+    InsertOUcol: TMyQuery;
+    Collection: TMyQuery;
+    Collectionarea: TStringField;
+    Collectionamount: TFloatField;
+    procedure NxLinkLabel1Click(Sender: TObject);
+    procedure NxLinkLabel2Click(Sender: TObject);
+    procedure NxLinkLabel3Click(Sender: TObject);
+    procedure NxLinkLabel6Click(Sender: TObject);
+    procedure NxLinkLabel7Click(Sender: TObject);
+    procedure NxLinkLabel4Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure NxButton1Click(Sender: TObject);
+    procedure NxLinkLabel8Click(Sender: TObject);
+    procedure MCCDetailCalcFields(DataSet: TDataSet);
+    procedure NxLinkLabel5Click(Sender: TObject);
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
+    procedure RadioGroup1Click(Sender: TObject);
+    procedure NxLinkLabel9Click(Sender: TObject);
+    procedure CRDBGrid2DblClick(Sender: TObject);
+    procedure NxLinkLabel11Click(Sender: TObject);
+    procedure NxLinkLabel10Click(Sender: TObject);
+    procedure DBEdit14KeyPress(Sender: TObject; var Key: Char);
+    procedure DBEdit12KeyPress(Sender: TObject; var Key: Char);
+    procedure NxButton2Click(Sender: TObject);
+    procedure CollEffCollCalcFields(DataSet: TDataSet);
+    procedure NxLinkLabel13Click(Sender: TObject);
+    procedure CRDBGrid3DblClick(Sender: TObject);
+    procedure NxLinkLabel14Click(Sender: TObject);
+    procedure NxLinkLabel12Click(Sender: TObject);
+    procedure QRBand2BeforePrint(Sender: TQRCustomBand;
+      var PrintBand: Boolean);
+  private
+    { Private declarations }
+   District : String;
+  public
+    { Public declarations }
+  end;
+
+var
+  MCCSummaryForm: TMCCSummaryForm;
+
+implementation
+
+uses Data;
+
+{$R *.dfm}
+
+procedure TMCCSummaryForm.NxLinkLabel1Click(Sender: TObject);
+begin
+  MCCPanel.Left    := 202;
+  MCCPanel.Top     := 145;
+  MCCPanel.Visible := True;
+  MCCPanel.BringToFront;
+  DBEdit1.SetFocus;
+  MCCSummDateFrom.EditMask := '!99/99/00;1;_';
+  MCCSummDateTo.EditMask   := '!99/99/00;1;_';
+  MCCSumm.Append;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel2Click(Sender: TObject);
+begin
+  MCCPanel.Left    := 202;
+  MCCPanel.Top     := 145;
+  MCCPanel.Visible := True;
+  MCCPanel.BringToFront;
+  MCCSumm.Edit;
+  DBEdit1.SetFocus;
+  MCCSummDateFrom.EditMask := '!99/99/00;1;_';
+  MCCSummDateTo.EditMask   := '!99/99/00;1;_';
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel3Click(Sender: TObject);
+Var DelMCC : TMyQuery;
+begin
+  If MCCSumm.IsEmpty then
+    begin
+      MessageDlg('No records to delete..', mtError, [mbOK], 0);
+      exit;
+    end;
+
+  if (MessageDlg('Confirm delete ', mtError, [mbOK, mbCancel], 0) in [mrCancel, mrNone]) then
+    exit;
+
+  DelMCC := TMyQuery.Create(self);
+  DelMCC.Connection := BillingData.MyConnection1;
+  DelMCC.SQL.Clear;
+  DelMCC.SQL.Add('delete from mccdetail where idmccsumm = :idmccsumm');
+  DelMCC.ParamByName('idmccsumm').Text := MCCDetailidmccsumm.Text;
+  DelMCC.Execute;
+
+  MCCSumm.Delete;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel6Click(Sender: TObject);
+begin
+  MCCSumm.Post;
+  MCCPanel.Visible := False;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel7Click(Sender: TObject);
+begin
+  MCCSumm.Cancel;
+  MCCPanel.Visible := False;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel4Click(Sender: TObject);
+begin
+  RetrievePanel.Left    := 197;
+  RetrievePanel.Top     := 131;
+  RetrievePanel.Visible := True;
+  RetrievePanel.BringToFront;
+end;
+
+procedure TMCCSummaryForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  MCCSumm.Close;
+  MCCDetail.Close;
+  MCCSummaryForm := Nil;
+  Action := caFree;
+end;
+
+procedure TMCCSummaryForm.FormShow(Sender: TObject);
+begin
+
+  Try
+    CreateMCC.Execute;
+  except
+  end;
+
+  Try
+    CreateCollEff.Execute;
+  except
+  end;
+
+  MCCSumm.Open;
+  MCCDetail.Open;
+  MCCDetail.Filter   := 'SUMMCODE = '+QuotedStr(IntToStr(RadioGroup1.ItemIndex));
+  MCCDetail.Filtered := True;
+  CollEffDetail.Open;
+  NxPageControl1.ActivePageIndex := 0;
+end;
+
+procedure TMCCSummaryForm.NxButton1Click(Sender: TObject);
+Var
+  Retrieve     : TMyQuery;
+  PrevMonthStr : String;
+  PrevMonth    : TDate;
+  I            : Integer;
+  Respond      : Integer;
+begin
+  Respond := 6;
+  If not MCCDetail.IsEmpty then
+  Respond := MessageDlg('That summary file is not empty... What do you want to do?'+#13+#10+
+                        'Yes = New    No = Just Recompute    Cancel = Exit', mtWarning, [mbYes, mbNo, mbCancel], 0);
+
+  RetrievePanel.Visible := False;
+
+  if Respond = 2 then exit;
+
+  Retrieve := TMyQuery.Create(self);
+  Retrieve.Connection := BillingData.MyConnection1;
+  if Respond = 6 then
+  begin
+      Retrieve.SQL.Clear;
+      Retrieve.SQL.Add('delete from mccdetail where idmccsumm = :idmccsumm');
+      Retrieve.ParamByName('idmccsumm').Text := MCCSummidmccsumm.Text;
+      Retrieve.Execute;
+  end;
+
+  Gauge1.Progress := 0;
+  Gauge1.MinValue := 0;
+  Gauge1.MaxValue := 7;
+
+  For I := 0 to 16 do
+  begin
+  Gauge1.AddProgress(1);
+  Application.ProcessMessages;
+
+  if Respond = 6 then
+  begin
+      Retrieve.SQL.Clear;
+      Retrieve.SQL.Add('insert into mccdetail');
+      Retrieve.SQL.Add(' (idmccsumm,');
+      Retrieve.SQL.Add('  area,');
+      Retrieve.SQL.Add('  municipality,');
+      Retrieve.SQL.Add('  curramount,');
+      Retrieve.SQL.Add('  summcode)');
+      Retrieve.SQL.Add('select');
+      Retrieve.SQL.Add(' :idmccsumm,');
+      Retrieve.SQL.Add('  Area,');
+      Retrieve.SQL.Add('  case Area');
+      Retrieve.SQL.Add('        when "001" then "RIZAL"');
+      Retrieve.SQL.Add('        when "002" then "SIBUTAD"');
+      Retrieve.SQL.Add('        when "003" then "MUTIA"');
+      Retrieve.SQL.Add('        when "004" then "LA LIBERTAD"');
+      Retrieve.SQL.Add('        when "005" then "SERGIO OSMEÑA"');
+      Retrieve.SQL.Add('        when "006" then "DAPITAN"');
+      Retrieve.SQL.Add('        when "007" then "PIÑAN"');
+      Retrieve.SQL.Add('        when "008" then "POLANCO"');
+      Retrieve.SQL.Add('        when "009" then "DIPOLOG NORTH"');
+      Retrieve.SQL.Add('        when "010" then "DIPOLOG SOUTH"');
+      Retrieve.SQL.Add('        when "011" then "KATIPUNAN"');
+      Retrieve.SQL.Add('        when "012" then "ROXAS"');
+      Retrieve.SQL.Add('        when "013" then "MANUKAN"');
+      Retrieve.SQL.Add('        when "014" then "JOSE DALMAN"');
+      Retrieve.SQL.Add('        when "015" then "SINDANGAN"');
+      Retrieve.SQL.Add('        when "016" then "LEON B. POSTIGO"');
+      Retrieve.SQL.Add('        when "017" then "SIAYAN"');
+      Retrieve.SQL.Add('        when "018" then "SALUG"');
+      Retrieve.SQL.Add('        when "019" then "LILOY"');
+      Retrieve.SQL.Add('        when "020" then "LABASON"');
+      Retrieve.SQL.Add('        when "021" then "TAMPILISAN"');
+      Retrieve.SQL.Add('        when "022" then "GODOD"');
+      Retrieve.SQL.Add('        when "023" then "GUTALAC"');
+      Retrieve.SQL.Add('        when "024" then "DAPITAN / PIÑAN"');
+      Retrieve.SQL.Add('        when "025" then "KALAWIT"');
+      Retrieve.SQL.Add('        else ""');
+      Retrieve.SQL.Add('       end');
+      Retrieve.SQL.Add('  as address,');
+
+      Case I of
+      0 : Retrieve.SQL.Add('  sum(cast(ifnull(kilowatthour,0) as decimal(10,1))),');
+      1 : Retrieve.SQL.Add('  sum(Ifnull(mcc,0)),');
+      2 : Retrieve.SQL.Add('  sum(ifnull(ucec,0)),');
+      3 : Retrieve.SQL.Add('  sum(ifnull(ucme,0)),');
+      4 : Retrieve.SQL.Add('  sum(ifnull(ucnpcstrandedcontcost,0)),');
+      5 : Retrieve.SQL.Add('  sum(ifnull(vatgenco,0)),');
+      6 : Retrieve.SQL.Add('  sum(ifnull(vattransco,0)),');
+      7 : Retrieve.SQL.Add('  sum(ifnull(vatdist,0)+ifnull(vatdistdiscamt,0)),');
+      8 : Retrieve.SQL.Add('  sum(ifnull(vatsystemlossgenco,0)),');
+      9 : Retrieve.SQL.Add('  sum(ifnull(RPTax,0)),');
+      10: Retrieve.SQL.Add('  sum(ifnull(OtherGenRateAdj,0)),');
+      11: Retrieve.SQL.Add('  sum(ifnull(OtherTransCostAdj,0)),');
+      12: Retrieve.SQL.Add('  sum(ifnull(OtherTransDemandCostAdj,0)),');
+      13: Retrieve.SQL.Add('  sum(ifnull(OtherSystemLossCostAdj,0)),');
+      14: Retrieve.SQL.Add('  sum(ifnull(OtherLifelineRateCostAdj,0)),');
+      15: Retrieve.SQL.Add('  sum(ifnull(OtherSeniorCitizenRateAdj,0)),');
+      16: Retrieve.SQL.Add('  sum(ifnull(ICCrossSubsidyCharge,0)),');
+      end;
+
+      Retrieve.SQL.Add('  :SummCode');
+      Retrieve.SQL.Add('from ((select * from billhistory where billhistory.billmonth = :billmonth) union ');
+      Retrieve.SQL.Add('      (select * from latebillhistory where billdate between :datefrom and :dateto)) bh');
+      Retrieve.SQL.Add('group by area');
+      Retrieve.SQL.Add('order by area');
+      Retrieve.ParamByName('idmccsumm').Text  := MCCSummidmccsumm.Text;
+      Retrieve.ParamByName('BillMonth').Text  := MCCSummBillMonth.Text;
+      Retrieve.ParamByName('SummCode').Text   := IntToStr(I);
+      Retrieve.ParamByName('datefrom').AsDate := MCCSummDateFrom.AsDateTime;
+      Retrieve.ParamByName('dateto').AsDate   := MCCSummDateTo.AsDateTime;
+      Retrieve.Execute;
+  end;
+
+
+      Application.ProcessMessages;
+
+      MCCDetail.Filtered := False;
+      MCCDetail.Filter   := 'SUMMCODE = '+QuotedStr(IntToStr(I));
+      MCCDetail.Filtered := True;
+      MCCDetail.Refresh;
+
+      PrevMonth    := IncMonth(StrtoDate(Concat(Copy(MCCSummBillMonth.Text,1,2),'/01/',Copy(MCCSummBillMonth.Text,3,2))),-1);
+      PrevMonthStr := FormatDateTime('mmyy',PrevMonth);
+
+      Retrieve.SQL.Clear;
+      Retrieve.SQL.Add('select * from mccsumm where billmonth = :billmonth');
+      Retrieve.ParamByName('billmonth').Text := PrevMonthStr;
+      Retrieve.Open;
+
+      If not Retrieve.IsEmpty then
+        begin
+          MCCFB.ParamByName('idmccsumm').Text := Retrieve.FieldValues['idmccsumm'];
+          MCCFB.ParamByName('summcode').Text  := IntToStr(I);
+          MCCFB.Open;
+
+          MCCDetail.First;
+          If not MCCFB.IsEmpty then
+          While not MCCDetail.Eof do
+            begin
+              if MCCFB.Locate('Area',MCCDetailArea.Text,[]) then
+              begin
+                  //=============prev Balance=============
+                  MCCDetail.Edit;
+                  MCCDetailPrevAmount.AsFloat := MCCFBBalAmount.AsFloat;
+                  MCCDetail.Post;
+              end;
+              MCCDetail.Next;
+            end;
+          MCCFB.Close;
+
+        end;
+
+          Adj.Macros[I].Active := True;
+          Adj.ParamByName('datefrom').AsDate := MCCSummDateFrom.AsDateTime;
+          Adj.ParamByName('dateto').AsDate   := MCCSummDateTo.AsDateTime;
+          Adj.Open;
+
+          MCCDetail.First;
+          While not MCCDetail.Eof do
+            begin
+              if Adj.Locate('Area',MCCDetailArea.Text,[]) then
+              begin
+
+              MCCDetail.Edit;
+              MCCDetailAdjDrAmount.AsFloat := Adjdebitamount.AsFloat;
+              MCCDetailAdjCrAmount.AsFloat := AdjCreditamount.AsFloat;
+              MCCDetail.Post;
+              end;
+
+              MCCDetail.Next;
+            end;
+
+          Adj.Close;
+          Adj.Macros[I].Active := False;
+
+          Application.ProcessMessages;
+
+          Collection.Macros[I].Active := True;
+          // If I in [0,1] then Collection.MacroByName('billhistory').Active := True;
+
+          Collection.ParamByName('datefrom').AsDate := MCCSummDateFrom.AsDateTime;
+          Collection.ParamByName('dateto').AsDate   := MCCSummDateTo.AsDateTime;
+          Collection.Open;
+
+          MCCDetail.First;
+          While not MCCDetail.Eof do
+            begin
+              if Collection.Locate('Area',MCCDetailArea.Text,[]) then
+              begin
+
+              MCCDetail.Edit;
+              MCCDetailCollAmount.AsFloat := Collectionamount.AsFloat;
+              MCCDetail.Post;
+              end;
+
+              MCCDetail.Next;
+            end;
+
+          Collection.Macros[I].Active := False;
+          // If I in [0,1] then Collection.MacroByName('billhistory').Active := False;
+          Collection.Close;
+
+          MCCDetail.First;
+          While not MCCDetail.Eof do
+            begin
+
+              MCCDetail.Edit;
+              MCCDetailTAmount.AsFloat    := (MCCDetailPrevAmount.AsFloat +
+                                              MCCDetailCurrAmount.AsFloat +
+                                              MCCDetailAdjDrAmount.AsFloat) -
+                                              MCCDetailAdjCrAmount.AsFloat;
+
+              MCCDetailBalAmount.AsFloat  :=  MCCDetailTAmount.AsFloat -
+                                              MCCDetailCollAmount.AsFloat;
+              MCCDetail.Post;
+
+              MCCDetail.Next;
+            end;
+
+          Application.ProcessMessages;
+          MCCDetail.Refresh;
+  end; { end for I }
+MessageDlg('Done...', mtInformation, [mbOK], 0);
+RetrievePanel.Visible := False;
+
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel8Click(Sender: TObject);
+begin
+  RetrievePanel.Visible := False;
+end;
+
+procedure TMCCSummaryForm.MCCDetailCalcFields(DataSet: TDataSet);
+begin
+  If MCCDetailTAmount.AsCurrency > 0 then
+    MCCDetailPercent.AsCurrency := (MCCDetailCollAmount.AsCurrency/MCCDetailTAmount.AsCurrency) * 100 else
+    MCCDetailPercent.AsCurrency := 0;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel5Click(Sender: TObject);
+begin
+  MCCDetail.Filtered := False;
+  MCCDetail.Refresh;
+  CurrentMonthLabel.Caption := 'CURRENT BILLING MONTH  '+FormatDateTime('MMMM,YYYY',StrToDate(Concat(Copy(MCCSummBillMonth.Text,1,2),'/01/',Copy(MCCSummBillMonth.Text,3,2))));
+  PeriodCoveredLabel.Caption := 'PERIOD COVERED '+DateToStr(MCCSummDateFrom.AsDateTime)+' - '+DateToStr(MCCSummDateTo.AsDateTime);
+  QuickRep1.Preview;
+  MCCDetail.Filtered := True;
+end;
+
+procedure TMCCSummaryForm.DBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+ If key = #13 then
+   begin
+     Perform(CM_DIALOGKEY,VK_TAB,0);
+     key := #0;
+   end;
+end;
+
+procedure TMCCSummaryForm.RadioGroup1Click(Sender: TObject);
+begin
+  MCCDetail.Filtered := False;
+  MCCDetail.Filter   := 'SUMMCODE = '+QuotedStr(IntToStr(RadioGroup1.ItemIndex));
+  MCCDetail.Filtered := True;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel9Click(Sender: TObject);
+begin
+  MCCSumm.Close;
+  MCCDetail.Close;
+  Close; 
+end;
+
+procedure TMCCSummaryForm.CRDBGrid2DblClick(Sender: TObject);
+begin
+  EditFBPanel.Left := 198;
+  EditFBPanel.Top  := 144;
+  EditFBPanel.BringToFront;
+  EditFBPanel.Visible := True;
+  MCCDetail.Edit;
+  DBEdit12.SetFocus;
+
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel11Click(Sender: TObject);
+begin
+  MCCDetail.Post;
+  MCCDetail.Edit;
+  MCCDetailTAmount.AsFloat    := (MCCDetailPrevAmount.AsFloat+
+                                  MCCDetailCurrAmount.AsFloat+
+                                  MCCDetailAdjDrAmount.AsFloat) -
+                                  MCCDetailAdjCrAmount.AsFloat;
+
+  MCCDetailBalAmount.AsFloat  :=  MCCDetailTAmount.AsFloat -
+                                  MCCDetailCollAmount.AsFloat;
+  MCCDetail.Post;
+  EditFBPanel.Visible := False;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel10Click(Sender: TObject);
+begin
+  MCCDetail.Cancel;
+  EditFBPanel.Visible := False;
+end;
+
+procedure TMCCSummaryForm.DBEdit14KeyPress(Sender: TObject; var Key: Char);
+begin
+  If Key = #13 then NxLinkLabel11Click(self);
+end;
+
+procedure TMCCSummaryForm.DBEdit12KeyPress(Sender: TObject; var Key: Char);
+begin
+  If Key = #13 then
+    begin
+      Perform(CM_DIALOGKEY,VK_TAB,0);
+      Key := #0;
+    end;
+end;
+
+procedure TMCCSummaryForm.NxButton2Click(Sender: TObject);
+Var
+  Retrieve     : TMyQuery;
+  PrevMonthStr : String;
+  PrevMonth    : TDate;
+  I            : Integer;
+  Respond      : Integer;
+begin
+
+  Respond := 6;
+
+  If not CollEffDetail.IsEmpty then
+  Respond := MessageDlg('That Net Collection summary file is not empty... What do you want to do?'+#13+#10+
+                        'Yes = New    No = Just Recompute    Cancel = Exit', mtWarning, [mbYes, mbNo, mbCancel], 0);
+
+  RetrievePanel.Visible := False;
+
+  if Respond = 2 then exit;
+
+  Retrieve := TMyQuery.Create(self);
+  Retrieve.Connection := BillingData.MyConnection1;
+
+  if Respond = 6 then
+  begin
+      Retrieve.SQL.Clear;
+      Retrieve.SQL.Add('delete from colleffdetail where idmccsumm = :idmccsumm');
+      Retrieve.ParamByName('idmccsumm').Text := MCCSummidmccsumm.Text;
+      Retrieve.Execute;
+
+      Retrieve.SQL.Clear;
+      Retrieve.SQL.Add('insert into ColleffDetail');
+      Retrieve.SQL.Add(' (idmccsumm,');
+      Retrieve.SQL.Add('  area,');
+      Retrieve.SQL.Add('  District,');
+      Retrieve.SQL.Add('  municipality,');
+      Retrieve.SQL.Add('  currentamount)');
+      Retrieve.SQL.Add('select');
+      Retrieve.SQL.Add(' :idmccsumm,');
+      Retrieve.SQL.Add('  Area,');
+      Retrieve.SQL.Add('  Case Area');
+      Retrieve.SQL.Add('        when "001" then "01"');
+      Retrieve.SQL.Add('        when "002" then "01"');
+      Retrieve.SQL.Add('        when "003" then "02"');
+      Retrieve.SQL.Add('        when "004" then "02"');
+      Retrieve.SQL.Add('        when "005" then "02"');
+      Retrieve.SQL.Add('        when "006" then "03"');
+      Retrieve.SQL.Add('        when "007" then "04"');
+      Retrieve.SQL.Add('        when "008" then "04"');
+      Retrieve.SQL.Add('        when "009" then "05"');
+      Retrieve.SQL.Add('        when "010" then "06"');
+      Retrieve.SQL.Add('        when "011" then "07"');
+      Retrieve.SQL.Add('        when "012" then "07"');
+      Retrieve.SQL.Add('        when "013" then "07"');
+      Retrieve.SQL.Add('        when "014" then "07"');
+      Retrieve.SQL.Add('        when "015" then "08"');
+      Retrieve.SQL.Add('        when "016" then "08"');
+      Retrieve.SQL.Add('        when "017" then "08"');
+      Retrieve.SQL.Add('        when "018" then "09"');
+      Retrieve.SQL.Add('        when "019" then "09"');
+      Retrieve.SQL.Add('        when "021" then "09"');
+      Retrieve.SQL.Add('        when "022" then "09"');
+      Retrieve.SQL.Add('        when "020" then "10"');
+      Retrieve.SQL.Add('        when "023" then "10"');
+      Retrieve.SQL.Add('        when "025" then "10"');
+      Retrieve.SQL.Add('        else ""');
+      Retrieve.SQL.Add('       end');
+      Retrieve.SQL.Add('  as District,');
+      Retrieve.SQL.Add('  case Area');
+      Retrieve.SQL.Add('        when "001" then "RIZAL"');
+      Retrieve.SQL.Add('        when "002" then "SIBUTAD"');
+      Retrieve.SQL.Add('        when "003" then "MUTIA"');
+      Retrieve.SQL.Add('        when "004" then "LA LIBERTAD"');
+      Retrieve.SQL.Add('        when "005" then "SERGIO OSMEÑA"');
+      Retrieve.SQL.Add('        when "006" then "DAPITAN"');
+      Retrieve.SQL.Add('        when "007" then "PIÑAN"');
+      Retrieve.SQL.Add('        when "008" then "POLANCO"');
+      Retrieve.SQL.Add('        when "009" then "DIPOLOG NORTH"');
+      Retrieve.SQL.Add('        when "010" then "DIPOLOG SOUTH"');
+      Retrieve.SQL.Add('        when "011" then "KATIPUNAN"');
+      Retrieve.SQL.Add('        when "012" then "ROXAS"');
+      Retrieve.SQL.Add('        when "013" then "MANUKAN"');
+      Retrieve.SQL.Add('        when "014" then "JOSE DALMAN"');
+      Retrieve.SQL.Add('        when "015" then "SINDANGAN"');
+      Retrieve.SQL.Add('        when "016" then "LEON B. POSTIGO"');
+      Retrieve.SQL.Add('        when "017" then "SIAYAN"');
+      Retrieve.SQL.Add('        when "018" then "SALUG"');
+      Retrieve.SQL.Add('        when "019" then "LILOY"');
+      Retrieve.SQL.Add('        when "020" then "LABASON"');
+      Retrieve.SQL.Add('        when "021" then "TAMPILISAN"');
+      Retrieve.SQL.Add('        when "022" then "GODOD"');
+      Retrieve.SQL.Add('        when "023" then "GUTALAC"');
+      Retrieve.SQL.Add('        when "024" then "DAPITAN / PIÑAN"');
+      Retrieve.SQL.Add('        when "025" then "KALAWIT"');
+      Retrieve.SQL.Add('        else ""');
+      Retrieve.SQL.Add('       end');
+      Retrieve.SQL.Add('  as address,');
+
+      Retrieve.SQL.Add('sum(ifnull(TotalBill,0) - (ifnull(VAT,0) +');
+      Retrieve.SQL.Add('                           ifnull(UCEC,0) +');
+      Retrieve.SQL.Add('                           ifnull(UCME,0) +');
+      Retrieve.SQL.Add('                           ifnull(UCNPCSTRANDEDCONTCOST,0) +');
+      Retrieve.SQL.Add('                           ifnull(MCC,0) +');
+      Retrieve.SQL.Add('                           ifnull(OCAmount1,0) +');
+      Retrieve.SQL.Add('                           ifnull(OCAmount2,0) +');
+      Retrieve.SQL.Add('                           ifnull(OCAmount3,0) +');
+      Retrieve.SQL.Add('                           ifnull(VATDiscAmt,0)) )');
+
+      Retrieve.SQL.Add('from ((select * from billhistory where billhistory.billmonth = :billmonth) union');
+      Retrieve.SQL.Add('      (select * from latebillhistory where billdate between :datefrom and :dateto)) bh');
+      Retrieve.SQL.Add('group by area');
+      Retrieve.SQL.Add('order by area');
+      Retrieve.ParamByName('idmccsumm').Text  := MCCSummidmccsumm.Text;
+      Retrieve.ParamByName('BillMonth').Text  := MCCSummBillMonth.Text;
+      Retrieve.ParamByName('datefrom').AsDate := MCCSummDateFrom.AsDateTime;
+      Retrieve.ParamByName('dateto').AsDate   := MCCSummDateTo.AsDateTime;
+      Retrieve.Execute;
+  end;
+
+      Application.ProcessMessages;
+
+      CollEffDetail.Refresh;
+
+      PrevMonth    := IncMonth(StrtoDate(Concat(Copy(MCCSummBillMonth.Text,1,2),'/01/',Copy(MCCSummBillMonth.Text,3,2))),-1);
+      PrevMonthStr := FormatDateTime('mmyy',PrevMonth);
+
+      Retrieve.SQL.Clear;
+      Retrieve.SQL.Add('select * from mccsumm where billmonth = :billmonth');
+      Retrieve.ParamByName('billmonth').Text := PrevMonthStr;
+      Retrieve.Open;
+
+      If not Retrieve.IsEmpty then
+        begin
+          CollFB.ParamByName('idmccsumm').Text := Retrieve.FieldValues['idmccsumm'];
+          CollFB.Open;
+
+          CollEffDetail.First;
+
+          If not CollFB.IsEmpty then
+          While not CollEffDetail.Eof do
+            begin
+              CollFB.Locate('Area',CollEffDetailArea.Text,[]);
+
+              CollEffDetail.Edit;
+              CollEffDetailArrearsAmount.AsFloat := CollFBArrearsBalance.AsFloat + CollFBCurrentBalance.AsFloat;
+              CollEffDetail.Post;
+
+              CollEffDetail.Next;
+            end;
+          CollFB.Close;
+
+        end;
+
+          AdjColl.ParamByName('datefrom').AsDate := MCCSummDateFrom.AsDateTime;
+          AdjColl.ParamByName('dateto').AsDate   := MCCSummDateTo.AsDateTime;
+          AdjColl.Open;
+
+          CollEffDetail.First;
+          While not CollEffDetail.Eof do
+            begin
+              AdjColl.Locate('Area',CollEffDetailArea.Text,[]);
+
+              CollEffDetail.Edit;
+              CollEffDetailAdjDrAmount.AsFloat := AdjColldebitamount.AsFloat;
+              CollEffDetailAdjCrAmount.AsFloat := AdjCollCreditamount.AsFloat;
+              CollEffDetail.Post;
+
+              CollEffDetail.Next;
+            end;
+
+          AdjColl.Close;
+
+          Application.ProcessMessages;
+
+          CollEffColl.ParamByName('datefrom').AsDate       := MCCSummDateFrom.AsDateTime;
+          CollEffColl.ParamByName('dateto').AsDate         := MCCSummDateTo.AsDateTime;
+          CollEffColl.ParamByName('CurrentBillMonth').Text := MCCSummBillMonth.Text;
+          CollEffColl.Open;
+
+          CollEffDetail.First;
+          While not CollEffDetail.Eof do
+            begin
+              CollEffColl.Locate('Area',CollEffDetailArea.Text,[]);
+
+              CollEffDetail.Edit;
+              CollEffDetailArrearsColl.AsFloat := CollEffCollArrearsCollection.AsFloat;
+              CollEffDetailCurrentColl.AsFloat := CollEffCollCurrentCollection.AsFloat;
+              CollEffDetail.Post;
+
+              CollEffDetail.Next;
+            end;
+
+          CollEffColl.Close;
+
+          CollEffDetail.First;
+          While not CollEffDetail.Eof do
+            begin
+
+              CollEffDetail.Edit;
+              CollEffDetailNetReceivables.AsFloat    := (CollEffDetailArrearsAmount.AsFloat +
+                                                         CollEffDetailCurrentAmount.AsFloat +
+                                                         CollEffDetailAdjDrAmount.AsFloat) -
+                                                         CollEffDetailAdjCrAmount.AsFloat;
+
+              CollEffDetailArrearsBalance.AsFloat    := ((CollEffDetailArrearsAmount.AsFloat +
+                                                          CollEffDetailAdjDrAmount.AsFloat) -
+                                                          CollEffDetailAdjCrAmount.AsFloat) -
+                                                          CollEffDetailArrearsColl.AsFloat;
+
+              CollEffDetailCurrentBalance.AsFloat    := (CollEffDetailCurrentAmount.AsFloat-
+                                                         CollEffDetailCurrentColl.AsFloat);
+
+              CollEffDetail.Post;
+
+              CollEffDetail.Next;
+            end;
+
+          Application.ProcessMessages;
+          CollEffDetail.Refresh;
+
+MessageDlg('Done...', mtInformation, [mbOK], 0);
+RetrievePanel.Visible := False;
+
+end;
+
+procedure TMCCSummaryForm.CollEffCollCalcFields(DataSet: TDataSet);
+begin
+  If CollEffDetailNetReceivables.AsCurrency > 0 then
+     CollEffDetailCollEff.AsCurrency := ((CollEffDetailArrearsColl.AsCurrency +
+                                          CollEffDetailCurrentColl.AsCurrency)/
+                                          CollEffDetailNetReceivables.AsCurrency) * 100 else
+     CollEffDetailCollEff.AsCurrency := 0;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel13Click(Sender: TObject);
+begin
+  District := '';
+  QRLabel6.Caption := 'CURRENT BILLING MONTH  '+FormatDateTime('MMMM,YYYY',StrToDate(Concat(Copy(MCCSummBillMonth.Text,1,2),'/01/',Copy(MCCSummBillMonth.Text,3,2))));
+  QRLabel7.Caption := 'PERIOD COVERED '+DateToStr(MCCSummDateFrom.AsDateTime)+' - '+DateToStr(MCCSummDateTo.AsDateTime);
+  DP.ParamByName('idMccSumm').Text := MCCSummidmccsumm.Text;
+  DP.Open;
+  QuickRep2.Preview;
+  DP.Close;
+end;
+
+procedure TMCCSummaryForm.CRDBGrid3DblClick(Sender: TObject);
+begin
+  EditFBNetPanel.Left := 196;
+  EditFBNetPanel.Top  := 142;
+  EditFBNetPanel.BringToFront;
+  EditFBNetPanel.Visible := True;
+  CollEffDetail.Edit;
+  DBEdit18.SetFocus;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel14Click(Sender: TObject);
+begin
+  CollEffDetail.Post;
+  CollEffDetail.Edit;
+  CollEffDetailNetReceivables.AsFloat    := (CollEffDetailArrearsAmount.AsFloat+
+                                             CollEffDetailCurrentAmount.AsFloat+
+                                             CollEffDetailAdjDrAmount.AsFloat) -
+                                             CollEffDetailAdjCrAmount.AsFloat;
+
+  CollEffDetailArrearsBalance.AsFloat    :=((CollEffDetailArrearsAmount.AsFloat +
+                                             CollEffDetailAdjDrAmount.AsFloat) -
+                                             CollEffDetailAdjCrAmount.AsFloat) -
+                                             CollEffDetailArrearsColl.AsFloat;
+  CollEffDetail.Post;
+  EditFBNetPanel.Visible := False;
+end;
+
+procedure TMCCSummaryForm.NxLinkLabel12Click(Sender: TObject);
+begin
+  CollEffDetail.Cancel;
+  EditFBNetPanel.Visible := False;
+end;
+
+procedure TMCCSummaryForm.QRBand2BeforePrint(Sender: TQRCustomBand;
+  var PrintBand: Boolean);
+begin
+  If CollEffDetailDistrict.Text <> District then
+    begin
+      DP.Locate('District',CollEffDetailDistrict.Text,[]);
+      District := CollEffDetailDistrict.Text;
+      DistrictEff.Caption := CurrToStr(DPDP.AsCurrency)+'%';
+      DistrictEff.Enabled := True;
+    end else
+      DistrictEff.Enabled := False;
+end;
+
+end.
+
+
+

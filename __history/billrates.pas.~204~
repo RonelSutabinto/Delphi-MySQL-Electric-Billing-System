@@ -1,0 +1,738 @@
+unit billrates;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,Math,
+  NxCollection,Dialogs, StdCtrls, ComCtrls, ExtCtrls, QuickRpt, DB, MemDS,
+  DBAccess,Spin,Gauges,NxEdit,MyAccess, QRCtrls, Mask, DBCtrls, StrUtils,
+  QRPDFFilt, DateUtils,AdvGroupBox;
+  {Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, MemDS, DBAccess, MyAccess, StdCtrls, Spin, Gauges, ExtCtrls,
+  QRCtrls, QuickRpt, Math, NxCollection, NxEdit, QRPDFFilt, AdvGroupBox;
+   }
+type
+  TBillRateForm = class(TForm)
+    CreateBillRates: TMyQuery;
+    SpinEdit1: TSpinEdit;
+    BillMonth: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Button1: TNxButton;
+    Button2: TNxButton;
+    Gauge1: TGauge;
+    InsertBillRates: TMyQuery;
+    BillRates: TMyQuery;
+    BillRatesResAmt: TFloatField;
+    BillRatesCommAmt: TFloatField;
+    BillRatesIndAmt: TFloatField;
+    BillRatesPubAmt: TFloatField;
+    BillRatesStAmt: TFloatField;
+    MRate: TMyQuery;
+    MRateEntry: TIntegerField;
+    MRateMBillMonth: TStringField;
+    MRateRateCode: TStringField;
+    MRateRemarks: TStringField;
+    MRateGenSysRate: TFloatField;
+    MRateHostCommRate: TFloatField;
+    MRateFOREXRate: TFloatField;
+    MRateTCDemandRate: TFloatField;
+    MRateTCSystemRate: TFloatField;
+    MRateSystemLossRate: TFloatField;
+    MRateDCDemandRate: TFloatField;
+    MRateDCSystemRate: TFloatField;
+    MRateSCRetailCustRate: TFloatField;
+    MRateSCSupplySysRate: TFloatField;
+    MRateMCRetailCustRate: TFloatField;
+    MRateMCSysRate: TFloatField;
+    MRateUCNPCStrandedDebtsRate: TFloatField;
+    MRateUCNPCStrandedContCostRate: TFloatField;
+    MRateUCDUStrandedContCostRate: TFloatField;
+    MRateUCMERate: TFloatField;
+    MRateUCEqTaxesAndRoyaltiesRate: TFloatField;
+    MRateUCECRate: TFloatField;
+    MRateUCCrossSubsidyRemovalRate: TFloatField;
+    MRateICCrossSubsidyRate: TFloatField;
+    MRatePARARate: TFloatField;
+    MRateLifelineSubsidyRate: TFloatField;
+    MRateLoanCondo: TFloatField;
+    MRateGram: TFloatField;
+    MRateLCcustmo: TFloatField;
+    MRatePrevYearAdjPowerCost: TFloatField;
+    MRateSysLossUnderRecov: TFloatField;
+    MRateVAT: TFloatField;
+    MRateVATGenCo: TFloatField;
+    MRateVATTransCo: TFloatField;
+    MRateVATSystemLossGenCO: TFloatField;
+    MRateVATSystemLossTransCO: TFloatField;
+    MRateVATSystemLoss: TFloatField;
+    Panel1: TPanel;
+    BillRatesSTAmtWD: TFloatField;
+    MRateDiffBillPerKwhr: TFloatField;
+    MRateDIffBillPerKW: TFloatField;
+    MRateDiffBillPerCust: TFloatField;
+    MRateMCC: TFloatField;
+    MRateDiffBillMonth: TStringField;
+    MRateDiffBillApply: TStringField;
+    MRatePantawidApply: TStringField;
+    MRateTransSysAncRefundTitle: TStringField;
+    MRateTransSysAncRefund: TFloatField;
+    MRateTransDemAncRefundTitle: TStringField;
+    MRateTransDemAncRefund: TFloatField;
+    MRateVATTransAncRefundTitle: TStringField;
+    MRateVATTransAncRefund: TFloatField;
+    CreateComputeBill: TMyQuery;
+    MRateSCDiscApply: TStringField;
+    MRateWRateCode: TStringField;
+    MRateSCDiscPercent: TFloatField;
+    MRateSCDiscSubs: TFloatField;
+    SCCheck: TNxCheckBox;
+    CBM: TMyQuery;
+    CBMmbillmonth: TStringField;
+    CBMmbillorder: TDateField;
+    QuickRep1: TQuickRep;
+    ColumnHeaderBand1: TQRBand;
+    QRLabel1: TQRLabel;
+    QRLabel2: TQRLabel;
+    QRLabel3: TQRLabel;
+    QRLabel4: TQRLabel;
+    QRLabel5: TQRLabel;
+    QRLabel6: TQRLabel;
+    QRLabel7: TQRLabel;
+    DetailBand1: TQRBand;
+    QRDBText1: TQRDBText;
+    QRDBText2: TQRDBText;
+    QRDBText3: TQRDBText;
+    QRDBText4: TQRDBText;
+    QRDBText5: TQRDBText;
+    QRDBText6: TQRDBText;
+    MRatePantawidRecovApply: TStringField;
+    MRateWRSw: TStringField;
+    QuickRep2: TQuickRep;
+    QRBand1: TQRBand;
+    QRLabel8: TQRLabel;
+    QRLabel9: TQRLabel;
+    QRLabel10: TQRLabel;
+    QRLabel11: TQRLabel;
+    QRLabel14: TQRLabel;
+    QRBand2: TQRBand;
+    QRDBText7: TQRDBText;
+    QRDBText8: TQRDBText;
+    QRDBText9: TQRDBText;
+    QRDBText10: TQRDBText;
+    BillRatesidbillrates: TLongWordField;
+    MRateSCDiscKWHR: TLongWordField;
+    BillRateskwhr: TLongWordField;
+    QRPDFFilter1: TQRPDFFilter;
+    Area: TEdit;
+    Label3: TLabel;
+    AdvGroupBox1: TAdvGroupBox;
+    AdvGroupBox2: TAdvGroupBox;
+    Bill: TMyQuery;
+    BillGenSysCharge: TFloatField;
+    BillHostCommCharge: TFloatField;
+    BillForexCharge: TFloatField;
+    BillTCDemandCharge: TFloatField;
+    BillTCTransSystemCharge: TFloatField;
+    BillSystemLossCharge: TFloatField;
+    BillDCDemandCharge: TFloatField;
+    BillDCDistributionCharge: TFloatField;
+    BillSCRetCustCharge: TFloatField;
+    BillSCSupplySysCharge: TFloatField;
+    BillMCRetailCustCharge: TFloatField;
+    BillMCSystemCharge: TFloatField;
+    BillUCNPCStrandedDebts: TFloatField;
+    BillUCNPCStrandedContCost: TFloatField;
+    BillUCDUStrandedContCost: TFloatField;
+    BillUCME: TFloatField;
+    BillUCEqTaxesAndRoyalties: TFloatField;
+    BillUCEC: TFloatField;
+    BillUCCrossSubRemoval: TFloatField;
+    BillICCrossSubsidyCharge: TFloatField;
+    BillPowerActRateRed: TFloatField;
+    BillLifelineDiscSubs: TFloatField;
+    BillLoanCondo: TFloatField;
+    BillTransformerRental: TFloatField;
+    BillTotalBill: TFloatField;
+    BillLCCustMo: TFloatField;
+    BillPrevYearAdjPowerCost: TFloatField;
+    BillSysLossUnderRecov: TFloatField;
+    BillVATDisc: TFloatField;
+    BillVATDiscAmt: TFloatField;
+    BillVATDistDiscAmt: TFloatField;
+    BillVATGenCoDiscAmt: TFloatField;
+    BillVATTransCoDiscAmt: TFloatField;
+    BillVATSystemLossDiscAmt: TFloatField;
+    BillVATDist: TFloatField;
+    BillVATGenCO: TFloatField;
+    BillVATTransCO: TFloatField;
+    BillVATSystemLossGenCO: TFloatField;
+    BillVATSystemLossTransCO: TFloatField;
+    BillVAT: TFloatField;
+    BillAdjAmountBalance: TFloatField;
+    BillAdjAmountApplied: TFloatField;
+    BillReadTime: TStringField;
+    BillDiffBillPerKwhr: TFloatField;
+    BillDiffBillPerKW: TFloatField;
+    BillDiffBillPerCust: TFloatField;
+    BillMCC: TFloatField;
+    BillPKVROebrNumber: TStringField;
+    BillPKVRBillMonth: TStringField;
+    BillPKVRAmount: TFloatField;
+    BillTransSysAncRefund: TFloatField;
+    BillTransDemAncRefund: TFloatField;
+    BillVATTransAncRefund: TFloatField;
+    BillSCDisc: TFloatField;
+    BillSCAmt4Disc: TFloatField;
+    BillRPTax: TFloatField;
+    RPTrateQuery: TMyQuery;
+    NxCheckBox1: TNxCheckBox;
+    ComboBox2: TComboBox;
+    Label4: TLabel;
+    QRLabel12: TQRLabel;
+    TmpQuery: TMyQuery;
+    QRLabel16: TQRLabel;
+    QRLabel17: TQRLabel;
+    QRLabel15: TQRLabel;
+    BillOtherGenRateAdj: TFloatField;
+    BillOtherTransCostAdj: TFloatField;
+    BillOtherTransDemandCostAdj: TFloatField;
+    BillOtherSystemLossCostAdj: TFloatField;
+    BillOtherLifelineRateCostAdj: TFloatField;
+    BillOtherSeniorCitizenRateAdj: TFloatField;
+    MRateOtherGenRateAdj: TFloatField;
+    MRateOtherTransCostAdj: TFloatField;
+    MRateOtherTransDemandCostAdj: TFloatField;
+    MRateOtherSystemLossCostAdj: TFloatField;
+    MRateOtherLifelineRateCostAdj: TFloatField;
+    MRateOtherSeniorCitizenRateAdj: TFloatField;
+    MRateFitAllrate: TFloatField;
+    BillFitAll: TFloatField;
+    BillPARec: TFloatField;
+    BillVATparec: TFloatField;
+    MRatePARec: TFloatField;
+    BillVATmcc: TFloatField;
+    gramCB: TNxCheckBox;
+    Billgram: TFloatField;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure SpinEdit1KeyPress(Sender: TObject; var Key: Char);
+    procedure NxCheckBox1Change(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    Function ComputeBill(RateCode : String ; Kwhr : Integer) : Currency;
+    { Public declarations }
+  end;
+
+var
+  BillRateForm: TBillRateForm;
+  WRSw: String;
+
+implementation
+
+uses Data;
+
+{$R *.dfm}
+
+Function RoundOff(Data : Currency) : Currency;
+Var DSt  : String;
+    Dat  : Currency;
+    Chk  : Integer;
+    Val2 : Currency;
+begin
+RoundOff := Data;
+Str(Data:0:4,Dst);
+
+ If Copy(Dst,Length(Dst)-1,1) >= '5' then
+        if data >= 0 then Val2 := StrToCurr(Copy(Dst,1,length(dst)-2))+0.01 else
+                          Val2 := StrToCurr(Copy(Dst,1,length(dst)-2))-0.01 else
+      Val2 := StrToCurr(Copy(Dst,1,length(dst)-2));
+
+RoundOff := Val2;
+If (Dst = '0.00') or (Dst = '-0.00') then RoundOff := 0.00;
+end;
+
+Function TBillRateForm.ComputeBill;
+Label Compute;
+Var
+LLine           : Currency ;
+TotalPower      : Currency ;
+SCLD            : Currency ;
+VATparecComp    : Currency ;
+mccComp         : Currency ;
+
+begin
+
+  if WRSw = '0' then
+    MRate.FilterSQL := 'RateCode = '+QuotedStr(Copy(RateCode,1,1)) else
+    MRate.FilterSQL := 'WRateCode = '+QuotedStr(Copy(RateCode,1,1));
+
+  If (Copy(RateCode,1,1) = 'R') or
+     (Copy(RateCode,1,1) = 'X') then
+  If KWHR <= 15 then KWHR := 15;
+
+  BillGenSysCharge.AsCurrency               := roundoff(KWHR * MRateGenSysRate.AsFloat);
+  BillOtherGenRateAdj.AsCurrency            := roundoff(KWHR * MRateOtherGenRateAdj.AsFloat);
+  BillHostCommCharge.AsCurrency             := roundoff(KWHR * MRateHostCommRate.AsFloat);
+  BillForexCharge.AsCurrency                := roundoff(KWHR * MRateForexRate.AsFloat);
+  BillTCTransSystemCharge.AsCurrency        := roundoff(KWHR * MRateTCSystemRate.AsFloat);
+  BillOtherTransCostAdj.AsCurrency          := roundoff(KWHR * MRateOtherTransCostAdj.AsFloat);
+  BillSystemLossCharge.AsCurrency           := roundoff(KWHR * MRateSystemLossRate.AsFloat);
+  BillOtherSystemLossCostAdj.AsCurrency     := roundoff(KWHR * MRateOtherSystemLossCostAdj.AsFloat);
+  BillDCDistributionCharge.AsCurrency       := roundoff(KWHR * MRateDCSystemRate.AsFloat);
+  BillSCRetCustCharge.AsCurrency            := roundoff(MRateSCRetailCustRate.AsFloat);
+  BillSCSupplySysCharge.AsCurrency          := roundoff(KWHR * MRateSCSupplySysRate.AsFloat);
+  BillMCRetailCustCharge.AsCurrency         := roundoff(MRateMCRetailCustRate.AsFloat);
+  BillMCSystemCharge.AsCurrency             := roundoff(KWHR * MRateMCSysRate.AsFloat);
+  mccComp                                   := roundoff(KWHR * MRateMCC.AsFloat);
+  BillMCC.AsCurrency                        := mccComp;
+
+  if gramCB.Checked then
+    Billgram.AsCurrency                     := RoundOff(KWHR * MRateGram.AsCurrency)
+  else
+    Billgram.AsCurrency                     := 0;
+
+  BillUCNPCStrandedDebts.AsCurrency         := roundoff(KWHR * MRateUCNPCStrandedDebtsRate.AsFloat);
+  BillUCNPCStrandedContCost.AsCurrency      := roundoff(KWHR * MRateUCNPCStrandedContCostRate.AsFloat);
+  BillUCDUStrandedContCost.AsCurrency       := roundoff(KWHR * MRateUCDUStrandedContCostRate.AsFloat);
+  BillUCME.AsCurrency                       := roundoff(KWHR * MRateUCMERate.AsFloat);
+  BillUCEqTaxesAndRoyalties.AsCurrency      := roundoff(KWHR * MRateUCEqTaxesAndRoyaltiesRate.AsFloat);
+  BillUCEC.AsCurrency                       := roundoff(KWHR * MRateUCECRate.AsFloat);
+  BillUCCrossSubRemoval.AsCurrency          := roundoff(KWHR * MRateUCCrossSubsidyRemovalRate.AsFloat);
+  BillICCrossSubsidyCharge.AsCurrency       := roundoff(KWHR * MRateICCrossSubsidyRate.AsFloat);
+  BillPowerActRateRed.AsCurrency            := roundoff(KWHR * MRatePARARate.AsFloat);
+  BillLifelineDiscSubs.AsCurrency           := RoundOff(KWHR * MRateLifelineSubsidyRate.AsFloat);
+  BillOtherLifelineRateCostAdj.AsCurrency   := roundoff(KWHR * MRateOtherLifelineRateCostAdj.AsFloat);
+  BillSCDisc.AsCurrency                     := RoundOff(KWHR * MRateSCDiscSubs.AsCurrency);
+  BillOtherSeniorCitizenRateAdj.AsCurrency  := roundoff(KWHR * MRateOtherSeniorCitizenRateAdj.AsFloat);
+
+  BillLoanCondo.AsCurrency                  := roundoff(KWHR * MRateLoanCondo.AsFloat);
+  BillLCCustMo.AsCurrency                   := roundoff(MRateLCCustMo.AsFloat);
+  BillPrevYearAdjPowerCost.AsCurrency       := roundoff(KWHR * MRatePrevYearAdjPowerCost.AsFloat);
+  BillSysLossUnderRecov.AsCurrency          := roundoff(KWHR * MRateSysLossUnderRecov.AsFloat);
+
+  BillTransSysAncRefund.AsCurrency          := roundoff(KWHR * MRateTransSysAncRefund.AsFloat);
+  BillVATTransAncRefund.AsCurrency          := roundoff(KWHR * MRateVATTransAncRefund.AsFloat);
+
+  BillVATGenCO.AsCurrency                   := roundoff(KWHR * MRateVATGenco.AsFloat);
+  BillVATTransCo.AsCurrency                 := roundoff(KWHR * MRateVATTransco.AsFloat);
+  BillVATSystemLossGenCO.AsCurrency         := roundoff(KWHR * MRateVATSystemLoss.AsFloat);
+  BillFitAll.AsCurrency                     := roundoff(KWHR * MRateFitAllrate.AsFloat);
+  BillPARec.AsCurrency                      := roundoff(KWHR * MRatePARec.AsFloat);
+
+  TotalPower :=         (BillGenSysCharge.AsCurrency +
+                         BillHostCommCharge.AsCurrency +
+                         BillForexCharge.AsCurrency +
+                         BillTCTransSystemCharge.AsCurrency +
+                         BillSystemLossCharge.AsCurrency +
+                         BillDCDistributionCharge.AsCurrency +
+                         BillSCSupplySysCharge.AsCurrency +
+                         BillMCSystemCharge.AsCurrency +
+                         BillMCRetailCustCharge.AsCurrency +
+                         BillTransSysAncRefund.AsCurrency);
+
+  SCLD := 1;
+  If (Copy(RateCode,1,1) = 'R') or
+     (Copy(RateCode,1,1) = 'X') then
+   begin
+     If KWHR <= 15                    then
+       begin
+         BillLifelineDiscSubs.AsCurrency := roundoff(TotalPower * -0.50);
+         BillOtherLifelineRateCostAdj.AsCurrency  := 0.0;
+         SCLD := 0.50;
+       end;
+
+     If (KWHR >  15) and (KWHR <= 16) then
+       begin
+         BillLifelineDiscSubs.AsCurrency := roundoff(TotalPower * -0.40);
+         BillOtherLifelineRateCostAdj.AsCurrency  := 0.0;
+         SCLD := 0.60;
+       end;
+
+     If (KWHR >  16) and (KWHR <= 17) then
+       begin
+         BillLifelineDiscSubs.AsCurrency := roundoff(TotalPower * -0.30);
+         BillOtherLifelineRateCostAdj.AsCurrency  := 0.0;
+         SCLD := 0.70;
+       end;
+
+     If (KWHR >  17) and (KWHR <= 18) then
+       begin
+         BillLifelineDiscSubs.AsCurrency := roundoff(TotalPower * -0.20);
+         BillOtherLifelineRateCostAdj.AsCurrency  := 0.0;
+         SCLD := 0.80;
+       end;
+
+     If (KWHR >  18) and (KWHR <= 19) then
+       begin
+         BillLifelineDiscSubs.AsCurrency := roundoff(TotalPower * -0.10);
+         BillOtherLifelineRateCostAdj.AsCurrency  := 0.0;
+         SCLD := 0.90;
+       end;
+
+     If (KWHR >  19) and (KWHR <= 20) then
+       begin
+         BillLifelineDiscSubs.AsCurrency := roundoff(TotalPower * -0.05);
+         BillOtherLifelineRateCostAdj.AsCurrency  := 0.0;
+         SCLD := 0.95
+       end;
+   end;
+
+ If BillLifelineDiscSubs.AsCurrency < 0 then
+ begin
+    BillSCDisc.AsCurrency := 0;
+    BillOtherSeniorCitizenRateAdj.AsCurrency := 0.0;
+ end;
+
+ If (MRateSCDiscApply.Text = '1') and
+    (KWHR <= MRateSCDiscKWHR.AsFloat) and
+    (SCCheck.Checked = true) then
+  begin
+    BillSCAmt4Disc.AsCurrency := (BillGenSysCharge.AsCurrency +
+                                  BillHostCommCharge.AsCurrency +
+                                  BillForexCharge.AsCurrency +
+                                  BillTCDemandCharge.AsCurrency +
+                                  BillTCTransSystemCharge.AsCurrency +
+                                  BillSystemLossCharge.AsCurrency +
+                                  BillDCDemandCharge.AsCurrency +
+                                  BillDCDistributionCharge.AsCurrency +
+                                  BillSCRetCustCharge.AsCurrency +
+                                  BillSCSupplySysCharge.AsCurrency +
+                                  BillMCRetailCustCharge.AsCurrency +
+                                  BillMCSystemCharge.AsCurrency +
+                                  BillLoanCondo.AsCurrency ) * SCLD;
+
+    BillSCDisc.AsCurrency     := (BillSCAmt4Disc.AsCurrency * (MRateSCDiscPercent.AsCurrency/100)) * -1;
+    BillOtherSeniorCitizenRateAdj.AsCurrency := 0.0;
+  end;
+
+    BillVAT.AsCurrency                   := 0;
+    BillVATDist.AsCurrency               := 0;
+    BillVATDistDiscAmt.AsCurrency        := 0;
+    BillVATGenCoDiscAmt.AsCurrency       := 0;
+    BillVATTransCoDiscAmt.AsCurrency     := 0;
+    BillVATSystemLossDiscAmt.AsCurrency  := 0;
+    BillVATDiscAmt.AsCurrency            := 0;
+
+   VATparecComp            := 0;
+   VATparecComp            := BillPARec.AsCurrency *( MRateVAT.AsCurrency / 100 );
+   BillVATparec.AsCurrency := VATparecComp;
+   BillVATmcc.AsCurrency   := RoundOff(mccComp * (MRateVAT.AsCurrency / 100));
+
+   BillVAT.AsCurrency :=  roundoff(((( BillForexCharge.AsCurrency+
+                                       BillDCDistributionCharge.AsCurrency+
+                                       BillSCRetCustCharge.AsCurrency+
+                                       BillSCSupplySysCharge.AsCurrency+
+                                       BillMCRetailCustCharge.AsCurrency+
+                                       BillMCSystemCharge.AsCurrency+
+                                       BillICCrossSubsidyCharge.AsCurrency+
+                                       BillLifelineDiscSubs.AsCurrency+
+                                       BillSCDisc.AsCurrency+
+                                       BillOtherLifelineRateCostAdj.AsCurrency+
+                                       BillOtherSeniorCitizenRateAdj.AsCurrency+
+                                       BillLoanCondo.AsCurrency +
+                                       BillLCCustMo.AsCurrency+
+                                       mccComp)*
+                                       (MRateVAT.AsCurrency / 100))) )+
+                                        BillVATGenCO.AsCurrency +
+                                        BillVATTransCO.AsCurrency +
+                                        BillVATSystemLossGenCO.AsCurrency+
+                                        VATparecComp;
+
+   BillVATDist.AsCurrency := roundoff ((( BillForexCharge.AsCurrency+
+                                          BillDCDistributionCharge.AsCurrency+
+                                          BillSCRetCustCharge.AsCurrency+
+                                          BillSCSupplySysCharge.AsCurrency+
+                                          BillMCRetailCustCharge.AsCurrency+
+                                          BillMCSystemCharge.AsCurrency+
+                                          BillICCrossSubsidyCharge.AsCurrency+
+                                          BillLifelineDiscSubs.AsCurrency+
+                                          BillSCDisc.AsCurrency+
+                                          BillOtherLifelineRateCostAdj.AsCurrency+
+                                          BillOtherSeniorCitizenRateAdj.AsCurrency+
+                                          BillLoanCondo.AsCurrency +
+                                          BillLCCustMo.AsCurrency+
+                                          mccComp)*
+                                          (MRateVAT.AsCurrency / 100)) )+
+                                          VATparecComp;
+
+   //temporarily remove te vat discount========================
+   //==========================================================
+   {If (Copy(RateCode,1,1) = 'P') or
+      (Copy(RateCode,1,2) = 'S1') then
+   begin
+     BillVATDistDiscAmt.AsCurrency          := roundoff(BillVATDist.AsCurrency * (41.6667 / 100) * -1);
+     BillVATGenCoDiscAmt.AsCurrency         := 0;
+     BillVATTransCoDiscAmt.AsCurrency       := 0;
+     BillVATSystemLossDiscAmt.AsCurrency    := 0;
+     (*
+     BillVATGenCoDiscAmt         := roundoff(VATGenCO      * (41.6667 / 100) * -1);
+     BillVATTransCoDiscAmt       := roundoff(VATTransCO    * (41.6667 / 100) * -1);
+     BillVATSystemLossDiscAmt    := roundoff(VATSystemLoss * (41.6667 / 100) * -1);
+     *)
+     BillVATDiscAmt.AsCurrency   := (BillVATDistDiscAmt.AsCurrency+
+                                     BillVATGenCoDiscAmt.AsCurrency+
+                                     BillVATTransCoDiscAmt.AsCurrency+
+                                     BillVATSystemLossDiscAmt.AsCurrency);
+   end;  }
+   //=========================================================
+   //=========================================================
+
+   if NxCheckBox1.Checked = true then
+   begin
+     TmpQuery.Close;
+     TmpQuery.SQL.Clear;
+     TmpQuery.SQL.Add('select * from raterptax ');
+     TmpQuery.SQL.Add('where BillMonth like :BillMonth');
+     TmpQuery.SQL.Add(' And RateOrder like :RateOrder');
+     TmpQuery.ParamByName('BillMonth').Text :=  BillMonth.Text;
+     TmpQuery.ParamByName('RateOrder').Text :=  ComboBox2.Text;
+     TmpQuery.Open;
+
+     if not TmpQuery.IsEmpty then
+     begin
+        BillRPTax.AsCurrency := RoundOff(KWHR * TmpQuery.FieldByName('RateAmnt').AsCurrency);
+        end else begin
+        BillRPTax.AsCurrency := 0;
+     end;
+   end;
+
+   BillTotalBill.AsCurrency := roundoff(BillGenSysCharge.AsCurrency +
+                                        BillHostCommCharge.AsCurrency +
+                                        BillForexCharge.AsCurrency +
+                                        BillTCTransSystemCharge.AsCurrency +
+                                        BillSystemLossCharge.AsCurrency +
+                                        BillDCDistributionCharge.AsCurrency +
+                                        BillSCRetCustCharge.AsCurrency +
+                                        BillSCSupplySysCharge.AsCurrency +
+                                        BillMCRetailCustCharge.AsCurrency +
+                                        BillMCSystemCharge.AsCurrency +
+                                        BillMCC.AsCurrency +
+                                        BillUCNPCStrandedDebts.AsCurrency +
+                                        BillUCNPCStrandedContCost.AsCurrency +
+                                        BillUCDUStrandedContCost.AsCurrency +
+                                        BillUCME.AsCurrency +
+                                        BillUCEqTaxesAndRoyalties.AsCurrency +
+                                        BillUCEC.AsCurrency +
+                                        BillUCCrossSubRemoval.AsCurrency +
+                                        BillICCrossSubsidyCharge.AsCurrency +
+                                        BillPowerActRateRed.AsCurrency +
+                                        BillLifelineDiscSubs.AsCurrency +
+                                        BillLoanCondo.AsCurrency +
+                                        BillLCCustMo.AsCurrency +
+                                        BillVAT.AsCurrency +
+                                        BillVATDiscAmt.AsCurrency +
+                                        BillPrevYearAdjPowerCost.AsCurrency +
+                                        BillSysLossUnderRecov.AsCurrency +
+                                        BillTransSysAncRefund.AsCurrency +
+                                        BillVATTransAncRefund.AsCurrency +
+                                        BillSCDisc.AsCurrency +
+                                        BillRPTax.AsCurrency +
+                                        BillFitAll.AsCurrency +
+                                        BillOtherGenRateAdj.AsCurrency +
+                                        BillOtherTransCostAdj.AsCurrency +
+                                        BillOtherSystemLossCostAdj.AsCurrency +
+                                        BillOtherLifelineRateCostAdj.AsCurrency +
+                                        BillOtherSeniorCitizenRateAdj.AsCurrency+
+                                        BillPARec.AsCurrency+
+                                        Billgram.AsCurrency);
+
+ ComputeBill := BillTotalBill.AsCurrency;
+end;
+
+procedure TBillRateForm.Button1Click(Sender: TObject);
+Var I,Cnt,Cnt2  : Integer;
+    ResAmt      : Currency;
+    CommAmt     : Currency;
+    PubAmt      : Currency;
+    StAmt       : Currency;
+    StAmtWD     : Currency;
+    AreraAffctd : String;
+    cammaTmp    : String;
+begin
+ AreraAffctd := '';
+ TmpQuery.SQL.Clear;
+ TmpQuery.SQL.Add('Select a.*,v.area from areatax a ');
+ TmpQuery.SQL.Add('left join vicinity v on v.area = a.area ');
+ TmpQuery.SQL.Add('Where BillMonth = :BillMonth and RateOrder = :RateOrder ');
+ TmpQuery.SQL.Add('Group by v.area  ');
+ TmpQuery.SQL.Add('Order by v.area');
+ TmpQuery.ParamByName('BillMonth').Text := BillMonth.Text;
+ TmpQuery.ParamByName('RateOrder').Text := ComboBox2.Text;
+ TmpQuery.Open;
+
+ Cnt := TmpQuery.RecordCount;
+ Cnt2:= 0;
+ TmpQuery.First;
+
+ while not TmpQuery.Eof do
+ begin
+  Inc(Cnt2);
+  if Cnt = Cnt2 then
+  begin
+    cammaTmp := '';
+  end
+  else
+  begin
+    cammaTmp :=',';
+  end;
+
+  AreraAffctd := AreraAffctd + TmpQuery.FieldByName('area').Text + cammaTmp;
+  TmpQuery.Next;
+ end;
+
+ QRLabel17.Caption := AreraAffctd;
+
+ MRate.Close;
+ MRate.FilterSQL := '';
+ MRate.ParamByName('BillMonth').Text := BillMonth.Text;
+ MRate.Open;
+
+ If MRate.IsEmpty then
+  begin
+   MessageDlg('There are no rates for that bill month', mtError, [mbOK], 0);
+   MRate.Close;
+   exit;
+  end;
+
+ WRSw := MRateWRSw.Text;
+
+ try
+ CreateBillRates.Execute;
+ CreateComputeBill.Execute;
+ except
+ end;
+
+ Bill.Open;
+ Bill.Append;
+
+ Gauge1.Progress := 0;
+ Gauge1.MinValue := 1;
+ Gauge1.MaxValue := SpinEdit1.Value;
+
+ For I := 0 to SpinEdit1.Value do
+   begin
+
+   Gauge1.AddProgress(1);
+
+   if WRSw = '0' then
+   begin
+     ResAmt  := ComputeBill('R',I);
+     CommAmt := ComputeBill('C',I);
+     PubAmt  := ComputeBill('P',I);
+     StAmt   := ComputeBill('S',I);
+     StAmtWD := ComputeBill('S1',I);
+
+     InsertBillRates.ParamByName('kwhr').AsInteger      := I;
+     InsertBillRates.ParamByName('ResAmt').AsCurrency   := ResAmt;
+     InsertBillRates.ParamByName('CommAmt').AsCurrency  := CommAmt;
+     InsertBillRates.ParamByName('PubAmt').AsCurrency   := PubAmt;
+     InsertBillRates.ParamByName('STAmt').AsCurrency    := StAmt;
+     InsertBillRates.ParamByName('STAmtWD').AsCurrency  := StAmtWD;
+     InsertBillRates.Execute;
+   end else
+   begin
+     ResAmt  := ComputeBill('R',I);
+     CommAmt := ComputeBill('L',I);
+     PubAmt  := ComputeBill('H',I);
+
+     InsertBillRates.ParamByName('kwhr').AsInteger      := I;
+     InsertBillRates.ParamByName('ResAmt').AsCurrency   := ResAmt;
+     InsertBillRates.ParamByName('CommAmt').AsCurrency  := CommAmt;
+     InsertBillRates.ParamByName('PubAmt').AsCurrency   := PubAmt;
+     InsertBillRates.Execute;
+   end;
+
+   end;
+
+BillRates.Open;
+
+QRLabel7.Enabled    := SCCheck.Checked;
+QRLabel14.Enabled   := SCCheck.Checked;
+
+if NxCheckBox1.Checked = true then  QRLabel15.Caption :=  RightStr(ComboBox2.Text,1);
+
+QRLabel12.Enabled   := NxCheckBox1.Checked;
+//QRLabel15.Enabled   := NxCheckBox1.Checked;
+QRLabel16.Enabled   := NxCheckBox1.Checked;
+QRLabel17.Enabled   := NxCheckBox1.Checked;
+
+if WRSw = '0' then
+begin
+  QuickRep1.PreviewWidth  := Screen.Width;
+  QuickRep1.PreviewHeight := Screen.Height;
+  QuickRep1.Preview;
+end else
+begin
+  QuickRep2.PreviewWidth  := Screen.Width;
+  QuickRep2.PreviewHeight := Screen.Height;
+  QuickRep2.Preview;
+end;
+
+BillRates.Close;
+bill.cancel;
+Bill.Close;
+MRate.Close;
+
+
+end;
+
+procedure TBillRateForm.Button2Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TBillRateForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action       := caFree;
+  BillRateForm := Nil;
+
+end;
+
+procedure TBillRateForm.FormShow(Sender: TObject);
+begin
+  CBM.Open;
+  BillMonth.Text := CBMmbillmonth.Text;
+  CBM.Close;
+end;
+
+procedure TBillRateForm.NxCheckBox1Change(Sender: TObject);
+begin
+  If NxCheckBox1.Checked = true then
+  begin
+    ComboBox2.Clear;
+    ComboBox2.Visible := true;
+    Label4.Visible    := true;
+
+    RPTrateQuery.Close;
+    RPTrateQuery.ParamByName('BillMonth').Text := BillMonth.Text;
+    RPTrateQuery.Open;
+
+    RPTrateQuery.First;
+    while not RPTrateQuery.Eof do
+    begin
+      ComboBox2.AddItem(RPTrateQuery.FieldByName('RateOrder').Text,Nil);
+      RPTrateQuery.Next;
+    end;
+
+    end else begin
+    ComboBox2.Visible := false;
+    Label4.Visible    := false;
+  end;
+
+end;
+
+procedure TBillRateForm.SpinEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    begin
+      Perform(CM_DIALOGKEY,VK_TAB,0);
+      Key := #0;
+    end;
+end;
+
+end.

@@ -1,0 +1,33 @@
+unit sample;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, NxCollection, StdCtrls;
+
+type
+  TForm3 = class(TForm)
+    NxHeaderPanel23: TNxHeaderPanel;
+    NxLinkLabel31: TNxLinkLabel;
+    NxButton9: TNxButton;
+    NxButton11: TNxButton;
+    NxButton10: TNxButton;
+    Label128: TLabel;
+    Label127: TLabel;
+    CanvassSaveBtn: TNxButton;
+    CanvassCancelBtn: TNxButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+end.

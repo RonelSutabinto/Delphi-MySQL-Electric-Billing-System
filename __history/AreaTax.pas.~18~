@@ -1,0 +1,171 @@
+unit AreaTax;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, NxCollection, StdCtrls, ExtCtrls, Grids, DBGrids, CRGrid, CRDBGrid1,
+  DB, MemDS, DBAccess, MyAccess, Mask, DBCtrls;
+
+type
+  TAreaTaxForm = class(TForm)
+    CRDBGrid11: TCRDBGrid1;
+    SelectMonth: TLabeledEdit;
+    NxButton1: TNxButton;
+    NxButton2: TNxButton;
+    NxButton3: TNxButton;
+    NxButton4: TNxButton;
+    CopyTaxRatesPanel: TNxHeaderPanel;
+    FromBM: TLabeledEdit;
+    ToBM: TLabeledEdit;
+    NxButton5: TNxButton;
+    NxButton6: TNxButton;
+    NxButton7: TNxButton;
+    NxHeaderPanel1: TNxHeaderPanel;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+    Label5: TLabel;
+    DBEdit5: TDBEdit;
+    Label6: TLabel;
+    DBEdit6: TDBEdit;
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure NxButton1Click(Sender: TObject);
+    procedure NxButton5Click(Sender: TObject);
+    procedure NxButton2Click(Sender: TObject);
+    procedure NxButton6Click(Sender: TObject);
+    procedure NxButton3Click(Sender: TObject);
+    procedure NxButton4Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  AreaTaxForm: TAreaTaxForm;
+
+implementation
+
+uses Data;
+
+{$R *.dfm}
+
+procedure TAreaTaxForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  BillingData.AreaTax.Close;
+  Action       := caFree;
+  AreaTaxForm  := Nil;
+end;
+
+procedure TAreaTaxForm.FormShow(Sender: TObject);
+begin
+   With BillingData do
+     begin
+       AreaTax.ParamByName('Area').Text      := '%';
+       AreaTax.ParamByName('BillMonth').Text := '%';
+       AreaTax.Open;
+     end;
+end;
+
+procedure TAreaTaxForm.NxButton1Click(Sender: TObject);
+begin
+  With BillingData do
+    begin
+      AreaTax.Close;
+      AreaTax.ParamByName('Area').Text      := '%';
+      AreaTax.ParamByName('BillMonth').Text := SelectMonth.Text;
+      AreaTax.Open;
+
+      if AreaTax.IsEmpty then
+        begin
+          MessageDlg('There are no entries for that bill month...', mtError, [mbOK], 0);
+          AreaTax.Close;
+          AreaTax.ParamByName('Area').Text      := '%';
+          AreaTax.ParamByName('BillMonth').Text := '%';
+          AreaTax.Open;
+          SelectMonth.SetFocus;
+        end;
+    end;
+end;
+
+procedure TAreaTaxForm.NxButton2Click(Sender: TObject);
+begin
+  CopyTaxRatesPanel.Left    := 185;
+  CopyTaxRatesPanel.Top     := 107;
+  CopyTaxRatesPanel.Visible := True;
+  CopyTaxRatesPanel.BringToFront;
+  FromBM.SetFocus;
+end;
+
+procedure TAreaTaxForm.NxButton3Click(Sender: TObject);
+Var DelAreaTax : TMyQuery;
+begin
+  if SelectMonth.Text = '' then
+   begin
+     MessageDlg('Please select a bill month for deletion...', mtError, [mbOK], 0);
+     SelectMonth.SetFocus;
+     exit;
+   end;
+
+  DelAreaTax := TMyQuery.Create(Self);
+  DelAreaTax.Connection := BillingData.MyConnection1;
+
+  DelAreaTax.SQL.Clear;
+  DelAreaTax.SQL.Add('delete from zaneco.dupareatax  where billmonth = :billmonth');
+  DelAreaTax.ParamByName('billmonth').Text := SelectMonth.Text;
+  DelAreaTax.Execute;
+
+  DelAreaTax.Close;
+  FreeAndNil(DelAreaTax);
+  MessageDlg('Delete Area Tax Rates Done....', mtInformation, [mbOK], 0);
+end;
+
+procedure TAreaTaxForm.NxButton4Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TAreaTaxForm.NxButton5Click(Sender: TObject);
+Var CopyAreaTax : TMyQuery;
+begin
+  CopyAreaTax := TMyQuery.Create(Self);
+  CopyAreaTax.Connection := BillingData.MyConnection1;
+
+  CopyAreaTax.SQL.Clear;
+  CopyAreaTax.SQL.Add('create table zaneco.dupareatax');
+  CopyAreaTax.SQL.Add('select * from zaneco.areatax where billmonth = :billmonth');
+  CopyAreaTax.ParamByName('billmonth').Text := FromBM.Text;
+  CopyAreaTax.Execute;
+
+  CopyAreaTax.SQL.Clear;
+  CopyAreaTax.SQL.Add('update zaneco.dupareatax set idareatax = 0, billmonth = :billmonth;');
+  CopyAreaTax.ParamByName('billmonth').Text := ToBM.Text;
+  CopyAreaTax.Execute;
+
+  CopyAreaTax.SQL.Clear;
+  CopyAreaTax.SQL.Add('Insert ignore into zaneco.areatax');
+  CopyAreaTax.SQL.Add('select * from zaneco.dupareatax');
+  CopyAreaTax.Execute;
+
+  CopyAreaTax.SQL.Clear;
+  CopyAreaTax.SQL.Add('Drop Table if exists zaneco.dupareatax');
+  CopyAreaTax.Execute;
+
+  CopyAreaTax.Close;
+  FreeAndNil(CopyAreaTax);
+  MessageDlg('Copy Area Tax Rates Done....', mtInformation, [mbOK], 0);
+end;
+
+procedure TAreaTaxForm.NxButton6Click(Sender: TObject);
+begin
+  CopyTaxRatesPanel.Visible := False;
+end;
+
+end.

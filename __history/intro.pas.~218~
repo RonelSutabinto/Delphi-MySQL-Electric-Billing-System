@@ -1,0 +1,633 @@
+unit Intro;
+
+interface
+
+uses
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  ExtCtrls,
+  StdCtrls,
+  DB,
+  // DBTables,
+  PDJSillyLabel,
+  PDJRotoLabel,
+  Buttons,
+  MemDS,
+  DBAccess,
+  MyAccess,
+  DsFancyButton,
+  DBCtrls,
+  NxCollection,
+  NxEdit,
+  NxFocus,
+  jpeg, MyDacVcl, pngimage, AdvToolBtn, Mask, AdvSmoothButton;
+
+type
+  TIntroForm = class(TForm)
+    Users: TMyQuery;
+    UsersUserName: TStringField;
+    UsersUserRestriction: TStringField;
+    UsersBillCode: TStringField;
+    UsersBillNumber: TIntegerField;
+    Panel1: TPanel;
+    DBImage1: TDBImage;
+    UsersUserID: TStringField;
+    UsersUserPic: TBlobField;
+    DSUsers: TDataSource;
+    Label1: TLabel;
+    DBText1: TDBText;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    DBText2: TDBText;
+    UsersPosition: TStringField;
+    Image1: TImage;
+    NxHeaderPanel1: TNxHeaderPanel;
+    Label9: TLabel;
+    Label10: TLabel;
+    NxImage1: TNxImage;
+    NxFocus1: TNxFocus;
+    Edit1: TNxEdit;
+    Edit2: TNxEdit;
+    CreateMasterAudit: TMyQuery;
+    MyConnection1: TMyConnection;
+    Deletemaster: TMyQuery;
+    TmpQuery: TMyQuery;
+    AssignCBq: TMyQuery;
+    ISDaccessQ: TMyQuery;
+    alterTableOctober2015: TMyQuery;
+    MyConnection2: TMyConnection;
+    Image2: TImage;
+    AdvRepeatButton1: TAdvRepeatButton;
+    Label7: TLabel;
+    AdvRepeatButton2: TAdvRepeatButton;
+    Button1: TButton;
+    AdjTrailQ: TMyQuery;
+    area_CBox: TNxComboBox;
+    Label8: TLabel;
+    UsersIsActive: TBooleanField;
+    UsersareaCode: TStringField;
+    UsersisWan: TBooleanField;
+    NxLinkLabel1: TNxLinkLabel;
+    Label11: TLabel;
+    NxHeaderPanel2: TNxHeaderPanel;
+    DBText3: TDBText;
+    DBText4: TDBText;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    NxButton1: TNxButton;
+    NxButton2: TNxButton;
+    DBEdit1: TDBEdit;
+    Edit3: TEdit;
+    updateMd5: TMyQuery;
+    Label16: TLabel;
+    SpinEdit1: TNxSpinEdit;
+    UsersArea: TStringField;
+    Userscounter: TStringField;
+    AdvSmoothButton1: TAdvSmoothButton;
+    checkLogQ: TMyQuery;
+    noLogQ: TMyQuery;
+    noLogQentry: TIntegerField;
+    noLogQuserID: TStringField;
+    noLogQname: TStringField;
+    noLogQnumber: TIntegerField;
+    noLogQuserType: TStringField;
+    noLogQDate: TDateTimeField;
+    insertUserlogQ: TMyQuery;
+    updateLogQ: TMyQuery;
+    MyQuery1: TMyQuery;
+    IntegerField1: TIntegerField;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    IntegerField2: TIntegerField;
+    StringField3: TStringField;
+    DateTimeField1: TDateTimeField;
+    Image3: TImage;
+    callerServer: TMyConnection;
+    islogUpdateQ: TMyQuery;
+    Userspass: TStringField;
+    userCheckUpdateQ: TMyQuery;
+    userCheckUpdateQpass: TStringField;
+    userCheckUpdateQUserName: TStringField;
+    userCheckUpdateQUserID: TStringField;
+    userCheckUpdateQUserPic: TBlobField;
+    userCheckUpdateQBillCode: TStringField;
+    userCheckUpdateQBillNumber: TIntegerField;
+    userCheckUpdateQPosition: TStringField;
+    userCheckUpdateQUserRestriction: TStringField;
+    userCheckUpdateQIsActive: TBooleanField;
+    userCheckUpdateQArea: TStringField;
+    userCheckUpdateQAreacode: TStringField;
+    userCheckUpdateQIsWAN: TBooleanField;
+    userCheckUpdateQupdate20201116: TBooleanField;
+    procedure FormShow(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure AdvRepeatButton1Click(Sender: TObject);
+    procedure AdvRepeatButton2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure DBConnect();
+    procedure NxButton1Click(Sender: TObject);
+    procedure NxButton2Click(Sender: TObject);
+    procedure NxLinkLabel1Click(Sender: TObject);
+    procedure AdvSmoothButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  IntroForm   : TIntroForm ;
+  PassWord    : String[30] ;
+  UserType    : String[1]  ; // User Type 1 has full access
+  areaCodeStr : String;                         // User Type 2 is inquiry only;
+
+implementation
+
+uses BillMenu,Data, BillMaster;
+
+{$R *.dfm}
+
+Procedure SetUserRestriction;
+Var UserRest : Boolean;
+begin
+
+If UserType = '1' then UserRest := False else UserRest := True;
+
+With BillingData do
+ begin
+    Master.ReadOnly             := UserRest;
+    AR.ReadOnly                 := False;
+    Collection.ReadOnly         := UserRest;
+    Adj.ReadOnly                := UserRest;
+    MRate.ReadOnly              := UserRest;
+    Vicinity.ReadOnly           := UserRest;
+    FlatRate.ReadOnly           := UserRest;
+    FlatRateIndex.ReadOnly      := UserRest;
+    Memo.ReadOnly               := UserRest;
+    Disco.ReadOnly              := UserRest;
+    Recon.ReadOnly              := UserRest;
+    ChangeMeter.ReadOnly        := UserRest;
+    Collector.ReadOnly          := UserRest;
+    Encoder.ReadOnly            := UserRest;
+    ChangeName.ReadOnly         := UserRest;
+    TransferArea.ReadOnly       := UserRest;
+    Bill.ReadOnly               := UserRest;
+    BillNumber.ReadOnly         := UserRest;
+    PBill.ReadOnly              := UserRest;
+    UnPB.ReadOnly               := UserRest;
+    RC.ReadOnly                 := UserRest;
+    PRate.ReadOnly              := UserRest;
+    BM.ReadOnly                 := UserRest;
+ end;
+end;
+
+
+procedure TIntroForm.FormShow(Sender: TObject);
+begin
+
+
+    try
+      AssignCBq.Execute;
+    Except
+    end;
+
+    Try
+      CreateMasterAudit.Execute;
+    Except
+
+    End;
+    Try
+      Deletemaster.Execute;
+    Except
+    End;
+
+   TmpQuery.SQL.Clear;
+   TmpQuery.SQL.Add('Alter table `retrievebillin`');
+   TmpQuery.SQL.Add('ADD COLUMN `Fitall` double(12,2) default '+'0.00'+';');
+   try
+     TmpQuery.Execute;
+   Except
+   end;
+
+
+   TmpQuery.SQL.Clear;
+   TmpQuery.SQL.Add('Alter table `soasign`');
+   TmpQuery.SQL.Add(' ADD COLUMN `sectionHeadName` varchar(50) default null,');
+   TmpQuery.SQL.Add(' ADD COLUMN `sectionHeadPosition` varchar(50) default null,');
+   TmpQuery.SQL.Add(' ADD COLUMN `divisionChiefName` varchar(50) default null,');
+   TmpQuery.SQL.Add(' ADD COLUMN `divisionChiefPosition` varchar(50) default null;');
+   try
+     TmpQuery.Execute;
+   Except
+
+   end;
+
+   TmpQuery.SQL.Clear;
+   TmpQuery.SQL.Add('ALTER TABLE `soasign`');
+   TmpQuery.SQL.Add('ADD COLUMN `telNo` VARCHAR(45) NULL DEFAULT '+quotedstr('(000)000-0000')+' AFTER `divisionChiefPosition`,');
+   TmpQuery.SQL.Add('ADD COLUMN `email` VARCHAR(50) NULL AFTER `telNo`;');
+
+   try
+     TmpQuery.Execute;
+   Except
+
+   end;
+
+   Edit1.SetFocus;
+   PassWord := '';
+
+   TmpQuery.SQL.Clear;
+   TmpQuery.SQL.Add('ALTER TABLE `soasign` ');
+   TmpQuery.SQL.Add('ADD COLUMN `telefax_DL` VARCHAR(50) NULL AFTER `email`,');
+   TmpQuery.SQL.Add('ADD COLUMN `email_DL` VARCHAR(45) NULL AFTER `telefax_DL`,');
+   TmpQuery.SQL.Add('ADD COLUMN `address_DL` VARCHAR(60) NULL AFTER `email_DL`,');
+   TmpQuery.SQL.Add('ADD COLUMN `gm_DL` VARCHAR(45) NULL DEFAULT '+quotedstr('ADELMO P. LAPUT, CEO')+' AFTER `address_DL`;');
+   try
+      TmpQuery.Execute;
+   except
+   end;
+
+   TmpQuery.SQL.Clear;
+   TmpQuery.SQL.Add('ALTER TABLE `adjustment` ');
+   TmpQuery.SQL.Add('ADD COLUMN `referenceAdjNo` VARCHAR(12) NULL AFTER `ABreferenceAtmNo`,');
+   TmpQuery.SQL.Add('ADD COLUMN `CM` CHAR(1) NULL AFTER `referenceAdjNo`,');
+   TmpQuery.SQL.Add('ADD COLUMN `CMMultiplier` DOUBLE NULL AFTER `CM`,');
+   TmpQuery.SQL.Add('ADD COLUMN `CMPreviousReadingKWH` DOUBLE NULL AFTER `CMMultiplier`,');
+   TmpQuery.SQL.Add('ADD COLUMN `CMPresentReadingKWH` DOUBLE NULL AFTER `CMPreviousReadingKWH`,');
+   TmpQuery.SQL.Add('ADD COLUMN `CMKilowattHour` DOUBLE NULL AFTER `CMPresentReadingKWH`,');
+   TmpQuery.SQL.Add('ADD COLUMN `CMDemand` DOUBLE NULL AFTER `CMKilowattHour`;');
+   try
+      TmpQuery.Execute;
+   except
+   end;
+
+   try
+     AdjTrailQ.Execute
+   except
+   end;
+
+end;
+
+procedure TIntroForm.NxButton1Click(Sender: TObject);
+begin
+  if DBEdit1.text <> Edit3.Text then
+  begin
+    MessageDlg('Confirm password invalid....', mtError, [mbOK], 0);
+    exit;
+  end;
+
+  users.Post;
+  updateMd5.ParamByName('userID').Text := UsersUserName.Text;
+  updateMd5.Execute;
+
+
+  if(Userspass.Text='5f4dcc3b5aa765d61d8327deb882cf99')  then
+  begin
+    Label11.visible := true;
+    NxLinkLabel1.Visible := true;
+  end
+  else
+  begin
+    Label11.visible := false;
+    NxLinkLabel1.Visible := false;
+  end;
+
+  NxHeaderPanel2.Visible := false;
+
+end;
+
+procedure TIntroForm.NxButton2Click(Sender: TObject);
+begin
+  users.Cancel;
+  NxHeaderPanel2.visible := false;
+end;
+
+procedure TIntroForm.NxLinkLabel1Click(Sender: TObject);
+begin
+  users.Edit;
+  NxHeaderPanel2.Top := 83;
+  NxHeaderPanel2.Left := 118;
+  NxHeaderPanel2.BringToFront;
+  NxHeaderPanel2.Visible := true;
+end;
+
+procedure TIntroForm.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  If key = #13 then
+     begin
+      AdvRepeatButton1Click(Self);
+      exit;
+     end;
+end;
+
+procedure TIntroForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+  IntroForm := Nil;
+end;
+
+procedure TIntroForm.FormCreate(Sender: TObject);
+begin
+  DoubleBuffered := True;
+end;
+
+procedure TIntroForm.AdvRepeatButton1Click(Sender: TObject);
+begin
+  try
+    DBConnect;
+    ISDaccessQ.close;
+    ISDaccessQ.Open;
+  except
+   on E: Exception do
+   begin
+    showmessage('Server '+areaCodeStr+' not found..');
+    exit;
+   end;
+  end;
+
+  try
+    alterTableOctober2015.Execute;
+  except
+  end;
+
+  UserType := '2';
+  Animate  := False;
+
+  Users.Close;
+  Users.ParamByName('username').Text     := edit1.Text;
+  Users.ParamByName('userpassword').Text := edit2.Text;
+  Users.ParamByName('noCntr').Text       := SpinEdit1.Text;
+  Users.Open;
+
+  If Users.IsEmpty then
+  begin
+   MessageDlg('Users / Password invalid', mtError, [mbOK], 0);
+   edit1.SetFocus;
+   exit;
+  end
+  else
+  begin
+
+    //===========================================
+    //===========================================
+       checkLogQ.Close;
+       checkLogQ.ParamByName('ID').Text     := UsersUserName.Text;
+       checkLogQ.ParamByName('type').Text   := 'Billing';
+       checkLogQ.ParamByName('number').Text := SpinEdit1.Text;
+       checkLogQ.Open;
+
+       if not checkLogQ.IsEmpty then
+       begin
+         MessageDlg('That Counter Number is already in use...'+#13+#10+'Please select another counter number', mtError, [mbOK], 0);
+         SpinEdit1.SetFocus;
+         exit;
+       end;
+
+    if strtoint(SpinEdit1.Text)<=0 then
+    begin
+      MessageDlg('Invalid Counter Number entry...', mtError, [mbOK], 0);
+      SpinEdit1.SetFocus;
+      exit;
+    end;
+
+    //========================
+    //========================
+    //========================
+    islogUpdateQ.Close;
+    islogUpdateQ.ParamByName('ID').Text := UsersUserName.Text;
+    islogUpdateQ.Open;
+
+    if islogUpdateQ.IsEmpty then
+    begin
+      insertUserlogQ.ParamByName('userID').Text      := UsersUserName.Text;
+      insertUserlogQ.ParamByName('name').Text        := UsersUserID.Text;
+      insertUserlogQ.ParamByName('number').Text      := SpinEdit1.Text;
+      insertUserlogQ.ParamByName('userType').Text    := 'Billing';
+      insertUserlogQ.ParamByName('Date').AsDateTime  := now;
+      insertUserlogQ.Execute;
+    end
+    else
+    begin
+      updateLogQ.ParamByName('userID').Text      := UsersUserName.Text;
+      updateLogQ.ParamByName('name').Text        := UsersUserID.Text;
+      updateLogQ.ParamByName('number').Text      := SpinEdit1.Text;
+      updateLogQ.ParamByName('Date').AsDateTime  := now;
+      updateLogQ.Execute;
+    end;
+    //=========================
+    //=========================
+
+    if (UsersIsActive.AsBoolean = false) then //OR
+     //  (UsersIsActive.AsBoolean = true) and (UsersareaCode.Text <> areaCodeStr) and (usersisWan.AsBoolean = true) then
+    begin
+      messagedlg('Inactive user account..',mtError,[mbOK],0);
+      exit;
+    end;
+
+    Label3.Caption := TimeToStr(Now);
+    Panel1.Left := 0;
+    Panel1.Top  := 0;
+    Panel1.Visible := True;
+    Panel1.BringToFront;
+    Button1.SetFocus;
+  end;;
+
+  //Check flexipack update=====================
+      try
+        userCheckUpdateQ.Close;
+        userCheckUpdateQ.ParamByName('username').Text :=  edit1.Text;
+        userCheckUpdateQ.Open;
+
+        if (Not userCheckUpdateQ.IsEmpty) AND (userCheckUpdateQupdate20201116.AsBoolean) then
+        begin
+           MessageDlg('Please use updated billing flexipack application...', mtError, [mbOK], 0);
+           Close;
+        end;
+      Except
+        MessageDlg('Invalid table field used.'+#13+'Please use updated billing flexipack application...', mtError, [mbOK], 0);
+        Close;
+      end;
+      //============================================
+
+  if(Userspass.Text='5f4dcc3b5aa765d61d8327deb882cf99')  then
+  begin
+    Label11.visible := true;
+    NxLinkLabel1.Visible := true;
+  end;
+end;
+
+procedure TIntroForm.AdvRepeatButton2Click(Sender: TObject);
+begin
+
+   If UsersUserRestriction.Text = 'USER'          then UserType := '1';
+   If UsersUserRestriction.Text = 'ADMINISTRATOR' then UserType := '1';
+
+   If not assigned(BillingData) then
+   BillingData := TBillingData.Create(Application);
+
+   //BillingData.MyConnection1.Connected := True;
+
+   BillingData.DeleteUser := UsersUserName.Text;
+
+   If not assigned(BillMenuForm) then
+   BillMenuForm := TBillMenuForm.Create(Application);
+
+   //if not assigned(BillMasterForm) then
+   //BillMasterForm := TBillMasterForm.Create(Application);
+
+   SetUserRestriction;
+   If (UsersUserRestriction.Text = 'ADMINISTRATOR') AND (UsersisWan.AsBoolean = false)  then
+   begin
+     BillMenuForm.Users1.Enabled                     := True;
+     BillMenuForm.DeletedRecodsInterface1.Enabled    := True;
+     BillMenuForm.WriteOffBills1.Enabled             := True;
+     BillMenuForm.TagUnpaidBills1.Enabled            := True;
+     BillMenuForm.PilferageBilling1.Enabled          := True;
+     BillMenuForm.AccountingPowerSales1.Enabled      := True;
+
+     BillMenuForm.Adjustment1.Enabled                := true;
+     BillMenuForm.MeterRate1.Enabled                 := true;
+     //BillMasterForm.LateBills1.Enabled               := true;
+     //BillMasterForm.UpdateMasterFromBilling1.Enabled := true;
+     //BillMasterForm.UpdateLateBills1.Enabled         := true;
+     BillMenuForm.AreaTaxRate1.Enabled               := true;
+   end;
+
+   if UsersisWan.AsBoolean = false then
+   begin
+      //BillMasterForm.SetBillingFilter1.Enabled             := true;
+      BillMenuForm.IssuanceReturnedBillsInterface1.Enabled := true;
+   end;
+
+   BillMenuForm.Files1.Enabled        := True;
+   BillMenuForm.Transaction1.Enabled  := True;
+   BillMenuForm.Reports1.Enabled      := True;
+
+   BillMenuForm.Caption               := SpinEdit1.Text;
+   BillMenuForm.Show;
+   Hide;
+
+end;
+
+procedure TIntroForm.AdvSmoothButton1Click(Sender: TObject);
+begin
+  DBConnect;
+
+  noLogQ.Close;
+  noLogQ.ParamByName('id').Text := Edit1.Text;
+  noLogQ.Open;
+
+  SpinEdit1.Text :=   noLogQnumber.Text;
+
+end;
+
+procedure TIntroForm.Button1Click(Sender: TObject);
+begin
+  AdvRepeatButton2Click(Self);
+end;
+
+procedure TIntroForm.Edit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  If Key = #13 then
+    begin
+     Key := #0;
+     Perform(CM_DIALOGKEY,VK_TAB,0);
+    end;
+end;
+procedure TIntroForm.DBConnect();
+var
+ a:Integer;
+begin
+  case area_CBox.ItemIndex of
+    0:begin
+      //DBlog := 0;
+
+      areaCodeStr := 'DMO';
+      MyConnection1.Connected := false;
+      MyConnection1.Server    := 'server';
+      MyConnection1.Database  := 'zaneco';
+      MyConnection1.Connected := true;
+
+      MyConnection2.Connected := false;
+      MyConnection2.Server    := 'server';
+      MyConnection2.Database  := 'zanecoisd';
+      MyConnection2.Connected := true;
+
+      callerServer.Connected    := false;
+      callerServer.Server       := 'server';
+      callerServer.Connected    := true;
+
+    end;
+    1:begin
+     // DBlog := 1;
+      areaCodeStr := 'LAO';
+      MyConnection1.Connected := false;
+      MyConnection1.Server := 'serverlao';
+      MyConnection1.Database  := 'zaneco';
+      MyConnection1.Connected := true;
+
+      MyConnection2.Connected := false;
+      MyConnection2.Server    := 'serverlao';
+      MyConnection2.Database  := 'zanecoisd';
+      MyConnection2.Connected := true;
+
+      callerServer.Connected    := false;
+      callerServer.Server       := 'serverlao';
+      callerServer.Connected    := true;
+
+    end;
+    2:begin
+      //DBlog := 2;
+      areaCodeStr := 'PAO';
+      MyConnection1.Connected := false;
+      MyConnection1.Server    := 'serverpao';
+      MyConnection1.Database  := 'zaneco';
+      MyConnection1.Connected := true;
+
+      MyConnection2.Connected := false;
+      MyConnection2.Server    := 'serverpao';
+      MyConnection2.Database  := 'zanecoisd';
+      MyConnection2.Connected := true;
+
+      callerServer.Connected    := false;
+      callerServer.Server       := 'serverpao';
+      callerServer.Connected    := true;
+    end;
+    3:begin
+     // DBlog := 3;
+      areaCodeStr := 'SAO';
+      MyConnection1.Connected := false;
+      MyConnection1.Server    := 'serversao';
+      MyConnection1.Database  := 'zaneco';
+      MyConnection1.Connected := true;
+
+      MyConnection2.Connected := false;
+      MyConnection2.Server    := 'serversao';
+      MyConnection2.Database  := 'zanecoisd';
+      MyConnection2.Connected := true;
+
+      callerServer.Connected    := false;
+      callerServer.Server       := 'serversao';
+      callerServer.Connected    := true;
+
+    end;
+  end;
+
+end;
+
+end.

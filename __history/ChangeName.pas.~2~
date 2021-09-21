@@ -1,0 +1,94 @@
+unit ChangeName;
+
+interface
+
+uses
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  StdCtrls,
+  Buttons,
+  DBCtrls,
+  Grids,
+  DBGrids,
+  ExtCtrls,
+  DB,
+  PDJSillyLabel,
+  PDJSillyTools,
+  DsFancyButton,
+  CRGrid, CRDBGrid1, NxCollection;
+
+type
+  TChangeNameForm = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    PDJSillyLabel1: TButton;
+    Edit1: TEdit;
+    Option: TRadioGroup;
+    VolgaDBGrid1: TCRDBGrid1;
+    Panel3: TPanel;
+    PDJSillyLabel11: TNxButton;
+    NxButton1: TNxButton;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Edit1Change(Sender: TObject);
+    procedure OptionClick(Sender: TObject);
+    procedure PDJSillyLabel11Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ChangeNameForm: TChangeNameForm;
+
+implementation
+
+uses Data;
+
+{$R *.dfm}
+
+procedure TChangeNameForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  BillingData.ChangeName.Active := False;
+  Action := caFree;
+  ChangeNameForm := nil;
+end;
+
+procedure TChangeNameForm.Edit1Change(Sender: TObject);
+begin
+  with BillingData do
+    begin
+      case Option.ItemIndex of
+        1: ChangeName.Locate('AccountNumber',Edit1.Text,[]);
+        2: ChangeName.Locate('OldName',Edit1.Text,[LoPartialKey]);
+        3: ChangeName.Locate('NewName',Edit1.Text,[LoPartialKey]);
+      end;
+    end;
+end;
+
+procedure TChangeNameForm.PDJSillyLabel11Click(Sender: TObject);
+begin
+    Close;
+end;
+
+procedure TChangeNameForm.OptionClick(Sender: TObject);
+begin
+  with BillingData do
+    begin
+      case Option.ItemIndex of
+        1: ChangeName.IndexFieldNames := 'AccountNumber';
+        2: ChangeName.IndexFieldNames := 'OldName';
+        3: ChangeName.IndexFieldNames := 'NewName';
+      end;
+    end;
+end;
+
+end.

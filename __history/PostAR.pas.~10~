@@ -1,0 +1,209 @@
+unit callerISDForm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, MemDS, DBAccess, MyAccess,
+  AdvSmoothButton, AdvSmoothLabel, Vcl.ExtCtrls, AdvPanel;
+
+type
+  Tcaller_Frm = class(TForm)
+    AdvPanel1: TAdvPanel;
+    AdvSmoothLabel1: TAdvSmoothLabel;
+    AdvSmoothLabel2: TAdvSmoothLabel;
+    cntrServe_lb: TAdvSmoothLabel;
+    numberServe_lb: TAdvSmoothLabel;
+    cntr_RC_lb: TAdvSmoothLabel;
+    cntr_SC_lb: TAdvSmoothLabel;
+    cntr_C_lb: TAdvSmoothLabel;
+    AdvPanel2: TAdvPanel;
+    number_lb2: TAdvSmoothLabel;
+    AdvSmoothButton13: TAdvSmoothButton;
+    AdvSmoothButton26: TAdvSmoothButton;
+    AdvSmoothButton30: TAdvSmoothButton;
+    AdvSmoothButton29: TAdvSmoothButton;
+    queCntrQ: TMyQuery;
+    manageOutQ: TMyQuery;
+    manageOutQentry: TIntegerField;
+    manageOutQtype: TStringField;
+    manageOutQnumber: TIntegerField;
+    manageOutQdate: TDateField;
+    manageOutQtime: TTimeField;
+    manageOutQcode: TStringField;
+    manageOutQqueid: TIntegerField;
+    manageOutQgroupno: TIntegerField;
+    manageOutQexecutedby: TStringField;
+    manageOutQDepartment: TStringField;
+    manageOutQuserid: TStringField;
+    manageOutQcounter: TStringField;
+    manageOutQnumber_c: TStringField;
+    insertMngoutQ: TMyQuery;
+    queCall_Q: TMyQuery;
+    queCall_QqueID: TIntegerField;
+    queCall_Qtype: TStringField;
+    queCall_Qnumber: TIntegerField;
+    queCall_Qdate: TDateField;
+    queCall_Qtime: TTimeField;
+    queCall_Qcode: TStringField;
+    queCall_Qgroupno: TIntegerField;
+    deleteQueQ: TMyQuery;
+    updateCallBeepQ: TMyQuery;
+    queCntrQnewappC: TLargeintField;
+    queCntrQccomplaintC: TLargeintField;
+    queCntrQrecodescoC: TLargeintField;
+    queCntrQflg: TStringField;
+    AdvSmoothButton25: TAdvSmoothButton;
+    queCall_Qpri: TLargeintField;
+    queCall_Quser: TStringField;
+    beepCall_Q: TMyQuery;
+    beepCall_Qentry: TIntegerField;
+    beepCall_Qtype: TStringField;
+    beepCall_Qnumber: TIntegerField;
+    beepCall_Qdate: TDateField;
+    beepCall_Qtime: TTimeField;
+    beepCall_Qcode: TStringField;
+    beepCall_Qqueid: TIntegerField;
+    beepCall_Qgroupno: TIntegerField;
+    beepCall_Qexecutedby: TStringField;
+    beepCall_QDepartment: TStringField;
+    beepCall_Quserid: TStringField;
+    beepCall_Qcounter: TStringField;
+    beepCall_Qisbeep: TBooleanField;
+    beepCall_Qnumber_c: TStringField;
+    AdvSmoothButton1: TAdvSmoothButton;
+    procedure FormShow(Sender: TObject);
+     procedure callNumber( grpNo: Integer; type_s:String);
+    procedure AdvSmoothButton29Click(Sender: TObject);
+    procedure AdvSmoothButton30Click(Sender: TObject);
+    procedure AdvSmoothButton25Click(Sender: TObject);
+    procedure AdvSmoothButton26Click(Sender: TObject);
+    procedure AdvSmoothButton13Click(Sender: TObject);
+    procedure AdvSmoothButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  caller_Frm: Tcaller_Frm;
+
+implementation
+
+{$R *.dfm}
+
+uses Data;
+
+procedure Tcaller_Frm.FormShow(Sender: TObject);
+begin
+  queCntrQ.Close;
+  queCntrQ.ParamByName('user').Text := ISDData.userQueQentryUser.Text;
+  queCntrQ.Open;
+
+  manageOutQ.Close;
+  manageOutQ.Open;
+
+  cntrServe_lb.Caption.Text   := manageOutQcounter.Text;
+  numberServe_lb.Caption.Text := manageOutQnumber_c.Text;
+
+  cntr_RC_lb.Caption.Text     := queCntrQnewappC.Text;
+  cntr_SC_lb.Caption.Text     := queCntrQccomplaintC.Text;
+  cntr_C_lb.Caption.Text      := queCntrQrecodescoC.Text
+end;
+ procedure Tcaller_Frm.AdvSmoothButton13Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure Tcaller_Frm.AdvSmoothButton1Click(Sender: TObject);
+begin
+  queCntrQ.Close;
+  queCntrQ.ParamByName('user').Text := ISDData.userQueQentryUser.Text;
+  queCntrQ.Open;
+
+  manageOutQ.Close;
+  manageOutQ.Open;
+
+  cntrServe_lb.Caption.Text   := manageOutQcounter.Text;
+  numberServe_lb.Caption.Text := manageOutQnumber_c.Text;
+
+  cntr_RC_lb.Caption.Text     := queCntrQnewappC.Text;
+  cntr_SC_lb.Caption.Text     := queCntrQccomplaintC.Text;
+  cntr_C_lb.Caption.Text      := queCntrQrecodescoC.Text
+end;
+
+procedure Tcaller_Frm.AdvSmoothButton25Click(Sender: TObject);
+begin
+   callNumber(1,'NA');
+end;
+
+procedure Tcaller_Frm.AdvSmoothButton26Click(Sender: TObject);
+begin
+  beepCall_Q.Close;
+  beepCall_Q.ParamByName('userid').Text   := ISDData.userQueQuserID.Text;
+  beepCall_Q.ParamByName('name').Text     := ISDData.userQueQName.Text;
+  beepCall_Q.ParamByName('counter').Text  := 'ISD '+ISDData.userQueQnumber.Text;
+  beepCall_Q.Open;
+
+  updateCallBeepQ.ParamByName('type').Text        := beepCall_Qtype.Text;
+  updateCallBeepQ.ParamByName('number').AsInteger := beepCall_Qnumber.AsInteger;
+  updateCallBeepQ.ParamByName('counter').Text     := 'ISD '+ISDData.userQueQnumber.Text;
+  updateCallBeepQ.Execute;
+end;
+
+procedure Tcaller_Frm.AdvSmoothButton29Click(Sender: TObject);
+begin
+  callNumber(1,'CC');
+end;
+
+procedure Tcaller_Frm.AdvSmoothButton30Click(Sender: TObject);
+begin
+  callNumber(1,'RD');
+end;
+
+procedure Tcaller_Frm.callNumber( grpNo: Integer; type_s:String);
+var
+   tmp:Integer;
+
+begin
+ tmp := grpNo;
+
+ queCall_Q.Close;
+ queCall_Q.ParamByName('groupno').AsInteger := grpNo;
+ queCall_Q.ParamByName('type').Text         := type_s;
+ queCall_Q.ParamByName('typePrimary').Text  := type_s;
+ queCall_Q.ParamByName('user').Text         := ISDData.userQueQentryUser.Text;
+ queCall_Q.Open;
+
+ if not queCall_Q.IsEmpty then
+ begin
+
+   insertMngoutQ.ParamByName('type').Text              := queCall_Qtype.text;
+   insertMngoutQ.ParamByName('number').AsInteger       := queCall_Qnumber.AsInteger;
+   insertMngoutQ.ParamByName('date').AsDate            := queCall_Qdate.AsDateTime;
+   insertMngoutQ.ParamByName('time').AsDateTime        := now; //queCall_Qtime.AsDateTime;
+   insertMngoutQ.ParamByName('code').Text              := queCall_Qcode.Text;
+   insertMngoutQ.ParamByName('queid').AsInteger        := queCall_QqueID.AsInteger;
+   insertMngoutQ.ParamByName('groupno').AsInteger      := queCall_Qgroupno.AsInteger;
+   insertMngoutQ.ParamByName('executedby').Text        := ISDData.userQueQName.Text;
+   insertMngoutQ.ParamByName('Department').Text        := 'ISD';
+   insertMngoutQ.ParamByName('userid').Text            := ISDData.userQueQuserID.Text;
+   insertMngoutQ.ParamByName('counter').Text           := 'ISD '+ISDData.userQueQnumber.Text;
+   insertMngoutQ.Execute;
+
+
+   deleteQueQ.ParamByName('queID').Text := queCall_QqueID.Text;
+   deleteQueQ.Execute;
+
+    queCntrQ.Close;
+    queCntrQ.ParamByName('user').Text := ISDData.userQueQentryUser.Text;
+    queCntrQ.Open;
+
+    manageOutQ.Close;
+    manageOutQ.Open;
+
+    cntrServe_lb.Caption.Text   := manageOutQcounter.Text;
+    numberServe_lb.Caption.Text := manageOutQnumber_c.Text;
+
+    cntr_RC_lb.Caption.Text     := queCntrQnew

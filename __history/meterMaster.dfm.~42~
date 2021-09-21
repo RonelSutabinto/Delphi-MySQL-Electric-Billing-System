@@ -1,0 +1,792 @@
+object meterMasterRecord: TmeterMasterRecord
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Meter Master Record'
+  ClientHeight = 472
+  ClientWidth = 797
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 797
+    Height = 65
+    Align = alTop
+    Color = 12083207
+    ParentBackground = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 38
+      Top = 14
+      Width = 79
+      Height = 16
+      Caption = 'Meter Serial'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindow
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Search: TNxEdit
+      Left = 37
+      Top = 34
+      Width = 154
+      Height = 21
+      Glyph.Data = {
+        06030000424D060300000000000036000000280000000F0000000F0000000100
+        180000000000D002000000000000000000000000000000000000000000484342
+        5044440000000000000000000000000000000000000000000000000000000000
+        00000000000000000000312C265F80AD9785B07B666600000000000000000000
+        00000000000000000000000000000000000000000000000000001F283B5BD9FF
+        3479D69781A77C65640000000000000000000000000000000000000000000000
+        0000000000000000000000000040588A5BD4FF3378D69882A77B646200000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        41598B5BD6FF3277D69A85AB5542430000000000000000000000000000000000
+        0000000000000000000000000000000000000041578A59D8FF4E8BDA625F5E1E
+        191E917171C3A899D0B3A8856A7118181D000000000000000000000000000000
+        000000000000344775706573AF9695FECFA9FFFFD0FFFFD8FFFFE1FFFFE6CCA9
+        A4312D33000000000000000000000000000000000000000000050001FFD6AFFF
+        FAC7FFFAC5FFFFDBFFFFECFFFFFFFFFFFFB18E87030407000000000000000000
+        000000000000000000946F6CFFFFCCFFE0ACFFFCC9FFFFDFFFFFF3FFFFFBFFFF
+        EBF1DEBC3A3139000000000000000000000000000000000000FBCBB6FFF5C2FF
+        D7A3FFF7C3FFFFD8FFFFE6FFFFE8FFFFDFFFFBCD45343A000000000000000000
+        000000000000000000DBB3A0FFFDC9FFDDADFFE9B4FFFDCAFFFFD3FFFFD5FFFF
+        D0FFE8BC47343E000000000000000000000000000000000000725350FFFFE3FF
+        F8EAFFDEB4FFE6B1FFEBB7FFEBB6FFFFCAE7B59D0F010E000000000000000000
+        000000000000000000000000F2C9B8FFFFFFFFFAE0FFE1B0FFDFAAFFFBC7FFE0
+        B26038490000000000000000000000000000000000000000000000001E1213CD
+        A198FFE8C6FFFACCFFF7CAF6C4AC5E3B47000000000000000000000000000000
+        000000000000000000000000000000000000170D0F2B191B4229360000020000
+        00000000000000000000}
+      TabOrder = 0
+    end
+    object Button2: TNxButton
+      Left = 197
+      Top = 30
+      Width = 64
+      Height = 26
+      Caption = 'Select'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      Glyph.Data = {
+        36030000424D3603000000000000360000002800000010000000100000000100
+        1800000000000003000000000000000000000000000000000000FFFFFFFFFFFF
+        F7F7F7EEEEEEE4E4E4DCDCDCD5D5D5D1D1D1D2D2D2D6D6D6DCDCDCE3E3E3EAEA
+        EAF2F2F2FBFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFEFCFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFDFF7DF27C627C1EFC1FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE2F7E220C12000B8000C
+        BB0CC5EFC5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFE5F7E524BE2400B30000B30000B3000EB70ECAEFCAFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8F8E828BC2800AF0000AF001DB81D00
+        AF0000AF0011B411CEF0CEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBF8EB
+        2CB92C00AB0000AB0043C143F6FCF66BCE6B00AB0000AB0013B113D2F0D2FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFF42BE4200A70000A7003EBC3EF5FCF5FFFFFFFE
+        FFFE66CA6600A70000A70016AF16D6F1D6FFFFFFFFFFFFFFFFFFFFFFFFCCEDCC
+        10A9103AB83AF3FBF3FFFFFFFFFFFFFFFFFFFEFFFE60C66000A30000A30019AC
+        19D9F1D9FFFFFFFFFFFFFFFFFFFFFFFFCFEDCFF1FAF1FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFDFEFD5BC15B009F00009F001CAA1CDDF2DDFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFEFC56BC56009A
+        00009A003EB33EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFBFDFB51B7511DA21DDEF1DEFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAFD
+        FAE2F3E2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      ParentFont = False
+      TabOrder = 1
+      Transparent = True
+      OnClick = Button2Click
+    end
+    object RadioGroup1: TRadioGroup
+      Left = 284
+      Top = 14
+      Width = 317
+      Height = 41
+      Caption = 'Search Selection'
+      Columns = 3
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ItemIndex = 0
+      Items.Strings = (
+        'Account #'
+        'Name'
+        'Meter Serial')
+      ParentFont = False
+      TabOrder = 2
+    end
+  end
+  object CRDBGrid1: TCRDBGrid
+    Left = 38
+    Top = 80
+    Width = 731
+    Height = 329
+    DataSource = meterMasterDS
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    PopupMenu = PopupMenu1
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'accountnumber'
+        Title.Caption = 'AccountNumber'
+        Width = 85
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'name'
+        Title.Caption = 'Name'
+        Width = 208
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'MeterSerial'
+        Width = 88
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'MeterBrand'
+        Width = 85
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'LastReading'
+        Width = 74
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'accountnumber'
+        Width = 84
+        Visible = True
+      end>
+  end
+  object NxButton1: TNxButton
+    Left = 613
+    Top = 424
+    Width = 156
+    Height = 37
+    Caption = 'Close'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000000000000000000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF000000FF0B0000FF420000FF03FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF040000FF410000FF08FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF0A0000FFC70000FFFF0000FFAE0000FF05FFFFFF00FFFFFF000000
+      FF050000FFB10000FFFF0000FFC40000FF09FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF470000FFFF0000FFFF0000FFFF0000FFAE0000FF050000FF050000
+      FFB00000FFFF0000FFFF0000FFFF0000FF42FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF060000FFB40000FFFF0000FFFF0000FFFF0000FFAE0000FFAF0000
+      FFFF0000FFFF0000FFFF0000FFB10000FF04FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF000000FF060000FFB30000FFFF0000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFAF0000FF05FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF000000FF060000FFB20000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFAF0000FF05FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF000000FF060000FFB10000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFAE0000FF05FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF000000FF060000FFB10000FFFF0000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFAE0000FF05FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF040000FFB10000FFFF0000FFFF0000FFFF0000FFB10000FFB20000
+      FFFF0000FFFF0000FFFF0000FFAE0000FF03FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF480000FFFF0000FFFF0000FFFF0000FFB10000FF060000FF060000
+      FFB40000FFFF0000FFFF0000FFFF0000FF41FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF0C0000FFCB0000FFFF0000FFB10000FF06FFFFFF00FFFFFF000000
+      FF060000FFB40000FFFF0000FFC80000FF0AFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF000000FF0C0000FF480000FF04FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF060000FF490000FF0BFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
+    ParentFont = False
+    TabOrder = 2
+    Transparent = True
+    OnClick = NxButton1Click
+  end
+  object NxHeaderPanel1: TNxHeaderPanel
+    Left = 37
+    Top = 153
+    Width = 731
+    Height = 369
+    Caption = 'Meter History'
+    Color = clInfoBk
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    HeaderFont.Charset = DEFAULT_CHARSET
+    HeaderFont.Color = clWindowText
+    HeaderFont.Height = -11
+    HeaderFont.Name = 'Tahoma'
+    HeaderFont.Style = [fsBold]
+    ParentFont = False
+    ParentHeaderFont = False
+    TabOrder = 3
+    Visible = False
+    FullWidth = 731
+    object NxLinkLabel1: TNxLinkLabel
+      Left = 678
+      Top = 4
+      Width = 31
+      Height = 15
+      Caption = 'Close'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      HoverColor = clWindowText
+      ParentFont = False
+      TextDistance = 2
+      Transparent = True
+      VertSpacing = 2
+      OnClick = NxLinkLabel1Click
+    end
+    object CRDBGrid2: TCRDBGrid
+      Left = 16
+      Top = 40
+      Width = 697
+      Height = 289
+      DataSource = meterHistoryDS
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 1
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'Accountnumber'
+          Title.Caption = 'AccountNo'
+          Width = 67
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Name'
+          Width = 136
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Address'
+          Width = 168
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'MeterSerial'
+          Width = 76
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'MeterBrand'
+          Width = 76
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'LastReading'
+          Width = 74
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'LastReadingDate'
+          Width = 96
+          Visible = True
+        end>
+    end
+    object NxLinkLabel2: TNxLinkLabel
+      Left = 24
+      Top = 335
+      Width = 109
+      Height = 15
+      Caption = 'Print Meter History'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clHotLight
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      HoverColor = clHotLight
+      ParentFont = False
+      TextDistance = 2
+      TransparentColor = clBackground
+      VertSpacing = 2
+      OnClick = NxLinkLabel2Click
+    end
+  end
+  object meterMasterQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Select '
+      '  a.Serial MeterSerial,'
+      '  a.MeterBrand,'
+      '  a.LastReading,'
+      '  a.LasReadingDate,'
+      '  a.accountnumber,'
+      '  a.name,'
+      '  a.Address  '
+      'from'
+      ''
+      '((Select'
+      '  code as entry,'
+      '  Serial,'
+      '  MeterBrand,'
+      '  PresentReadingKWH as LastReading,'
+      '  PresentReadingDate as LasReadingDate,'
+      '  accountnumber,'
+      '  name,'
+      '  address    '
+      ' '
+      
+        'from master where serial is not null  or serial<>'#39#39' or conncode<' +
+        '> 5 )'
+      'union'
+      '( Select '
+      '    r.idremovemeter entry,'
+      '    r.serialnumber as Serial,'
+      '    r.MeterBrand,  '
+      '    r.LastReading,'
+      '    r.DateRemoved LasReadingDate,'
+      '    r.accountnumber,'
+      '    r.name,'
+      '    m.address    '
+      '  '
+      '  from  '
+      '  removemeter r '
+      '  left join master m on m.accountnumber = r.accountnumber'
+      ''
+      
+        'where not  exists (select master.accountnumber from master where' +
+        ' master.serial = r.serialnumber) ) '
+      ''
+      'union'
+      '(Select '
+      '    '#39#39' entry,    '
+      '    c.oldserialNumber as Serial,'
+      '    c.OldMeterBrand as MeterBrand,  '
+      '    c.LastReading,'
+      '    c.Date LastReadingDate,'
+      '    c.Accountnumber,'
+      '    c.Name,'
+      '    m.address      '
+      '  '
+      '  from'
+      '  changemeter c'
+      '  left join master m on m.accountnumber = c.accountnumber'
+      
+        'where not  exists (select master.accountnumber from master where' +
+        ' master.serial = c.oldserialNumber) -- and'
+      
+        '     -- not  exists (select removemeter.accountnumber from remov' +
+        'emeter where removemeter.serialnumber = c.oldserialNumber)'
+      ')'
+      '  '
+      ') a'
+      ''
+      ''
+      'group by serial'
+      'order by LasReadingDate desc')
+    Left = 384
+    Top = 120
+  end
+  object meterMasterDS: TMyDataSource
+    DataSet = meterMasterQ
+    Left = 472
+    Top = 120
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 384
+    Top = 240
+    object MeterHistory1: TMenuItem
+      Caption = 'Meter History'
+      OnClick = MeterHistory1Click
+    end
+  end
+  object meterHistoryQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Select'
+      '  f.MeterSerial,'
+      '  f.MeterBrand,'
+      '  f.LastReading,'
+      '  f.LastReadingDate,'
+      '  f.Accountnumber,'
+      '  f.Name,'
+      '  f.Address'
+      ''
+      'from'
+      '('
+      '(Select '
+      '  a.Serial MeterSerial,'
+      '  a.MeterBrand,'
+      '  a.LastReading,'
+      '  a.LastReadingDate,'
+      '  a.Accountnumber,'
+      '  a.Name,'
+      '  a.Address'
+      'from'
+      '((Select'
+      '  code as entry,'
+      '  Serial,'
+      '  MeterBrand,'
+      '  PresentReadingKWH as LastReading,'
+      '  PresentReadingDate as LastReadingDate,'
+      '  accountnumber,'
+      '  name,'
+      '  Address  '
+      ' '
+      
+        'from master where serial is not null  or serial<>'#39#39' or conncode<' +
+        '> 5 )'
+      'union'
+      '( Select '
+      '    r.idremovemeter entry,'
+      '    r.serialnumber as Serial,'
+      '    r.MeterBrand,  '
+      '    r.LastReading,'
+      '    r.DateRemoved LastReadingDate,'
+      '    r.accountnumber,'
+      '    r.name,'
+      '    m.Address    '
+      '  '
+      '  from'
+      '  removemeter r '
+      '  left join master m on m.accountnumber = r.accountnumber'
+      
+        '  where not  exists (select master.accountnumber from master whe' +
+        're master.serial = r.serialnumber) ) '
+      '  '
+      ') a'
+      'where a.Serial = :serial'
+      'group by a.serial)'
+      ''
+      'union'
+      ''
+      '(Select     '
+      '    c.oldserialNumber as MeterSerial,'
+      '    c.OldMeterBrand as MeterBrand,  '
+      '    c.LastReading,'
+      '    c.Date LastReadingDate,'
+      '    c.Accountnumber,'
+      '    c.Name,    '
+      '    m.Address'
+      '  from'
+      '  changemeter c'
+      '  left join master m on m.accountnumber = c.accountnumber'
+      'where c.OldserialNumber = :serial)'
+      ') f '
+      'order by f.LastReadingDate desc')
+    Left = 504
+    Top = 104
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'serial'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'serial'
+      end>
+  end
+  object meterHistoryDS: TMyDataSource
+    DataSet = meterHistoryQ
+    Left = 568
+    Top = 96
+  end
+  object meterHis_DS: TfrxDBDataset
+    UserName = 'history'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'MeterSerial=MeterSerial'
+      'MeterBrand=MeterBrand'
+      'LastReading=LastReading'
+      'LastReadingDate=LastReadingDate'
+      'Accountnumber=Accountnumber'
+      'Name=Name'
+      'Address=Address')
+    DataSet = meterHistoryQ
+    BCDToCurrency = False
+    Left = 648
+    Top = 24
+  end
+  object meterMaster_DS: TfrxDBDataset
+    UserName = 'master'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'MeterSerial=MeterSerial'
+      'MeterBrand=MeterBrand'
+      'LastReading=LastReading'
+      'LasReadingDate=LasReadingDate'
+      'accountnumber=accountnumber'
+      'name=name'
+      'Address=Address')
+    DataSet = meterMasterQ
+    BCDToCurrency = False
+    Left = 688
+    Top = 24
+  end
+  object frxReport1: TfrxReport
+    Version = '4.15.10'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42654.444246088000000000
+    ReportOptions.LastChange = 42654.444246088000000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 736
+    Top = 24
+    Datasets = <
+      item
+        DataSet = meterHis_DS
+        DataSetName = 'history'
+      end
+      item
+        DataSet = meterMaster_DS
+        DataSetName = 'master'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 215.900000000000000000
+      PaperHeight = 279.400000000000000000
+      PaperSize = 1
+      LeftMargin = 7.500000000000000000
+      RightMargin = 7.500000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object PageHeader1: TfrxPageHeader
+        Height = 83.149660000000000000
+        Top = 18.897650000000000000
+        Width = 759.307577000000000000
+        object Memo1: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 57.504020000000000000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8W = (
+            'AccountNumber')
+        end
+        object Memo2: TfrxMemoView
+          Left = 113.606370000000000000
+          Top = 57.724490000000000000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8W = (
+            'Name')
+        end
+        object Memo3: TfrxMemoView
+          Left = 319.921460000000000000
+          Top = 58.724490000000000000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8W = (
+            'Address')
+        end
+        object Memo4: TfrxMemoView
+          Left = 568.370440000000000000
+          Top = 57.724490000000000000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8W = (
+            'ReadingDate')
+        end
+        object Memo5: TfrxMemoView
+          Left = 676.976810000000000000
+          Top = 57.724490000000000000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8W = (
+            'LastReading')
+        end
+        object Line1: TfrxLineView
+          Left = 1.779530000000000000
+          Top = 52.724490000000000000
+          Width = 755.906000000000000000
+          ShowHint = False
+          Diagonal = True
+        end
+        object Line2: TfrxLineView
+          Top = 80.181200000000000000
+          Width = 759.685530000000000000
+          ShowHint = False
+          Diagonal = True
+        end
+        object Memo6: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 3.590600000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8W = (
+            'Meter Serial:')
+        end
+        object Memo7: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 26.267780000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8W = (
+            'Meter Brand:')
+        end
+        object historyMeterSerial: TfrxMemoView
+          Left = 98.267780000000000000
+          Top = 3.779530000000000000
+          Width = 158.740260000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'MeterSerial'
+          DataSet = meterHis_DS
+          DataSetName = 'history'
+          Memo.UTF8W = (
+            '[history."MeterSerial"]')
+        end
+        object historyMeterBrand: TfrxMemoView
+          Left = 98.267780000000000000
+          Top = 26.456710000000000000
+          Width = 158.740260000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'MeterBrand'
+          DataSet = meterHis_DS
+          DataSetName = 'history'
+          Memo.UTF8W = (
+            '[history."MeterBrand"]')
+        end
+      end
+      object MasterData1: TfrxMasterData
+        Top = 162.519790000000000000
+        Width = 759.307577000000000000
+        DataSet = meterHis_DS
+        DataSetName = 'history'
+        RowCount = 0
+      end
+      object DetailData1: TfrxDetailData
+        Height = 22.677180000000000000
+        Top = 185.196970000000000000
+        Width = 759.307577000000000000
+        DataSet = meterHis_DS
+        DataSetName = 'history'
+        RowCount = 0
+        object historyLastReadingDate: TfrxMemoView
+          Left = 567.709030000000000000
+          Top = 0.779530000000000000
+          Width = 105.826840000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = meterHis_DS
+          DataSetName = 'history'
+          Memo.UTF8W = (
+            '[history."LastReadingDate"]')
+        end
+        object historyLastReading: TfrxMemoView
+          Left = 677.315400000000000000
+          Top = 0.779530000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'LastReading'
+          DataSet = meterHis_DS
+          DataSetName = 'history'
+          Memo.UTF8W = (
+            '[history."LastReading"]')
+        end
+        object historyAccountnumber: TfrxMemoView
+          Left = 8.338590000000000000
+          Top = 0.779530000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'Accountnumber'
+          DataSet = meterHis_DS
+          DataSetName = 'history'
+          Memo.UTF8W = (
+            '[history."Accountnumber"]')
+        end
+        object historyName: TfrxMemoView
+          Left = 108.385900000000000000
+          Top = 0.779530000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'Name'
+          DataSet = meterHis_DS
+          DataSetName = 'history'
+          Memo.UTF8W = (
+            '[history."Name"]')
+        end
+        object historyAddress: TfrxMemoView
+          Left = 318.819110000000000000
+          Top = 0.779530000000000000
+          Width = 234.330860000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'Address'
+          DataSet = meterHis_DS
+          DataSetName = 'history'
+          Memo.UTF8W = (
+            '[history."Address"]')
+        end
+      end
+    end
+  end
+end

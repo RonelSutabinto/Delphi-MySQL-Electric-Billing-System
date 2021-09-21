@@ -1,0 +1,5341 @@
+object ReadandBillForm: TReadandBillForm
+  Left = 308
+  Top = 92
+  Caption = 'Read and Bill Device Interface'
+  ClientHeight = 480
+  ClientWidth = 797
+  Color = clWindow
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 577
+    Top = 147
+    Width = 46
+    Height = 13
+    Caption = 'Bill Month'
+  end
+  object Label3: TLabel
+    Left = 558
+    Top = 172
+    Width = 65
+    Height = 13
+    Caption = 'Meter Reader'
+  end
+  object Gauge1: TGauge
+    Left = 555
+    Top = 228
+    Width = 227
+    Height = 25
+    Progress = 0
+  end
+  object BillMonth: TNxEdit
+    Left = 627
+    Top = 143
+    Width = 155
+    Height = 21
+    TabOrder = 0
+  end
+  object NxButton1: TNxButton
+    Left = 554
+    Top = 197
+    Width = 228
+    Height = 27
+    Caption = 'Select Bill Month'
+    Glyph.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000074120000741200000000000000000000FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFEFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFF2F0EBCDB489FEFDFCFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2F0EBD1A048FAA002C8
+      A05DFAF9F8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFF2F0EBD1A048FFA200FFA000FF9F00C8A05DFAFAF9FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2F0EBD1A048FFA200FFA000FF9F00FF
+      9E00FF9D00C8A05DFBFBFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2F0EB
+      D1A048FFA200FFA000FF9F00FF9E00FF9D00FF9C00FF9B00C99F5FFBFBFAFFFF
+      FFFFFFFFFFFFFFFFFFFFF8F7F6CD9D47FFA200FFA000FF9F00F89E05C6984CFE
+      9B00FF9B00FF9900FF9800C79B5DFBFBFAFFFFFFFFFFFFFFFFFFF7F6F5CA9A46
+      FFA000FF9F00F19707CFB791F8F8F8C7A776FC9801FF9800FF9700FF9600C79B
+      5FFBFBFAFFFFFFFFFFFFFFFFFFF2F0EBD29F46E89609CEB58EFFFFFFFFFFFFFF
+      FFFFC7A675FD9601FF9600FF9500FF9300C79B5FFBFBFAFFFFFFFFFFFFFFFFFF
+      EFEDE8DDCBB1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6A372FD9401FF9300FF92
+      00FF9100CE9E62F7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFC5A070FE9201FF9100FF9000CD8C34F4F4F3FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC39F6FFA8E
+      02DA9135EBE4DBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFCEB18DEAE3DAFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+    TabOrder = 1
+    Transparent = True
+    OnClick = NxButton1Click
+  end
+  object NxButton3: TNxButton
+    Left = 556
+    Top = 259
+    Width = 228
+    Height = 27
+    Caption = 'Upload Data'
+    Glyph.Data = {
+      F6060000424DF606000000000000360000002800000018000000180000000100
+      180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC9C9C95555554B4B4B4B4B4B4B4B4B4B
+      4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+      4B4B4B4B4B4B555555C5C5C5FFFFFFFFFFFFFFFFFFEEEEEE696969567E6D30AE
+      7730AE7730AE7730AE7730AE7730AE7730AE7730AE7730AE7730AE7789898989
+      8989898989898989898989898989727272696969EEEEEEFFFFFFFFFFFFB7B7B7
+      7F7F7F5EC19652DB9E52DB9E52DB9E52DB9E52DB9E52DB9E52DB9E52DB9E52DB
+      9E52DB9EAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFAFA2A2A27F7F7FB7B7B7FF
+      FFFFFFFFFFBBBBBB87878770D2A665F5B465F5B465F5B465F5B465F5B465F5B4
+      65F5B465F5B465F5B465F5B4B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6A7A7
+      A7878787BBBBBBFFFFFFFFFFFFF1F1F1888888748E8329AC7123AE7023AE7023
+      AE7023AE7023AE7023AE7023AE7023AE7023AE70A0A0A0A0A0A0A0A0A0A0A0A0
+      A0A0A09F9F9F8C8C8C888888F1F1F1FFFFFFFFFFFFFFFFFFD4D4D48A8A8A8787
+      8787878787878787878787878787878787878787878787878787878787878787
+      87878787878787878787878787878A8A8AD4D4D4FFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF0031EC0031EC0031EC0031EC0031EC0031EC0031EC00
+      31ECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF002FEAC1F4FF449CFF3A95FF318F
+      FF288AFF2085FF002FEAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF002BE8C5F5FF
+      53A5FF499FFF3F98FF3592FF2C8CFF002BE8FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF0028E5CAF6FF62AFFF58A8FF4DA1FF439BFF3994FF0028E5FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FF0024E20024E20024E20024E2CEF6FF71B8FF67B2FF5CABFF52A4FF479EFF00
+      24E20024E20024E20024E2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFF0121DFD2F7FFD2F7FFD2F7FFD2F7FF7FC2FF76BBFF6BB5
+      FF61AEFF56A7FF4CA0FF419AFF3894FF0121DFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF011DDCD7F8FF9CD5FF94D0FF
+      8CCBFF83C4FF7ABEFF70B8FF65B1FF5BAAFF50A3FF011DDCFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
+      19D9DBF9FF9ED6FF98D2FF90CDFF87C8FF7EC1FF74BAFF6AB4FF0119D9FFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF0116D6DFF9FFA1D8FF9BD4FF93CFFF8BCAFF82C3FF01
+      16D6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0113D4E3FAFFA3D9FF9DD6
+      FF97D1FF0113D4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      0111D2E5FAFFA7DCFF0111D2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFF010FD0010FD0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+    TabOrder = 2
+    Transparent = True
+    OnClick = NxButton3Click
+  end
+  object NxButton4: TNxButton
+    Left = 555
+    Top = 433
+    Width = 229
+    Height = 34
+    Caption = 'Close'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000000000000000000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF000000FF0B0000FF420000FF03FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF040000FF410000FF08FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF0A0000FFC70000FFFF0000FFAE0000FF05FFFFFF00FFFFFF000000
+      FF050000FFB10000FFFF0000FFC40000FF09FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF470000FFFF0000FFFF0000FFFF0000FFAE0000FF050000FF050000
+      FFB00000FFFF0000FFFF0000FFFF0000FF42FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF060000FFB40000FFFF0000FFFF0000FFFF0000FFAE0000FFAF0000
+      FFFF0000FFFF0000FFFF0000FFB10000FF04FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF000000FF060000FFB30000FFFF0000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFAF0000FF05FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF000000FF060000FFB20000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFAF0000FF05FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF000000FF060000FFB10000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFAE0000FF05FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF000000FF060000FFB10000FFFF0000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFAE0000FF05FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF040000FFB10000FFFF0000FFFF0000FFFF0000FFB10000FFB20000
+      FFFF0000FFFF0000FFFF0000FFAE0000FF03FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF480000FFFF0000FFFF0000FFFF0000FFB10000FF060000FF060000
+      FFB40000FFFF0000FFFF0000FFFF0000FF41FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF0C0000FFCB0000FFFF0000FFB10000FF06FFFFFF00FFFFFF000000
+      FF060000FFB40000FFFF0000FFC80000FF0AFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF000000FF0C0000FF480000FF04FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FF060000FF490000FF0BFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
+    ParentFont = False
+    TabOrder = 3
+    Transparent = True
+    OnClick = NxButton4Click
+  end
+  object MeterReader: TNxEdit
+    Left = 627
+    Top = 167
+    Width = 155
+    Height = 21
+    TabOrder = 4
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 554
+    Top = 73
+    Width = 227
+    Height = 60
+    Caption = 'Device Gadget'
+    Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      '8300'
+      '9300'
+      'DEP'
+      'ANDROID')
+    TabOrder = 6
+  end
+  object NxButton5: TNxButton
+    Left = 556
+    Top = 38
+    Width = 228
+    Height = 27
+    Caption = 'Gadget Book Manager'
+    Glyph.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000074120000741200000000000000000000FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEEEAE3B6A788B1A07DB1
+      A07DB1A07DB1A07DB8A889EFECE5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFF7F6F29E885E9E885E9E885E9F895DF8F6F3FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBBAA8DB8
+      A88BB8A88BBCAC8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA7936D9D8760
+      9D87609D87609D87609D87609D8760AB9873AA96729D87609D87609D87609D87
+      609D87609D8760A993709E885EF6F4F0F0ECE5E7E2D7E9E4DADBD2C1E5DFD2E1
+      DBCDDCD4C4E5DFD3DBD2C1E2DDD0E4DED2F9F8F5F5F2EE9D87609E885EFCFBFA
+      E2DBCED6CDBBEAE5DC9E885EC2B49AB4A482A48F67C6B9A19E885EBDAF92BBAD
+      90FFFFFFFAF9F79D87609E885EFCFBFAFFFFFFE5DFD3CEC3ADD4CBB8C4B69EB5
+      A284B4A485CCC1AB9E885EBDAF92BBAD90FFFFFFFAF9F79D87609E885EFCFBFA
+      FFFFFFFFFFFFE8E3D8D0C5B1F4F2EDD1C6B3C9BDA5E1DACDAF9D7ABEB092BBAD
+      90FFFFFFFAF9F79D87609E885EFCFBFAFFFFFFFFFFFFFFFFFFEBE6DED0C5B1F5
+      F3EFFAF9F7CABEA7EAE5DCBEB195BCAD91FFFFFFFAF9F79D87609E885EFCFBFA
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD7CEBCD5CAB9F8F7
+      F4FFFFFFFAF9F79D87609E885EFCFBFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFE8E3D9C1B397F1EEE8FAF9F79D87609E885EFCFBFA
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE6E0
+      D5E1DACDFAF9F79D87609E885EE6E0D5E8E3D9E8E3D9E8E3D9E8E3D9E8E3D9E8
+      E3D9E8E3D9E8E3D9E8E3D9E8E3D9E8E3D9E8E3D9E5DFD39D8760B7A788B09E7C
+      B09E7CB09E7CB09E7CB09E7CB09E7CB09E7CB09E7CB09E7CB09E7CB09E7CB09E
+      7CB09E7CB09E7CB8A88BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+    TabOrder = 7
+    Transparent = True
+    OnClick = NxButton5Click
+  end
+  object CRDBGrid5: TCRDBGrid1
+    Left = 555
+    Top = 292
+    Width = 227
+    Height = 133
+    DataSource = dsCipherBookRange
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    ReadOnly = True
+    TabOrder = 8
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'area'
+        Title.Alignment = taCenter
+        Title.Caption = 'Ar.'
+        Width = 26
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'book'
+        Title.Alignment = taCenter
+        Title.Caption = 'Bk.'
+        Width = 29
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'startacct'
+        Title.Alignment = taCenter
+        Title.Caption = 'Start'
+        Width = 64
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'EndAcct'
+        Title.Alignment = taCenter
+        Title.Caption = 'End'
+        Width = 64
+        Visible = True
+      end>
+  end
+  object NxButton2: TNxButton
+    Left = 556
+    Top = 8
+    Width = 228
+    Height = 27
+    Caption = 'Complete Cipher Book'
+    Glyph.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000000000000000000000000000000000000FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1F1F1F2F2F2FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2F2F2C9
+      914DCB934EF2F2F2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFE0D7CCE7E2DDFFFFFFD1C9BFE78508E78509D2CCC3FFFFFFE7E2DCE1D7
+      CDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFE3D6E08A24DC8F29D1AA76D8902BFE
+      9300FE9300D79130D1AA76DB8E28E08926EFE5D9FFFFFFFFFFFFFFFFFFFFFFFF
+      E0DBD5DE8E25FF9200F59104F89403EA9820EA981FF89403F59104FF9200DB8E
+      28E1DCD6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD2A973F69103F29D1CD0BCA0CF
+      CFCECFCFCECEBB9DF39D1AF59104D1AA76FFFFFFFFFFFFFFFFFFFFFFFFF2F2F2
+      D1CAC1D9922BF79403CAB99DD4D1CBCAB592CAB691D4D2CDCBB799F89503D691
+      2DD3CBC3F2F2F2FFFFFFF1F1F1CA904CE78609FE9400E69721C4C4C3C6B08DF4
+      F4F4F1F1F1C7B18DC3C3C2E9981DFE9400E78609CB944EF2F2F2F0F0F0CA8F4A
+      E78708FF9500E6971FBEBEBDC3AF8AF5F5F5F4F4F4C3AE8ABEBEBDE8981DFE94
+      00E78708C7914DF1F1F1FFFFFFF2F2F2D0C7BDDC932AF79503BBAA90C1BEB8BF
+      AB86C0AD88C1BEB8BDAB8FF89603D98E2DD1C8BFF2F2F2FFFFFFFFFFFFFFFFFF
+      FFFFFFD0A974F69303EE9B1AB7A68BB2B2B1B2B2B1B7A68AEE9B19F69304D2AB
+      78FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0DBD5DC8D26FF9400F69303F79603E3
+      951DE3961EF79603F69304FF9400DB8F28E1DDD7FFFFFFFFFFFFFFFFFFFFFFFF
+      EDE1D4E08C1FDD8E26D1AA74D9932BFF9600FE9500DA942BD1AA74DD8C24DF8C
+      23EDE2D6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFD5C9E6E1DBFFFFFFD0C7BDE7
+      8808E78809D1CAC1FFFFFFE6E1DAE0D6CAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFF2F2F2C88F4BC9904BF2F2F2FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0
+      F0F0F1F1F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+    TabOrder = 9
+    Transparent = True
+    OnClick = NxButton2Click
+  end
+  object CipherBookPanel: TNxHeaderPanel
+    Left = -344
+    Top = 393
+    Width = 505
+    Height = 381
+    Caption = 'Cipher Book Manager'
+    HeaderFont.Charset = DEFAULT_CHARSET
+    HeaderFont.Color = clWindowText
+    HeaderFont.Height = -11
+    HeaderFont.Name = 'MS Sans Serif'
+    HeaderFont.Style = [fsBold]
+    ParentHeaderFont = False
+    TabOrder = 5
+    Visible = False
+    FullWidth = 505
+    object NxLinkLabel1: TNxLinkLabel
+      Left = 468
+      Top = 6
+      Width = 27
+      Height = 15
+      Caption = 'Close'
+      HoverColor = clRed
+      TextDistance = 2
+      Transparent = True
+      VertSpacing = 2
+      OnClick = NxLinkLabel1Click
+    end
+    object NxLinkLabel3: TNxLinkLabel
+      Left = 178
+      Top = 172
+      Width = 104
+      Height = 16
+      Caption = 'Assign Cipher Book'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      HoverColor = clRed
+      ParentFont = False
+      TextDistance = 2
+      VertSpacing = 2
+      OnClick = NxLinkLabel3Click
+    end
+    object CRDBGrid1: TCRDBGrid1
+      Left = 16
+      Top = 40
+      Width = 156
+      Height = 329
+      DataSource = dsCipherBook
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ReadOnly = True
+      TabOrder = 1
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'MS Sans Serif'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'cbook'
+          Title.Alignment = taCenter
+          Title.Caption = 'Cipher Book'
+          Width = 62
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'tcons'
+          Title.Alignment = taCenter
+          Title.Caption = 'Consumers'
+          Width = 57
+          Visible = True
+        end>
+    end
+    object CRDBGrid2: TCRDBGrid1
+      Left = 178
+      Top = 191
+      Width = 311
+      Height = 178
+      DataSource = dsCipherBookMaster
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ReadOnly = True
+      TabOrder = 2
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'MS Sans Serif'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'area'
+          Title.Alignment = taCenter
+          Title.Caption = 'Area'
+          Width = 26
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'book'
+          Title.Alignment = taCenter
+          Title.Caption = 'Book'
+          Width = 29
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'accountnumber'
+          Title.Alignment = taCenter
+          Title.Caption = 'Account Number'
+          Width = 84
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'name'
+          Title.Alignment = taCenter
+          Title.Caption = 'Name'
+          Width = 167
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'address'
+          Title.Alignment = taCenter
+          Title.Caption = 'Address'
+          Width = 123
+          Visible = True
+        end>
+    end
+    object CRDBGrid4: TCRDBGrid1
+      Left = 179
+      Top = 40
+      Width = 309
+      Height = 127
+      DataSource = dsCipherBookRange
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ReadOnly = True
+      TabOrder = 4
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'MS Sans Serif'
+      TitleFont.Style = []
+      OnCellClick = CRDBGrid4CellClick
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'area'
+          Title.Alignment = taCenter
+          Title.Caption = 'Ar.'
+          Width = 26
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'book'
+          Title.Alignment = taCenter
+          Title.Caption = 'Bk.'
+          Width = 29
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'address'
+          Title.Alignment = taCenter
+          Title.Caption = 'Address'
+          Width = 94
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'startacct'
+          Title.Alignment = taCenter
+          Title.Caption = 'Start'
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'EndAcct'
+          Title.Alignment = taCenter
+          Title.Caption = 'End'
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'tcons'
+          Title.Alignment = taCenter
+          Title.Caption = 'Consumers'
+          Width = 62
+          Visible = True
+        end>
+    end
+  end
+  object AssignCipherPanel: TNxHeaderPanel
+    Left = -453
+    Top = 393
+    Width = 571
+    Height = 273
+    Caption = 'Assign Cipher Book'
+    HeaderFont.Charset = DEFAULT_CHARSET
+    HeaderFont.Color = clWindowText
+    HeaderFont.Height = -11
+    HeaderFont.Name = 'MS Sans Serif'
+    HeaderFont.Style = []
+    ParentHeaderFont = False
+    TabOrder = 11
+    Visible = False
+    FullWidth = 571
+    object Label4: TLabel
+      Left = 38
+      Top = 49
+      Width = 22
+      Height = 13
+      Caption = 'Area'
+    end
+    object Label5: TLabel
+      Left = 71
+      Top = 49
+      Width = 25
+      Height = 13
+      Caption = 'Book'
+    end
+    object Label6: TLabel
+      Left = 114
+      Top = 49
+      Width = 75
+      Height = 13
+      Caption = 'Account Range'
+    end
+    object Label2: TLabel
+      Left = 38
+      Top = 177
+      Width = 58
+      Height = 13
+      Caption = 'Cipher Book'
+    end
+    object Area1: TNxEdit
+      Left = 36
+      Top = 67
+      Width = 30
+      Height = 21
+      TabOrder = 0
+      Text = '000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object Book1: TNxEdit
+      Left = 72
+      Top = 68
+      Width = 30
+      Height = 21
+      TabOrder = 1
+      Text = '000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object From1: TNxEdit
+      Left = 102
+      Top = 68
+      Width = 57
+      Height = 21
+      TabOrder = 2
+      Text = '000000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object To1: TNxEdit
+      Left = 163
+      Top = 68
+      Width = 57
+      Height = 21
+      TabOrder = 3
+      Text = '999999'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object Area2: TNxEdit
+      Left = 36
+      Top = 91
+      Width = 30
+      Height = 21
+      TabOrder = 4
+      Text = '000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object Book2: TNxEdit
+      Left = 70
+      Top = 91
+      Width = 30
+      Height = 21
+      TabOrder = 5
+      Text = '000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object From2: TNxEdit
+      Left = 103
+      Top = 91
+      Width = 57
+      Height = 21
+      TabOrder = 6
+      Text = '000000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object To2: TNxEdit
+      Left = 163
+      Top = 91
+      Width = 57
+      Height = 21
+      TabOrder = 7
+      Text = '999999'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object Area3: TNxEdit
+      Left = 36
+      Top = 115
+      Width = 30
+      Height = 21
+      TabOrder = 8
+      Text = '000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object Book3: TNxEdit
+      Left = 70
+      Top = 115
+      Width = 30
+      Height = 21
+      TabOrder = 9
+      Text = '000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object From3: TNxEdit
+      Left = 103
+      Top = 115
+      Width = 57
+      Height = 21
+      TabOrder = 10
+      Text = '000000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object To3: TNxEdit
+      Left = 163
+      Top = 115
+      Width = 57
+      Height = 21
+      TabOrder = 11
+      Text = '999999'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object Area4: TNxEdit
+      Left = 36
+      Top = 139
+      Width = 30
+      Height = 21
+      TabOrder = 12
+      Text = '000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object Book4: TNxEdit
+      Left = 70
+      Top = 139
+      Width = 30
+      Height = 21
+      TabOrder = 13
+      Text = '000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object From4: TNxEdit
+      Left = 103
+      Top = 139
+      Width = 57
+      Height = 21
+      TabOrder = 14
+      Text = '000000'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object To4: TNxEdit
+      Left = 163
+      Top = 139
+      Width = 57
+      Height = 21
+      TabOrder = 15
+      Text = '999999'
+      ReadOnly = True
+      OnKeyPress = Area1KeyPress
+    end
+    object NxButton6: TNxButton
+      Left = 39
+      Top = 201
+      Width = 128
+      Height = 28
+      Caption = 'Begin'
+      TabOrder = 17
+      OnClick = NxButton6Click
+    end
+    object CB: TNxEdit
+      Left = 103
+      Top = 173
+      Width = 64
+      Height = 21
+      TabOrder = 16
+      ReadOnly = True
+    end
+    object NxLinkLabel2: TNxLinkLabel
+      Left = 512
+      Top = 4
+      Width = 36
+      Height = 18
+      Caption = 'Close'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      HoverColor = clWindowText
+      ParentFont = False
+      TextDistance = 2
+      Transparent = True
+      VertSpacing = 2
+      OnClick = NxLinkLabel2Click
+    end
+    object CRDBGrid7: TCRDBGrid
+      Left = 240
+      Top = 67
+      Width = 315
+      Height = 167
+      DataSource = assigncbS
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 19
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'MS Sans Serif'
+      TitleFont.Style = []
+      OnCellClick = CRDBGrid7CellClick
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'cbook'
+          Width = 34
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'area'
+          Width = 25
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'book'
+          Width = 28
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'startAccnt'
+          Width = 87
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'endAccnt'
+          Width = 93
+          Visible = True
+        end>
+    end
+    object NxLinkLabel5: TNxLinkLabel
+      Left = 422
+      Top = 44
+      Width = 26
+      Height = 18
+      Caption = 'Add'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      HoverColor = clWindowText
+      ParentFont = False
+      TextDistance = 2
+      Transparent = True
+      VertSpacing = 2
+      OnClick = NxLinkLabel5Click
+    end
+    object NxLinkLabel6: TNxLinkLabel
+      Left = 458
+      Top = 44
+      Width = 24
+      Height = 18
+      Caption = 'Edit'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      HoverColor = clWindowText
+      ParentFont = False
+      TextDistance = 2
+      Transparent = True
+      VertSpacing = 2
+      OnClick = NxLinkLabel6Click
+    end
+    object NxLinkLabel7: TNxLinkLabel
+      Left = 498
+      Top = 44
+      Width = 41
+      Height = 18
+      Caption = 'Delete'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      HoverColor = clWindowText
+      ParentFont = False
+      TextDistance = 2
+      Transparent = True
+      VertSpacing = 2
+      OnClick = NxLinkLabel7Click
+    end
+    object Panel1: TPanel
+      Left = 226
+      Top = 68
+      Width = 327
+      Height = 117
+      BevelInner = bvLowered
+      Color = 13630718
+      ParentBackground = False
+      TabOrder = 23
+      Visible = False
+      object Label7: TLabel
+        Left = 83
+        Top = 15
+        Width = 22
+        Height = 13
+        Caption = 'Area'
+      end
+      object Label8: TLabel
+        Left = 120
+        Top = 15
+        Width = 25
+        Height = 13
+        Caption = 'Book'
+      end
+      object Label9: TLabel
+        Left = 162
+        Top = 15
+        Width = 75
+        Height = 13
+        Caption = 'Account Range'
+      end
+      object Label10: TLabel
+        Left = 19
+        Top = 14
+        Width = 38
+        Height = 13
+        Caption = 'CBook'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object NxLinkLabel8: TNxLinkLabel
+        Left = 186
+        Top = 70
+        Width = 33
+        Height = 18
+        Caption = 'Save'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        HoverColor = clWindowText
+        ParentFont = False
+        TextDistance = 2
+        Transparent = True
+        VertSpacing = 2
+        OnClick = NxLinkLabel8Click
+      end
+      object NxLinkLabel9: TNxLinkLabel
+        Left = 230
+        Top = 70
+        Width = 43
+        Height = 18
+        Caption = 'Cancel'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        HoverColor = clWindowText
+        ParentFont = False
+        TextDistance = 2
+        Transparent = True
+        VertSpacing = 2
+        OnClick = NxLinkLabel9Click
+      end
+      object dbArea: TDBEdit
+        Left = 80
+        Top = 33
+        Width = 35
+        Height = 21
+        DataField = 'area'
+        DataSource = assigncbS
+        TabOrder = 2
+      end
+      object dbBook: TDBEdit
+        Left = 118
+        Top = 33
+        Width = 35
+        Height = 21
+        DataField = 'book'
+        DataSource = assigncbS
+        TabOrder = 3
+      end
+      object dbStart: TDBEdit
+        Left = 157
+        Top = 33
+        Width = 63
+        Height = 21
+        DataField = 'startAccnt'
+        DataSource = assigncbS
+        TabOrder = 4
+      end
+      object dbEnd: TDBEdit
+        Left = 222
+        Top = 33
+        Width = 72
+        Height = 21
+        DataField = 'endAccnt'
+        DataSource = assigncbS
+        TabOrder = 5
+      end
+      object dbCbook: TDBEdit
+        Left = 16
+        Top = 33
+        Width = 58
+        Height = 21
+        Color = 16762052
+        DataField = 'cbook'
+        DataSource = assigncbS
+        TabOrder = 6
+      end
+    end
+    object NxButton11: TNxButton
+      Left = 171
+      Top = 165
+      Width = 32
+      Height = 30
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3E9E3FFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAD6E4BDB
+        BFB0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFF8B3000903606D9BAA9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF8F3301AC4C0C933805D8B7A5FFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF933502B55411B55411963B07
+        DFC4B4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF973802C3
+        6319C36319B554119A400AE2C8B9FFFFFFFFFFFFFFFFFFFFFFFF9F3C049F3D04
+        9F3C049F3D049E3D049F3D049E3C049E3C049E3C049E3C049E3D049E3C049E3C
+        059E3D049F3D04D37524D37524C36319B55411A0440BE4C9B9FFFFFFFFFFFFFF
+        FFFFA44105D87F2BD97E2BD87E2AD87F2AD87E2AD97E2AD87F2AD87E2BD87F2A
+        D87F2BD97E2BD97E2BD87E2BD87E2BD67B28D67B28D77B28D77B29C5681DA649
+        0DE6CAB9FFFFFFFFFFFFAC4708DC832FDC842FDC832EDC842FDC832EDC832EDC
+        842FDC832EDC832FDC842EDC842EDC832EDC842EDC842EDA802DDA802DDA802C
+        DA802DDA802DC86B1FAC4D0FE7CCBAFFFFFFB34E0BDF8833DF8932DF8832E089
+        32DF8932E08832DF8932E08933DF8933E08932E08833DF8932E08932E08933D8
+        7F2DDD8531DD8531DE8631DE8631DE8531CD7123B35311E9CEBBBC540DE69E54
+        E69E54E69E54E69E54E69E54E69E54E69E54E69E54E69E54E69E54E69E54E69E
+        54E69E54E69E54DC8431E28C35E18C36E18C36E28C36E18C36E28B36D67B2AC5
+        6F34C45A0FEEBA85EEBA86EEBA86EDBA86EEBA86EDBA86EEBA86EEBA86EEBA86
+        EDB984EDB984EDB984EDB984EDB984FCF4ECF1C395F1C394F1C394F1C395F1C3
+        94E4A56BC66722FCF6F1CB6011E8A664E8A664E8A663E8A664E8A664E8A664E9
+        A664E8A664E8A664E8A663E8A663E9A664E9A664E8A664F9E7D5F2C18CF2C08C
+        F2C08CF2C08CE39C5DCD6E27FDF8F4FFFFFFD16513E79F56E79F56E79F56E79F
+        56E79F56E79F56E79F56E79F56E79F56E79F56E79F56E69F56E79F56E79F56F7
+        DCBEF2BD82F2BD82F2BD82E69C57D5742BFEFAF7FFFFFFFFFFFFD66914D66914
+        D66914D66914D66914D66914D66914D66914D66914D66914D66914D66914D669
+        14D66914D66914F8DABAF3BA78F3BA78E8984EDB7B30FFFCFAFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFDC6E16F6C895F5B66EEA9849E17F33FFFCFAFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE27218F7C891EB9541E68638
+        FFFCFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE67619F0
+        9C46EB8B3DFFFCFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFEA781AEE8F40FFFCFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFF3AC73FFFCFAFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      ParentFont = False
+      TabOrder = 24
+      OnClick = NxButton11Click
+    end
+    object Button1: TButton
+      Left = 18
+      Top = 66
+      Width = 17
+      Height = 23
+      Caption = '->'
+      TabOrder = 25
+      OnClick = Button1Click
+    end
+    object NxButton10: TNxButton
+      Left = 520
+      Top = 238
+      Width = 32
+      Height = 29
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C006000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFF3E9E3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFDBBFB0AD6E4BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD9BAA99036068B3000FFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD8B7A5933805AC4C0C8F3301
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFC4B4963B07AE
+        4D0DB55411933502FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE2C8
+        B99A400ABF6118C36319B35311973802FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFE4C9B9A0440BC2641AD37624D37524BD5D179F3D049E3D049E3C059E3C
+        049E3D049E3C049E3C049E3C049E3C049F3D049E3D049F3D049F3C049F3D049F
+        3C04FFFFFFFFFFFFE6CAB9A6490DC5681DD77B29D77B28D67B28CA6D21D87E2B
+        D87E2BD97E2BD97E2BD87F2BD87F2AD87E2BD87F2AD97E2AD87E2AD87F2AD87E
+        2AD97E2BD87F2BA44105FFFFFFE7CCBAAC4D0FC86B1FDA802DDA802DDA802CDA
+        802DD47929DC842EDC842EDC832EDC842EDC842EDC832FDC832EDC842FDC832E
+        DC832EDC842FDC832EDC842FDC832FAC4708E9CEBBB35311CD7123DE8531DE86
+        31DE8631DD8531DD8531D87F2DE08A33E08932DF8932E08833E08932DF8933E0
+        8933DF8932E08832DF8932E08932DF8832DF8932DF8833B34E0BC56F34D67B2A
+        E28B36E18C36E28C36E18C36E18C36E28C35DC8431E49341E69E54E69E54E69E
+        54E69E54E69E54E69E54E69E54E69E54E69E54E69E54E69E54E69E54E69E54BC
+        540DFCF6F1C66722E4A56BFBECDDF1C395F1C394F1C394F1C395EDB987E7A25B
+        EBB177EDB984EDB984EDB984EEBA86EEBA86EEBA86EDBA86EEBA86EDBA86EEBA
+        86EEBA86EEBA85C45A0FFFFFFFFDF8F4CD6E27E39C5DFBECDBF2C08CF2C08CF2
+        C18CEEB77FE49647E79E55E9A664E8A663E8A663E8A664E8A664E9A664E8A664
+        E8A664E8A664E8A663E8A664E8A664CB6011FFFFFFFFFFFFFEFAF7D5742BE69C
+        57F9E0C5F2BD82F2BD82EFB577E49341E49544E69F56E79F56E79F56E79F56E7
+        9F56E79F56E79F56E79F56E79F56E79F56E79F56E79F56D16513FFFFFFFFFFFF
+        FFFFFFFFFCFADB7B30E8984EF7D0A3F3BA78F1B26ED86F1ADB7823DA741FD669
+        14D66914D66914D66914D66914D66914D66914D66914D66914D66914D66914D6
+        6914FFFFFFFFFFFFFFFFFFFFFFFFFFFCFAE17F33EA9849F5B66EF2AF65DC6E16
+        FFFFFFFBECDDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFAE68638EB
+        9541F4AF60E27218FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFCFAEB8B3DF09C46E67619FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFAEE8F40EA781AFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFAF3AC73
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      ParentFont = False
+      TabOrder = 26
+      OnClick = NxButton10Click
+    end
+    object Button2: TButton
+      Left = 18
+      Top = 90
+      Width = 17
+      Height = 23
+      Caption = '->'
+      TabOrder = 27
+      OnClick = Button2Click
+    end
+    object Button3: TButton
+      Left = 18
+      Top = 114
+      Width = 17
+      Height = 23
+      Caption = '->'
+      TabOrder = 28
+      OnClick = Button3Click
+    end
+    object Button4: TButton
+      Left = 18
+      Top = 138
+      Width = 17
+      Height = 23
+      Caption = '->'
+      TabOrder = 29
+      OnClick = Button4Click
+    end
+    object NxButton7: TNxButton
+      Left = 39
+      Top = 232
+      Width = 128
+      Height = 28
+      Caption = 'Reset'
+      TabOrder = 30
+      OnClick = NxButton7Click
+    end
+  end
+  object panelCompleteCbook: TNxHeaderPanel
+    Left = 340
+    Top = 376
+    Width = 613
+    Height = 409
+    Caption = 'Complete Cipher Book'
+    HeaderFont.Charset = DEFAULT_CHARSET
+    HeaderFont.Color = clWindowText
+    HeaderFont.Height = -11
+    HeaderFont.Name = 'MS Sans Serif'
+    HeaderFont.Style = [fsBold]
+    ParentHeaderFont = False
+    TabOrder = 10
+    Visible = False
+    FullWidth = 613
+    object NxLinkLabel4: TNxLinkLabel
+      Left = 565
+      Top = 6
+      Width = 27
+      Height = 15
+      Caption = 'Close'
+      HoverColor = clRed
+      TextDistance = 2
+      Transparent = True
+      VertSpacing = 2
+      OnClick = NxLinkLabel4Click
+    end
+    object NxPageControl1: TNxPageControl
+      Left = 0
+      Top = 27
+      Width = 611
+      Height = 380
+      ActivePage = NxTabSheet1
+      ActivePageIndex = 0
+      Align = alClient
+      TabOrder = 1
+      Margin = 0
+      Options = [pgBoldActiveTab, pgScrollButtons, pgTopBorder]
+      Spacing = 0
+      TabHeight = 17
+      object NxTabSheet1: TNxTabSheet
+        Caption = 'Empty Cipher'
+        PageIndex = 0
+        ParentTabFont = False
+        TabFont.Charset = DEFAULT_CHARSET
+        TabFont.Color = clWindowText
+        TabFont.Height = -11
+        TabFont.Name = 'MS Sans Serif'
+        TabFont.Style = []
+        ExplicitTop = 0
+        object CRDBGrid6: TCRDBGrid
+          Left = 22
+          Top = 37
+          Width = 574
+          Height = 202
+          DataSource = masterCBemptS
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          TabOrder = 0
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'MS Sans Serif'
+          TitleFont.Style = []
+          OnCellClick = CRDBGrid6CellClick
+          OnKeyPress = CRDBGrid6KeyPress
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'Area'
+              Width = 41
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Book'
+              Width = 49
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CBook'
+              Width = 40
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'AccountNumber'
+              Width = 86
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Name'
+              Width = 127
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Address'
+              Width = 173
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'RateCode'
+              Width = 52
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'WRateCode'
+              Width = 75
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'NewConnectionDate'
+              Width = 91
+              Visible = True
+            end>
+        end
+        object CRDBGrid11: TCRDBGrid1
+          Left = 23
+          Top = 242
+          Width = 570
+          Height = 114
+          Color = 14614014
+          DataSource = SelectedcbS
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          ReadOnly = True
+          TabOrder = 1
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'MS Sans Serif'
+          TitleFont.Style = []
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'cbook'
+              Width = 45
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'area'
+              Title.Alignment = taCenter
+              Title.Caption = 'Area'
+              Width = 32
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'book'
+              Title.Alignment = taCenter
+              Title.Caption = 'Book'
+              Width = 32
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'address'
+              Title.Alignment = taCenter
+              Title.Caption = 'Address'
+              Width = 161
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'startacct'
+              Title.Alignment = taCenter
+              Title.Caption = 'Start Account'
+              Width = 90
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'EndAcct'
+              Title.Alignment = taCenter
+              Title.Caption = 'End Account'
+              Width = 85
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'tcons'
+              Title.Alignment = taCenter
+              Title.Caption = 'Consumers'
+              Width = 62
+              Visible = True
+            end>
+        end
+        object NxLinkLabel10: TNxLinkLabel
+          Left = 33
+          Top = 14
+          Width = 48
+          Height = 18
+          Caption = 'Refresh'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7929856
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          HoverColor = 7929856
+          ParentFont = False
+          TextDistance = 2
+          Transparent = True
+          VertSpacing = 2
+          OnClick = NxLinkLabel10Click
+        end
+      end
+      object NxTabSheet2: TNxTabSheet
+        Caption = 'Empty RateCode'
+        PageIndex = 1
+        ParentTabFont = False
+        TabFont.Charset = DEFAULT_CHARSET
+        TabFont.Color = clWindowText
+        TabFont.Height = -11
+        TabFont.Name = 'MS Sans Serif'
+        TabFont.Style = []
+        ExplicitTop = 0
+        object CRDBGrid8: TCRDBGrid
+          Left = 18
+          Top = 29
+          Width = 590
+          Height = 308
+          DataSource = emptyRcodeS
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          TabOrder = 0
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'MS Sans Serif'
+          TitleFont.Style = []
+          OnKeyPress = CRDBGrid8KeyPress
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'Area'
+              Width = 47
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Book'
+              Width = 41
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CBook'
+              Width = 47
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'AccountNumber'
+              Width = 81
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Name'
+              Width = 124
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Address'
+              Width = 155
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'RateCode'
+              Width = 52
+              Visible = True
+            end>
+        end
+        object NxLinkLabel11: TNxLinkLabel
+          Left = 24
+          Top = 7
+          Width = 48
+          Height = 18
+          Caption = 'Refresh'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7929856
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          HoverColor = 7929856
+          ParentFont = False
+          TextDistance = 2
+          Transparent = True
+          VertSpacing = 2
+          OnClick = NxLinkLabel11Click
+        end
+      end
+    end
+  end
+  object CRDBGrid3: TCRDBGrid1
+    Left = 15
+    Top = 8
+    Width = 522
+    Height = 459
+    OptionsEx = [dgeEnableSort, dgeLocalFilter, dgeLocalSorting, dgeRecordCount, dgeSearchBar]
+    DataSource = dsRB
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+    ReadOnly = True
+    TabOrder = 12
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'CBook'
+        Title.Alignment = taCenter
+        Title.Caption = 'Cipher Book'
+        Width = 61
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TCons'
+        Title.Alignment = taCenter
+        Title.Caption = 'Consumers'
+        Width = 58
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'billmonth'
+        Title.Alignment = taCenter
+        Title.Caption = 'BMon'
+        Width = 40
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'UploadStat'
+        Title.Alignment = taCenter
+        Title.Caption = 'Status'
+        Width = 34
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'meterreader'
+        Title.Alignment = taCenter
+        Title.Caption = 'Meter Reader'
+        Width = 97
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DateUploaded'
+        Title.Caption = 'Uploaded'
+        Width = 112
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DateDownloaded'
+        Title.Caption = 'Downloaded'
+        Width = 98
+        Visible = True
+      end>
+  end
+  object RB: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'select Master.CBook,'
+      '       count(Master.AccountNumber) TCons,'
+      '       RB.billmonth,'
+      '       RB.uploaded,'
+      '       RB.meterreader,'
+      '       RB.DateUploaded,'
+      '       RB.DateDownloaded'
+      'from master '
+      
+        'left join RB on (master.cbook = RB.cbook and RB.billmonth = :bil' +
+        'lmonth)'
+      'where Master.cbook is not null'
+      '  and master.ConnCode <> 5'
+      'group by master.cbook'
+      'order by master.cbook')
+    OnCalcFields = RBCalcFields
+    Left = 32
+    Top = 56
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'billmonth'
+        Value = '0709'
+      end>
+    object RBCBook: TStringField
+      FieldName = 'CBook'
+      Size = 6
+    end
+    object RBbillmonth: TStringField
+      FieldName = 'billmonth'
+      Size = 4
+    end
+    object RBuploaded: TStringField
+      FieldName = 'uploaded'
+      Size = 1
+    end
+    object RBmeterreader: TStringField
+      FieldName = 'meterreader'
+      Size = 30
+    end
+    object RBTCons: TLargeintField
+      FieldName = 'TCons'
+    end
+    object RBUploadStat: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'UploadStat'
+      Calculated = True
+    end
+    object RBDateUploaded: TDateTimeField
+      FieldName = 'DateUploaded'
+    end
+    object RBDateDownloaded: TDateTimeField
+      FieldName = 'DateDownloaded'
+    end
+  end
+  object dsRB: TMyDataSource
+    DataSet = RB
+    OnDataChange = dsRBDataChange
+    Left = 32
+    Top = 104
+  end
+  object CheckRate: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'select * from meterrate where mbillmonth = :bm')
+    Left = 111
+    Top = 104
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'bm'
+        Value = nil
+      end>
+  end
+  object UpdateRB: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'replace into RB '
+      '(CBook,'
+      ' billmonth,'
+      ' meterreader,'
+      ' uploaded,'
+      ' DateUploaded)'
+      'values'
+      '(:CBook,'
+      ' :billmonth,'
+      ' :meterreader,'
+      ' '#39'0'#39','
+      ' :DateUploaded)')
+    Left = 273
+    Top = 64
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'CBook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'meterreader'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'DateUploaded'
+        Value = nil
+      end>
+  end
+  object Upload: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Select '#39#39' as RESULT'
+      'UNION'
+      'SELECT '#39'DOWNLOAD'#39
+      'UNION'
+      'SELECT'
+      '  CONCAT(RPAD(:Name,30,'#39' '#39'),'
+      '         RPAD(:BM,4,'#39' '#39'))'
+      'UNION'
+      'Select'
+      '  '#39'END TRANS'#39
+      'UNION'
+      'select'
+      '  CONCAT(RPAD(master.Code,8,'#39' '#39'),'
+      '         RPAD(master.AccountNumber,10,'#39' '#39'),'
+      '         RPAD(master.Name,30,'#39' '#39'),'
+      '         RPAD(IFNULL(master.Address,'#39#39'),30,'#39' '#39'),'
+      '         RPAD(master.WRateCode,1,'#39' '#39'),'
+      
+        '         RPAD(IFNULL(IF(master.Multiplier=0,1,master.Multiplier)' +
+        ','#39'1'#39'),3,'#39' '#39'),'
+      '         RPAD(IFNULL(master.Serial,'#39#39'),15,'#39' '#39'),'
+      '         RPAD(master.VATDisc,8,'#39' '#39'),'
+      
+        '         RPAD(IFNULL(DATE_FORMAT(master.PresentReadingdate,'#39'%m/%' +
+        'd/%y'#39'),'#39'01/01/1900'#39'),10,'#39' '#39'),'
+      '         RPAD(IFNULL(master.PresentReadingKWH,0),8,'#39' '#39'),'
+      '         RPAD(IFNULL(master.CM,0),1,'#39' '#39'),'
+      
+        '         RPAD(IFNULL(IF(master.CM=1,master.CMMultiplier,0),0),3,' +
+        #39' '#39'),'
+      
+        '         RPAD(IFNULL(IF(master.CM=1,master.CMPresentReadingKwh,0' +
+        '),0),8,'#39' '#39'),'
+      
+        '         RPAD(IFNULL(IF(master.CM=1,master.CMPreviousReadingKwh,' +
+        '0),0),8,'#39' '#39'),'
+      
+        '         RPAD(IFNULL(IF(master.CM=1,master.CMDemand,0),0),8,'#39' '#39')' +
+        ','
+      '         RPAD(IFNULL(master.OCCode1,'#39#39'),10,'#39' '#39'),'
+      '         RPAD(IFNULL(master.OCAmount1,0),8,'#39' '#39'),'
+      '         RPAD(IFNULL(master.OCCode2,'#39#39'),10,'#39' '#39'),'
+      '         RPAD(IFNULL(master.OCAmount2,0),8,'#39' '#39'),'
+      '         RPAD(IFNULL(master.OCCode3,'#39#39'),10,'#39' '#39'),'
+      '         RPAD(IFNULL(master.OCAmount3,0),8,'#39' '#39'),'
+      '         RPAD(IFNULL(master.ConnCode,'#39#39'),1,'#39' '#39'),'
+      
+        '         RPAD(IFNULL((select Rate1 from areatax where Area = Mas' +
+        'ter.Area and BillMonth = :BM),0),6,'#39' '#39'),'
+      
+        '         RPAD(IFNULL((select Rate2 from areatax where Area = Mas' +
+        'ter.Area and BillMonth = :BM),0),6,'#39' '#39'),'
+      
+        '         RPAD(IFNULL((select Rate3 from areatax where Area = Mas' +
+        'ter.Area and BillMonth = :BM),0),6,'#39' '#39'),'
+      
+        '         RPAD(IFNULL((select Rate4 from areatax where Area = Mas' +
+        'ter.Area and BillMonth = :BM),0),6,'#39' '#39'),'
+      
+        '         RPAD(ifnull((select Ifnull(DateDiff(expirationdate,now(' +
+        ')),0) from scdisc '
+      
+        '            where master.code = scdisc.scode and dateapplied <= ' +
+        'now() '
+      '            limit 1),0),3,'#39' '#39'),'
+      '         RPAD(IFNULL(KilowattUsed,0),6,'#39' '#39')   ) as `RESULT`'
+      'from'
+      '  `master`'
+      'where'
+      '  master.ratecode is not null and'
+      '  (ifnull(master.cbook,0) = :cbook  or'
+      '   ifnull(master.cbook,0) = :cbook1 or'
+      '   ifnull(master.cbook,0) = :cbook2 or'
+      '   ifnull(master.cbook,0) = :cbook3)'
+      'Union'
+      'Select'
+      '  '#39'END MASTER'#39
+      ''
+      'UNION'
+      'select'
+      '  CONCAT(RPAD(master.Code,8,'#39' '#39'),'
+      '         RPAD(sum(IFNULL(billadjledger.debit,0))-'
+      
+        '              sum(CONVERT(TRUNCATE(IFNULL(billadjledger.credit,0' +
+        '),2),DECIMAL(10,2))),6,'#39' '#39')) as `RESULT`'
+      'from'
+      '  `master`'
+      'join billadjledger on (billadjledger.Code = master.code)'
+      'where'
+      '  master.ratecode is not null and'
+      '  (master.cbook = :cbook  or'
+      '   master.cbook = :cbook1 or'
+      '   master.cbook = :cbook2 or'
+      '   master.cbook = :cbook3)'
+      ''
+      'and'
+      '  (exists (select * from meterrate where MBillMonth = :BM and '
+      
+        '                                         MeterRate.RateCode = ma' +
+        'ster.Ratecode and'
+      
+        '                                         MeterRate.pantawidapply' +
+        ' = '#39'1'#39'))'
+      ''
+      
+        ' and (not exists (select * from pkvridx where pkvridx.code = mas' +
+        'ter.code and pkvridx.accountnumber = master.accountnumber))'
+      'group by `master`.code'
+      
+        'having sum(IFNULL(billadjledger.debit,0))-sum(CONVERT(TRUNCATE(I' +
+        'FNULL(billadjledger.credit,0),2),DECIMAL(10,2))) <> 0'
+      'union'
+      'Select'
+      '  '#39'END PANTAWID SUBSIDY'#39
+      'UNION'
+      '(select'
+      '  CONCAT(RPAD(master.Code,8,'#39' '#39'),'
+      
+        '  ifnull((select Concat(RPAD(billmonth,4,'#39' '#39'), RPAD(credit,6,'#39' '#39 +
+        ')) from billadjledger where code = `master`.code and '
+      
+        '                                                                ' +
+        '                            accountnumber = `master`.accountnumb' +
+        'er and '
+      
+        '                                                                ' +
+        '                            credit > 0 and '
+      
+        '                                                                ' +
+        '                            not exists (select * from pkvrledger' +
+        ' '
+      
+        '                                                                ' +
+        '                                                 where pkvrledge' +
+        'r.code = master.code and'
+      
+        '                                                                ' +
+        '                                                       pkvrledge' +
+        'r.accountnumber = master.accountnumber and'
+      
+        '                                                                ' +
+        '                                                       pkvrledge' +
+        'r.billnumber = billadjledger.billnumber'
+      
+        '                                                                ' +
+        '                                                       order by ' +
+        'idbilladjledger ) limit 1),'#39#39')) as `RESULT`'
+      'from'
+      '  `master`'
+      'where'
+      '  master.ratecode is not null and'
+      '  (master.cbook = :cbook  or'
+      '   master.cbook = :cbook1 or'
+      '   master.cbook = :cbook2 or'
+      '   master.cbook = :cbook3) and'
+      ''
+      '  (exists (select * from meterrate where MBillMonth = :BM and '
+      
+        '                                         MeterRate.RateCode = ma' +
+        'ster.Ratecode and'
+      
+        '                                         MeterRate.pantawidRecov' +
+        'apply = '#39'1'#39'))'
+      ''
+      
+        '  and (exists (select * from pkvridx where pkvridx.code = master' +
+        '.code and pkvridx.accountnumber = master.accountnumber))'
+      '  order by master.code)'
+      'union'
+      'Select'
+      '  '#39'END PANTAWID RECOVERY'#39
+      'UNION'
+      ''
+      'SELECT'
+      '  CONCAT(RPAD(unpaidbills.Code,8,'#39' '#39'),'
+      '        RPAD(unpaidbills.Billmonth,4,'#39' '#39'),'
+      '        RPAD(Amount,8,'#39' '#39'))'
+      'FROM UnpaidBills, Master'
+      'where '
+      '  unpaidbills.code = master.code and '
+      '  substring(unpaidbills.billmonth,1,2) <> '#39'PF'#39' and'
+      '  (master.cbook = :cbook  or'
+      '   master.cbook = :cbook1 or'
+      '   master.cbook = :cbook2 or'
+      '   master.cbook = :cbook3)'
+      'UNION'
+      'SELECT'
+      '  '#39'END UNPAID'#39
+      'UNION'
+      'select'
+      '  CONCAT(RPAD(if(WRSw='#39'0'#39',RateCode,WRateCode),1,'#39' '#39'),'
+      '        RPAD(GenSysRate,8,'#39' '#39'),'
+      '        RPAD(HostCommRate,8,'#39' '#39'),'
+      '        RPAD(FOREXRate,8,'#39' '#39'),'
+      '        RPAD(TCDemandRate,8,'#39' '#39'),'
+      '        RPAD(TCSystemRate,8,'#39' '#39'),'
+      '        RPAD(SystemLossRate,8,'#39' '#39'),'
+      '        RPAD(DCDemandRate,8,'#39' '#39'),'
+      '        RPAD(DCSystemRate,8,'#39' '#39'),'
+      '        RPAD(SCRetailCustRate,8,'#39' '#39'),'
+      '        RPAD(SCSupplySysRate,8,'#39' '#39'),'
+      '        RPAD(MCRetailCustRate,8,'#39' '#39'),'
+      '        RPAD(MCSysRate,8,'#39' '#39'),'
+      '        RPAD(UCNPCStrandedDebtsRate,1,'#39' '#39'),'
+      '        RPAD(UCNPCStrandedContCostRate,8,'#39' '#39'),'
+      '        RPAD(UCDUStrandedContCostRate,1,'#39' '#39'),'
+      '        RPAD(UCMERate,8,'#39' '#39'),'
+      '        RPAD(UCEqTaxesAndRoyaltiesRate,1,'#39' '#39'),'
+      '        RPAD(UCECRate,8,'#39' '#39'),'
+      '        RPAD(UCCrossSubsidyRemovalRate,1,'#39' '#39'),'
+      '        RPAD(ICCrossSubsidyRate,8,'#39' '#39'),'
+      '        RPAD(PARARate,8,'#39' '#39'),'
+      '        RPAD(LifelineSubsidyRate,8,'#39' '#39'),'
+      
+        '        RPAD(TransSysAncRefund,8,'#39' '#39'), /* formerly loan condonat' +
+        'ion */'
+      '        RPAD(Gram,8,'#39' '#39'),'
+      '        RPAD(TransDemAncRefund,8,'#39' '#39'), /* formerly LCCustMo */'
+      '        RPAD(PrevYearAdjPowerCost,8,'#39' '#39'),'
+      
+        '        RPAD(VATTransAncRefund,8,'#39' '#39'), /* formerly SysLossUnderR' +
+        'ecov */'
+      '        RPAD(VAT,8,'#39' '#39'),'
+      '        RPAD(VATGenCo,8,'#39' '#39'),'
+      '        RPAD(VATTransCo,8,'#39' '#39'),'
+      '        RPAD(VATSystemLoss,8,'#39' '#39'),'
+      
+        '        /* RPAD(DiffBillPerKwhr,8,'#39' '#39'),   remove differential bi' +
+        'lling'
+      '           RPAD(DiffBillPerKW,8,'#39' '#39'),'
+      '           RPAD(DiffBillPerCust,8,'#39' '#39'), */'
+      '        RPAD(MCC,8,'#39' '#39'),'
+      '        RPAD(DiffBillApply,1,'#39' '#39'),'
+      
+        '        RPAD(SCDiscApply,1,'#39' '#39'),              /* added 4 columns' +
+        ' 1. SCDiscApply for switch to apply Senior Citizen Mechanism */'
+      
+        '        RPAD(SCDiscKWHR,3,'#39' '#39'),               /*                ' +
+        ' 2. Kilowatthour Limit                                       */'
+      
+        '        RPAD(SCDiscPercent,2,'#39' '#39'),            /*                ' +
+        ' 3. Discount Percentage                                      */'
+      
+        '        RPAD(SCDiscSubs,8,'#39' '#39')) AS RESULT     /*                ' +
+        ' 4. Senior Citizen Subsidy Rate                              */ ' +
+        '         '
+      'From Meterrate'
+      'WHERE MBillMonth = :BM'
+      'UNION'
+      'Select '#39'.....'#39)
+    Left = 112
+    Top = 56
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'Name'
+        Value = 'Win'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end>
+    object UploadRESULT: TStringField
+      FieldName = 'RESULT'
+      Size = 249
+    end
+  end
+  object Serial: TComPort
+    BaudRate = br115200
+    Port = 'COM3'
+    Parity.Bits = prNone
+    StopBits = sbOneStopBit
+    DataBits = dbEight
+    Events = [evRxChar, evTxEmpty, evRxFlag, evRing, evBreak, evCTS, evDSR, evError, evRLSD, evRx80Full]
+    FlowControl.OutCTSFlow = False
+    FlowControl.OutDSRFlow = False
+    FlowControl.ControlDTR = dtrDisable
+    FlowControl.ControlRTS = rtsDisable
+    FlowControl.XonXoffOut = False
+    FlowControl.XonXoffIn = False
+    Left = 270
+    Top = 104
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = Timer1Timer
+    Left = 190
+    Top = 104
+  end
+  object Upload2: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Set @type='#39#39';'
+      'Set @prevKwhUse='#39#39';'
+      'set @prevbillmonth='#39#39';'
+      'Set @num=0;'
+      'set @sumKwh=0.0;'
+      'set @history_cnt:=1;'
+      ''
+      'SELECT * FROM ('
+      'SELECT '#39'DOWNLOAD'#39
+      'UNION'
+      'SELECT'
+      '  CONCAT(:Name,'#39'~'#39
+      '         :BM,'#39'~'#39',:telno)'
+      'UNION'
+      'Select'
+      '  '#39'END TRANS'#39
+      'UNION'
+      'select'
+      '  CONCAT(master.Code,'#39'~'#39',          '
+      '         master.AccountNumber,'#39'~'#39','
+      '         RPAD(master.Name,30,'#39' '#39'),'#39'~'#39','
+      '         RPAD(master.Address,30,'#39' '#39'),'#39'~'#39','
+      '         master.WRateCode,'#39'~'#39',        '
+      
+        '         IFNULL(IF(master.Multiplier=0,1,master.Multiplier),'#39'1'#39')' +
+        ','#39'~'#39','
+      '         IFNULL(master.Serial,'#39'0'#39'),'#39'~'#39','
+      '         IFNULL(master.VATDisc,0),'#39'~'#39','
+      
+        '         IFNULL(DATE_FORMAT(master.PresentReadingdate,'#39'%m/%d/%y'#39 +
+        '),'#39'01/01/1900'#39'),'#39'~'#39','
+      '         IFNULL(master.PresentReadingKWH,0),'#39'~'#39','
+      '         IFNULL(master.CM,0),'#39'~'#39','
+      '         IFNULL(IF(master.CM=1,master.CMMultiplier,0),0),'#39'~'#39','
+      
+        '         IFNULL(IF(master.CM=1,master.CMPresentReadingKwh,0),0),' +
+        #39'~'#39','
+      
+        '         IFNULL(IF(master.CM=1,master.CMPreviousReadingKwh,0),0)' +
+        ','#39'~'#39','
+      '         IFNULL(IF(master.CM=1,master.CMDemand,0),0),'#39'~'#39','
+      '         master.isgram,'#39'~'#39','
+      '         IFNULL(master.OCCode1,'#39'n'#39'),'#39'~'#39','
+      '         IFNULL(master.OCAmount1,0),'#39'~'#39','
+      '         IFNULL(master.OCCode2,'#39'n'#39'),'#39'~'#39','
+      '         IFNULL(master.OCAmount2,0),'#39'~'#39','
+      '         IFNULL(master.OCCode3,'#39'n'#39'),'#39'~'#39','
+      '         IFNULL(master.OCAmount3,0),'#39'~'#39','
+      '         IFNULL(master.ConnCode,'#39#39'),'#39'~'#39','
+      '        '
+      ''
+      '       ifnull((Select r.rateamnt from areatax a'
+      
+        '           left join raterptax r on (r.billmonth = a.billmonth) ' +
+        'and'
+      '                                  (r.rateorder= a.rateorder)'
+      
+        '           Where a.billmonth = :BM and a.area = master.area )   ' +
+        '              '
+      '          ,0) ,'#39'~'#39','
+      ''
+      '       /*  IFNULL((Select r.rateamnt from areatax a'
+      
+        '         left join raterptax r on (r.billmonth = a.billmonth) an' +
+        'd'
+      '                                  (r.rateorder = a.rateorder)'
+      '         Where (a.billmonth = :BM) and '
+      '         (a.area = :Area or'
+      '          a.area = :Area1 or '
+      '          a.area = :Area2 or'
+      '          a.area = :Area3) ),0),'#39'~'#39','
+      '        */'
+      
+        '         /* IFNULL(BillHistory.KilowattHour,0),'#39'~'#39',Remove Differ' +
+        'ential Billing  */'
+      '         IFNULL(KilowattUsed,6),'#39'~'#39',  '
+      '         IFNULL((SELECT SUM(IFNULL(debit,0))-'
+      
+        '                 SUM(CONVERT(TRUNCATE(IFNULL(credit,0),2),DECIMA' +
+        'L(10,2)))        '
+      '          FROM billadjledger '
+      '          WHERE billadjledger.code = `master`.code and '
+      '                billadjledger.area = `master`.area and'
+      '                billadjledger.book = `master`.book and'
+      
+        '                billadjledger.accountnumber = `master`.accountnu' +
+        'mber and'
+      ' '
+      
+        '         (exists (select * from meterrate where MBillMonth = :BM' +
+        ' and '
+      
+        '                                                MeterRate.RateCo' +
+        'de = master.Ratecode and'
+      
+        '                                                MeterRate.pantaw' +
+        'idapply = '#39'1'#39')) and'
+      ''
+      
+        '                not exists (select * from pkvridx where pkvridx.' +
+        'code = master.code and pkvridx.accountnumber = master.accountnum' +
+        'ber)),'#39'0'#39'),'#39'~'#39','
+      
+        '         ifnull((select Concat(billmonth,'#39'~'#39',credit) from billad' +
+        'jledger '
+      '                      where code = `master`.code and '
+      '                            area = `master`.area and'
+      '                            book = `master`.book and'
+      
+        '                            accountnumber = `master`.accountnumb' +
+        'er and'
+      '                            credit > 0 and '
+      ''
+      
+        '         (exists (select * from meterrate where MBillMonth = :BM' +
+        ' and '
+      
+        '                                                MeterRate.RateCo' +
+        'de = master.Ratecode and'
+      
+        '                                                MeterRate.pantaw' +
+        'idRecovapply = '#39'1'#39')) and'
+      ''
+      
+        '                            not exists (select * from pkvrledger' +
+        ' where pkvrledger.code = master.code and pkvrledger.billnumber =' +
+        ' billadjledger.billnumber) and '
+      
+        '                            exists (select * from pkvridx where ' +
+        'pkvridx.code = master.code and pkvridx.accountnumber = master.ac' +
+        'countnumber)'
+      
+        '                      order by idbilladjledger limit 1),'#39'0~0'#39'),'#39 +
+        '~'#39',         '
+      
+        '         RPad(Ifnull(DateDiff(Ifnull((select expirationdate from' +
+        ' scdisc '
+      
+        '                                                    where master' +
+        '.code = scdisc.scode and '
+      
+        '                                                    DateApplied ' +
+        '<= ifnull(master.PresentReadingdate,now()) '
+      '                                                    limit 1),0),'
+      
+        '              ifnull( master.PresentReadingdate,now())),0),3,'#39' '#39 +
+        ') '
+      '         &isfixDemand'
+      '         &residential  '
+      '         &Android     '
+      '         ,'#39'~'#39',master.ratecode'
+      '         '
+      ''
+      
+        '        -- RPAD(IFNULL((select Rate1 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39'),'#39'~'#39','
+      
+        '        -- RPAD(IFNULL((select Rate2 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39'),'#39'~'#39','
+      
+        '        -- RPAD(IFNULL((select Rate3 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39'),'#39'~'#39','
+      
+        '        -- RPAD(IFNULL((select Rate4 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39')     '
+      
+        '        ) as `RESULT`    /* this would yield the days until sc d' +
+        'iscount has expired */   '
+      'from'
+      '  `master`'
+      'where'
+      '  master.ratecode is not null and'
+      '  (ifnull(master.cbook,0) = :cbook  or'
+      '   ifnull(master.cbook,0) = :cbook1 or'
+      '   ifnull(master.cbook,0) = :cbook2 or'
+      '   ifnull(master.cbook,0) = :cbook3) and'
+      '  master.ConnCode <> 5 and'
+      '  master.cbook is not null and '
+      '  master.cbook <> '#39#39
+      '  having result is not null'
+      'Union'
+      'Select'
+      '  '#39'END MASTER'#39
+      'Union'
+      'SELECT'
+      '  CONCAT(unpaidbills.Code,'#39'~'#39','
+      '         unpaidbills.Billmonth,'#39'~'#39','
+      '         Amount)'
+      'FROM UnpaidBills, master'
+      'where unpaidbills.code = master.code and '
+      '      substring(unpaidbills.billmonth,1,2) <> '#39'PF'#39' and'
+      '  (master.cbook = :cbook  or'
+      '   master.cbook = :cbook1 or'
+      '   master.cbook = :cbook2 or'
+      '   master.cbook = :cbook3) and'
+      '   master.ConnCode <> 5 and'
+      '   master.cbook is not null and '
+      '   master.cbook <> '#39#39
+      'UNION'
+      'SELECT'
+      '  '#39'END UNPAID'#39
+      'UNION'
+      'select'
+      '  CONCAT(if(WRSw='#39'0'#39',RateCode,WRateCode),'#39'~'#39','
+      '         GenSysRate,'#39'~'#39','
+      '         HostCommRate,'#39'~'#39','
+      '         FOREXRate,'#39'~'#39','
+      '         TCDemandRate,'#39'~'#39','
+      '         TCSystemRate,'#39'~'#39','
+      '         SystemLossRate,'#39'~'#39','
+      '         DCDemandRate,'#39'~'#39','
+      '         DCSystemRate,'#39'~'#39','
+      '         SCRetailCustRate,'#39'~'#39','
+      '         SCSupplySysRate,'#39'~'#39','
+      '         MCRetailCustRate,'#39'~'#39','
+      '         MCSysRate,'#39'~'#39','
+      '         UCNPCStrandedDebtsRate,'#39'~'#39','
+      '         UCNPCStrandedContCostRate,'#39'~'#39','
+      '         UCDUStrandedContCostRate,'#39'~'#39','
+      '         UCMERate,'#39'~'#39','
+      '         UCEqTaxesAndRoyaltiesRate,'#39'~'#39','
+      '         UCECRate,'#39'~'#39','
+      '         UCCrossSubsidyRemovalRate,'#39'~'#39','
+      '         ICCrossSubsidyRate,'#39'~'#39','
+      '         PARARate,'#39'~'#39','
+      '         LifelineSubsidyRate,'#39'~'#39','
+      '         TransSysAncRefund,'#39'~'#39', /* formerly loan condonation */'
+      '         Gram,'#39'~'#39','
+      '         TransDemAncRefund,'#39'~'#39', /* formerly LCCustMo */'
+      '         PrevYearAdjPowerCost,'#39'~'#39','
+      '         VATTransAncRefund,'#39'~'#39', /* formerly SysLossUnderRecov */'
+      '         VAT,'#39'~'#39','
+      '         VATGenCo,'#39'~'#39','
+      '         VATTransCo,'#39'~'#39','
+      '         VATSystemLoss,'#39'~'#39','
+      
+        '         /* DiffBillPerKwhr,'#39'~'#39',     remove differential billing' +
+        ' rates     '
+      '            DiffBillPerKW,'#39'~'#39','
+      '            DiffBillPerCust,'#39'~'#39', */ '
+      '        MCC,'#39'~'#39','
+      ''
+      '        DiffBillApply,'#39'~'#39',        '
+      ''
+      '        SCDiscApply,'#39'~'#39','
+      '        SCDiscKWHR,'#39'~'#39','
+      '        SCDiscPercent,'#39'~'#39','
+      '        SCDiscSubs,'#39'~'#39',  '
+      '        IFNULL(OtherGenRateAdj,0),'#39'~'#39','
+      '        IFNULL(OtherTransCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherTransDemandCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherSystemLossCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherLifelineRateCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherSeniorCitizenRateAdj,0),'#39'~'#39','
+      '        Fitallrate,'#39'~'#39','
+      '        PARec  ,'#39'~'#39','
+      '        ifnull(finalVat,0),'#39'~'#39',  '
+      '        ifnull(CreditableTaxWithheld,0),'#39'~'#39','
+      '        ifnull(rentalTaxWithheld,0)'
+      '       ) AS RESULT'
+      '        '
+      'From meterrate'
+      'WHERE MBillMonth = :BM'
+      ''
+      'UNION'
+      '-- ================================================='
+      '-- Used to identify average reading================='
+      '-- ================================================='
+      'select '#39'END PREVIOUS READING'#39
+      'UNION'
+      ''
+      'select'
+      'concat(a.code,'#39'~'#39','
+      '       a.AccountNumber,'#39'~'#39','
+      '       a.Name,'#39'~'#39','
+      '       0.0,'#39'~'#39','
+      '       0.0,'#39'~'#39','
+      '       round(a.totalKwh/3,1),'#39'~'#39','
+      '       :BM,'#39'~'#39',      '
+      '       a.totalbill) as result'
+      'from'
+      '(select'
+      '  m.code,'
+      '  m.accountnumber,'
+      '  m.name,'
+      '  b.billmonth,'
+      '  b.KilowattHour,'
+      '  m.cbook,'
+      
+        '  @prevKwhUse  := if(@type = m.accountnumber, concat(@prevKwhUse' +
+        ','#39':'#39',CONVERT(b.KilowattHour,char CHARACTER SET utf8)),CONVERT( b' +
+        '.KilowattHour,char CHARACTER SET utf8)) as prevKwhused,'
+      
+        '  @prevbillmonth  := if(@type = m.accountnumber, concat(@prevbil' +
+        'lmonth,'#39':'#39',b.billmonth ), b.billmonth) as billmonthprev,'
+      '  @num := if(@type = m.accountnumber, @num+1, 1) as row_num,'
+      
+        '  @sumKwh := if(@type = m.accountnumber, round(@sumKwh+b.Kilowat' +
+        'tHour,1), round(b.KilowattHour,1)) as totalKwh,'
+      '  @type := m.accountnumber as AccntTmp,'
+      '  b.totalbill'
+      ''
+      ' from master m'
+      '      left join billhistory b on b.code=m.code'
+      '      where m.ratecode is not null and       '
+      '        m.ConnCode <> 5 and'
+      '        m.cbook in (:cbook,:cbook1,:cbook2,:cbook3) and'
+      '        m.cbook is not null and '
+      '        m.cbook <> '#39#39' and'
+      
+        '        b.billmonth in (:billmonth1,:billmonth2,:billmonth3) ord' +
+        'er by m.cbook,b.entry asc) a'
+      'where a.row_num=3'
+      'UNION'
+      'Select '#39'.....'#39') r')
+    Left = 192
+    Top = 56
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'Name'
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'telno'
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth3'
+        Value = nil
+      end>
+    MacroData = <
+      item
+        Name = 'isfixDemand'
+        Value = ' ,'#39'~'#39',  ifnull(master.isFixDemand,0)'
+      end
+      item
+        Name = 'residential'
+        Value = ' ,'#39'~0.0'#39
+        Active = False
+      end
+      item
+        Name = 'Android'
+        Value = 
+          ','#39'~'#39',RPad(ifnull(master.PoleNumber,'#39#39'),20,'#39' '#39')'#13#10','#39'~'#39',ifnull(mast' +
+          'er.XFormerQty,0)     '#13#10','#39'~'#39',RPad(ifnull(master.XFormerKVA,'#39#39'),20' +
+          ','#39' '#39') '
+      end>
+    object Upload2DOWNLOAD: TStringField
+      FieldName = 'DOWNLOAD'
+      Size = 496
+    end
+  end
+  object CipherBook: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'select cbook,'
+      '       count(accountnumber) tcons'
+      'from master'
+      'group by cbook'
+      'order by book')
+    Left = 30
+    Top = 156
+    object CipherBookcbook: TStringField
+      FieldName = 'cbook'
+      Size = 6
+    end
+    object CipherBooktcons: TLargeintField
+      FieldName = 'tcons'
+    end
+  end
+  object CipherBookMaster: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'select area, '
+      '       book,'
+      '       accountnumber,'
+      '       name,'
+      '       address'
+      'from master'
+      'where cbook = :cbook'
+      'order by accountnumber')
+    Left = 30
+    Top = 204
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end>
+    object CipherBookMasterarea: TStringField
+      FieldName = 'area'
+      FixedChar = True
+      Size = 3
+    end
+    object CipherBookMasterbook: TStringField
+      FieldName = 'book'
+      FixedChar = True
+      Size = 3
+    end
+    object CipherBookMasteraccountnumber: TStringField
+      FieldName = 'accountnumber'
+      Size = 10
+    end
+    object CipherBookMastername: TStringField
+      FieldName = 'name'
+      Size = 50
+    end
+    object CipherBookMasteraddress: TStringField
+      FieldName = 'address'
+      Size = 50
+    end
+  end
+  object dsCipherBook: TMyDataSource
+    DataSet = CipherBook
+    OnDataChange = dsCipherBookDataChange
+    Left = 110
+    Top = 156
+  end
+  object dsCipherBookMaster: TMyDataSource
+    DataSet = CipherBookMaster
+    Left = 110
+    Top = 204
+  end
+  object UpdateCipherBook: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'update master set cbook = :cbook '
+      'where'
+      
+        ' ((master.area = :Area1 and master.book = :Book1 and master.Acco' +
+        'untNumber between :from1 and :to1) or '
+      
+        '  (master.area = :Area2 and master.book = :Book2 and master.Acco' +
+        'untNumber between :from2 and :to2) or'
+      
+        '  (master.area = :Area3 and master.book = :Book3 and master.Acco' +
+        'untNumber between :from3 and :to3) or'
+      
+        '  (master.area = :Area4 and master.book = :Book4 and master.Acco' +
+        'untNumber between :from4 and :to4))')
+    Left = 191
+    Top = 156
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Book1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'from1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'to1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Book2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'from2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'to2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Book3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'from3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'to3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area4'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Book4'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'from4'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'to4'
+        Value = nil
+      end>
+  end
+  object CipherBookRange: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'select area, '
+      '       book, '
+      '       cbook,'
+      
+        '       (select address from vicinity where vicinity.area = maste' +
+        'r.area and vicinity.book = master.book limit 1) address,'
+      '       min(AccountNumber) startacct,'
+      '       max(AccountNumber) EndAcct,'
+      '       count(accountnumber) tcons'
+      'from master '
+      'where cbook = :cbook'
+      'group by area, book')
+    Left = 264
+    Top = 148
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'cbook'
+        Value = '050201'
+      end>
+    object CipherBookRangearea: TStringField
+      FieldName = 'area'
+      FixedChar = True
+      Size = 3
+    end
+    object CipherBookRangebook: TStringField
+      FieldName = 'book'
+      FixedChar = True
+      Size = 3
+    end
+    object CipherBookRangeaddress: TStringField
+      FieldName = 'address'
+      Size = 50
+    end
+    object CipherBookRangestartacct: TStringField
+      FieldName = 'startacct'
+      Size = 10
+    end
+    object CipherBookRangeEndAcct: TStringField
+      FieldName = 'EndAcct'
+      Size = 10
+    end
+    object CipherBookRangetcons: TLargeintField
+      FieldName = 'tcons'
+    end
+    object CipherBookRangecbook: TStringField
+      FieldName = 'cbook'
+      Size = 6
+    end
+  end
+  object dsCipherBookRange: TMyDataSource
+    DataSet = CipherBookRange
+    Left = 272
+    Top = 204
+  end
+  object OCBilling: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'select d.occode,'
+      '       d.amount,'
+      '       m.octype,'
+      '       d.idocdetail'
+      'from ocdetail d'
+      'left join ocmaster m on (m.idocmaster = d.idocmaster)'
+      'where d.code = :code and '
+      '      (m.octype = '#39'M'#39' or'
+      '       (M.octype <> '#39'M'#39' and d.status = '#39'1'#39' and '
+      
+        '        (d.months > (select count(code) from ocledger where d.id' +
+        'ocdetail = ocledger.idocdetail) ) ) )'
+      'order by d.idocdetail'
+      'limit 3')
+    Left = 191
+    Top = 204
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'code'
+        Value = '40535'
+      end>
+    object OCBillingoccode: TStringField
+      FieldName = 'occode'
+      Size = 10
+    end
+    object OCBillingamount: TFloatField
+      FieldName = 'amount'
+    end
+    object OCBillingoctype: TStringField
+      FieldName = 'octype'
+      Size = 1
+    end
+    object OCBillingidocdetail: TLongWordField
+      FieldName = 'idocdetail'
+    end
+  end
+  object InitOC: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      
+        'update master set occode1 = '#39#39', ocmo1 = 0, ocamount1 = 0, octota' +
+        'l1 = 0,'
+      
+        '                  occode2 = '#39#39', ocmo2 = 0, ocamount2 = 0, octota' +
+        'l2 = 0,'
+      
+        '                  occode3 = '#39#39', ocmo3 = 0, ocamount3 = 0, octota' +
+        'l3 = 0'
+      'where cbook = :cbook')
+    Left = 32
+    Top = 253
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end>
+  end
+  object MasterOC: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'select * from master '
+      'where cbook = :cbook')
+    Left = 110
+    Top = 253
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end>
+    object MasterOCCode: TIntegerField
+      FieldName = 'Code'
+    end
+    object MasterOCArea: TStringField
+      FieldName = 'Area'
+      FixedChar = True
+      Size = 3
+    end
+    object MasterOCBook: TStringField
+      FieldName = 'Book'
+      FixedChar = True
+      Size = 3
+    end
+    object MasterOCSequence: TStringField
+      FieldName = 'Sequence'
+      Size = 4
+    end
+    object MasterOCAccountNumber: TStringField
+      FieldName = 'AccountNumber'
+      Size = 10
+    end
+    object MasterOCName: TStringField
+      FieldName = 'Name'
+      Size = 50
+    end
+    object MasterOCAddress: TStringField
+      FieldName = 'Address'
+      Size = 50
+    end
+    object MasterOCRateCode: TStringField
+      FieldName = 'RateCode'
+      FixedChar = True
+      Size = 1
+    end
+    object MasterOCConsCode: TStringField
+      FieldName = 'ConsCode'
+      FixedChar = True
+      Size = 1
+    end
+    object MasterOCConnCode: TStringField
+      FieldName = 'ConnCode'
+      FixedChar = True
+      Size = 1
+    end
+    object MasterOCTransformer: TStringField
+      FieldName = 'Transformer'
+      Size = 80
+    end
+    object MasterOCMeterBrand: TStringField
+      FieldName = 'MeterBrand'
+    end
+    object MasterOCSerial: TStringField
+      FieldName = 'Serial'
+    end
+    object MasterOCMultiplier: TFloatField
+      FieldName = 'Multiplier'
+    end
+    object MasterOCNewConnectionDate: TDateField
+      FieldName = 'NewConnectionDate'
+    end
+    object MasterOCReconnectionDate: TDateField
+      FieldName = 'ReconnectionDate'
+    end
+    object MasterOCDisconnectionDate: TDateField
+      FieldName = 'DisconnectionDate'
+    end
+    object MasterOCPreviousReadingDate: TDateField
+      FieldName = 'PreviousReadingDate'
+    end
+    object MasterOCPresentReadingDate: TDateField
+      FieldName = 'PresentReadingDate'
+    end
+    object MasterOCPreviousReadingKWH: TFloatField
+      FieldName = 'PreviousReadingKWH'
+    end
+    object MasterOCPresentReadingKWH: TFloatField
+      FieldName = 'PresentReadingKWH'
+    end
+    object MasterOCDiff: TFloatField
+      FieldName = 'Diff'
+    end
+    object MasterOCDemand: TFloatField
+      FieldName = 'Demand'
+    end
+    object MasterOCFlatRateWattage: TFloatField
+      FieldName = 'FlatRateWattage'
+    end
+    object MasterOCFeedBackCode: TStringField
+      FieldName = 'FeedBackCode'
+      FixedChar = True
+      Size = 2
+    end
+    object MasterOCCM: TStringField
+      FieldName = 'CM'
+      FixedChar = True
+      Size = 1
+    end
+    object MasterOCCMMultiplier: TFloatField
+      FieldName = 'CMMultiplier'
+    end
+    object MasterOCCMPreviousReadingKWH: TFloatField
+      FieldName = 'CMPreviousReadingKWH'
+    end
+    object MasterOCCMPresentReadingKWH: TFloatField
+      FieldName = 'CMPresentReadingKWH'
+    end
+    object MasterOCCMKilowattHour: TFloatField
+      FieldName = 'CMKilowattHour'
+    end
+    object MasterOCCMDemand: TFloatField
+      FieldName = 'CMDemand'
+    end
+    object MasterOCKilowattHour: TFloatField
+      FieldName = 'KilowattHour'
+    end
+    object MasterOCKilowattUsed: TFloatField
+      FieldName = 'KilowattUsed'
+    end
+    object MasterOCGenSysCharge: TFloatField
+      FieldName = 'GenSysCharge'
+    end
+    object MasterOCHostCommCharge: TFloatField
+      FieldName = 'HostCommCharge'
+    end
+    object MasterOCForexCharge: TFloatField
+      FieldName = 'ForexCharge'
+    end
+    object MasterOCTCDemandCharge: TFloatField
+      FieldName = 'TCDemandCharge'
+    end
+    object MasterOCTCTransSystemCharge: TFloatField
+      FieldName = 'TCTransSystemCharge'
+    end
+    object MasterOCSystemLossCharge: TFloatField
+      FieldName = 'SystemLossCharge'
+    end
+    object MasterOCDCDemandCharge: TFloatField
+      FieldName = 'DCDemandCharge'
+    end
+    object MasterOCDCDistributionCharge: TFloatField
+      FieldName = 'DCDistributionCharge'
+    end
+    object MasterOCSCRetCustCharge: TFloatField
+      FieldName = 'SCRetCustCharge'
+    end
+    object MasterOCSCSupplySysCharge: TFloatField
+      FieldName = 'SCSupplySysCharge'
+    end
+    object MasterOCMCRetailCustCharge: TFloatField
+      FieldName = 'MCRetailCustCharge'
+    end
+    object MasterOCMCSystemCharge: TFloatField
+      FieldName = 'MCSystemCharge'
+    end
+    object MasterOCUCNPCStrandedDebts: TFloatField
+      FieldName = 'UCNPCStrandedDebts'
+    end
+    object MasterOCUCNPCStrandedContCost: TFloatField
+      FieldName = 'UCNPCStrandedContCost'
+    end
+    object MasterOCUCDUStrandedContCost: TFloatField
+      FieldName = 'UCDUStrandedContCost'
+    end
+    object MasterOCUCME: TFloatField
+      FieldName = 'UCME'
+    end
+    object MasterOCUCEqTaxesAndRoyalties: TFloatField
+      FieldName = 'UCEqTaxesAndRoyalties'
+    end
+    object MasterOCUCEC: TFloatField
+      FieldName = 'UCEC'
+    end
+    object MasterOCUCCrossSubRemoval: TFloatField
+      FieldName = 'UCCrossSubRemoval'
+    end
+    object MasterOCICCrossSubsidyCharge: TFloatField
+      FieldName = 'ICCrossSubsidyCharge'
+    end
+    object MasterOCPowerActRateRed: TFloatField
+      FieldName = 'PowerActRateRed'
+    end
+    object MasterOCLifelineDiscSubs: TFloatField
+      FieldName = 'LifelineDiscSubs'
+    end
+    object MasterOCLoanCondo: TFloatField
+      FieldName = 'LoanCondo'
+    end
+    object MasterOCTransformerRental: TFloatField
+      FieldName = 'TransformerRental'
+    end
+    object MasterOCOCCode1: TStringField
+      FieldName = 'OCCode1'
+      Size = 10
+    end
+    object MasterOCOCAmount1: TFloatField
+      FieldName = 'OCAmount1'
+    end
+    object MasterOCOCMo1: TFloatField
+      FieldName = 'OCMo1'
+    end
+    object MasterOCOCTotal1: TFloatField
+      FieldName = 'OCTotal1'
+    end
+    object MasterOCOCCode2: TStringField
+      FieldName = 'OCCode2'
+      Size = 10
+    end
+    object MasterOCOCAmount2: TFloatField
+      FieldName = 'OCAmount2'
+    end
+    object MasterOCOCMo2: TFloatField
+      FieldName = 'OCMo2'
+    end
+    object MasterOCOCTotal2: TFloatField
+      FieldName = 'OCTotal2'
+    end
+    object MasterOCOCCode3: TStringField
+      FieldName = 'OCCode3'
+      Size = 10
+    end
+    object MasterOCOCAmount3: TFloatField
+      FieldName = 'OCAmount3'
+    end
+    object MasterOCOCMo3: TFloatField
+      FieldName = 'OCMo3'
+    end
+    object MasterOCOCTotal3: TFloatField
+      FieldName = 'OCTotal3'
+    end
+    object MasterOCTotalBill: TFloatField
+      FieldName = 'TotalBill'
+    end
+    object MasterOCBillNumber: TStringField
+      FieldName = 'BillNumber'
+      Size = 15
+    end
+    object MasterOCOEBRNumber: TStringField
+      FieldName = 'OEBRNumber'
+      Size = 10
+    end
+    object MasterOCBillMonth: TStringField
+      FieldName = 'BillMonth'
+      Size = 4
+    end
+    object MasterOCDeleteRemarks: TStringField
+      FieldName = 'DeleteRemarks'
+      Size = 30
+    end
+    object MasterOCPoleNumber: TStringField
+      FieldName = 'PoleNumber'
+      Size = 80
+    end
+    object MasterOCFeederNumber: TStringField
+      FieldName = 'FeederNumber'
+    end
+    object MasterOCXFormerQty: TIntegerField
+      FieldName = 'XFormerQty'
+    end
+    object MasterOCXFormerKVA: TStringField
+      FieldName = 'XFormerKVA'
+    end
+    object MasterOCAge30: TFloatField
+      FieldName = 'Age30'
+    end
+    object MasterOCAge60: TFloatField
+      FieldName = 'Age60'
+    end
+    object MasterOCAge90: TFloatField
+      FieldName = 'Age90'
+    end
+    object MasterOCAge120: TFloatField
+      FieldName = 'Age120'
+    end
+    object MasterOCAgeOver120: TFloatField
+      FieldName = 'AgeOver120'
+    end
+    object MasterOCAgeTotal: TFloatField
+      FieldName = 'AgeTotal'
+    end
+    object MasterOCTotalPayments: TFloatField
+      FieldName = 'TotalPayments'
+    end
+    object MasterOCARBalance: TFloatField
+      FieldName = 'ARBalance'
+    end
+    object MasterOCLCCustMo: TFloatField
+      FieldName = 'LCCustMo'
+    end
+    object MasterOCPrevYearAdjPowerCost: TFloatField
+      FieldName = 'PrevYearAdjPowerCost'
+    end
+    object MasterOCSysLossUnderRecov: TFloatField
+      FieldName = 'SysLossUnderRecov'
+    end
+    object MasterOCVATDisc: TFloatField
+      FieldName = 'VATDisc'
+    end
+    object MasterOCVATDiscAmt: TFloatField
+      FieldName = 'VATDiscAmt'
+    end
+    object MasterOCVATDistDiscAmt: TFloatField
+      FieldName = 'VATDistDiscAmt'
+    end
+    object MasterOCVATGenCoDiscAmt: TFloatField
+      FieldName = 'VATGenCoDiscAmt'
+    end
+    object MasterOCVATTransCoDiscAmt: TFloatField
+      FieldName = 'VATTransCoDiscAmt'
+    end
+    object MasterOCVATSystemLossDiscAmt: TFloatField
+      FieldName = 'VATSystemLossDiscAmt'
+    end
+    object MasterOCVATDist: TFloatField
+      FieldName = 'VATDist'
+    end
+    object MasterOCVATGenCO: TFloatField
+      FieldName = 'VATGenCO'
+    end
+    object MasterOCVATTransCO: TFloatField
+      FieldName = 'VATTransCO'
+    end
+    object MasterOCVATSystemLossGenCO: TFloatField
+      FieldName = 'VATSystemLossGenCO'
+    end
+    object MasterOCVATSystemLossTransCO: TFloatField
+      FieldName = 'VATSystemLossTransCO'
+    end
+    object MasterOCVAT: TFloatField
+      FieldName = 'VAT'
+    end
+    object MasterOCDiffBillPerKwhr: TFloatField
+      FieldName = 'DiffBillPerKwhr'
+    end
+    object MasterOCDiffBillPerKW: TFloatField
+      FieldName = 'DiffBillPerKW'
+    end
+    object MasterOCDiffBillPerCust: TFloatField
+      FieldName = 'DiffBillPerCust'
+    end
+    object MasterOCMCC: TFloatField
+      FieldName = 'MCC'
+    end
+    object MasterOCPKVROebrNumber: TStringField
+      FieldName = 'PKVROebrNumber'
+    end
+    object MasterOCPKVRBillMonth: TStringField
+      FieldName = 'PKVRBillMonth'
+      Size = 4
+    end
+    object MasterOCPKVRAmount: TFloatField
+      FieldName = 'PKVRAmount'
+    end
+    object MasterOCSCDisc: TFloatField
+      FieldName = 'SCDisc'
+    end
+    object MasterOCWRateCode: TStringField
+      FieldName = 'WRateCode'
+      Size = 1
+    end
+    object MasterOCSCAmt4Disc: TFloatField
+      FieldName = 'SCAmt4Disc'
+    end
+    object MasterOCDWLEN1: TFloatField
+      FieldName = 'DWLEN1'
+    end
+    object MasterOCDWLEN2: TFloatField
+      FieldName = 'DWLEN2'
+    end
+    object MasterOCCBook: TStringField
+      FieldName = 'CBook'
+      Size = 6
+    end
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = 'txt'
+    FileName = 'D:\applications\camelco\source code camelco MySQL\Upload.Txt'
+    Filter = 'Text File|*.Txt|Any File|*.*'
+    Left = 192
+    Top = 250
+  end
+  object MasterCBemptQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Select * from master where cbook = 0 order by accountnumber asc')
+    Left = 32
+    Top = 320
+    object MasterCBemptQCode: TIntegerField
+      FieldName = 'Code'
+    end
+    object MasterCBemptQArea: TStringField
+      FieldName = 'Area'
+      FixedChar = True
+      Size = 3
+    end
+    object MasterCBemptQBook: TStringField
+      FieldName = 'Book'
+      FixedChar = True
+      Size = 3
+    end
+    object MasterCBemptQSequence: TStringField
+      FieldName = 'Sequence'
+      Size = 4
+    end
+    object MasterCBemptQAccountNumber: TStringField
+      FieldName = 'AccountNumber'
+      Size = 10
+    end
+    object MasterCBemptQName: TStringField
+      FieldName = 'Name'
+      Size = 50
+    end
+    object MasterCBemptQAddress: TStringField
+      FieldName = 'Address'
+      Size = 50
+    end
+    object MasterCBemptQRateCode: TStringField
+      FieldName = 'RateCode'
+      FixedChar = True
+      Size = 1
+    end
+    object MasterCBemptQConsCode: TStringField
+      FieldName = 'ConsCode'
+      FixedChar = True
+      Size = 1
+    end
+    object MasterCBemptQConnCode: TStringField
+      FieldName = 'ConnCode'
+      FixedChar = True
+      Size = 1
+    end
+    object MasterCBemptQTransformer: TStringField
+      FieldName = 'Transformer'
+      Size = 80
+    end
+    object MasterCBemptQMeterBrand: TStringField
+      FieldName = 'MeterBrand'
+    end
+    object MasterCBemptQSerial: TStringField
+      FieldName = 'Serial'
+    end
+    object MasterCBemptQMultiplier: TFloatField
+      FieldName = 'Multiplier'
+    end
+    object MasterCBemptQNewConnectionDate: TDateField
+      FieldName = 'NewConnectionDate'
+    end
+    object MasterCBemptQReconnectionDate: TDateField
+      FieldName = 'ReconnectionDate'
+    end
+    object MasterCBemptQDisconnectionDate: TDateField
+      FieldName = 'DisconnectionDate'
+    end
+    object MasterCBemptQPreviousReadingDate: TDateField
+      FieldName = 'PreviousReadingDate'
+    end
+    object MasterCBemptQPresentReadingDate: TDateField
+      FieldName = 'PresentReadingDate'
+    end
+    object MasterCBemptQPreviousReadingKWH: TFloatField
+      FieldName = 'PreviousReadingKWH'
+    end
+    object MasterCBemptQPresentReadingKWH: TFloatField
+      FieldName = 'PresentReadingKWH'
+    end
+    object MasterCBemptQDiff: TFloatField
+      FieldName = 'Diff'
+    end
+    object MasterCBemptQDemand: TFloatField
+      FieldName = 'Demand'
+    end
+    object MasterCBemptQFlatRateWattage: TFloatField
+      FieldName = 'FlatRateWattage'
+    end
+    object MasterCBemptQFeedBackCode: TStringField
+      FieldName = 'FeedBackCode'
+      FixedChar = True
+      Size = 2
+    end
+    object MasterCBemptQCM: TStringField
+      FieldName = 'CM'
+      FixedChar = True
+      Size = 1
+    end
+    object MasterCBemptQCMMultiplier: TFloatField
+      FieldName = 'CMMultiplier'
+    end
+    object MasterCBemptQCMPreviousReadingKWH: TFloatField
+      FieldName = 'CMPreviousReadingKWH'
+    end
+    object MasterCBemptQCMPresentReadingKWH: TFloatField
+      FieldName = 'CMPresentReadingKWH'
+    end
+    object MasterCBemptQCMKilowattHour: TFloatField
+      FieldName = 'CMKilowattHour'
+    end
+    object MasterCBemptQCMDemand: TFloatField
+      FieldName = 'CMDemand'
+    end
+    object MasterCBemptQKilowattHour: TFloatField
+      FieldName = 'KilowattHour'
+    end
+    object MasterCBemptQKilowattUsed: TFloatField
+      FieldName = 'KilowattUsed'
+    end
+    object MasterCBemptQGenSysCharge: TFloatField
+      FieldName = 'GenSysCharge'
+    end
+    object MasterCBemptQHostCommCharge: TFloatField
+      FieldName = 'HostCommCharge'
+    end
+    object MasterCBemptQForexCharge: TFloatField
+      FieldName = 'ForexCharge'
+    end
+    object MasterCBemptQTCDemandCharge: TFloatField
+      FieldName = 'TCDemandCharge'
+    end
+    object MasterCBemptQTCTransSystemCharge: TFloatField
+      FieldName = 'TCTransSystemCharge'
+    end
+    object MasterCBemptQSystemLossCharge: TFloatField
+      FieldName = 'SystemLossCharge'
+    end
+    object MasterCBemptQDCDemandCharge: TFloatField
+      FieldName = 'DCDemandCharge'
+    end
+    object MasterCBemptQDCDistributionCharge: TFloatField
+      FieldName = 'DCDistributionCharge'
+    end
+    object MasterCBemptQSCRetCustCharge: TFloatField
+      FieldName = 'SCRetCustCharge'
+    end
+    object MasterCBemptQSCSupplySysCharge: TFloatField
+      FieldName = 'SCSupplySysCharge'
+    end
+    object MasterCBemptQMCRetailCustCharge: TFloatField
+      FieldName = 'MCRetailCustCharge'
+    end
+    object MasterCBemptQMCSystemCharge: TFloatField
+      FieldName = 'MCSystemCharge'
+    end
+    object MasterCBemptQUCNPCStrandedDebts: TFloatField
+      FieldName = 'UCNPCStrandedDebts'
+    end
+    object MasterCBemptQUCNPCStrandedContCost: TFloatField
+      FieldName = 'UCNPCStrandedContCost'
+    end
+    object MasterCBemptQUCDUStrandedContCost: TFloatField
+      FieldName = 'UCDUStrandedContCost'
+    end
+    object MasterCBemptQUCME: TFloatField
+      FieldName = 'UCME'
+    end
+    object MasterCBemptQUCEqTaxesAndRoyalties: TFloatField
+      FieldName = 'UCEqTaxesAndRoyalties'
+    end
+    object MasterCBemptQUCEC: TFloatField
+      FieldName = 'UCEC'
+    end
+    object MasterCBemptQUCCrossSubRemoval: TFloatField
+      FieldName = 'UCCrossSubRemoval'
+    end
+    object MasterCBemptQICCrossSubsidyCharge: TFloatField
+      FieldName = 'ICCrossSubsidyCharge'
+    end
+    object MasterCBemptQPowerActRateRed: TFloatField
+      FieldName = 'PowerActRateRed'
+    end
+    object MasterCBemptQLifelineDiscSubs: TFloatField
+      FieldName = 'LifelineDiscSubs'
+    end
+    object MasterCBemptQLoanCondo: TFloatField
+      FieldName = 'LoanCondo'
+    end
+    object MasterCBemptQTransformerRental: TFloatField
+      FieldName = 'TransformerRental'
+    end
+    object MasterCBemptQOCCode1: TStringField
+      FieldName = 'OCCode1'
+      Size = 10
+    end
+    object MasterCBemptQOCAmount1: TFloatField
+      FieldName = 'OCAmount1'
+    end
+    object MasterCBemptQOCMo1: TFloatField
+      FieldName = 'OCMo1'
+    end
+    object MasterCBemptQOCTotal1: TFloatField
+      FieldName = 'OCTotal1'
+    end
+    object MasterCBemptQOCCode2: TStringField
+      FieldName = 'OCCode2'
+      Size = 10
+    end
+    object MasterCBemptQOCAmount2: TFloatField
+      FieldName = 'OCAmount2'
+    end
+    object MasterCBemptQOCMo2: TFloatField
+      FieldName = 'OCMo2'
+    end
+    object MasterCBemptQOCTotal2: TFloatField
+      FieldName = 'OCTotal2'
+    end
+    object MasterCBemptQOCCode3: TStringField
+      FieldName = 'OCCode3'
+      Size = 10
+    end
+    object MasterCBemptQOCAmount3: TFloatField
+      FieldName = 'OCAmount3'
+    end
+    object MasterCBemptQOCMo3: TFloatField
+      FieldName = 'OCMo3'
+    end
+    object MasterCBemptQOCTotal3: TFloatField
+      FieldName = 'OCTotal3'
+    end
+    object MasterCBemptQTotalBill: TFloatField
+      FieldName = 'TotalBill'
+    end
+    object MasterCBemptQBillNumber: TStringField
+      FieldName = 'BillNumber'
+      Size = 15
+    end
+    object MasterCBemptQOEBRNumber: TStringField
+      FieldName = 'OEBRNumber'
+      Size = 10
+    end
+    object MasterCBemptQBillMonth: TStringField
+      FieldName = 'BillMonth'
+      Size = 4
+    end
+    object MasterCBemptQDeleteRemarks: TStringField
+      FieldName = 'DeleteRemarks'
+      Size = 30
+    end
+    object MasterCBemptQPoleNumber: TStringField
+      FieldName = 'PoleNumber'
+      Size = 80
+    end
+    object MasterCBemptQFeederNumber: TStringField
+      FieldName = 'FeederNumber'
+    end
+    object MasterCBemptQXFormerQty: TIntegerField
+      FieldName = 'XFormerQty'
+    end
+    object MasterCBemptQXFormerKVA: TStringField
+      FieldName = 'XFormerKVA'
+    end
+    object MasterCBemptQAge30: TFloatField
+      FieldName = 'Age30'
+    end
+    object MasterCBemptQAge60: TFloatField
+      FieldName = 'Age60'
+    end
+    object MasterCBemptQAge90: TFloatField
+      FieldName = 'Age90'
+    end
+    object MasterCBemptQAge120: TFloatField
+      FieldName = 'Age120'
+    end
+    object MasterCBemptQAgeOver120: TFloatField
+      FieldName = 'AgeOver120'
+    end
+    object MasterCBemptQAgeTotal: TFloatField
+      FieldName = 'AgeTotal'
+    end
+    object MasterCBemptQTotalPayments: TFloatField
+      FieldName = 'TotalPayments'
+    end
+    object MasterCBemptQARBalance: TFloatField
+      FieldName = 'ARBalance'
+    end
+    object MasterCBemptQLCCustMo: TFloatField
+      FieldName = 'LCCustMo'
+    end
+    object MasterCBemptQPrevYearAdjPowerCost: TFloatField
+      FieldName = 'PrevYearAdjPowerCost'
+    end
+    object MasterCBemptQSysLossUnderRecov: TFloatField
+      FieldName = 'SysLossUnderRecov'
+    end
+    object MasterCBemptQVATDisc: TFloatField
+      FieldName = 'VATDisc'
+    end
+    object MasterCBemptQVATDiscAmt: TFloatField
+      FieldName = 'VATDiscAmt'
+    end
+    object MasterCBemptQVATDistDiscAmt: TFloatField
+      FieldName = 'VATDistDiscAmt'
+    end
+    object MasterCBemptQVATGenCoDiscAmt: TFloatField
+      FieldName = 'VATGenCoDiscAmt'
+    end
+    object MasterCBemptQVATTransCoDiscAmt: TFloatField
+      FieldName = 'VATTransCoDiscAmt'
+    end
+    object MasterCBemptQVATSystemLossDiscAmt: TFloatField
+      FieldName = 'VATSystemLossDiscAmt'
+    end
+    object MasterCBemptQVATDist: TFloatField
+      FieldName = 'VATDist'
+    end
+    object MasterCBemptQVATGenCO: TFloatField
+      FieldName = 'VATGenCO'
+    end
+    object MasterCBemptQVATTransCO: TFloatField
+      FieldName = 'VATTransCO'
+    end
+    object MasterCBemptQVATSystemLossGenCO: TFloatField
+      FieldName = 'VATSystemLossGenCO'
+    end
+    object MasterCBemptQVATSystemLossTransCO: TFloatField
+      FieldName = 'VATSystemLossTransCO'
+    end
+    object MasterCBemptQVAT: TFloatField
+      FieldName = 'VAT'
+    end
+    object MasterCBemptQDiffBillPerKwhr: TFloatField
+      FieldName = 'DiffBillPerKwhr'
+    end
+    object MasterCBemptQDiffBillPerKW: TFloatField
+      FieldName = 'DiffBillPerKW'
+    end
+    object MasterCBemptQDiffBillPerCust: TFloatField
+      FieldName = 'DiffBillPerCust'
+    end
+    object MasterCBemptQMCC: TFloatField
+      FieldName = 'MCC'
+    end
+    object MasterCBemptQPKVROebrNumber: TStringField
+      FieldName = 'PKVROebrNumber'
+    end
+    object MasterCBemptQPKVRBillMonth: TStringField
+      FieldName = 'PKVRBillMonth'
+      Size = 4
+    end
+    object MasterCBemptQPKVRAmount: TFloatField
+      FieldName = 'PKVRAmount'
+    end
+    object MasterCBemptQSCDisc: TFloatField
+      FieldName = 'SCDisc'
+    end
+    object MasterCBemptQWRateCode: TStringField
+      FieldName = 'WRateCode'
+      Size = 1
+    end
+    object MasterCBemptQSCAmt4Disc: TFloatField
+      FieldName = 'SCAmt4Disc'
+    end
+    object MasterCBemptQDWLEN1: TFloatField
+      FieldName = 'DWLEN1'
+    end
+    object MasterCBemptQDWLEN2: TFloatField
+      FieldName = 'DWLEN2'
+    end
+    object MasterCBemptQCBook: TStringField
+      FieldName = 'CBook'
+      Size = 6
+    end
+    object MasterCBemptQRPTax: TFloatField
+      FieldName = 'RPTax'
+    end
+    object MasterCBemptQRateOrder: TStringField
+      FieldName = 'RateOrder'
+      Size = 6
+    end
+    object MasterCBemptQBTax: TFloatField
+      FieldName = 'BTax'
+    end
+    object MasterCBemptQRateOrderNo: TIntegerField
+      FieldName = 'RateOrderNo'
+    end
+    object MasterCBemptQOtherGenRateAdj: TFloatField
+      FieldName = 'OtherGenRateAdj'
+    end
+    object MasterCBemptQOtherTransCostAdj: TFloatField
+      FieldName = 'OtherTransCostAdj'
+    end
+    object MasterCBemptQOtherTransDemandCostAdj: TFloatField
+      FieldName = 'OtherTransDemandCostAdj'
+    end
+    object MasterCBemptQOtherSystemLossCostAdj: TFloatField
+      FieldName = 'OtherSystemLossCostAdj'
+    end
+    object MasterCBemptQOtherLifelineRateCostAdj: TFloatField
+      FieldName = 'OtherLifelineRateCostAdj'
+    end
+    object MasterCBemptQOtherSeniorCitizenRateAdj: TFloatField
+      FieldName = 'OtherSeniorCitizenRateAdj'
+    end
+    object MasterCBemptQFitall: TFloatField
+      FieldName = 'Fitall'
+    end
+  end
+  object masterCBemptS: TMyDataSource
+    DataSet = MasterCBemptQ
+    Left = 88
+    Top = 320
+  end
+  object SelectedCBQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'select m.cbook,'
+      '       m.area,'
+      '       m.book,'
+      '       min(m.AccountNumber) startacct,'
+      '       max(m.AccountNumber) EndAcct,'
+      '       count(m.accountnumber) tcons,'
+      
+        '       (select address from vicinity where vicinity.area = m.are' +
+        'a and vicinity.book = m.book limit 1) address'
+      'from master m'
+      ' where  m.cbook <> '#39'0'#39'  and'
+      '        m.area = :area  and'
+      '        m.book = :book '
+      'group by m.book,m.cbook'
+      'order by m.cbook asc')
+    Left = 32
+    Top = 368
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'area'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'book'
+        Value = nil
+      end>
+    object SelectedCBQcbook: TStringField
+      FieldName = 'cbook'
+      Size = 6
+    end
+    object SelectedCBQarea: TStringField
+      FieldName = 'area'
+      FixedChar = True
+      Size = 3
+    end
+    object SelectedCBQbook: TStringField
+      FieldName = 'book'
+      FixedChar = True
+      Size = 3
+    end
+    object SelectedCBQstartacct: TStringField
+      FieldName = 'startacct'
+      Size = 10
+    end
+    object SelectedCBQEndAcct: TStringField
+      FieldName = 'EndAcct'
+      Size = 10
+    end
+    object SelectedCBQtcons: TLargeintField
+      FieldName = 'tcons'
+    end
+    object SelectedCBQaddress: TStringField
+      FieldName = 'address'
+      Size = 50
+    end
+  end
+  object SelectedcbS: TMyDataSource
+    DataSet = SelectedCBQ
+    Left = 80
+    Top = 368
+  end
+  object assigncbQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Select * from assigncbook')
+    Left = 144
+    Top = 320
+    object assigncbQid: TLongWordField
+      FieldName = 'id'
+    end
+    object assigncbQcbook: TStringField
+      FieldName = 'cbook'
+      Size = 5
+    end
+    object assigncbQarea: TStringField
+      FieldName = 'area'
+      Size = 3
+    end
+    object assigncbQbook: TStringField
+      FieldName = 'book'
+      Size = 4
+    end
+    object assigncbQstartAccnt: TStringField
+      FieldName = 'startAccnt'
+      Size = 45
+    end
+    object assigncbQendAccnt: TStringField
+      FieldName = 'endAccnt'
+      Size = 45
+    end
+  end
+  object assigncbS: TMyDataSource
+    DataSet = assigncbQ
+    Left = 184
+    Top = 320
+  end
+  object emptyRcodeQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Select * from master where ratecode is null')
+    Left = 272
+    Top = 256
+    object emptyRcodeQCode: TIntegerField
+      FieldName = 'Code'
+    end
+    object emptyRcodeQArea: TStringField
+      FieldName = 'Area'
+      FixedChar = True
+      Size = 3
+    end
+    object emptyRcodeQBook: TStringField
+      FieldName = 'Book'
+      FixedChar = True
+      Size = 3
+    end
+    object emptyRcodeQSequence: TStringField
+      FieldName = 'Sequence'
+      Size = 4
+    end
+    object emptyRcodeQAccountNumber: TStringField
+      FieldName = 'AccountNumber'
+      Size = 10
+    end
+    object emptyRcodeQName: TStringField
+      FieldName = 'Name'
+      Size = 50
+    end
+    object emptyRcodeQAddress: TStringField
+      FieldName = 'Address'
+      Size = 50
+    end
+    object emptyRcodeQRateCode: TStringField
+      FieldName = 'RateCode'
+      FixedChar = True
+      Size = 1
+    end
+    object emptyRcodeQConsCode: TStringField
+      FieldName = 'ConsCode'
+      FixedChar = True
+      Size = 1
+    end
+    object emptyRcodeQConnCode: TStringField
+      FieldName = 'ConnCode'
+      FixedChar = True
+      Size = 1
+    end
+    object emptyRcodeQTransformer: TStringField
+      FieldName = 'Transformer'
+      Size = 80
+    end
+    object emptyRcodeQMeterBrand: TStringField
+      FieldName = 'MeterBrand'
+    end
+    object emptyRcodeQSerial: TStringField
+      FieldName = 'Serial'
+    end
+    object emptyRcodeQMultiplier: TFloatField
+      FieldName = 'Multiplier'
+    end
+    object emptyRcodeQNewConnectionDate: TDateField
+      FieldName = 'NewConnectionDate'
+    end
+    object emptyRcodeQReconnectionDate: TDateField
+      FieldName = 'ReconnectionDate'
+    end
+    object emptyRcodeQDisconnectionDate: TDateField
+      FieldName = 'DisconnectionDate'
+    end
+    object emptyRcodeQPreviousReadingDate: TDateField
+      FieldName = 'PreviousReadingDate'
+    end
+    object emptyRcodeQPresentReadingDate: TDateField
+      FieldName = 'PresentReadingDate'
+    end
+    object emptyRcodeQPreviousReadingKWH: TFloatField
+      FieldName = 'PreviousReadingKWH'
+    end
+    object emptyRcodeQPresentReadingKWH: TFloatField
+      FieldName = 'PresentReadingKWH'
+    end
+    object emptyRcodeQDiff: TFloatField
+      FieldName = 'Diff'
+    end
+    object emptyRcodeQDemand: TFloatField
+      FieldName = 'Demand'
+    end
+    object emptyRcodeQFlatRateWattage: TFloatField
+      FieldName = 'FlatRateWattage'
+    end
+    object emptyRcodeQFeedBackCode: TStringField
+      FieldName = 'FeedBackCode'
+      FixedChar = True
+      Size = 2
+    end
+    object emptyRcodeQCM: TStringField
+      FieldName = 'CM'
+      FixedChar = True
+      Size = 1
+    end
+    object emptyRcodeQCMMultiplier: TFloatField
+      FieldName = 'CMMultiplier'
+    end
+    object emptyRcodeQCMPreviousReadingKWH: TFloatField
+      FieldName = 'CMPreviousReadingKWH'
+    end
+    object emptyRcodeQCMPresentReadingKWH: TFloatField
+      FieldName = 'CMPresentReadingKWH'
+    end
+    object emptyRcodeQCMKilowattHour: TFloatField
+      FieldName = 'CMKilowattHour'
+    end
+    object emptyRcodeQCMDemand: TFloatField
+      FieldName = 'CMDemand'
+    end
+    object emptyRcodeQKilowattHour: TFloatField
+      FieldName = 'KilowattHour'
+    end
+    object emptyRcodeQKilowattUsed: TFloatField
+      FieldName = 'KilowattUsed'
+    end
+    object emptyRcodeQGenSysCharge: TFloatField
+      FieldName = 'GenSysCharge'
+    end
+    object emptyRcodeQHostCommCharge: TFloatField
+      FieldName = 'HostCommCharge'
+    end
+    object emptyRcodeQForexCharge: TFloatField
+      FieldName = 'ForexCharge'
+    end
+    object emptyRcodeQTCDemandCharge: TFloatField
+      FieldName = 'TCDemandCharge'
+    end
+    object emptyRcodeQTCTransSystemCharge: TFloatField
+      FieldName = 'TCTransSystemCharge'
+    end
+    object emptyRcodeQSystemLossCharge: TFloatField
+      FieldName = 'SystemLossCharge'
+    end
+    object emptyRcodeQDCDemandCharge: TFloatField
+      FieldName = 'DCDemandCharge'
+    end
+    object emptyRcodeQDCDistributionCharge: TFloatField
+      FieldName = 'DCDistributionCharge'
+    end
+    object emptyRcodeQSCRetCustCharge: TFloatField
+      FieldName = 'SCRetCustCharge'
+    end
+    object emptyRcodeQSCSupplySysCharge: TFloatField
+      FieldName = 'SCSupplySysCharge'
+    end
+    object emptyRcodeQMCRetailCustCharge: TFloatField
+      FieldName = 'MCRetailCustCharge'
+    end
+    object emptyRcodeQMCSystemCharge: TFloatField
+      FieldName = 'MCSystemCharge'
+    end
+    object emptyRcodeQUCNPCStrandedDebts: TFloatField
+      FieldName = 'UCNPCStrandedDebts'
+    end
+    object emptyRcodeQUCNPCStrandedContCost: TFloatField
+      FieldName = 'UCNPCStrandedContCost'
+    end
+    object emptyRcodeQUCDUStrandedContCost: TFloatField
+      FieldName = 'UCDUStrandedContCost'
+    end
+    object emptyRcodeQUCME: TFloatField
+      FieldName = 'UCME'
+    end
+    object emptyRcodeQUCEqTaxesAndRoyalties: TFloatField
+      FieldName = 'UCEqTaxesAndRoyalties'
+    end
+    object emptyRcodeQUCEC: TFloatField
+      FieldName = 'UCEC'
+    end
+    object emptyRcodeQUCCrossSubRemoval: TFloatField
+      FieldName = 'UCCrossSubRemoval'
+    end
+    object emptyRcodeQICCrossSubsidyCharge: TFloatField
+      FieldName = 'ICCrossSubsidyCharge'
+    end
+    object emptyRcodeQPowerActRateRed: TFloatField
+      FieldName = 'PowerActRateRed'
+    end
+    object emptyRcodeQLifelineDiscSubs: TFloatField
+      FieldName = 'LifelineDiscSubs'
+    end
+    object emptyRcodeQLoanCondo: TFloatField
+      FieldName = 'LoanCondo'
+    end
+    object emptyRcodeQTransformerRental: TFloatField
+      FieldName = 'TransformerRental'
+    end
+    object emptyRcodeQOCCode1: TStringField
+      FieldName = 'OCCode1'
+      Size = 10
+    end
+    object emptyRcodeQOCAmount1: TFloatField
+      FieldName = 'OCAmount1'
+    end
+    object emptyRcodeQOCMo1: TFloatField
+      FieldName = 'OCMo1'
+    end
+    object emptyRcodeQOCTotal1: TFloatField
+      FieldName = 'OCTotal1'
+    end
+    object emptyRcodeQOCCode2: TStringField
+      FieldName = 'OCCode2'
+      Size = 10
+    end
+    object emptyRcodeQOCAmount2: TFloatField
+      FieldName = 'OCAmount2'
+    end
+    object emptyRcodeQOCMo2: TFloatField
+      FieldName = 'OCMo2'
+    end
+    object emptyRcodeQOCTotal2: TFloatField
+      FieldName = 'OCTotal2'
+    end
+    object emptyRcodeQOCCode3: TStringField
+      FieldName = 'OCCode3'
+      Size = 10
+    end
+    object emptyRcodeQOCAmount3: TFloatField
+      FieldName = 'OCAmount3'
+    end
+    object emptyRcodeQOCMo3: TFloatField
+      FieldName = 'OCMo3'
+    end
+    object emptyRcodeQOCTotal3: TFloatField
+      FieldName = 'OCTotal3'
+    end
+    object emptyRcodeQTotalBill: TFloatField
+      FieldName = 'TotalBill'
+    end
+    object emptyRcodeQBillNumber: TStringField
+      FieldName = 'BillNumber'
+      Size = 15
+    end
+    object emptyRcodeQOEBRNumber: TStringField
+      FieldName = 'OEBRNumber'
+      Size = 10
+    end
+    object emptyRcodeQBillMonth: TStringField
+      FieldName = 'BillMonth'
+      Size = 4
+    end
+    object emptyRcodeQDeleteRemarks: TStringField
+      FieldName = 'DeleteRemarks'
+      Size = 30
+    end
+    object emptyRcodeQPoleNumber: TStringField
+      FieldName = 'PoleNumber'
+      Size = 80
+    end
+    object emptyRcodeQFeederNumber: TStringField
+      FieldName = 'FeederNumber'
+    end
+    object emptyRcodeQXFormerQty: TIntegerField
+      FieldName = 'XFormerQty'
+    end
+    object emptyRcodeQXFormerKVA: TStringField
+      FieldName = 'XFormerKVA'
+    end
+    object emptyRcodeQAge30: TFloatField
+      FieldName = 'Age30'
+    end
+    object emptyRcodeQAge60: TFloatField
+      FieldName = 'Age60'
+    end
+    object emptyRcodeQAge90: TFloatField
+      FieldName = 'Age90'
+    end
+    object emptyRcodeQAge120: TFloatField
+      FieldName = 'Age120'
+    end
+    object emptyRcodeQAgeOver120: TFloatField
+      FieldName = 'AgeOver120'
+    end
+    object emptyRcodeQAgeTotal: TFloatField
+      FieldName = 'AgeTotal'
+    end
+    object emptyRcodeQTotalPayments: TFloatField
+      FieldName = 'TotalPayments'
+    end
+    object emptyRcodeQARBalance: TFloatField
+      FieldName = 'ARBalance'
+    end
+    object emptyRcodeQLCCustMo: TFloatField
+      FieldName = 'LCCustMo'
+    end
+    object emptyRcodeQPrevYearAdjPowerCost: TFloatField
+      FieldName = 'PrevYearAdjPowerCost'
+    end
+    object emptyRcodeQSysLossUnderRecov: TFloatField
+      FieldName = 'SysLossUnderRecov'
+    end
+    object emptyRcodeQVATDisc: TFloatField
+      FieldName = 'VATDisc'
+    end
+    object emptyRcodeQVATDiscAmt: TFloatField
+      FieldName = 'VATDiscAmt'
+    end
+    object emptyRcodeQVATDistDiscAmt: TFloatField
+      FieldName = 'VATDistDiscAmt'
+    end
+    object emptyRcodeQVATGenCoDiscAmt: TFloatField
+      FieldName = 'VATGenCoDiscAmt'
+    end
+    object emptyRcodeQVATTransCoDiscAmt: TFloatField
+      FieldName = 'VATTransCoDiscAmt'
+    end
+    object emptyRcodeQVATSystemLossDiscAmt: TFloatField
+      FieldName = 'VATSystemLossDiscAmt'
+    end
+    object emptyRcodeQVATDist: TFloatField
+      FieldName = 'VATDist'
+    end
+    object emptyRcodeQVATGenCO: TFloatField
+      FieldName = 'VATGenCO'
+    end
+    object emptyRcodeQVATTransCO: TFloatField
+      FieldName = 'VATTransCO'
+    end
+    object emptyRcodeQVATSystemLossGenCO: TFloatField
+      FieldName = 'VATSystemLossGenCO'
+    end
+    object emptyRcodeQVATSystemLossTransCO: TFloatField
+      FieldName = 'VATSystemLossTransCO'
+    end
+    object emptyRcodeQVAT: TFloatField
+      FieldName = 'VAT'
+    end
+    object emptyRcodeQDiffBillPerKwhr: TFloatField
+      FieldName = 'DiffBillPerKwhr'
+    end
+    object emptyRcodeQDiffBillPerKW: TFloatField
+      FieldName = 'DiffBillPerKW'
+    end
+    object emptyRcodeQDiffBillPerCust: TFloatField
+      FieldName = 'DiffBillPerCust'
+    end
+    object emptyRcodeQMCC: TFloatField
+      FieldName = 'MCC'
+    end
+    object emptyRcodeQPKVROebrNumber: TStringField
+      FieldName = 'PKVROebrNumber'
+    end
+    object emptyRcodeQPKVRBillMonth: TStringField
+      FieldName = 'PKVRBillMonth'
+      Size = 4
+    end
+    object emptyRcodeQPKVRAmount: TFloatField
+      FieldName = 'PKVRAmount'
+    end
+    object emptyRcodeQSCDisc: TFloatField
+      FieldName = 'SCDisc'
+    end
+    object emptyRcodeQWRateCode: TStringField
+      FieldName = 'WRateCode'
+      Size = 1
+    end
+    object emptyRcodeQSCAmt4Disc: TFloatField
+      FieldName = 'SCAmt4Disc'
+    end
+    object emptyRcodeQDWLEN1: TFloatField
+      FieldName = 'DWLEN1'
+    end
+    object emptyRcodeQDWLEN2: TFloatField
+      FieldName = 'DWLEN2'
+    end
+    object emptyRcodeQCBook: TStringField
+      FieldName = 'CBook'
+      Size = 6
+    end
+    object emptyRcodeQRPTax: TFloatField
+      FieldName = 'RPTax'
+    end
+    object emptyRcodeQRateOrder: TStringField
+      FieldName = 'RateOrder'
+      Size = 6
+    end
+    object emptyRcodeQBTax: TFloatField
+      FieldName = 'BTax'
+    end
+    object emptyRcodeQRateOrderNo: TIntegerField
+      FieldName = 'RateOrderNo'
+    end
+    object emptyRcodeQOtherGenRateAdj: TFloatField
+      FieldName = 'OtherGenRateAdj'
+    end
+    object emptyRcodeQOtherTransCostAdj: TFloatField
+      FieldName = 'OtherTransCostAdj'
+    end
+    object emptyRcodeQOtherTransDemandCostAdj: TFloatField
+      FieldName = 'OtherTransDemandCostAdj'
+    end
+    object emptyRcodeQOtherSystemLossCostAdj: TFloatField
+      FieldName = 'OtherSystemLossCostAdj'
+    end
+    object emptyRcodeQOtherLifelineRateCostAdj: TFloatField
+      FieldName = 'OtherLifelineRateCostAdj'
+    end
+    object emptyRcodeQOtherSeniorCitizenRateAdj: TFloatField
+      FieldName = 'OtherSeniorCitizenRateAdj'
+    end
+    object emptyRcodeQFitall: TFloatField
+      FieldName = 'Fitall'
+    end
+  end
+  object emptyRcodeS: TMyDataSource
+    DataSet = emptyRcodeQ
+    Left = 272
+    Top = 304
+  end
+  object AverageQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Set @type='#39#39';'
+      'Set @prevKwhUse='#39#39';'
+      'set @prevbillmonth='#39#39';'
+      'set @num=0;'
+      'set @sumKwh=0.0;'
+      ''
+      'select'
+      '    a.code,'
+      '    a.accountnumber,'
+      '    a.name,'
+      '    a.prevKwhused,'
+      '    a.billmonthprev,'
+      '    round(a.totalKwh/3,1) as aveKwh,'
+      '    a.billmonth,'
+      '    a.cbook'
+      'from'
+      '(select'
+      '  code,'
+      '  accountnumber,'
+      '  name,'
+      '  billmonth,'
+      '  KilowattHour,'
+      '  cbook,'
+      
+        '  @prevKwhUse  := if(@type = accountnumber, concat(@prevKwhUse,'#39 +
+        ':'#39',convert(KilowattHour,char(30))),convert(KilowattHour,char(30)' +
+        ')) as prevKwhused,'
+      
+        '  @prevbillmonth  := if(@type = accountnumber, concat(@prevbillm' +
+        'onth,'#39':'#39',billmonth ), billmonth) as billmonthprev,'
+      '  @num := if(@type = accountnumber, @num+1, 1) as row_num,'
+      
+        '  @sumKwh := if(@type = accountnumber, round(@sumKwh+ifnull(Kilo' +
+        'wattHour,0),1), round(ifnull(KilowattHour,0),1)) as totalKwh,'
+      '  @type := accountnumber as AccntTmp'
+      ''
+      'from billhistory'
+      'where cbook in (:cbook,:cbook1,:cbook2,:cbook3) and'
+      '      -- cbook = :cbook and'
+      '      billmonth in (:billmonth1,:billmonth2,:billmonth3) and'
+      '      -- cbook = '#39'0505'#39' and'
+      '      -- billmonth in ('#39'0515'#39','#39'0615'#39','#39'0715'#39') and'
+      '      cbook is not null and '
+      '      cbook <> '#39#39
+      ' order by cbook,code,entry asc) a'
+      'where a.row_num=3;')
+    Left = 328
+    Top = 64
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth3'
+        Value = nil
+      end>
+    object AverageQcode: TFloatField
+      FieldName = 'code'
+    end
+    object AverageQaccountnumber: TStringField
+      FieldName = 'accountnumber'
+      Size = 10
+    end
+    object AverageQname: TStringField
+      FieldName = 'name'
+      Size = 50
+    end
+    object AverageQaveKwh: TFloatField
+      FieldName = 'aveKwh'
+    end
+    object AverageQcbook: TStringField
+      FieldName = 'cbook'
+      Size = 6
+    end
+    object AverageQprevKwhused: TMemoField
+      FieldName = 'prevKwhused'
+      BlobType = ftMemo
+    end
+    object AverageQbillmonthprev: TMemoField
+      FieldName = 'billmonthprev'
+      BlobType = ftMemo
+    end
+    object AverageQbillmonth: TStringField
+      FieldName = 'billmonth'
+      Size = 4
+    end
+  end
+  object sampleQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Set @type='#39#39';'
+      'Set @num=0;'
+      'SELECT * FROM ('
+      'SELECT '#39'DOWNLOAD'#39
+      'UNION'
+      'SELECT'
+      '  CONCAT(:Name,'#39'~'#39
+      '         :BM)'
+      'UNION'
+      'Select'
+      '  '#39'END TRANS'#39
+      'UNION'
+      'select'
+      '  CONCAT(master.Code,'#39'~'#39','
+      '         master.AccountNumber,'#39'~'#39','
+      '         RPAD(master.Name,30,'#39' '#39'),'#39'~'#39','
+      '         RPAD(master.Address,30,'#39' '#39'),'#39'~'#39','
+      '         master.WRateCode,'#39'~'#39','
+      
+        '         IFNULL(IF(master.Multiplier=0,1,master.Multiplier),'#39'1'#39')' +
+        ','#39'~'#39','
+      '         IFNULL(master.Serial,'#39'0'#39'),'#39'~'#39','
+      '         IfNull(master.VATDisc,0),'#39'~'#39','
+      
+        '         IFNULL(DATE_FORMAT(master.PresentReadingdate,'#39'%m/%d/%y'#39 +
+        '),'#39'01/01/1900'#39'),'#39'~'#39','
+      '         IFNULL(master.PresentReadingKWH,0),'#39'~'#39','
+      '         IFNULL(master.CM,0),'#39'~'#39','
+      '         IFNULL(IF(master.CM=1,master.CMMultiplier,0),0),'#39'~'#39','
+      
+        '         IFNULL(IF(master.CM=1,master.CMPresentReadingKwh,0),0),' +
+        #39'~'#39','
+      
+        '         IFNULL(IF(master.CM=1,master.CMPreviousReadingKwh,0),0)' +
+        ','#39'~'#39','
+      '         IFNULL(IF(master.CM=1,master.CMDemand,0),0),'#39'~'#39','
+      '         '#39'0.00~'#39','
+      '         IFNULL(master.OCCode1,'#39'n'#39'),'#39'~'#39','
+      '         IFNULL(master.OCAmount1,0),'#39'~'#39','
+      '         IFNULL(master.OCCode2,'#39'n'#39'),'#39'~'#39','
+      '         IFNULL(master.OCAmount2,0),'#39'~'#39','
+      '         IFNULL(master.OCCode3,'#39'n'#39'),'#39'~'#39','
+      '         IFNULL(master.OCAmount3,0),'#39'~'#39','
+      '         IFNULL(master.ConnCode,'#39#39'),'#39'~'#39','
+      '        '
+      '         IfNull((Select r.rateamnt from areatax a'
+      
+        '         left join raterptax r on (r.billmonth = a.billmonth) an' +
+        'd'
+      '                                  (r.rateorder = a.rateorder)'
+      '         Where (a.billmonth = :BM) and '
+      '         (a.area = :Area or'
+      '          a.area = :Area1 or '
+      '          a.area = :Area2 or'
+      '          a.area = :Area3) ),0),'#39'~'#39','
+      ''
+      
+        '         /* IFNULL(BillHistory.KilowattHour,0),'#39'~'#39',Remove Differ' +
+        'ential Billing  */'
+      '         IFNULL(KilowattUsed,6),'#39'~'#39',  '
+      '         IFNULL((SELECT SUM(IFNULL(debit,0))-'
+      
+        '                 SUM(CONVERT(TRUNCATE(IFNULL(credit,0),2),DECIMA' +
+        'L(10,2)))        '
+      '          FROM billadjledger '
+      '          WHERE billadjledger.code = `master`.code and '
+      '                billadjledger.area = `master`.area and'
+      '                billadjledger.book = `master`.book and'
+      
+        '                billadjledger.accountnumber = `master`.accountnu' +
+        'mber and'
+      ' '
+      
+        '         (exists (select * from meterrate where MBillMonth = :BM' +
+        ' and '
+      
+        '                                                MeterRate.RateCo' +
+        'de = master.Ratecode and'
+      
+        '                                                MeterRate.pantaw' +
+        'idapply = '#39'1'#39')) and'
+      ''
+      
+        '                not exists (select * from pkvridx where pkvridx.' +
+        'code = master.code and pkvridx.accountnumber = master.accountnum' +
+        'ber)),'#39'0'#39'),'#39'~'#39','
+      
+        '         ifnull((select Concat(billmonth,'#39'~'#39',credit) from billad' +
+        'jledger '
+      '                      where code = `master`.code and '
+      '                            area = `master`.area and'
+      '                            book = `master`.book and'
+      
+        '                            accountnumber = `master`.accountnumb' +
+        'er and'
+      '                            credit > 0 and '
+      ''
+      
+        '         (exists (select * from meterrate where MBillMonth = :BM' +
+        ' and '
+      
+        '                                                MeterRate.RateCo' +
+        'de = master.Ratecode and'
+      
+        '                                                MeterRate.pantaw' +
+        'idRecovapply = '#39'1'#39')) and'
+      ''
+      
+        '                            not exists (select * from pkvrledger' +
+        ' where pkvrledger.code = master.code and pkvrledger.billnumber =' +
+        ' billadjledger.billnumber) and '
+      
+        '                            exists (select * from pkvridx where ' +
+        'pkvridx.code = master.code and pkvridx.accountnumber = master.ac' +
+        'countnumber)'
+      
+        '                      order by idbilladjledger limit 1),'#39'0~0'#39'),'#39 +
+        '~'#39',         '
+      
+        '         RPad(Ifnull(DateDiff(Ifnull((select expirationdate from' +
+        ' scdisc '
+      
+        '                                                    where master' +
+        '.code = scdisc.scode and '
+      
+        '                                                    DateApplied ' +
+        '<= ifnull(master.PresentReadingdate,now()) '
+      '                                                    limit 1),0),'
+      
+        '              ifnull( master.PresentReadingdate,now())),0),3,'#39' '#39 +
+        ') -- ,'#39'~'#39','
+      ''
+      
+        '        -- RPAD(IFNULL((select Rate1 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39'),'#39'~'#39','
+      
+        '        -- RPAD(IFNULL((select Rate2 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39'),'#39'~'#39','
+      
+        '        -- RPAD(IFNULL((select Rate3 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39'),'#39'~'#39','
+      
+        '        -- RPAD(IFNULL((select Rate4 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39')  '
+      '   '
+      
+        '        ) as `RESULT`    /* this would yield the days until sc d' +
+        'iscount has expired */   '
+      'from'
+      '  `master`'
+      'where'
+      '  master.ratecode is not null and'
+      '  (ifnull(master.cbook,0) = :cbook  or'
+      '   ifnull(master.cbook,0) = :cbook1 or'
+      '   ifnull(master.cbook,0) = :cbook2 or'
+      '   ifnull(master.cbook,0) = :cbook3) and'
+      '  master.ConnCode <> 5'
+      'having result is not null'
+      'Union'
+      'Select'
+      '  '#39'END MASTER'#39
+      'Union'
+      'SELECT'
+      '  CONCAT(unpaidbills.Code,'#39'~'#39','
+      '         unpaidbills.Billmonth,'#39'~'#39','
+      '         Amount)'
+      'FROM UnpaidBills, master'
+      'where unpaidbills.code = master.code and '
+      '      substring(unpaidbills.billmonth,1,2) <> '#39'PF'#39' and'
+      '  (master.cbook = :cbook  or'
+      '   master.cbook = :cbook1 or'
+      '   master.cbook = :cbook2 or'
+      '   master.cbook = :cbook3) and'
+      '   master.ConnCode <> 5'
+      'UNION'
+      'SELECT'
+      '  '#39'END UNPAID'#39
+      'UNION'
+      'select'
+      '  CONCAT(if(WRSw='#39'0'#39',RateCode,WRateCode),'#39'~'#39','
+      '         GenSysRate,'#39'~'#39','
+      '         HostCommRate,'#39'~'#39','
+      '         FOREXRate,'#39'~'#39','
+      '         TCDemandRate,'#39'~'#39','
+      '         TCSystemRate,'#39'~'#39','
+      '         SystemLossRate,'#39'~'#39','
+      '         DCDemandRate,'#39'~'#39','
+      '         DCSystemRate,'#39'~'#39','
+      '         SCRetailCustRate,'#39'~'#39','
+      '         SCSupplySysRate,'#39'~'#39','
+      '         MCRetailCustRate,'#39'~'#39','
+      '         MCSysRate,'#39'~'#39','
+      '         UCNPCStrandedDebtsRate,'#39'~'#39','
+      '         UCNPCStrandedContCostRate,'#39'~'#39','
+      '         UCDUStrandedContCostRate,'#39'~'#39','
+      '         UCMERate,'#39'~'#39','
+      '         UCEqTaxesAndRoyaltiesRate,'#39'~'#39','
+      '         UCECRate,'#39'~'#39','
+      '         UCCrossSubsidyRemovalRate,'#39'~'#39','
+      '         ICCrossSubsidyRate,'#39'~'#39','
+      '         PARARate,'#39'~'#39','
+      '         LifelineSubsidyRate,'#39'~'#39','
+      '         TransSysAncRefund,'#39'~'#39', /* formerly loan condonation */'
+      '         Gram,'#39'~'#39','
+      '         TransDemAncRefund,'#39'~'#39', /* formerly LCCustMo */'
+      '         PrevYearAdjPowerCost,'#39'~'#39','
+      '         VATTransAncRefund,'#39'~'#39', /* formerly SysLossUnderRecov */'
+      '         VAT,'#39'~'#39','
+      '         VATGenCo,'#39'~'#39','
+      '         VATTransCo,'#39'~'#39','
+      '         VATSystemLoss,'#39'~'#39','
+      
+        '         /* DiffBillPerKwhr,'#39'~'#39',     remove differential billing' +
+        ' rates     '
+      '            DiffBillPerKW,'#39'~'#39','
+      '            DiffBillPerCust,'#39'~'#39', */ '
+      '        MCC,'#39'~'#39','
+      '        DiffBillApply,'#39'~'#39','
+      '        SCDiscApply,'#39'~'#39','
+      '        SCDiscKWHR,'#39'~'#39','
+      '        SCDiscPercent,'#39'~'#39','
+      '        SCDiscSubs,'#39'~'#39',  '
+      '        IFNULL(OtherGenRateAdj,0),'#39'~'#39','
+      '        IFNULL(OtherTransCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherTransDemandCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherSystemLossCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherLifelineRateCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherSeniorCitizenRateAdj,0),'#39'~'#39','
+      '        Fitallrate) AS RESULT'
+      
+        '        --  RPAD(SCDiscApply,1,'#39' '#39'),'#39'~'#39',              /* added 4' +
+        ' columns 1. SCDiscApply for switch to apply Senior Citizen Mecha' +
+        'nism */'
+      
+        '        --  RPAD(SCDiscKWHR,3,'#39' '#39'),'#39'~'#39',               /*        ' +
+        '         2. Kilowatthour Limit                                  ' +
+        '     */'
+      
+        '        --  RPAD(SCDiscPercent,2,'#39' '#39'),'#39'~'#39',            /*        ' +
+        '         3. Discount Percentage                                 ' +
+        '     */'
+      
+        '        --  RPAD(SCDiscSubs,8,'#39' '#39')) AS RESULT         /*        ' +
+        '         4. Senior Citizen Subsidy Rate                         ' +
+        '     */          '
+      'From meterrate'
+      'WHERE MBillMonth = :BM'
+      ''
+      'UNION'
+      '-- ================================================='
+      '-- Used to udentify average reading================='
+      '-- ================================================='
+      'select '#39'PREVIOUS READING'#39
+      'UNION'
+      'Select concat(b.code,'#39'~'#39','
+      '              b.AccountNumber,'#39'~'#39','
+      '              b.Name,'#39'~'#39','
+      '              b.presentreadingKWH,'#39'~'#39','
+      '              b.previousreadingKWH,'#39'~'#39','
+      '              b.diff,'#39'~'#39','
+      '              b.billmonth,'#39'~'#39','
+      '              b.totalbill) as result from ('
+      'Select a.*,'
+      
+        '       @num  := if(@type = a.accountnumber, @num + 1, 1) as row_' +
+        'number,'
+      '       @type := a.accountnumber as AccntTmp'
+      ' from ('
+      '      Select'
+      '       m.code,'
+      '       m.AccountNumber,'
+      '       m.Name,'
+      '       b.presentreadingKWH,'
+      '       b.previousreadingKWH,'
+      '       b.diff,'
+      '       b.billmonth,'
+      '       b.TotalBill'
+      ''
+      '      from master m'
+      '      left join billhistory b on b.code=m.code'
+      '      where m.ratecode is not null and'
+      '       (m.cbook = :cbook  or'
+      '        m.cbook = :cbook1 or'
+      '        m.cbook = :cbook2 or'
+      '        m.cbook = :cbook3) and'
+      '       m.ConnCode <> 5 and'
+      '       b.presentreadingKWH is not null and'
+      '       b.previousreadingKWH is not null'
+      ''
+      'having m.AccountNumber is not null'
+      'order by m.code,b.entry desc) a'
+      ') b'
+      'where b.row_number<=3'
+      'UNION'
+      'Select '#39'.....'#39') a')
+    Left = 16
+    Top = 416
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'Name'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'BM'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'BM'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'BM'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'BM'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'BM'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end>
+  end
+  object AveUpdateQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Update averagebill set '
+      ' accountnumber = :accountnumber,'
+      ' name          = :name,'
+      ' prevKwh       = :prevKwh,'
+      ' prevBillmonth = :prevBillmonth,'
+      ' averageKwh    = :averageKwh, '
+      ' cbook         = :cbook'
+      'where code =  :code and'
+      '      billmonth = :billmonth')
+    Left = 328
+    Top = 168
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'accountnumber'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'name'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'prevKwh'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'prevBillmonth'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'averageKwh'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'code'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth'
+        Value = nil
+      end>
+  end
+  object AveInsertQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Insert into averagebill'
+      '(code,'
+      ' accountnumber,'
+      ' name,'
+      ' prevKwh,'
+      ' prevBillmonth,'
+      ' averageKwh,'
+      ' billmonth,'
+      ' cbook)'
+      'values'
+      '(:code,'
+      ' :accountnumber,'
+      ' :name,'
+      ' :prevKwh,'
+      ' :prevBillmonth,'
+      ' :averageKwh,'
+      ' :billmonth,'
+      ' :cbook)')
+    Left = 328
+    Top = 120
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'code'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'accountnumber'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'name'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'prevKwh'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'prevBillmonth'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'averageKwh'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end>
+  end
+  object UploadH: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Set @type='#39#39';'
+      'Set @prevKwhUse='#39#39';'
+      'set @prevbillmonth='#39#39';'
+      'Set @num=0;'
+      'set @sumKwh=0.0;'
+      'set @history_cnt:=1;'
+      ''
+      'SELECT * FROM ('
+      'SELECT '#39'DOWNLOAD'#39
+      'UNION'
+      'SELECT'
+      '  CONCAT(:Name,'#39'~'#39
+      '         :BM)'
+      'UNION'
+      'Select'
+      '  '#39'END TRANS'#39
+      'UNION'
+      'select'
+      '  CONCAT(master.Code,'#39'~'#39','
+      '         master.AccountNumber,'#39'~'#39','
+      '         RPAD(master.Name,30,'#39' '#39'),'#39'~'#39','
+      '         RPAD(master.Address,30,'#39' '#39'),'#39'~'#39','
+      '         master.WRateCode,'#39'~'#39','
+      
+        '         IFNULL(IF(master.Multiplier=0,1,master.Multiplier),'#39'1'#39')' +
+        ','#39'~'#39','
+      '         IFNULL(master.Serial,'#39'0'#39'),'#39'~'#39','
+      '         IfNull(master.VATDisc,0),'#39'~'#39','
+      
+        '         IFNULL(DATE_FORMAT(master.PresentReadingdate,'#39'%m/%d/%y'#39 +
+        '),'#39'01/01/1900'#39'),'#39'~'#39','
+      '         IFNULL(master.PresentReadingKWH,0),'#39'~'#39','
+      '         IFNULL(master.CM,0),'#39'~'#39','
+      '         IFNULL(IF(master.CM=1,master.CMMultiplier,0),0),'#39'~'#39','
+      
+        '         IFNULL(IF(master.CM=1,master.CMPresentReadingKwh,0),0),' +
+        #39'~'#39','
+      
+        '         IFNULL(IF(master.CM=1,master.CMPreviousReadingKwh,0),0)' +
+        ','#39'~'#39','
+      '         IFNULL(IF(master.CM=1,master.CMDemand,0),0),'#39'~'#39','
+      '         '#39'0.00~'#39','
+      '         IFNULL(master.OCCode1,'#39'n'#39'),'#39'~'#39','
+      '         IFNULL(master.OCAmount1,0),'#39'~'#39','
+      '         IFNULL(master.OCCode2,'#39'n'#39'),'#39'~'#39','
+      '         IFNULL(master.OCAmount2,0),'#39'~'#39','
+      '         IFNULL(master.OCCode3,'#39'n'#39'),'#39'~'#39','
+      '         IFNULL(master.OCAmount3,0),'#39'~'#39','
+      '         IFNULL(master.ConnCode,'#39#39'),'#39'~'#39','
+      '        '
+      '         IfNull((Select r.rateamnt from areatax a'
+      
+        '         left join raterptax r on (r.billmonth = a.billmonth) an' +
+        'd'
+      '                                  (r.rateorder = a.rateorder)'
+      '         Where (a.billmonth = :BM) and '
+      '         (a.area = :Area or'
+      '          a.area = :Area1 or '
+      '          a.area = :Area2 or'
+      '          a.area = :Area3) ),0),'#39'~'#39','
+      ''
+      
+        '         /* IFNULL(BillHistory.KilowattHour,0),'#39'~'#39',Remove Differ' +
+        'ential Billing  */'
+      '         IFNULL(KilowattUsed,6),'#39'~'#39',  '
+      '         IFNULL((SELECT SUM(IFNULL(debit,0))-'
+      
+        '                 SUM(CONVERT(TRUNCATE(IFNULL(credit,0),2),DECIMA' +
+        'L(10,2)))        '
+      '          FROM billadjledger '
+      '          WHERE billadjledger.code = `master`.code and '
+      '                billadjledger.area = `master`.area and'
+      '                billadjledger.book = `master`.book and'
+      
+        '                billadjledger.accountnumber = `master`.accountnu' +
+        'mber and'
+      ' '
+      
+        '         (exists (select * from meterrate where MBillMonth = :BM' +
+        ' and '
+      
+        '                                                MeterRate.RateCo' +
+        'de = master.Ratecode and'
+      
+        '                                                MeterRate.pantaw' +
+        'idapply = '#39'1'#39')) and'
+      ''
+      
+        '                not exists (select * from pkvridx where pkvridx.' +
+        'code = master.code and pkvridx.accountnumber = master.accountnum' +
+        'ber)),'#39'0'#39'),'#39'~'#39','
+      
+        '         ifnull((select Concat(billmonth,'#39'~'#39',credit) from billad' +
+        'jledger '
+      '                      where code = `master`.code and '
+      '                            area = `master`.area and'
+      '                            book = `master`.book and'
+      
+        '                            accountnumber = `master`.accountnumb' +
+        'er and'
+      '                            credit > 0 and '
+      ''
+      
+        '         (exists (select * from meterrate where MBillMonth = :BM' +
+        ' and '
+      
+        '                                                MeterRate.RateCo' +
+        'de = master.Ratecode and'
+      
+        '                                                MeterRate.pantaw' +
+        'idRecovapply = '#39'1'#39')) and'
+      ''
+      
+        '                            not exists (select * from pkvrledger' +
+        ' where pkvrledger.code = master.code and pkvrledger.billnumber =' +
+        ' billadjledger.billnumber) and '
+      
+        '                            exists (select * from pkvridx where ' +
+        'pkvridx.code = master.code and pkvridx.accountnumber = master.ac' +
+        'countnumber)'
+      
+        '                      order by idbilladjledger limit 1),'#39'0~0'#39'),'#39 +
+        '~'#39',         '
+      
+        '         RPad(Ifnull(DateDiff(Ifnull((select expirationdate from' +
+        ' scdisc '
+      
+        '                                                    where master' +
+        '.code = scdisc.scode and '
+      
+        '                                                    DateApplied ' +
+        '<= ifnull(master.PresentReadingdate,now()) '
+      '                                                    limit 1),0),'
+      
+        '              ifnull( master.PresentReadingdate,now())),0),3,'#39' '#39 +
+        ') -- ,'#39'~'#39','
+      ''
+      
+        '        -- RPAD(IFNULL((select Rate1 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39'),'#39'~'#39','
+      
+        '        -- RPAD(IFNULL((select Rate2 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39'),'#39'~'#39','
+      
+        '        -- RPAD(IFNULL((select Rate3 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39'),'#39'~'#39','
+      
+        '        -- RPAD(IFNULL((select Rate4 from areatax where Area = M' +
+        'aster.Area and BillMonth = :BM),0),6,'#39' '#39')  '
+      '   '
+      
+        '        ) as `RESULT`    /* this would yield the days until sc d' +
+        'iscount has expired */   '
+      'from'
+      '  `master`'
+      'where'
+      '  master.ratecode is not null and'
+      '  (ifnull(master.cbook,0) = :cbook  or'
+      '   ifnull(master.cbook,0) = :cbook1 or'
+      '   ifnull(master.cbook,0) = :cbook2 or'
+      '   ifnull(master.cbook,0) = :cbook3) and'
+      '  master.ConnCode <> 5 and'
+      '  master.cbook is not null and '
+      '  master.cbook <> '#39#39
+      'having result is not null'
+      'Union'
+      'Select'
+      '  '#39'END MASTER'#39
+      'Union'
+      'SELECT'
+      '  CONCAT(unpaidbills.Code,'#39'~'#39','
+      '         unpaidbills.Billmonth,'#39'~'#39','
+      '         Amount)'
+      'FROM UnpaidBills, master'
+      'where unpaidbills.code = master.code and '
+      '      substring(unpaidbills.billmonth,1,2) <> '#39'PF'#39' and'
+      '  (master.cbook = :cbook  or'
+      '   master.cbook = :cbook1 or'
+      '   master.cbook = :cbook2 or'
+      '   master.cbook = :cbook3) and'
+      '   master.ConnCode <> 5 and'
+      '   master.cbook is not null and '
+      '   master.cbook <> '#39#39
+      'UNION'
+      'SELECT'
+      '  '#39'END UNPAID'#39
+      'UNION'
+      'select'
+      '  CONCAT(if(WRSw='#39'0'#39',RateCode,WRateCode),'#39'~'#39','
+      '         GenSysRate,'#39'~'#39','
+      '         HostCommRate,'#39'~'#39','
+      '         FOREXRate,'#39'~'#39','
+      '         TCDemandRate,'#39'~'#39','
+      '         TCSystemRate,'#39'~'#39','
+      '         SystemLossRate,'#39'~'#39','
+      '         DCDemandRate,'#39'~'#39','
+      '         DCSystemRate,'#39'~'#39','
+      '         SCRetailCustRate,'#39'~'#39','
+      '         SCSupplySysRate,'#39'~'#39','
+      '         MCRetailCustRate,'#39'~'#39','
+      '         MCSysRate,'#39'~'#39','
+      '         UCNPCStrandedDebtsRate,'#39'~'#39','
+      '         UCNPCStrandedContCostRate,'#39'~'#39','
+      '         UCDUStrandedContCostRate,'#39'~'#39','
+      '         UCMERate,'#39'~'#39','
+      '         UCEqTaxesAndRoyaltiesRate,'#39'~'#39','
+      '         UCECRate,'#39'~'#39','
+      '         UCCrossSubsidyRemovalRate,'#39'~'#39','
+      '         ICCrossSubsidyRate,'#39'~'#39','
+      '         PARARate,'#39'~'#39','
+      '         LifelineSubsidyRate,'#39'~'#39','
+      '         TransSysAncRefund,'#39'~'#39', /* formerly loan condonation */'
+      '         Gram,'#39'~'#39','
+      '         TransDemAncRefund,'#39'~'#39', /* formerly LCCustMo */'
+      '         PrevYearAdjPowerCost,'#39'~'#39','
+      '         VATTransAncRefund,'#39'~'#39', /* formerly SysLossUnderRecov */'
+      '         VAT,'#39'~'#39','
+      '         VATGenCo,'#39'~'#39','
+      '         VATTransCo,'#39'~'#39','
+      '         VATSystemLoss,'#39'~'#39','
+      
+        '         /* DiffBillPerKwhr,'#39'~'#39',     remove differential billing' +
+        ' rates     '
+      '            DiffBillPerKW,'#39'~'#39','
+      '            DiffBillPerCust,'#39'~'#39', */ '
+      '        MCC,'#39'~'#39','
+      '        DiffBillApply,'#39'~'#39','
+      '        SCDiscApply,'#39'~'#39','
+      '        SCDiscKWHR,'#39'~'#39','
+      '        SCDiscPercent,'#39'~'#39','
+      '        SCDiscSubs,'#39'~'#39',  '
+      '        IFNULL(OtherGenRateAdj,0),'#39'~'#39','
+      '        IFNULL(OtherTransCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherTransDemandCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherSystemLossCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherLifelineRateCostAdj,0),'#39'~'#39','
+      '        IFNULL(OtherSeniorCitizenRateAdj,0),'#39'~'#39','
+      '        Fitallrate) AS RESULT'
+      
+        '        --  RPAD(SCDiscApply,1,'#39' '#39'),'#39'~'#39',              /* added 4' +
+        ' columns 1. SCDiscApply for switch to apply Senior Citizen Mecha' +
+        'nism */'
+      
+        '        --  RPAD(SCDiscKWHR,3,'#39' '#39'),'#39'~'#39',               /*        ' +
+        '         2. Kilowatthour Limit                                  ' +
+        '     */'
+      
+        '        --  RPAD(SCDiscPercent,2,'#39' '#39'),'#39'~'#39',            /*        ' +
+        '         3. Discount Percentage                                 ' +
+        '     */'
+      
+        '        --  RPAD(SCDiscSubs,8,'#39' '#39')) AS RESULT         /*        ' +
+        '         4. Senior Citizen Subsidy Rate                         ' +
+        '     */          '
+      'From meterrate'
+      'WHERE MBillMonth = :BM'
+      ''
+      'UNION'
+      '-- ================================================='
+      '-- Used to udentify average reading================='
+      '-- ================================================='
+      'select '#39'END PREVIOUS READING'#39
+      'UNION'
+      ''
+      'select'
+      'concat(a.code,'#39'~'#39','
+      '       a.AccountNumber,'#39'~'#39','
+      '       a.Name,'#39'~'#39','
+      '       0.0,'#39'~'#39','
+      '       0.0,'#39'~'#39','
+      '       round(a.totalKwh/3,1),'#39'~'#39','
+      '       :BM,'#39'~'#39',      '
+      '       a.totalbill) as result'
+      'from'
+      '(select'
+      '  m.code,'
+      '  m.accountnumber,'
+      '  m.name,'
+      '  b.billmonth,'
+      '  b.KilowattHour,'
+      '  m.cbook,'
+      
+        '  @prevKwhUse  := if(@type = m.accountnumber, concat(@prevKwhUse' +
+        ','#39':'#39',CONVERT(b.KilowattHour,char CHARACTER SET utf8)),CONVERT( b' +
+        '.KilowattHour,char CHARACTER SET utf8)) as prevKwhused,'
+      
+        '  @prevbillmonth  := if(@type = m.accountnumber, concat(@prevbil' +
+        'lmonth,'#39':'#39',b.billmonth ), b.billmonth) as billmonthprev,'
+      '  @num := if(@type = m.accountnumber, @num+1, 1) as row_num,'
+      
+        '  @sumKwh := if(@type = m.accountnumber, round(@sumKwh+b.Kilowat' +
+        'tHour,1), round(b.KilowattHour,1)) as totalKwh,'
+      '  @type := m.accountnumber as AccntTmp,'
+      '  b.totalbill'
+      ''
+      ' from master m'
+      '      left join billhistory b on b.code=m.code'
+      '      where m.ratecode is not null and       '
+      '        m.ConnCode <> 5 and'
+      '        m.cbook in (:cbook,:cbook1,:cbook2,:cbook3) and'
+      '        m.cbook is not null and '
+      '        m.cbook <> '#39#39' and'
+      
+        '        b.billmonth in (:billmonth1,:billmonth2,:billmonth3) ord' +
+        'er by m.cbook,b.entry asc) a'
+      'where a.row_num=3'
+      '&industrial'
+      'UNION'
+      'Select '#39'.....'#39') r')
+    Left = 384
+    Top = 64
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'Name'
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Area3'
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftString
+        Name = 'BM'
+        Value = '0810'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cbook3'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth2'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth3'
+        Value = nil
+      end>
+    MacroData = <
+      item
+        Name = 'industrial'
+        Value = 
+          'UNION'#13#10#13#10'Select '#13#10'     concat(  R.name,'#39'~'#39','#13#10'                   ' +
+          'R.accountnumber,'#39'~'#39','#13#10'                   R.code,'#39'~'#39','#13#10'          ' +
+          '         R.previousreadingdate,'#39'~'#39','#13#10'                   R.presen' +
+          'treadingdate,'#39'~'#39','#13#10'                   R.previousReadingKWH,'#39'~'#39','#13 +
+          #10'                   R.presentReadingKWH,'#39'~'#39','#13#10'                  ' +
+          ' R.diff,'#39'~'#39','#13#10'                   R.multiplier,'#39'~'#39','#13#10'            ' +
+          '       R.kilowatthour,'#39'~'#39','#13#10'                   R.Demand,'#39'~'#39','#13#10'  ' +
+          '                 R.totalbill,'#39'~'#39','#13#10'                   R.billmont' +
+          'h,'#39'~'#39','#13#10'                   R.wratecode,'#39'~'#39','#13#10'                   ' +
+          'R.readingType) as result'#13#10' from'#13#10'(select '#13#10'       if(@accnt=a.ac' +
+          'countnumber,@history_cnt:=@history_cnt+1,@history_cnt:=1) as cnt' +
+          ',       '#13#10'       a.name,'#13#10'       a.accountnumber,'#13#10'       a.code' +
+          ','#13#10'       a.previousreadingdate,'#13#10'       a.presentreadingdate,'#13#10 +
+          '       a.previousReadingKWH,'#13#10'       a.presentReadingKWH,'#13#10'     ' +
+          '  a.diff,'#13#10'       a.multiplier,'#13#10'       a.kilowatthour,'#13#10'       ' +
+          'a.Demand,'#13#10'       a.totalbill,'#13#10'       a.billmonth,'#13#10'       a.wr' +
+          'atecode,'#13#10'       a.readingType,'#13#10'       @accnt:= a.accountnumber' +
+          ' as Accnt2'#13#10'       from'#13#10#9'((Select'#13#10#9'  '#13#10'                   b.na' +
+          'me,'#13#10'                   b.accountnumber,'#13#10'                   b.c' +
+          'ode,'#13#10'                   b.previousreadingdate,'#13#10'               ' +
+          '    b.presentreadingdate,'#13#10'                   b.previousReadingK' +
+          'WH,'#13#10'                   b.presentReadingKWH,'#13#10'                  ' +
+          ' b.diff,'#13#10'                   b.multiplier,'#13#10'                   b' +
+          '.kilowatthour,'#13#10'                   b.kilowattUsed as Demand,'#13#10'  ' +
+          '                 b.totalbill,'#13#10'                   b.billmonth,'#13#10 +
+          '                   b.wratecode,'#13#10'                   '#39'P'#39' readingT' +
+          'ype'#13#10#9'   from billhistory b'#13#10#9'   where  b.ratecode is not null a' +
+          'nd       '#13#10'                              --  b.ConnCode <> 5 and' +
+          #13#10'                               b.cbook in (:cbook,:cbook1,:cbo' +
+          'ok2,:cbook3) and'#13#10'                               b.cbook is not ' +
+          'null and '#13#10'                               b.cbook <> '#39#39')'#13#10#9'union' +
+          #13#10#9'  (Select'#9'   '#13#10'                    l.name,'#13#10'                 ' +
+          '   l.accountnumber,'#13#10'                    l.code,'#13#10'              ' +
+          '      l.previousreadingdate,'#13#10'                    l.presentreadi' +
+          'ngdate,'#13#10'                    l.previousReadingKWH,'#13#10'            ' +
+          '        l.presentReadingKWH,'#13#10'                    l.diff,'#13#10'     ' +
+          '               l.multiplier,'#13#10'                    l.kilowatthour' +
+          ','#13#10'                    l.kilowattUsed as Demand,'#13#10'              ' +
+          '      l.totalbill,'#13#10'                    l.billmonth,'#13#10'          ' +
+          '          l.wratecode,'#13#10'                    '#39'L'#39' readingType'#13#10#9'  ' +
+          ' from (Select l2.*,m.cbook as MCbook from latebillhistory  l2'#13#10#9 +
+          #9'  left join master m on m.code=l2.code'#13#10#9#9'  ) l'#13#10#9'   where l.ra' +
+          'tecode is not null and       '#13#10'                              -- ' +
+          'l.ConnCode <> 5 and'#13#10'                              l.mcbook  in ' +
+          '(:cbook,:cbook1,:cbook2,:cbook3) and'#13#10'                          ' +
+          '   l.mcbook is not null and '#13#10'                             l.mcb' +
+          'ook <> '#39#39')'#13#10'               ) a'#13#10#9' order by a.code asc,'#13#10#9' a.pres' +
+          'entreadingdate desc'#13#10') R where R.cnt<4'
+        Active = False
+      end>
+    object StringField1: TStringField
+      FieldName = 'DOWNLOAD'
+      Origin = 'a.DOWNLOAD'
+      Size = 453
+    end
+  end
+  object contactQ: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'Select telno from soasign limit 1')
+    Left = 72
+    Top = 416
+  end
+end

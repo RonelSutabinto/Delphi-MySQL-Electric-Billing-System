@@ -1,0 +1,741 @@
+unit BillMenu;
+
+interface
+
+uses
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  Menus,
+  ExtCtrls,
+  AppEvnts,
+  BarMenus,
+  DBCtrls,
+  StdCtrls,
+  NxCollection,
+  DB,
+  MemDS,
+  DBAccess,
+  MyAccess, pngimage, jpeg, ComCtrls, GIFImg;
+
+type
+  TBillMenuForm = class(TForm)
+    PrinterSetupDialog1: TPrinterSetupDialog;
+    ApplicationEvents1: TApplicationEvents;
+    BcBarMainMenu1: TBcBarMainMenu;
+    Files1: TMenuItem;
+    BillingMaster1: TMenuItem;
+    N1: TMenuItem;
+    AreaRoute1: TMenuItem;
+    MeterRate1: TMenuItem;
+    N2: TMenuItem;
+    PrinterSetup1: TMenuItem;
+    N3: TMenuItem;
+    Users1: TMenuItem;
+    N4: TMenuItem;
+    Exit1: TMenuItem;
+    Transaction1: TMenuItem;
+    Collection1: TMenuItem;
+    Adjustment1: TMenuItem;
+    N5: TMenuItem;
+    Reconnection1: TMenuItem;
+    Disconnection1: TMenuItem;
+    ChangeMeter1: TMenuItem;
+    ChangeName1: TMenuItem;
+    TransferArea1: TMenuItem;
+    Reports1: TMenuItem;
+    SalesReport1: TMenuItem;
+    OverallSalesReport1: TMenuItem;
+    N6: TMenuItem;
+    ReferenceList1: TMenuItem;
+    MeterServiceRequest1: TMenuItem;
+    N7: TMenuItem;
+    PulledOutForwardedBillsInterface1: TMenuItem;
+    IssuanceReturnedBillsInterface1: TMenuItem;
+    N8: TMenuItem;
+    DeletedRecodsInterface1: TMenuItem;
+    N9: TMenuItem;
+    otalAccountsReceivablePowerSales1: TMenuItem;
+    WriteOffBills1: TMenuItem;
+    N10: TMenuItem;
+    CollectionWaiver1: TMenuItem;
+    N11: TMenuItem;
+    ReadandBillGadgetInterface1: TMenuItem;
+    TagUnpaidBills1: TMenuItem;
+    AccountingPowerSales1: TMenuItem;
+    PilferageBilling1: TMenuItem;
+    StartQ: TMyQuery;
+    RestructureUnpaidBills1: TMenuItem;
+    N12: TMenuItem;
+    SeniorCitizenReportables1: TMenuItem;
+    MMCSummary1: TMenuItem;
+    N13: TMenuItem;
+    UnbundledMonthEndSummaries1: TMenuItem;
+    PowerSalesNew1: TMenuItem;
+    UnbundledCollection1: TMenuItem;
+    UnbundledAdjustment1: TMenuItem;
+    AreaTaxRate1: TMenuItem;
+    MonthlyReports1: TMenuItem;
+    DBImage1: TDBImage;
+    Label161: TLabel;
+    Label162: TLabel;
+    NxLabel34: TNxLabel;
+    Image2: TImage;
+    StatusBar1: TStatusBar;
+    Timer1: TTimer;
+    Panel1: TPanel;
+    Label1: TLabel;
+    DBText1: TDBText;
+    Label2: TLabel;
+    Label3: TLabel;
+    DBText2: TDBText;
+    DBText3: TDBText;
+    Label4: TLabel;
+    Shape1: TShape;
+    Panel2: TPanel;
+    Image1: TImage;
+    meterMaster: TMenuItem;
+    areaLabel: TLabel;
+    Label5: TLabel;
+    ConsumerPriorityNumber1: TMenuItem;
+    Timer2: TTimer;
+    CompanyContactNo1: TMenuItem;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Exit1Click(Sender: TObject);
+    procedure BillingMaster1Click(Sender: TObject);
+    procedure Collection1Click(Sender: TObject);
+    procedure AreaRoute1Click(Sender: TObject);
+    procedure MeterRate1Click(Sender: TObject);
+    procedure PrinterSetup1Click(Sender: TObject);
+    procedure Users1Click(Sender: TObject);
+    procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
+    procedure Disconnection1Click(Sender: TObject);
+    procedure Reconnection1Click(Sender: TObject);
+    procedure ChangeMeter1Click(Sender: TObject);
+    procedure ChangeName1Click(Sender: TObject);
+    procedure TransferArea1Click(Sender: TObject);
+    procedure SalesReport1Click(Sender: TObject);
+    procedure OverallSalesReport1Click(Sender: TObject);
+    procedure Adjustment1Click(Sender: TObject);
+    procedure MeterServiceRequest1Click(Sender: TObject);
+    procedure IssuanceReturnedBillsInterface1Click(Sender: TObject);
+    procedure PulledOutForwardedBillsInterface1Click(Sender: TObject);
+    procedure DeletedRecodsInterface1Click(Sender: TObject);
+    procedure WriteOffBills1Click(Sender: TObject);
+    procedure CollectionWaiver1Click(Sender: TObject);
+    procedure ReadandBillGadgetInterface1Click(Sender: TObject);
+    procedure TagUnpaidBills1Click(Sender: TObject);
+    procedure PilferageBilling1Click(Sender: TObject);
+    procedure AccountingPowerSales1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure RestructureUnpaidBills1Click(Sender: TObject);
+    procedure SeniorCitizenReportables1Click(Sender: TObject);
+    procedure MMCSummary1Click(Sender: TObject);
+    procedure PowerSalesNew1Click(Sender: TObject);
+    procedure otalAccountsReceivablePowerSales1Click(Sender: TObject);
+    procedure UnbundledCollection1Click(Sender: TObject);
+    procedure UnbundledAdjustment1Click(Sender: TObject);
+    procedure AreaTaxRate1Click(Sender: TObject);
+    procedure MonthlyReports1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure meterMasterClick(Sender: TObject);
+    procedure DBConnect();
+    procedure ConsumerPriorityNumber1Click(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
+    procedure CompanyContactNo1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    Database : String;
+  end;
+
+var
+  BillMenuForm: TBillMenuForm;
+  Animate : Boolean;
+  menuCaption :String;
+
+implementation
+
+uses intro,
+     BillMaster,
+     Data,
+     Collection,
+     AreaRoute,
+     MeterRate,
+     FlatRateIndex,
+     User,
+     Disconnection,
+     Reconnection,
+     ChangeMeter,
+     ChangeName,
+     TransferArea,
+     SalesByBook,
+     SalesByArea,
+     ReferenceList,
+     AdjustmentRecord,
+     MSInterface,
+     issuanceinterface,
+     PFInterface,
+     DeletedRecordsInterface,
+     writeoff,
+     collectwaiver,
+     readandbill,
+     tagup,
+     Pilferage,
+     acctgpower,
+     Restructure,
+     SCReports,
+     MCCSumm,
+     PwrSales,
+     PowerSalesNu,
+     AR,
+     UnbundledCollectionnu,
+     UnbndAdjReport, AreaTax, MonthlyReport, RealPropertyTaxFrm, meterMaster,
+  MODTOOLS, CashReceiptDownload, ChangeMeterTransaction, spotbill,
+  PriorityNumberFrm, callerNoForm, ContactForm;
+
+{$R *.dfm}
+
+procedure TBillMenuForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  BillingData.Destroy;
+  BillingData  := Nil;
+  BillMenuForm := Nil;
+
+  IntroForm.Users.Close;
+  IntroForm.Close;
+  Action       := caFree;
+end;
+
+procedure TBillMenuForm.Exit1Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TBillMenuForm.BillingMaster1Click(Sender: TObject);
+begin
+  If not assigned(BillMasterForm) then
+  BillMasterForm := TBillMasterForm.Create(Application);
+  BillMasterForm.Show;
+end;
+
+procedure TBillMenuForm.Collection1Click(Sender: TObject);
+begin
+  If not assigned(CollectionForm) then
+  CollectionForm         := TCollectionForm.Create(Application);
+  CollectionForm.Show;
+end;
+
+procedure TBillMenuForm.AreaRoute1Click(Sender: TObject);
+begin
+  BillingData.Vicinity.Active := True;
+  If not assigned(AreaRouteForm) then AreaRouteForm := TAreaRouteForm.Create(Application);
+  AreaRouteForm.show;
+end;
+
+procedure TBillMenuForm.AreaTaxRate1Click(Sender: TObject);
+begin
+   if not assigned(RPTaxFrm) then
+   RPTaxFrm := TRPTaxFrm.Create(Application);
+   RPTaxFrm.Show;
+end;
+
+procedure TBillMenuForm.MeterRate1Click(Sender: TObject);
+begin
+   BillingData.MRate.Active := True;
+   If not assigned(MeterRateForm) then
+   MeterRateForm := TMeterRateForm.Create(Application);
+   MeterRateForm.show;
+end;
+
+procedure TBillMenuForm.PrinterSetup1Click(Sender: TObject);
+begin
+ PrinterSetupDialog1.Execute;
+end;
+
+procedure TBillMenuForm.UnbundledAdjustment1Click(Sender: TObject);
+begin
+  If not assigned(UnBnAdjReport) then
+  UnBnAdjReport := TUnBnAdjReport.Create(Application);
+  UnBnAdjReport.Show;
+
+end;
+
+procedure TBillMenuForm.UnbundledCollection1Click(Sender: TObject);
+begin
+  If not assigned(frmUnbundledCollectionnu) then
+  frmUnbundledCollectionnu := TfrmUnbundledCollectionnu.Create(Application);
+  frmUnbundledCollectionnu.Show;
+end;
+
+procedure TBillMenuForm.Users1Click(Sender: TObject);
+begin
+  If not Assigned(UserForm) then UserForm := TUserForm.Create(Application);
+  UserForm.Users.Active := True;
+  UserForm.Show;
+end;
+
+procedure TBillMenuForm.ApplicationEvents1Exception(Sender: TObject;
+  E: Exception);
+begin
+   ShowMessage(E.Message+#13+
+               'Pls. contact your programmer.');
+end;
+
+procedure TBillMenuForm.Disconnection1Click(Sender: TObject);
+begin
+  If not assigned(DisconnectionForm) then
+    begin
+      DisconnectionForm        := TDisconnectionForm.Create(Application);
+      BillingData.Disco.Active := True;
+      DisconnectionForm.Show;
+      DisconnectionForm.Edit1.SetFocus;
+    end;
+end;
+
+procedure TBillMenuForm.Reconnection1Click(Sender: TObject);
+begin
+  If not assigned(ReconnectionForm) then
+    begin
+      ReconnectionForm         := TReconnectionForm.Create(Application);
+      BillingData.Recon.Active := True;
+      ReconnectionForm.Show;
+      ReconnectionForm.Edit1.SetFocus;
+    end;
+end;
+
+procedure TBillMenuForm.ChangeMeter1Click(Sender: TObject);
+begin
+  If not assigned(ChangeMeterForm) then
+    begin
+      ChangeMeterForm                := TChangeMeterForm.Create(Application);
+      BillingData.ChangeMeter.Active := True;
+      ChangeMeterForm.Show;
+      ChangeMeterForm.Edit1.SetFocus;
+    end;
+end;
+
+procedure TBillMenuForm.ChangeName1Click(Sender: TObject);
+begin
+  If not assigned(ChangeNameForm) then
+    begin
+      ChangeNameForm                := TChangeNameForm.Create(Application);
+      BillingData.ChangeName.Active := True;
+      ChangeNameForm.Show;
+      ChangeNameForm.Edit1.SetFocus;
+    end;
+end;
+
+procedure TBillMenuForm.TransferArea1Click(Sender: TObject);
+begin
+  If not assigned(TransferAreaForm) then
+    begin
+      TransferAreaForm                := TTransferAreaForm.Create(Application);
+      BillingData.TransferArea.Active := True;
+      TransferAreaForm.Show;
+      TransferAreaForm.Edit1.SetFocus;
+    end;
+end;
+
+procedure TBillMenuForm.SalesReport1Click(Sender: TObject);
+begin
+  If not assigned(SalesByBookForm) then
+  SalesByBookForm := TSalesByBookForm.Create(Application);
+  SalesByBookForm.Show;
+end;
+
+procedure TBillMenuForm.OverallSalesReport1Click(Sender: TObject);
+begin
+  If not assigned(SalesByAreaForm) then
+  SalesByAreaForm := TSalesByAreaForm.Create(Application);
+  SalesByAreaForm.Show;
+end;
+
+procedure TBillMenuForm.Adjustment1Click(Sender: TObject);
+begin
+  If not assigned(AdjustmentRecordForm) then
+  AdjustmentRecordForm         := TAdjustmentRecordForm.Create(Application);
+  AdjustmentRecordForm.Show;
+end;
+
+procedure TBillMenuForm.MeterServiceRequest1Click(Sender: TObject);
+begin
+  If not assigned(MeterServiceForm) then
+  MeterServiceForm         := TMeterServiceForm.Create(Application);
+  MeterServiceForm.Show;
+end;
+
+procedure TBillMenuForm.IssuanceReturnedBillsInterface1Click(
+  Sender: TObject);
+begin
+  If not assigned(IssuanceForm) then
+  IssuanceForm         := TIssuanceForm.Create(Application);
+  IssuanceForm.Show;
+end;
+
+procedure TBillMenuForm.meterMasterClick(Sender: TObject);
+begin
+  if not assigned(meterMasterRecord) then
+  meterMasterRecord := TmeterMasterRecord.Create(Application);
+  meterMasterRecord.Show;
+end;
+
+procedure TBillMenuForm.PulledOutForwardedBillsInterface1Click(
+  Sender: TObject);
+begin
+  If not assigned(PFForm) then
+  PFForm := TPFForm.Create(Application);
+  PFForm.Show;
+end;
+
+procedure TBillMenuForm.DeletedRecodsInterface1Click(Sender: TObject);
+begin
+  If not assigned(DeletedRecordsForm) then
+  DeletedRecordsForm := TDeletedRecordsForm.Create(Application);
+  DeletedRecordsForm.Show;
+
+end;
+
+procedure TBillMenuForm.WriteOffBills1Click(Sender: TObject);
+begin
+  If not assigned(WriteoffForm) then WriteoffForm := TWriteoffForm.Create(Application);
+  WriteoffForm.show;
+end;
+
+procedure TBillMenuForm.CollectionWaiver1Click(Sender: TObject);
+begin
+  If not assigned(CollectionWaiverForm) then
+  CollectionWaiverForm := TCollectionWaiverForm.Create(Application);
+  CollectionWaiverForm.show;
+end;
+
+procedure TBillMenuForm.CompanyContactNo1Click(Sender: TObject);
+begin
+  if not assigned(contactFrm) then
+  contactFrm := TcontactFrm.Create(Application);
+
+  contactFrm.ShowModal;
+
+end;
+
+procedure TBillMenuForm.ConsumerPriorityNumber1Click(Sender: TObject);
+begin
+  if not assigned(priorityNoFrm) then
+  priorityNoFrm := TpriorityNoFrm.Create(Application);
+
+  priorityNoFrm.ShowModal
+end;
+
+procedure TBillMenuForm.ReadandBillGadgetInterface1Click(Sender: TObject);
+begin
+  If not assigned(ReadandBillForm) then ReadandBillForm := TReadandBillForm.Create(Application);
+  ReadandBillForm.show;
+end;
+
+procedure TBillMenuForm.TagUnpaidBills1Click(Sender: TObject);
+begin
+  If not assigned(TagUnpaidBillsForm) then TagUnpaidBillsForm := TTagUnpaidBillsForm.Create(Application);
+  TagUnpaidBillsForm.show;
+end;
+
+procedure TBillMenuForm.Timer1Timer(Sender: TObject);
+begin
+  StatusBar1.Panels[1].Text := FormatDateTime('hh:mm:ss AM/PM',now);
+end;
+
+procedure TBillMenuForm.Timer2Timer(Sender: TObject);
+begin
+  if  not assigned(callernoFrm) then
+  callernoFrm := TcallernoFrm.Create(Application);
+
+  with callernoFrm do
+  begin
+     queCntrQ.Close;
+     queCntrQ.ParamByName('user').Text := 'Billing'+IntroForm.Userscounter.Text+' '+IntroForm.UsersUserName.Text;
+     queCntrQ.Open;
+
+     BillMenuForm.Caption        := menuCaption + ' Billing Complaint:' + queCntrQbillingC.Text
+                                    + '  Billing Inquiry:' +queCntrQbillingI.Text;
+
+  end;
+end;
+
+procedure TBillMenuForm.PilferageBilling1Click(Sender: TObject);
+begin
+  If not assigned(PilferageBillingForm) then
+  PilferageBillingForm := TPilferageBillingForm.Create(Application);
+  PilferageBillingForm.Show;
+end;
+
+procedure TBillMenuForm.PowerSalesNew1Click(Sender: TObject);
+begin
+  if not Assigned(frmPowerSalesNu) then frmPowerSalesNu := TfrmPowerSalesNu.Create(Self);
+  frmPowerSalesNu.Show;
+
+end;
+
+procedure TBillMenuForm.AccountingPowerSales1Click(Sender: TObject);
+begin
+  If not assigned(SalesForm) then
+  SalesForm := TSalesForm.Create(Application);
+  SalesForm.Show;
+end;
+
+procedure TBillMenuForm.FormShow(Sender: TObject);
+begin
+  DBConnect;
+
+   Try
+    StartQ.Execute;
+   except
+   end;
+
+   if not assigned(BillMasterForm) then
+   BillMasterForm := TBillMasterForm.Create(Application);
+
+
+   If (IntroForm.UsersUserRestriction.Text = 'ADMINISTRATOR') AND (IntroForm.UsersisWan.AsBoolean = false)  then
+   begin
+     BillMasterForm.LateBills1.Enabled               := true;
+     BillMasterForm.UpdateMasterFromBilling1.Enabled := true;
+     BillMasterForm.UpdateLateBills1.Enabled         := true;
+   end;
+
+    if IntroForm.UsersisWan.AsBoolean = false then
+   begin
+      BillMasterForm.SetBillingFilter1.Enabled             := true;
+   end;
+
+   Timer2.Enabled := true;
+end;
+
+procedure TBillMenuForm.RestructureUnpaidBills1Click(Sender: TObject);
+begin
+  If not assigned(RestructureForm) then
+  RestructureForm := TRestructureForm.Create(Application);
+  RestructureForm.Show;
+end;
+
+procedure TBillMenuForm.SeniorCitizenReportables1Click(Sender: TObject);
+begin
+  If not assigned(SCReportForm) then
+  SCReportForm := TSCReportForm.Create(Application);
+  SCReportForm.Show;
+end;
+
+procedure TBillMenuForm.MMCSummary1Click(Sender: TObject);
+begin
+  If not assigned(MCCSummaryForm) then
+  MCCSummaryForm := TMCCSummaryForm.Create(Application);
+  MCCSummaryForm.Show;
+end;
+
+procedure TBillMenuForm.MonthlyReports1Click(Sender: TObject);
+begin
+ if NOT assigned(MonthlyRprt) then
+   MonthlyRprt:=TMonthlyRprt.Create(Application);
+   MonthlyRprt.Show;
+end;
+
+procedure TBillMenuForm.otalAccountsReceivablePowerSales1Click(Sender: TObject);
+begin
+  If not assigned(AccountsReceivable) then
+  AccountsReceivable := TAccountsReceivable.Create(Application);
+  AccountsReceivable.Show;
+end;
+
+procedure TBillMenuForm.DBConnect();
+var
+ a:Integer;
+begin
+  menuCaption := '';
+
+  If not assigned(ChangeMeterTransactionForm) then
+   ChangeMeterTransactionForm := TChangeMeterTransactionForm.Create(Application);
+
+  If not assigned(frmPowerSalesNu) then
+   frmPowerSalesNu := TfrmPowerSalesNu.Create(Application);
+
+  If not assigned(SpotBillingForm) then
+   SpotBillingForm := TSpotBillingForm.Create(Application);
+
+   if not assigned(CashReceiptDownloadForm) then
+   CashReceiptDownloadForm := TCashReceiptDownloadForm.Create(Application);
+
+   if not assigned(SalesForm) then
+   SalesForm := TSalesForm.Create(Application);
+
+  case IntroForm.area_CBox.ItemIndex of
+    0:begin
+
+      BillingData.MyConnection1.Connected := false;
+      BillingData.MyConnection1.Server    := 'server';
+      BillingData.MyConnection1.Database  := 'zaneco';
+      BillingData.MyConnection1.Connected := true;
+
+      SalesForm.MyConnection1.Connected := false;
+      SalesForm.MyConnection1.Server    := 'server';
+      SalesForm.MyConnection1.Database  := 'zanecoacctg';
+      SalesForm.MyConnection1.Connected := true;
+
+      CashReceiptDownloadForm.MyConnection1.Connected := false;
+      CashReceiptDownloadForm.MyConnection1.Server    := 'server';
+      CashReceiptDownloadForm.MyConnection1.Database  := 'zanecoacctg';
+      CashReceiptDownloadForm.MyConnection1.Connected := true;
+
+      ChangeMeterTransactionForm.MyConnection1.Connected := false;
+      ChangeMeterTransactionForm.MyConnection1.Server    := 'server';
+      ChangeMeterTransactionForm.MyConnection1.Database  := 'zanecometer';
+      ChangeMeterTransactionForm.MyConnection1.Connected := true;
+
+      frmPowerSalesNu.MyConnection1.Connected := false;
+      frmPowerSalesNu.MyConnection1.Server    := 'server';
+      frmPowerSalesNu.MyConnection1.Database  := 'zaneco';
+      frmPowerSalesNu.MyConnection1.Connected := true;
+
+      SpotBillingForm.MyConnection1.Connected := false;
+      SpotBillingForm.MyConnection1.Server    := 'server';
+      SpotBillingForm.MyConnection1.Database  := 'zaneco';
+      SpotBillingForm.MyConnection1.Connected := true;
+
+      BillingData.callerServer.Connected    := false;
+      BillingData.callerServer.Server       := 'server';
+      BillingData.callerServer.Connected    := true;
+
+
+      //==========================================
+      //==========================================
+      areaLabel.Caption := 'DMO';
+      BillMenuForm.Caption := 'Flexi Billing Menu (Area:DMO - Billing '+BillMenuForm.Caption+')';
+
+    end;
+    1:begin
+      BillingData.MyConnection1.Connected := false;
+      BillingData.MyConnection1.Server    := 'serverlao';
+      BillingData.MyConnection1.Database  := 'zaneco';
+      BillingData.MyConnection1.Connected := true;
+
+      SalesForm.MyConnection1.Connected := false;
+      SalesForm.MyConnection1.Server    := 'serverlao';
+      SalesForm.MyConnection1.Database  := 'zanecoacctg';
+      SalesForm.MyConnection1.Connected := true;
+
+      CashReceiptDownloadForm.MyConnection1.Connected := false;
+      CashReceiptDownloadForm.MyConnection1.Server    := 'serverlao';
+      CashReceiptDownloadForm.MyConnection1.Database  := 'zanecoacctg';
+      CashReceiptDownloadForm.MyConnection1.Connected := true;
+
+      ChangeMeterTransactionForm.MyConnection1.Connected := false;
+      ChangeMeterTransactionForm.MyConnection1.Server    := 'serverlao';
+      ChangeMeterTransactionForm.MyConnection1.Database  := 'zanecometer';
+      ChangeMeterTransactionForm.MyConnection1.Connected := true;
+
+      frmPowerSalesNu.MyConnection1.Connected := false;
+      frmPowerSalesNu.MyConnection1.Server    := 'serverlao';
+      frmPowerSalesNu.MyConnection1.Database  := 'zaneco';
+      frmPowerSalesNu.MyConnection1.Connected := true;
+
+      SpotBillingForm.MyConnection1.Connected := false;
+      SpotBillingForm.MyConnection1.Server    := 'serverlao';
+      SpotBillingForm.MyConnection1.Database  := 'zaneco';
+      SpotBillingForm.MyConnection1.Connected := true;
+
+      BillingData.callerServer.Connected    := false;
+      BillingData.callerServer.Server       := 'serverlao';
+      BillingData.callerServer.Connected    := true;
+
+      areaLabel.Caption := 'LAO';
+      BillMenuForm.Caption := 'Flexi Billing Menu (Area:LAO - Billing '+BillMenuForm.Caption+')';
+    end;
+    2:begin
+      BillingData.MyConnection1.Connected := false;
+      BillingData.MyConnection1.Server    := 'serverpao';
+      BillingData.MyConnection1.Database  := 'zaneco';
+      BillingData.MyConnection1.Connected := true;
+
+      SalesForm.MyConnection1.Connected := false;
+      SalesForm.MyConnection1.Server    := 'serverpao';
+      SalesForm.MyConnection1.Database  := 'zanecoacctg';
+      SalesForm.MyConnection1.Connected := true;
+
+      CashReceiptDownloadForm.MyConnection1.Connected := false;
+      CashReceiptDownloadForm.MyConnection1.Server    := 'serverpao';
+      CashReceiptDownloadForm.MyConnection1.Database  := 'zanecoacctg';
+      CashReceiptDownloadForm.MyConnection1.Connected := true;
+
+      ChangeMeterTransactionForm.MyConnection1.Connected := false;
+      ChangeMeterTransactionForm.MyConnection1.Server    := 'serverpao';
+      ChangeMeterTransactionForm.MyConnection1.Database  := 'zanecometer';
+      ChangeMeterTransactionForm.MyConnection1.Connected := true;
+
+      frmPowerSalesNu.MyConnection1.Connected := false;
+      frmPowerSalesNu.MyConnection1.Server    := 'serverpao';
+      frmPowerSalesNu.MyConnection1.Database  := 'zaneco';
+      frmPowerSalesNu.MyConnection1.Connected := true;
+
+      SpotBillingForm.MyConnection1.Connected := false;
+      SpotBillingForm.MyConnection1.Server    := 'serverpao';
+      SpotBillingForm.MyConnection1.Database  := 'zaneco';
+      SpotBillingForm.MyConnection1.Connected := true;
+
+      BillingData.callerServer.Connected    := false;
+      BillingData.callerServer.Server       := 'serverpao';
+      BillingData.callerServer.Connected    := true;
+
+      areaLabel.Caption := 'PAO';
+      BillMenuForm.Caption := 'Flexi Billing Menu (Area:PAO - Billing '+BillMenuForm.Caption+')';
+    end;
+    3:begin
+      BillingData.MyConnection1.Connected := false;
+      BillingData.MyConnection1.Server    := 'serversao';
+      BillingData.MyConnection1.Database  := 'zaneco';
+      BillingData.MyConnection1.Connected := true;
+
+      SalesForm.MyConnection1.Connected := false;
+      SalesForm.MyConnection1.Server    := 'serversao';
+      SalesForm.MyConnection1.Database  := 'zanecoacctg';
+      SalesForm.MyConnection1.Connected := true;
+
+      CashReceiptDownloadForm.MyConnection1.Connected := false;
+      CashReceiptDownloadForm.MyConnection1.Server    := 'serversao';
+      CashReceiptDownloadForm.MyConnection1.Database  := 'zanecoacctg';
+      CashReceiptDownloadForm.MyConnection1.Connected := true;
+
+      ChangeMeterTransactionForm.MyConnection1.Connected := false;
+      ChangeMeterTransactionForm.MyConnection1.Server    := 'serversao';
+      ChangeMeterTransactionForm.MyConnection1.Database  := 'zanecometer';
+      ChangeMeterTransactionForm.MyConnection1.Connected := true;
+
+      frmPowerSalesNu.MyConnection1.Connected := false;
+      frmPowerSalesNu.MyConnection1.Server    := 'serversao';
+      frmPowerSalesNu.MyConnection1.Database  := 'zaneco';
+      frmPowerSalesNu.MyConnection1.Connected := true;
+
+      SpotBillingForm.MyConnection1.Connected := false;
+      SpotBillingForm.MyConnection1.Server    := 'serversao';
+      SpotBillingForm.MyConnection1.Database  := 'zaneco';
+      SpotBillingForm.MyConnection1.Connected := true;
+
+      BillingData.callerServer.Connected    := false;
+      BillingData.callerServer.Server       := 'serversao';
+      BillingData.callerServer.Connected    := true;
+
+      areaLabel.Caption := 'SAO';
+      BillMenuForm.Caption := 'Flexi Billing Menu (Area:SAO - Billing '+BillMenuForm.Caption+')';
+    end;
+  end;
+
+  menuCaption  := BillMenuForm.Caption;
+end;
+end.
+
+
+

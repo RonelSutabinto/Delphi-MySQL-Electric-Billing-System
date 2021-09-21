@@ -1,0 +1,73 @@
+unit User;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, ExtCtrls, StdCtrls, DBCtrls, Mask, DB, DBTables,
+  MemDS, DBAccess, MyAccess, CRGrid, CRDBGrid1;
+
+type
+  TUserForm = class(TForm)
+    UserSource: TDataSource;
+    Users: TMyQuery;
+    UsersUserPassWord: TStringField;
+    UsersUserName: TStringField;
+    UsersUserID: TStringField;
+    UsersUserPic: TBlobField;
+    UsersBillCode: TStringField;
+    UsersBillNumber: TIntegerField;
+    UsersUserRestriction: TStringField;
+    UsersPosition: TStringField;
+    DBGrid1: TCRDBGrid1;
+    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  UserForm: TUserForm;
+
+implementation
+
+uses UserRecord, Data;
+
+{$R *.dfm}
+
+procedure TUserForm.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+begin
+ If Key = '+' then
+  begin
+    If not assigned(UserRecordForm) then
+    UserRecordForm := TUserRecordForm.Create(Application);
+    UserRecordForm.EditUser.Close;
+    UserRecordForm.EditUser.ParamByName('UserName').Text := '';
+    UserRecordForm.EditUser.Open;
+    UserRecordForm.EditUser.Append;
+    UserRecordForm.Show;
+  end;
+
+ If Key = #13 then
+  begin
+    Users.Edit;
+    If not assigned(UserRecordForm) then
+    UserRecordForm := TUserRecordForm.Create(Application);
+    UserRecordForm.EditUser.Close;
+    UserRecordForm.EditUser.ParamByName('UserName').Text := UsersUserName.Text;
+    UserRecordForm.EditUser.Open;
+    UserRecordForm.EditUser.Edit;
+    UserRecordForm.Show;
+  end;
+end;
+
+procedure TUserForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+   Users.Active := False;
+   Action := caFree;
+   UserForm := Nil;
+end;
+
+end.

@@ -1,0 +1,341 @@
+unit Frequency;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, PDJSillyLabel, StdCtrls, ExtCtrls,
+  Gauges, DB, MemDS, DBAccess, MyAccess, ComCtrls, CRGrid, DsFancyButton,
+  NxCollection, CRDBGrid1;
+
+type
+  TFrequencyForm = class(TForm)
+    Panel9: TNxHeaderPanel;
+    Label20: TLabel;
+    BillMonth: TEdit;
+    PDJSillyLabel7: TNxButton;
+    PDJSillyLabel8: TNxButton;
+    PDJSillyLabel1: TNxButton;
+    Gauge1: TGauge;
+    PDJSillyLabel2: TNxButton;
+    AP: TMyQuery;
+    FromRange: TLabeledEdit;
+    ToRange: TLabeledEdit;
+    Label1: TLabel;
+    Increment: TLabeledEdit;
+    PDJSillyLabel3: TNxButton;
+    Panel1: TPanel;
+    Label2: TLabel;
+    Animate1: TAnimate;
+    Bevel3: TBevel;
+    RateOption: TRadioGroup;
+    DBGrid1: TCRDBGrid1;
+    DsFancyButton1: TDsFancyButton;
+    DsFancyButton2: TDsFancyButton;
+    DsFancyButton3: TDsFancyButton;
+    DsFancyButton4: TDsFancyButton;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure PDJSillyLabel1Click(Sender: TObject);
+    procedure PDJSillyLabel7Click(Sender: TObject);
+    procedure PDJSillyLabel8Click(Sender: TObject);
+    procedure PDJSillyLabel2Click(Sender: TObject);
+    procedure PDJSillyLabel3Click(Sender: TObject);
+    procedure DsFancyButton1Click(Sender: TObject);
+    procedure DsFancyButton2Click(Sender: TObject);
+    procedure DsFancyButton3Click(Sender: TObject);
+    procedure DsFancyButton4Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrequencyForm: TFrequencyForm;
+
+implementation
+
+uses Data, ModTools;
+
+Var
+Lst : Text ;
+
+{$R *.dfm}
+
+procedure TFrequencyForm.DsFancyButton1Click(Sender: TObject);
+begin
+  FromRange.Text := '0';
+  ToRange.Text   := '20';
+  Increment.Text := '1'
+end;
+
+procedure TFrequencyForm.DsFancyButton2Click(Sender: TObject);
+begin
+  FromRange.Text := '0';
+  ToRange.Text   := '5';
+  Increment.Text := '5'
+end;
+
+procedure TFrequencyForm.DsFancyButton3Click(Sender: TObject);
+begin
+  FromRange.Text := '6';
+  ToRange.Text   := '100';
+  Increment.Text := '4'
+end;
+
+procedure TFrequencyForm.DsFancyButton4Click(Sender: TObject);
+begin
+  FromRange.Text := '101';
+  ToRange.Text   := '300';
+  Increment.Text := '24'
+end;
+
+procedure TFrequencyForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  BillingData.Fr.Active := False;
+  Action := caFree;
+  FrequencyForm := Nil;
+end;
+
+procedure TFrequencyForm.PDJSillyLabel1Click(Sender: TObject);
+begin
+  If BillMonth.Text = '' then
+   begin
+    ShowMessage('Input Bill Month.');
+    exit;
+   end;
+
+With BillingData do
+ begin
+  Panel1.Left := 54;
+  Panel1.Top  := 240;
+  Panel1.Visible := True;
+  Panel1.BringToFront;
+  Animate1.Active := True;
+
+  FR.First;
+  While not Fr.Eof do
+   begin
+   Application.ProcessMessages;
+   FrQ.Close;
+   FrQ.ParamByName('billmonth').Text      := BillMonth.Text;
+   FrQ.ParamByName('FromKwhr').AsFloat  := FrRangeFrom.AsFloat;
+   FrQ.ParamByName('ToKwhr').AsFloat    := FrRangeTo.AsFloat;
+
+   case RateOption.ItemIndex of
+   0 :  FrQ.ParamByName('ratecode').Text := '%';
+   1 :  FrQ.ParamByName('ratecode').Text := 'R';
+   2 :  FrQ.ParamByName('ratecode').Text := 'C';
+   3 :  FrQ.ParamByName('ratecode').Text := 'I';
+   4 :  FrQ.ParamByName('ratecode').Text := 'P';
+   5 :  FrQ.ParamByName('ratecode').Text := 'S';
+   end;
+
+   FrQ.Open;
+
+   Fr.Edit;
+   FrConsumers.AsInteger    := FrQTotalAccount.AsInteger;
+   FrKilowattHour.AsFloat := FrQTotalKWHR.AsFloat;
+   FrAmount.AsFloat       := FrQAmount.AsFloat;
+   Fr.Post;
+   Application.ProcessMessages;
+
+   Fr.Next;
+   end;
+
+   FrQ.Close;
+   Animate1.Active := False;
+   Panel1.Visible  := False;
+   MessageDlg('Generate Totals Done....', mtInformation, [mbOK], 0);
+ end;
+
+end;
+
+procedure TFrequencyForm.PDJSillyLabel7Click(Sender: TObject);
+Var PageCount,LineCount : Integer  ;
+    TConsumers          : Integer  ;
+    TKWHR               : Integer  ;
+    TAmount             : Currency ;
+    ConsumerType        : String   ;
+
+begin
+  Try
+  AssignFile(Lst,'LPT1');
+  Rewrite(Lst);
+  except
+   ShowMessage('Printer not Ready');
+   Exit;
+  end;
+  LineCount   := 0;
+  PageCount   := 0;
+  TConsumers  := 0;
+  TKWHR       := 0;
+  TAmount     := 0;
+
+  Case RateOption.ItemIndex of
+  0 : ConsumerType := 'ALL';
+  1 : ConsumerType := 'RESIDENTIAL';
+  2 : ConsumerType := 'COMMERCIAL';
+  3 : ConsumerType := 'INDUSTRIAL';
+  4 : ConsumerType := 'PUB. BLDG.';
+  5 : ConsumerType := 'ST. LIGHTS';
+  end;
+
+  Write(Lst,#18,#27+'P');
+  Writeln(lst);
+  Writeln(lst);
+  Writeln(lst);
+  Writeln(lst);
+  Writeln(lst);
+  Writeln(Lst,'Page ',PageCount);
+  Writeln(lst,#27+'E','             FREQUENCY REPORT',#27+'F');
+  Writeln(lst,'             Current Bill Month :',MonString(BillMonth.Text));
+  Writeln(Lst,'             Print Date         :',DateToStr(Date));
+  Writeln(Lst,'             Consumer Type      :',ConsumerType);
+  Writeln(lst);
+  Writeln(lst);
+  Writeln(lst);
+  Writeln(Lst,'----------------------------------------------------------------------------');
+  Writeln(Lst,'|___RANGE___|    Total Accounts  | Total Kilowatthours|    Lifeline Amount |');
+  Writeln(Lst,'| From   To |                    |                    |                    |');
+  Writeln(Lst,'----------------------------------------------------------------------------');
+
+  With BillingData do
+  begin
+  Fr.First;
+  While not Fr.Eof do
+   begin
+
+      Writeln(Lst,'|',
+                  FrRangeFrom.AsFloat:5                         ,' ',
+                  FrRangeTo.AsFloat:5                           ,'|',
+                  FrConsumers.AsInteger:20                        ,'|',
+                  FRKilowatthour.AsInteger:20                     ,'|',
+                  Format(FrAmount.AsCurrency,'###,###,###,###.##'),'|');
+
+   TConsumers := TConsumers + FrConsumers.AsInteger;
+   TKWHR      := TKWHR + FRKilowatthour.AsInteger;
+   TAmount    := TAmount + FrAmount.AsCurrency;
+
+   Inc(LineCount);
+   If LineCount >= 50 then
+    begin
+      LineCount := 0;
+      Inc(PageCount);
+      Writeln(Lst,'----------------------------------------------------------------------------');
+      Write(Lst,#12);
+      Write(Lst,#18,#27+'P');
+      Writeln(Lst,'Page ',PageCount);
+      Writeln(lst,#27+'E','FREQUENCY REPORT',#27+'F');
+      Writeln(lst,'Current Bill Month :',MonString(BillMonth.Text));
+      Writeln(Lst,'Print Date         :',DateToStr(Date));
+      Write(Lst,#15);
+      Writeln(Lst,'----------------------------------------------------------------------------');
+      Writeln(Lst,'|___RANGE___|    Total Accounts  | Total Kilowatthours|    Lifeline Amount |');
+      Writeln(Lst,'| From   To |                    |                    |                    |');
+      Writeln(Lst,'----------------------------------------------------------------------------');
+    end;
+   FR.Next;
+   end;
+  end;
+  Writeln(Lst,'--------------------------------------------------------------------------');
+  Writeln(Lst,'|   TOTAL   |',TConsumers:20,'|',
+                              TKWHR:20,'|',
+                              Format(TAmount,'###,###,###,###.##'),'|');
+  Writeln(Lst,'-------------------------------------------------------------------------');
+  Write(Lst,#12);
+  CloseFile(Lst);
+  ShowMessage('Done');
+
+end;
+
+procedure TFrequencyForm.PDJSillyLabel8Click(Sender: TObject);
+begin
+   Close;
+end;
+
+procedure TFrequencyForm.PDJSillyLabel2Click(Sender: TObject);
+begin
+  BillingData.Fr.Close;
+  AP.SQL.Clear;
+  AP.SQL.Add('truncate frequency');
+  AP.execute;
+  BillingData.Fr.Open;
+end;
+
+procedure TFrequencyForm.PDJSillyLabel3Click(Sender: TObject);
+Var FromR,ToR,Incr : double;
+    Counter : double;
+    SourceFrom : double;
+begin
+
+    FromR := 0;
+    ToR   := 0;
+    Incr  := 0;
+  Try
+    FromR := StrTofloat(FromRange.Text);
+    ToR   := StrTofloat(ToRange.Text);
+    Incr  := StrTofloat(Increment.Text);
+  except
+    MessageDlg('Please check you paameters......', mtError, [mbOK], 0);
+    abort;
+  end;
+
+
+  With BillingData do
+   begin
+     Counter := fromR;
+     //sourceFrom := fromR;
+
+     Repeat
+        if (Counter=0) then
+        begin
+          FR.Append;
+          FrRangeFrom.Text := '0';
+          FrRangeTo.Text   := '0';
+          Fr.Post;
+        end;
+
+        //===================
+        //===================
+        if (Counter=fromR) and (Counter<>0) then
+        begin
+          FR.Append;
+          sourceFrom := Counter;
+          FrRangeFrom.Text := floatToStr(sourceFrom);
+          Counter := Counter + Incr;
+          FrRangeTo.Text   := floattostr(Counter);
+          Fr.Post;
+        end
+        else if((Counter + Incr)>ToR)then
+        begin
+          FR.Append;
+          sourceFrom := Counter+0.1;
+          FrRangeFrom.Text := floatToStr(sourceFrom);
+          Counter := TOR;
+          FrRangeTo.Text   := floattostr(Counter);
+          Fr.Post;
+        end
+        else 
+        begin
+          FR.Append;
+          sourceFrom := Counter+0.1;
+          FrRangeFrom.Text := floatToStr(sourceFrom);
+          Counter := Counter + Incr;
+          FrRangeTo.Text   := floattostr(Counter);
+          Fr.Post;
+        end;
+        //====================
+        //====================
+
+     Until Counter >= ToR;
+   end;
+   MessageDlg('Set Frequency Range done... ', mtWarning, [mbOK], 0);
+
+end;
+
+end.
+
+
+

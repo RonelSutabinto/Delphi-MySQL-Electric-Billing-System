@@ -1,0 +1,107 @@
+Record.sldebit[i];
+                          JournalUpdate.ParamByName('credit').AsCurrency    := SalesRecord.slcredit[i];
+                          JournalUpdate.Execute;
+                          end else
+                          NxMemo1.Add('This account code does not exist '+SalesRecord.slaccountcode[i]);
+
+                          GetAccount.Close;
+                        end;
+                    end;
+
+                end; // end with
+             MyQuery1.SQL.Clear;
+             MyQuery1.sql.Add('Update journal j inner join chart c on c.accountcode = j.accountcode set j.idchart = c.idchart');
+             MyQuery1.Execute;
+             end; // end while
+
+             JVUpdate.Close;
+             Sales.Close;
+             Adj.Close;
+             GetAccount.Close;
+
+             NxMemo1.Lines.Add('Update Complete');
+           end;
+ end;
+
+ if ((RadioGroup2.ItemIndex = 1) and (RadioGroup1.ItemIndex = 0)) then
+ begin
+     SalesUpdate.Open;
+     JVUpdate.Open;
+
+     While not eof(SalesFile) do
+       begin
+        BlockRead(SalesFile,SalesRecord,1);
+
+        If SalesRecord.sldoctype = 'SALES' then
+        With SalesRecord do
+          begin
+            SalesCheck.Close;
+            SalesCheck.ParamByName('salesdescription').Text := salesrecord.sldescription;
+            SalesCheck.Open;
+
+            If not SalesCheck.IsEmpty then
+              begin
+                case MessageDlg(AreaOffice.Text+' SALES '+DateToStr(SalesRecord.sldate)+
+                                'is already on file.. Continue anyway?',
+                                mtConfirmation, [mbYes, mbNo, mbCancel], 0) of
+                  mrNo     : Continue;
+                  mrCancel : begin
+                               CloseFile(SalesFile);
+                               SalesCheck.Close;
+                               SalesUpdate.Close;
+                               exit;
+                             end;
+
+                end;
+               SalesCheck.Close;
+
+              end;
+
+            SalesUpdate.AppendRecord([]);
+            SalesUpdate.Edit;
+            SalesUpdatesalesdate.AsDateTime   := SalesRecord.sldate;
+            SalesUpdatesalesdescription.Text  := SalesRecord.sldescription;
+            SalesUpdatesalesnumber.Text       := 'SL-'+JustStr(SalesUpdateidsales.Text,'0',5,1);
+
+            NxMemo1.Lines.Add(SalesUpdatesalesdescription.Text+' downloaded ');
+
+            SalesUpdate.Post;
+
+            For I := 1 to 100 do
+              begin
+                If RoundTo(SalesRecord.sldebit[i]+SalesRecord.slcredit[i],-2) <> 0 then
+                  begin
+                    GetAccount.ParamByName('accountcode').Text        := SalesRecord.slaccountcode[i];
+                    GetAccount.Open;
+
+                    If not GetAccount.IsEmpty then
+                    begin
+                    JournalUpdate.ParamByName('accountcode').Text     := GetAccountaccountcode.Text;
+                    JournalUpdate.ParamByName('accountname').Text     := GetAccountaccountname.Text;
+                    JournalUpdate.ParamByName('documentdate').AsDate  := SalesRecord.sldate;
+                    JournalUpdate.ParamByName('documenttype').Text    := 'SALES';
+                    JournalUpdate.ParamByName('documentnumber').Text  := SalesUpdatesalesnumber.Text;
+                    JournalUpdate.ParamByName('debit').AsCurrency     := SalesRecord.sldebit[i];
+                    JournalUpdate.ParamByName('credit').AsCurrency    := SalesRecord.slcredit[i];
+                    JournalUpdate.Execute;
+                    end else
+                    NxMemo1.Add('This account code does not exist '+SalesRecord.slaccountcode[i]);
+
+                    GetAccount.Close;
+                  end;
+              end;
+
+          end; // end with
+       end; // end while
+
+    SalesUpdate.Close;
+
+     Seek(SalesFile,0);
+
+     While not eof(SalesFile) do
+       begin
+        BlockRead(SalesFile,SalesRecord,1);
+
+        If SalesRecord.sldoctype = 'ADJ' then
+        With SalesRecord do
+       

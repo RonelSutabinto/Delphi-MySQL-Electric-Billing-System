@@ -1,0 +1,194 @@
+unit callerNoForm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, MemDS, DBAccess, MyAccess,
+  AdvSmoothButton, AdvSmoothLabel, Vcl.ExtCtrls, AdvPanel;
+
+type
+  TcallernoFrm = class(TForm)
+    AdvPanel1: TAdvPanel;
+    AdvSmoothLabel1: TAdvSmoothLabel;
+    AdvSmoothLabel2: TAdvSmoothLabel;
+    cntrServe_lb: TAdvSmoothLabel;
+    numberServe_lb: TAdvSmoothLabel;
+    cntr_SC_lb: TAdvSmoothLabel;
+    AdvPanel2: TAdvPanel;
+    number_lb2: TAdvSmoothLabel;
+    AdvSmoothButton1: TAdvSmoothButton;
+    AdvSmoothButton2: TAdvSmoothButton;
+    queCntrQ: TMyQuery;
+    manageOutQ: TMyQuery;
+    manageOutQentry: TIntegerField;
+    manageOutQtype: TStringField;
+    manageOutQnumber: TIntegerField;
+    manageOutQdate: TDateField;
+    manageOutQtime: TTimeField;
+    manageOutQcode: TStringField;
+    manageOutQqueid: TIntegerField;
+    manageOutQgroupno: TIntegerField;
+    manageOutQexecutedby: TStringField;
+    manageOutQDepartment: TStringField;
+    manageOutQuserid: TStringField;
+    manageOutQcounter: TStringField;
+    manageOutQnumber_c: TStringField;
+    insertMngoutQ: TMyQuery;
+    queCall_Q: TMyQuery;
+    queCall_QqueID: TIntegerField;
+    queCall_Qtype: TStringField;
+    queCall_Qnumber: TIntegerField;
+    queCall_Qdate: TDateField;
+    queCall_Qtime: TTimeField;
+    queCall_Qcode: TStringField;
+    queCall_Qgroupno: TIntegerField;
+    queCall_Qpri: TLargeintField;
+    queCall_Quser: TStringField;
+    deleteQueQ: TMyQuery;
+    updateCallBeepQ: TMyQuery;
+    AdvSmoothButton4: TAdvSmoothButton;
+    queCntrQflg: TStringField;
+    queCntrQbillingC: TLargeintField;
+    AdvSmoothButton3: TAdvSmoothButton;
+    cntr_BI: TAdvSmoothLabel;
+    queCntrQbillingI: TLargeintField;
+    beepCall_Q: TMyQuery;
+    beepCall_Qentry: TIntegerField;
+    beepCall_Qtype: TStringField;
+    beepCall_Qnumber: TIntegerField;
+    beepCall_Qdate: TDateField;
+    beepCall_Qtime: TTimeField;
+    beepCall_Qcode: TStringField;
+    beepCall_Qqueid: TIntegerField;
+    beepCall_Qgroupno: TIntegerField;
+    beepCall_Qexecutedby: TStringField;
+    beepCall_QDepartment: TStringField;
+    beepCall_Quserid: TStringField;
+    beepCall_Qcounter: TStringField;
+    beepCall_Qisbeep: TBooleanField;
+    beepCall_Qnumber_c: TStringField;
+    AdvSmoothButton5: TAdvSmoothButton;
+    procedure FormShow(Sender: TObject);
+    procedure callNumber( grpNo: Integer; type_s:String);
+    procedure AdvSmoothButton4Click(Sender: TObject);
+    procedure AdvSmoothButton2Click(Sender: TObject);
+    procedure AdvSmoothButton1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure AdvSmoothButton3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  callernoFrm: TcallernoFrm;
+
+implementation
+
+{$R *.dfm}
+
+uses Data, intro;
+
+procedure TcallernoFrm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+  callernoFrm := Nil;
+end;
+
+procedure TcallernoFrm.FormShow(Sender: TObject);
+begin
+  queCntrQ.Close;
+  queCntrQ.ParamByName('user').Text := 'Billing'+IntroForm.Userscounter.Text+' '+IntroForm.UsersUserName.Text;
+  queCntrQ.Open;
+
+  manageOutQ.Close;
+  manageOutQ.Open;
+
+  cntrServe_lb.Caption.Text   := manageOutQcounter.Text;
+  numberServe_lb.Caption.Text := manageOutQnumber_c.Text;
+
+
+  cntr_SC_lb.Caption.Text     := queCntrQbillingC.Text;
+  cntr_BI.Caption.Text        := queCntrQbillingI.Text;
+end;
+procedure TcallernoFrm.AdvSmoothButton1Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TcallernoFrm.AdvSmoothButton2Click(Sender: TObject);
+begin
+  beepCall_Q.Close;
+  beepCall_Q.ParamByName('userid').Text   := 'Billing'+IntroForm.Userscounter.Text+' '+IntroForm.UsersUserName.Text;
+  beepCall_Q.ParamByName('name').Text     := IntroForm.UsersUserID.Text;
+  beepCall_Q.ParamByName('counter').Text  := 'Billing '+IntroForm.Userscounter.Text;
+  beepCall_Q.Open;
+
+  updateCallBeepQ.ParamByName('type').Text        := beepCall_Qtype.Text;
+  updateCallBeepQ.ParamByName('number').AsInteger := beepCall_Qnumber.AsInteger;
+  updateCallBeepQ.ParamByName('counter').Text     := 'Billing '+IntroForm.Userscounter.Text;
+  updateCallBeepQ.Execute;
+end;
+
+procedure TcallernoFrm.AdvSmoothButton3Click(Sender: TObject);
+begin
+  callNumber(5,'BI');
+end;
+
+procedure TcallernoFrm.AdvSmoothButton4Click(Sender: TObject);
+begin
+   callNumber(6,'BC');
+end;
+
+procedure TcallernoFrm.callNumber( grpNo: Integer; type_s:String);
+var
+   tmp:Integer;
+
+begin
+  tmp := grpNo;
+
+ queCall_Q.Close;
+ queCall_Q.ParamByName('groupno').AsInteger := grpNo;
+ queCall_Q.ParamByName('type').Text         := type_s;
+ queCall_Q.ParamByName('typePrimary').Text  := type_s;
+ queCall_Q.ParamByName('user').Text         := 'Billing'+IntroForm.Userscounter.Text+' '+IntroForm.UsersUserName.Text;
+ queCall_Q.Open;
+
+ if not queCall_Q.IsEmpty then
+ begin
+
+   insertMngoutQ.ParamByName('type').Text              := queCall_Qtype.text;
+   insertMngoutQ.ParamByName('number').AsInteger       := queCall_Qnumber.AsInteger;
+   insertMngoutQ.ParamByName('date').AsDate            := queCall_Qdate.AsDateTime;
+   insertMngoutQ.ParamByName('time').AsDateTime        := now;//queCall_Qtime.AsDateTime;
+   insertMngoutQ.ParamByName('code').Text              := queCall_Qcode.Text;
+   insertMngoutQ.ParamByName('queid').AsInteger        := queCall_QqueID.AsInteger;
+   insertMngoutQ.ParamByName('groupno').AsInteger      := queCall_Qgroupno.AsInteger;
+   insertMngoutQ.ParamByName('executedby').Text        := IntroForm.UsersUserID.Text;
+   insertMngoutQ.ParamByName('Department').Text        := 'Billing';
+   insertMngoutQ.ParamByName('userid').Text            := 'Billing'+IntroForm.Userscounter.Text+' '+IntroForm.UsersUserName.Text;
+   insertMngoutQ.ParamByName('counter').Text           := 'Billing '+IntroForm.Userscounter.Text;//+' '+IntroForm.UsersUserName.Text;
+   insertMngoutQ.Execute;
+
+
+   deleteQueQ.ParamByName('queID').Text := queCall_QqueID.Text;
+   deleteQueQ.Execute;
+
+    queCntrQ.Close;
+    queCntrQ.ParamByName('user').Text := 'Billing'+IntroForm.Userscounter.Text+' '+IntroForm.UsersUserName.Text;
+    queCntrQ.Open;
+
+    manageOutQ.Close;
+    manageOutQ.Open;
+
+    cntrServe_lb.Caption.Text   := manageOutQcounter.Text;
+    numberServe_lb.Caption.Text := manageOutQnumber_c.Text;
+
+    cntr_SC_lb.Caption.Text     := queCntrQbillingC.Text;
+    cntr_BI.Caption.Text        := queCntrQbillingI.Text;
+
+ end;
+end;
+end.

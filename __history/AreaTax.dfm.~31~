@@ -1,0 +1,484 @@
+object AreaTaxForm: TAreaTaxForm
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Tax Rates Table Per Area'
+  ClientHeight = 328
+  ClientWidth = 354
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -10
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 12
+  object CRDBGrid11: TCRDBGrid1
+    Left = 97
+    Top = 7
+    Width = 251
+    Height = 314
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    DataSource = BillingData.dsAreaTax
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -10
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    OnDblClick = CRDBGrid11DblClick
+    OnKeyPress = CRDBGrid11KeyPress
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Area'
+        Title.Alignment = taCenter
+        Width = 25
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'BillMonth'
+        Title.Alignment = taCenter
+        Title.Caption = 'Bill Month'
+        Width = 48
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Desc1'
+        Title.Alignment = taCenter
+        Title.Caption = 'Description'
+        Width = 254
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Rate1'
+        Title.Alignment = taCenter
+        Width = 54
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Desc2'
+        Title.Alignment = taCenter
+        Title.Caption = 'Description'
+        Width = 254
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Rate2'
+        Title.Alignment = taCenter
+        Width = 54
+        Visible = True
+      end>
+  end
+  object SelectMonth: TLabeledEdit
+    Left = 5
+    Top = 20
+    Width = 85
+    Height = 20
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    EditLabel.Width = 58
+    EditLabel.Height = 12
+    EditLabel.Margins.Left = 2
+    EditLabel.Margins.Top = 2
+    EditLabel.Margins.Right = 2
+    EditLabel.Margins.Bottom = 2
+    EditLabel.Caption = 'Billing Month'
+    TabOrder = 1
+  end
+  object NxButton1: TNxButton
+    Left = 5
+    Top = 42
+    Width = 87
+    Height = 21
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    Caption = 'Select Bill Month'
+    TabOrder = 2
+    OnClick = NxButton1Click
+  end
+  object NxButton2: TNxButton
+    Left = 5
+    Top = 66
+    Width = 87
+    Height = 21
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    Caption = 'Copy Tax Rates'
+    TabOrder = 3
+    OnClick = NxButton2Click
+  end
+  object NxButton3: TNxButton
+    Left = 5
+    Top = 90
+    Width = 87
+    Height = 21
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    Caption = 'Delete Set'
+    TabOrder = 4
+    OnClick = NxButton3Click
+  end
+  object NxButton4: TNxButton
+    Left = 5
+    Top = 299
+    Width = 87
+    Height = 21
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    Caption = 'Close'
+    TabOrder = 6
+    OnClick = NxButton4Click
+  end
+  object NxButton7: TNxButton
+    Left = 5
+    Top = 115
+    Width = 87
+    Height = 21
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    Caption = 'New Tax Record'
+    TabOrder = 5
+    OnClick = NxButton7Click
+  end
+  object CopyTaxRatesPanel: TNxHeaderPanel
+    Left = 85
+    Top = 78
+    Width = 185
+    Height = 107
+    Caption = 'Copy Tax Rates'
+    HeaderFont.Charset = DEFAULT_CHARSET
+    HeaderFont.Color = clWindowText
+    HeaderFont.Height = -11
+    HeaderFont.Name = 'Tahoma'
+    HeaderFont.Style = [fsBold]
+    ParentHeaderFont = False
+    TabOrder = 7
+    Visible = False
+    FullWidth = 185
+    object FromBM: TLabeledEdit
+      Left = 40
+      Top = 39
+      Width = 54
+      Height = 20
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      EditLabel.Width = 24
+      EditLabel.Height = 12
+      EditLabel.Margins.Left = 2
+      EditLabel.Margins.Top = 2
+      EditLabel.Margins.Right = 2
+      EditLabel.Margins.Bottom = 2
+      EditLabel.Caption = 'From'
+      EditLabel.Layout = tlCenter
+      LabelPosition = lpLeft
+      TabOrder = 0
+    end
+    object ToBM: TLabeledEdit
+      Left = 110
+      Top = 39
+      Width = 55
+      Height = 20
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      EditLabel.Width = 12
+      EditLabel.Height = 12
+      EditLabel.Margins.Left = 2
+      EditLabel.Margins.Top = 2
+      EditLabel.Margins.Right = 2
+      EditLabel.Margins.Bottom = 2
+      EditLabel.Caption = 'To'
+      EditLabel.Layout = tlCenter
+      LabelPosition = lpLeft
+      TabOrder = 1
+    end
+    object NxButton5: TNxButton
+      Left = 14
+      Top = 70
+      Width = 75
+      Caption = 'Copy'
+      TabOrder = 2
+      OnClick = NxButton5Click
+    end
+    object NxButton6: TNxButton
+      Left = 94
+      Top = 70
+      Width = 75
+      Caption = 'Cancel'
+      TabOrder = 3
+      OnClick = NxButton6Click
+    end
+  end
+  object NewTaxPanel: TNxHeaderPanel
+    Left = 97
+    Top = 141
+    Width = 244
+    Height = 292
+    Caption = 'New Tax Record'
+    HeaderFont.Charset = DEFAULT_CHARSET
+    HeaderFont.Color = clWindowText
+    HeaderFont.Height = -11
+    HeaderFont.Name = 'Tahoma'
+    HeaderFont.Style = [fsBold]
+    ParentHeaderFont = False
+    TabOrder = 8
+    Visible = False
+    FullWidth = 244
+    object Label1: TLabel
+      Left = 51
+      Top = 42
+      Width = 21
+      Height = 12
+      Caption = 'Area'
+      FocusControl = DBEdit1
+    end
+    object Label2: TLabel
+      Left = 28
+      Top = 66
+      Width = 44
+      Height = 12
+      Caption = 'Bill Month'
+      FocusControl = DBEdit2
+    end
+    object Label3: TLabel
+      Left = 14
+      Top = 90
+      Width = 58
+      Height = 12
+      Caption = 'Description 1'
+      FocusControl = DBEdit3
+    end
+    object Label4: TLabel
+      Left = 53
+      Top = 114
+      Width = 19
+      Height = 12
+      Caption = 'Rate'
+      FocusControl = DBEdit4
+    end
+    object Label5: TLabel
+      Left = 14
+      Top = 138
+      Width = 58
+      Height = 12
+      Caption = 'Description 2'
+      FocusControl = DBEdit5
+    end
+    object Label6: TLabel
+      Left = 53
+      Top = 162
+      Width = 19
+      Height = 12
+      Caption = 'Rate'
+      FocusControl = DBEdit6
+    end
+    object Label7: TLabel
+      Left = 14
+      Top = 186
+      Width = 58
+      Height = 12
+      Caption = 'Description 3'
+      FocusControl = DBEdit5
+    end
+    object Label8: TLabel
+      Left = 53
+      Top = 210
+      Width = 19
+      Height = 12
+      Caption = 'Rate'
+      FocusControl = DBEdit6
+    end
+    object Label9: TLabel
+      Left = 14
+      Top = 234
+      Width = 58
+      Height = 12
+      Caption = 'Description 4'
+      FocusControl = DBEdit5
+    end
+    object Label10: TLabel
+      Left = 53
+      Top = 258
+      Width = 19
+      Height = 12
+      Caption = 'Rate'
+      FocusControl = DBEdit6
+    end
+    object DBEdit2: TDBEdit
+      Left = 78
+      Top = 62
+      Width = 150
+      Height = 20
+      DataField = 'BillMonth'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 1
+      OnKeyPress = DBEdit2KeyPress
+    end
+    object DBEdit3: TDBEdit
+      Left = 78
+      Top = 86
+      Width = 150
+      Height = 20
+      DataField = 'Desc1'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 2
+      OnKeyPress = DBEdit2KeyPress
+    end
+    object DBEdit4: TDBEdit
+      Left = 78
+      Top = 110
+      Width = 150
+      Height = 20
+      DataField = 'Rate1'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 3
+      OnKeyPress = DBEdit2KeyPress
+    end
+    object DBEdit5: TDBEdit
+      Left = 78
+      Top = 134
+      Width = 150
+      Height = 20
+      DataField = 'Desc2'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 4
+      OnKeyPress = DBEdit2KeyPress
+    end
+    object DBEdit6: TDBEdit
+      Left = 78
+      Top = 158
+      Width = 150
+      Height = 20
+      DataField = 'Rate2'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 5
+      OnKeyPress = DBEdit2KeyPress
+    end
+    object DBEdit1: TDBEdit
+      Left = 78
+      Top = 38
+      Width = 150
+      Height = 20
+      DataField = 'Area'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 0
+      OnKeyPress = DBEdit2KeyPress
+    end
+    object NxLinkLabel1: TNxLinkLabel
+      Left = 176
+      Top = 6
+      Width = 23
+      Height = 14
+      Caption = 'Save'
+      HoverColor = clRed
+      TextDistance = 2
+      Transparent = True
+      VertSpacing = 2
+      OnClick = NxLinkLabel1Click
+    end
+    object NxLinkLabel2: TNxLinkLabel
+      Left = 204
+      Top = 6
+      Width = 31
+      Height = 14
+      Caption = 'Cancel'
+      HoverColor = clRed
+      TextDistance = 2
+      Transparent = True
+      VertSpacing = 2
+      OnClick = NxLinkLabel2Click
+    end
+    object DBEdit7: TDBEdit
+      Left = 78
+      Top = 182
+      Width = 150
+      Height = 20
+      DataField = 'Desc3'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 8
+      OnKeyPress = DBEdit2KeyPress
+    end
+    object DBEdit8: TDBEdit
+      Left = 78
+      Top = 206
+      Width = 150
+      Height = 20
+      DataField = 'Rate3'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 9
+      OnKeyPress = DBEdit2KeyPress
+    end
+    object DBEdit9: TDBEdit
+      Left = 78
+      Top = 230
+      Width = 150
+      Height = 20
+      DataField = 'Desc4'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 10
+      OnKeyPress = DBEdit2KeyPress
+    end
+    object DBEdit10: TDBEdit
+      Left = 78
+      Top = 254
+      Width = 150
+      Height = 20
+      DataField = 'Rate4'
+      DataSource = BillingData.dsAreaTax
+      TabOrder = 11
+      OnKeyPress = DBEdit2KeyPress
+    end
+  end
+  object MyQuery1: TMyQuery
+    Connection = BillingData.MyConnection1
+    SQL.Strings = (
+      'CREATE TABLE zaneco.areatax ('
+      '  IDAreaTax int(10) UNSIGNED NOT NULL AUTO_INCREMENT,'
+      '  Area varchar(3) NOT NULL DEFAULT '#39'0'#39','
+      '  BillMonth varchar(4) NOT NULL DEFAULT '#39'0'#39','
+      '  Desc1 varchar(50) NOT NULL DEFAULT '#39#39','
+      '  Rate1 double(7, 4) NOT NULL DEFAULT 0.0000,'
+      '  Desc2 varchar(50) NOT NULL DEFAULT '#39#39','
+      '  Rate2 double(7, 4) NOT NULL DEFAULT 0.0000,'
+      '  PRIMARY KEY (IDAreaTax),'
+      '  UNIQUE INDEX UK_areatax (Area, BillMonth)'
+      ')'
+      'ENGINE = INNODB'
+      'AUTO_INCREMENT = 4'
+      'AVG_ROW_LENGTH = 5461'
+      'CHARACTER SET latin1'
+      'COLLATE latin1_swedish_ci'
+      'COMMENT = '#39'Real Property and Business Tax '#39';')
+    Left = 8
+    Top = 144
+  end
+end

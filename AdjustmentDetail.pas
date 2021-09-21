@@ -1,0 +1,229 @@
+unit AdjustmentDetail;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Mask, DBCtrls;
+
+type
+  TAdjustmentDetailForm = class(TForm)
+    ScrollBox1: TScrollBox;
+    Label1: TLabel;
+    Label5: TLabel;
+    Label3: TLabel;
+    Label7: TLabel;
+    Label9: TLabel;
+    Label2: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label4: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
+    DBEdit10: TDBEdit;
+    DBEdit11: TDBEdit;
+    DBEdit12: TDBEdit;
+    StaticText1: TStaticText;
+    StaticText2: TStaticText;
+    DBEdit13: TDBEdit;
+    DBEdit14: TDBEdit;
+    DBEdit15: TDBEdit;
+    DBEdit16: TDBEdit;
+    DBEdit17: TDBEdit;
+    DBEdit18: TDBEdit;
+    DBEdit19: TDBEdit;
+    DBEdit20: TDBEdit;
+    DBEdit21: TDBEdit;
+    DBEdit22: TDBEdit;
+    DBEdit23: TDBEdit;
+    DBEdit24: TDBEdit;
+    DBEdit25: TDBEdit;
+    DBEdit26: TDBEdit;
+    DBEdit27: TDBEdit;
+    DBEdit28: TDBEdit;
+    DBEdit29: TDBEdit;
+    DBEdit30: TDBEdit;
+    DBEdit31: TDBEdit;
+    DBEdit32: TDBEdit;
+    DBEdit33: TDBEdit;
+    DBEdit34: TDBEdit;
+    DBEdit35: TDBEdit;
+    DBEdit36: TDBEdit;
+    DBEdit37: TDBEdit;
+    DBEdit38: TDBEdit;
+    DBEdit39: TDBEdit;
+    DBEdit40: TDBEdit;
+    DBEdit41: TDBEdit;
+    DBEdit42: TDBEdit;
+    DBEdit43: TDBEdit;
+    DBEdit44: TDBEdit;
+    DBEdit45: TDBEdit;
+    Label22: TLabel;
+    DBEdit46: TDBEdit;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    Label33: TLabel;
+    Label34: TLabel;
+    DBEdit47: TDBEdit;
+    DBEdit48: TDBEdit;
+    DBEdit49: TDBEdit;
+    DBEdit50: TDBEdit;
+    DBEdit51: TDBEdit;
+    DBEdit52: TDBEdit;
+    DBEdit53: TDBEdit;
+    DBEdit54: TDBEdit;
+    DBEdit55: TDBEdit;
+    DBEdit56: TDBEdit;
+    DBEdit57: TDBEdit;
+    DBEdit58: TDBEdit;
+    DBEdit59: TDBEdit;
+    DBEdit60: TDBEdit;
+    Label6: TLabel;
+    Label8: TLabel;
+    Label12: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    DBEdit61: TDBEdit;
+    DBEdit62: TDBEdit;
+    Label19: TLabel;
+    DBEdit63: TDBEdit;
+    DBEdit64: TDBEdit;
+    Label20: TLabel;
+    DBEdit65: TDBEdit;
+    DBEdit66: TDBEdit;
+    Label21: TLabel;
+    DBEdit67: TDBEdit;
+    DBEdit68: TDBEdit;
+    DBEdit69: TDBEdit;
+    DBEdit70: TDBEdit;
+    Label35: TLabel;
+    Label36: TLabel;
+    DBEdit71: TDBEdit;
+    DBEdit72: TDBEdit;
+    Label37: TLabel;
+    DBEdit73: TDBEdit;
+    DBEdit74: TDBEdit;
+    DBEdit76: TDBEdit;
+    DBEdit75: TDBEdit;
+    Label38: TLabel;
+    DBEdit77: TDBEdit;
+    DBEdit78: TDBEdit;
+    DBEdit79: TDBEdit;
+    DBEdit80: TDBEdit;
+    DBEdit81: TDBEdit;
+    DBEdit82: TDBEdit;
+    DBEdit83: TDBEdit;
+    DBEdit84: TDBEdit;
+    DBEdit85: TDBEdit;
+    DBEdit86: TDBEdit;
+    DBEdit87: TDBEdit;
+    DBEdit88: TDBEdit;
+    Label39: TLabel;
+    Label40: TLabel;
+    Label41: TLabel;
+    Label42: TLabel;
+    Label43: TLabel;
+    Label44: TLabel;
+    Label45: TLabel;
+    DBEdit89: TDBEdit;
+    DBEdit90: TDBEdit;
+    procedure DBEdit2Exit(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  AdjustmentDetailForm: TAdjustmentDetailForm;
+
+implementation
+
+uses Data, AdjustmentRecord;
+
+{$R *.dfm}
+
+procedure TAdjustmentDetailForm.DBEdit2Exit(Sender: TObject);
+begin
+   With BillingData do
+   begin
+      AdjVAT.AsCurrency                    := AdjVATGEnCO.AsCurrency +
+                                              AdjVATTransCO.AsCurrency +
+                                              AdjVATDist.AsCurrency +
+                                              AdjVATSystemLossGenCO.AsCurrency +
+                                              AdjVATSystemLossTransCO.AsCurrency;
+
+      AdjTotalBill.AsCurrency              := AdjGenSysCharge.AsCurrency +
+                                              AdjHostCommCharge.AsCurrency +
+                                              AdjForexCharge.AsCurrency +
+                                              AdjVAT.AsCurrency +
+                                              //================================
+                                              //AdjVATDiscAmt.AsCurrency +
+                                              //================================
+                                              AdjTCDemandCharge.AsCurrency +
+                                              AdjTCTransSystemCharge.AsCurrency +
+                                              AdjSystemLossCharge.AsCurrency +
+                                              AdjDCDemandCharge.AsCurrency +
+                                              AdjDCDistributionCharge.AsCurrency +
+                                              AdjSCRetCustCharge.AsCurrency +
+                                              AdjSCSupplySysCharge.AsCurrency +
+                                              AdjMCRetailCustCharge.AsCurrency +
+                                              AdjMCSystemCharge.AsCurrency +
+                                              AdjUCNPCStrandedDebts.AsCurrency +
+                                              AdjUCNPCStrandedContCost.AsCurrency +
+                                              AdjUCDUStrandedContCost.AsCurrency +
+                                              AdjUCME.AsCurrency +
+                                              AdjUCEqTaxesAndRoyalties.AsCurrency +
+                                              AdjUCEC.AsCurrency +
+                                              AdjUCCrossSubRemoval.AsCurrency +
+                                              AdjICCrossSubsidyCharge.AsCurrency +
+                                              AdjPowerActRateRed.AsCurrency +
+                                              AdjLifelineDiscSubs.AsCurrency +
+                                              AdjSCDisc.AsCurrency +
+                                              AdjLoanCondo.AsCurrency +
+                                              AdjLCCustMo.AsCurrency +
+                                              AdjOCAmount1.AsCurrency +
+                                              AdjOCAmount2.AsCurrency +
+                                              AdjOCAmount3.AsCurrency +
+                                              AdjTransformerRental.AsCurrency +
+                                              AdjPrevYearAdjPowerCost.AsCurrency +
+                                              AdjSysLossUnderRecov.AsCurrency+
+                                              AdjMCC.AsCurrency +
+                                              AdjDiffBillPerKwhr.AsCurrency +
+                                              AdjDiffBillPerKW.AsCurrency +
+                                              AdjDiffBillPerCust.AsCurrency +
+                                              AdjPKVRAmount.AsCurrency+
+                                              AdjTransSysAncRefund.AsCurrency+
+                                              AdjTransDemAncRefund.AsCurrency+
+                                              AdjVATTransAncRefund.AsCurrency+
+                                              AdjRPTax.AsCurrency+
+                                              AdjOtherGenRateAdj.AsCurrency+
+                                              AdjOtherTransCostAdj.AsCurrency+
+                                              AdjOtherTransDemandCostAdj.AsCurrency+
+                                              AdjOtherSystemLossCostAdj.AsCurrency+
+                                              AdjOtherLifelineRateCostAdj.AsCurrency+
+                                              AdjOtherSeniorCitizenRateAdj.AsCurrency+
+                                              AdjFitAll.AsCurrency;
+   end;
+end;
+
+end.
