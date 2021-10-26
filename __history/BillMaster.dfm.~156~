@@ -936,28 +936,26 @@ object BillMasterForm: TBillMasterForm
       Width = 192
       Height = 184
       AllowPanning = pmNone
-      BackWall.Brush.Color = clWhite
       BackWall.Brush.Style = bsClear
-      Foot.AdjustFrame = False
       Foot.Font.Color = clNavy
       Foot.Text.Strings = (
         '')
       Foot.Visible = False
+      Foot.AdjustFrame = False
       Gradient.Direction = gdBottomTop
       Gradient.EndColor = clWhite
       Gradient.Visible = True
-      LeftWall.Brush.Color = clWhite
-      Title.AdjustFrame = False
       Title.Font.Color = clWhite
       Title.Font.Height = -12
       Title.Text.Strings = (
         '')
       Title.Visible = False
+      Title.AdjustFrame = False
       AxisBehind = False
       AxisVisible = False
       BottomAxis.Title.Angle = 90
       LeftAxis.Axis.Visible = False
-      LeftAxis.LabelsFont.Color = clWhite
+      LeftAxis.LabelsFormat.Font.Color = clWhite
       LeftAxis.LabelsMultiLine = True
       LeftAxis.Logarithmic = True
       LeftAxis.Title.Caption = 'Kilowatthour'
@@ -971,22 +969,19 @@ object BillMasterForm: TBillMasterForm
       BevelOuter = bvLowered
       Enabled = False
       TabOrder = 0
+      DefaultCanvas = 'TGDIPlusCanvas'
       ColorPaletteIndex = 13
       object Series1: TBarSeries
         BarPen.Visible = False
         ColorEachPoint = True
         HorizAxis = aTopAxis
-        Marks.Arrow.Visible = True
-        Marks.Callout.Brush.Color = clBlack
-        Marks.Callout.Arrow.Visible = True
         Marks.Font.Charset = ANSI_CHARSET
         Marks.Font.Name = 'Tahoma'
-        Marks.Style = smsValue
         Marks.Visible = False
+        Marks.Style = smsValue
         DataSource = graphdata
         SeriesColor = 4259584
         XLabelsSource = 'BillMonth'
-        Gradient.Direction = gdTopBottom
         XValues.Name = 'X'
         XValues.Order = loAscending
         YValues.Name = 'Bar'
@@ -1043,7 +1038,7 @@ object BillMasterForm: TBillMasterForm
       object NxLabel1: TNxLabel
         Left = 14
         Top = 48
-        Width = 24
+        Width = 25
         Height = 14
         Caption = 'Area'
         HorizontalPosition = hpLeft
@@ -2264,15 +2259,15 @@ object BillMasterForm: TBillMasterForm
     Visible = False
     object TabSheet13: TTabSheet
       Caption = 'TabSheet13'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object QuickRep1: TQuickRep
         Left = -16
         Top = 40
         Width = 816
         Height = 1056
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
         DataSet = MasterDemand
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -2312,6 +2307,7 @@ object BillMasterForm: TBillMasterForm
         PrinterSettings.UseCustomPaperCode = False
         PrinterSettings.CustomPaperCode = 0
         PrinterSettings.PrintMetaFile = False
+        PrinterSettings.MemoryLimit = 1000000
         PrinterSettings.PrintQuality = 0
         PrinterSettings.Collate = 0
         PrinterSettings.ColorOption = 0
@@ -2321,6 +2317,8 @@ object BillMasterForm: TBillMasterForm
         Zoom = 100
         PrevFormStyle = fsNormal
         PreviewInitialState = wsNormal
+        PreviewWidth = 500
+        PreviewHeight = 500
         PrevInitialZoom = qrZoomToFit
         PreviewDefaultSaveType = stQRP
         PreviewLeft = 0
@@ -2330,12 +2328,8 @@ object BillMasterForm: TBillMasterForm
           Top = 48
           Width = 720
           Height = 92
-          Frame.DrawTop = False
           Frame.DrawBottom = True
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
           AlignToBottom = False
-          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -2350,24 +2344,17 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 268
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
-              597.958333333333300000
+              597.958333333333400000
               21.166666666666670000
-              709.083333333333300000)
+              709.083333333333200000)
             XLColumn = 0
             Alignment = taCenter
             AlignToBand = True
-            AutoSize = True
-            AutoStretch = False
             Caption = 'ZAMBOANGA del NORTE Electric Coop., Inc.'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -2377,24 +2364,17 @@ object BillMasterForm: TBillMasterForm
             Top = 28
             Width = 350
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               489.479166666666700000
-              74.083333333333330000
-              926.041666666666700000)
+              74.083333333333340000
+              926.041666666666800000)
             XLColumn = 0
             Alignment = taCenter
             AlignToBand = True
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Detailed List of Consumers with Demand (KW) Consumption'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -2404,24 +2384,17 @@ object BillMasterForm: TBillMasterForm
             Top = 46
             Width = 121
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
-              791.104166666666700000
+              791.104166666666800000
               121.708333333333300000
-              320.145833333333300000)
+              320.145833333333400000)
             XLColumn = 0
             Alignment = taCenter
             AlignToBand = True
-            AutoSize = True
-            AutoStretch = False
             Caption = 'For the Billing Month'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -2431,10 +2404,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 98
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               66.145833333333340000
@@ -2443,12 +2412,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Account Number'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -2458,10 +2424,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 98
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               558.270833333333400000
@@ -2470,12 +2432,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Consumer Name'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -2485,10 +2444,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 92
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1018.645833333333000000
@@ -2497,12 +2452,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Consumer Type'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -2512,10 +2464,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 81
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1293.812500000000000000
@@ -2524,12 +2472,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Kilowatt Used'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -2539,10 +2484,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 46
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1653.645833333333000000
@@ -2551,12 +2492,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Amount'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -2566,21 +2504,17 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 68
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
-              1725.083333333333000000
+              1725.083333333334000000
               21.166666666666670000
               179.916666666666700000)
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = True
-            AutoSize = True
             Color = clWhite
             Data = qrsDateTime
+            Text = ''
             Transparent = False
             ExportAs = exptText
             FontSize = 10
@@ -2590,10 +2524,6 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 46
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               0.000000000000000000
@@ -2602,9 +2532,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = True
-            AutoSize = True
             Color = clWhite
             Data = qrsPageNumber
+            Text = ''
             Transparent = False
             ExportAs = exptText
             FontSize = 10
@@ -2615,17 +2545,12 @@ object BillMasterForm: TBillMasterForm
           Top = 140
           Width = 720
           Height = 31
-          Frame.DrawTop = False
-          Frame.DrawBottom = False
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
           AlignToBottom = False
-          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
           Size.Values = (
-            82.020833333333330000
+            82.020833333333340000
             1905.000000000000000000)
           PreCaluculateBandHeight = False
           KeepOnOnePage = False
@@ -2635,10 +2560,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 90
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               68.791666666666680000
@@ -2647,13 +2568,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemand
             DataField = 'accountnumber'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -2665,10 +2583,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 33
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               346.604166666666700000
@@ -2677,13 +2591,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemand
             DataField = 'name'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -2695,10 +2606,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 83
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1021.291666666667000000
@@ -2707,13 +2614,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemand
             DataField = 'consumertype'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -2725,10 +2629,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 73
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1312.333333333333000000
@@ -2737,13 +2637,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemand
             DataField = 'kilowattused'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -2755,10 +2652,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 42
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1664.229166666667000000
@@ -2767,13 +2660,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemand
             DataField = 'totalbill'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -2788,10 +2678,7 @@ object BillMasterForm: TBillMasterForm
           Height = 40
           Frame.DrawTop = True
           Frame.DrawBottom = True
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
           AlignToBottom = False
-          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -2806,10 +2693,6 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 171
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1322.916666666667000000
@@ -2818,12 +2701,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             ResetAfterPrint = False
             Transparent = False
-            WordWrap = True
             Expression = 'SUM(MasterDemand.totalbill)'
             Mask = '#,###,###.00'
             ExportAs = exptText
@@ -2835,10 +2715,6 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 202
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               968.375000000000000000
@@ -2847,12 +2723,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             ResetAfterPrint = False
             Transparent = False
-            WordWrap = True
             Expression = 'SUM(MasterDemand.kilowattused)'
             Mask = '#,###,###.00'
             ExportAs = exptText
@@ -2864,10 +2737,6 @@ object BillMasterForm: TBillMasterForm
             Top = 9
             Width = 29
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1026.583333333333000000
@@ -2876,12 +2745,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Total'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -2892,12 +2758,7 @@ object BillMasterForm: TBillMasterForm
           Top = 211
           Width = 720
           Height = 40
-          Frame.DrawTop = False
-          Frame.DrawBottom = False
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
           AlignToBottom = False
-          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -2913,15 +2774,15 @@ object BillMasterForm: TBillMasterForm
     object TabSheet14: TTabSheet
       Caption = 'TabSheet14'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object QuickRep2: TQuickRep
         Left = -79
         Top = 101
         Width = 816
         Height = 1056
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
         DataSet = MasterDemandSummary
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -2961,6 +2822,7 @@ object BillMasterForm: TBillMasterForm
         PrinterSettings.UseCustomPaperCode = False
         PrinterSettings.CustomPaperCode = 0
         PrinterSettings.PrintMetaFile = False
+        PrinterSettings.MemoryLimit = 1000000
         PrinterSettings.PrintQuality = 0
         PrinterSettings.Collate = 0
         PrinterSettings.ColorOption = 0
@@ -2970,6 +2832,8 @@ object BillMasterForm: TBillMasterForm
         Zoom = 100
         PrevFormStyle = fsNormal
         PreviewInitialState = wsNormal
+        PreviewWidth = 500
+        PreviewHeight = 500
         PrevInitialZoom = qrZoomToFit
         PreviewDefaultSaveType = stQRP
         PreviewLeft = 0
@@ -2979,12 +2843,8 @@ object BillMasterForm: TBillMasterForm
           Top = 48
           Width = 720
           Height = 92
-          Frame.DrawTop = False
           Frame.DrawBottom = True
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
           AlignToBottom = False
-          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -2999,24 +2859,17 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 268
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
-              597.958333333333300000
+              597.958333333333400000
               21.166666666666670000
-              709.083333333333300000)
+              709.083333333333200000)
             XLColumn = 0
             Alignment = taCenter
             AlignToBand = True
-            AutoSize = True
-            AutoStretch = False
             Caption = 'ZAMBOANGA del NORTE Electric Coop., Inc.'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -3026,26 +2879,19 @@ object BillMasterForm: TBillMasterForm
             Top = 28
             Width = 492
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               301.625000000000000000
-              74.083333333333330000
+              74.083333333333340000
               1301.750000000000000000)
             XLColumn = 0
             Alignment = taCenter
             AlignToBand = True
-            AutoSize = True
-            AutoStretch = False
             Caption = 
               'Summary of Consumers Per Area / Consumer Type with Demand (KW) C' +
               'onsumption'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -3055,24 +2901,17 @@ object BillMasterForm: TBillMasterForm
             Top = 46
             Width = 73
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
-              854.604166666666700000
+              854.604166666666800000
               121.708333333333300000
               193.145833333333300000)
             XLColumn = 0
             Alignment = taCenter
             AlignToBand = True
-            AutoSize = True
-            AutoStretch = False
             Caption = 'For the Year'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -3082,10 +2921,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 28
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               214.312500000000000000
@@ -3094,12 +2929,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Area'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -3109,10 +2941,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 70
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               515.937500000000000000
@@ -3121,12 +2949,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Municipality'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -3136,10 +2961,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 92
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               933.979166666666600000
@@ -3148,12 +2969,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Consumer Type'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -3163,10 +2981,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 81
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1209.145833333333000000
@@ -3175,12 +2989,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Kilowatt Used'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -3190,10 +3001,6 @@ object BillMasterForm: TBillMasterForm
             Top = 69
             Width = 46
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1568.979166666667000000
@@ -3202,12 +3009,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Amount'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -3217,21 +3021,17 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 68
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
-              1725.083333333333000000
+              1725.083333333334000000
               21.166666666666670000
               179.916666666666700000)
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = True
-            AutoSize = True
             Color = clWhite
             Data = qrsDateTime
+            Text = ''
             Transparent = False
             ExportAs = exptText
             FontSize = 10
@@ -3241,10 +3041,6 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 46
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               0.000000000000000000
@@ -3253,9 +3049,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = True
-            AutoSize = True
             Color = clWhite
             Data = qrsPageNumber
+            Text = ''
             Transparent = False
             ExportAs = exptText
             FontSize = 10
@@ -3266,17 +3062,12 @@ object BillMasterForm: TBillMasterForm
           Top = 140
           Width = 720
           Height = 31
-          Frame.DrawTop = False
-          Frame.DrawBottom = False
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
           AlignToBottom = False
-          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
           Size.Values = (
-            82.020833333333330000
+            82.020833333333340000
             1905.000000000000000000)
           PreCaluculateBandHeight = False
           KeepOnOnePage = False
@@ -3286,10 +3077,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 26
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               214.312500000000000000
@@ -3298,13 +3085,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemandSummary
             DataField = 'area'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -3316,10 +3100,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 47
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               349.250000000000000000
@@ -3328,13 +3108,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemandSummary
             DataField = 'address'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -3346,10 +3123,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 83
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               939.270833333333400000
@@ -3358,13 +3131,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemandSummary
             DataField = 'consumertype'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -3376,10 +3146,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 73
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1230.312500000000000000
@@ -3388,13 +3154,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemandSummary
             DataField = 'kilowattused'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -3406,10 +3169,6 @@ object BillMasterForm: TBillMasterForm
             Top = 5
             Width = 42
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1582.208333333333000000
@@ -3418,13 +3177,10 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             DataSet = MasterDemandSummary
             DataField = 'totalbill'
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FullJustify = False
@@ -3439,10 +3195,7 @@ object BillMasterForm: TBillMasterForm
           Height = 40
           Frame.DrawTop = True
           Frame.DrawBottom = True
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
           AlignToBottom = False
-          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -3457,10 +3210,6 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 227
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               1090.083333333333000000
@@ -3469,12 +3218,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             ResetAfterPrint = False
             Transparent = False
-            WordWrap = True
             Expression = 'SUM(MasterDemandSummary.totalbill)'
             Mask = '#,###,###.00'
             ExportAs = exptText
@@ -3486,10 +3232,6 @@ object BillMasterForm: TBillMasterForm
             Top = 8
             Width = 258
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               735.541666666666800000
@@ -3498,12 +3240,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taRightJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Color = clWhite
             ResetAfterPrint = False
             Transparent = False
-            WordWrap = True
             Expression = 'SUM(MasterDemandSummary.kilowattused)'
             Mask = '#,###,###.00'
             ExportAs = exptText
@@ -3515,10 +3254,6 @@ object BillMasterForm: TBillMasterForm
             Top = 9
             Width = 29
             Height = 17
-            Frame.DrawTop = False
-            Frame.DrawBottom = False
-            Frame.DrawLeft = False
-            Frame.DrawRight = False
             Size.Values = (
               44.979166666666670000
               941.916666666666800000
@@ -3527,12 +3262,9 @@ object BillMasterForm: TBillMasterForm
             XLColumn = 0
             Alignment = taLeftJustify
             AlignToBand = False
-            AutoSize = True
-            AutoStretch = False
             Caption = 'Total'
             Color = clWhite
             Transparent = False
-            WordWrap = True
             ExportAs = exptText
             WrapStyle = BreakOnSpaces
             FontSize = 10
@@ -3543,12 +3275,7 @@ object BillMasterForm: TBillMasterForm
           Top = 211
           Width = 720
           Height = 40
-          Frame.DrawTop = False
-          Frame.DrawBottom = False
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
           AlignToBottom = False
-          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -3790,8 +3517,8 @@ object BillMasterForm: TBillMasterForm
     end
   end
   object MasterTextPanel: TPanel
-    Left = 385
-    Top = 170
+    Left = 320
+    Top = 391
     Width = 330
     Height = 250
     BevelInner = bvLowered
@@ -3924,98 +3651,9 @@ object BillMasterForm: TBillMasterForm
       TabOrder = 1
     end
   end
-  object Panel6: TPanel
-    Left = 549
-    Top = 2
-    Width = 257
-    Height = 180
-    BevelInner = bvLowered
-    BorderWidth = 5
-    TabOrder = 9
-    Visible = False
-    object Label11: TLabel
-      Left = 89
-      Top = 16
-      Width = 80
-      Height = 13
-      Caption = 'Print A/R Ledger'
-    end
-    object DsFancyButton3: TDsFancyButton
-      Left = 31
-      Top = 136
-      Width = 97
-      Height = 25
-      Color = clBtnFace
-      Caption = 'Print'
-      FancyEffects.FrameStyle = fmGradient
-      FancyEffects.FrameWidth = 6
-      FancyEffects.HoverColor = clBlue
-      FancyEffects.Shape = btnCapsule
-      FancyEffects.CornerRadius = 3
-      FancyEffects.TextStyle = txLowered
-      Glyphs.GlyphStyle = gsNormal
-      Glyphs.Layout = lyLeft
-      Glyphs.Number = 1
-      Glyphs.Distance = 0
-      OnClick = DsFancyButton3Click
-    end
-    object DsFancyButton4: TDsFancyButton
-      Left = 130
-      Top = 136
-      Width = 97
-      Height = 25
-      Color = clBtnFace
-      Caption = 'Cancel'
-      FancyEffects.FrameStyle = fmGradient
-      FancyEffects.FrameWidth = 6
-      FancyEffects.HoverColor = clBlue
-      FancyEffects.Shape = btnCapsule
-      FancyEffects.CornerRadius = 3
-      FancyEffects.TextStyle = txLowered
-      Glyphs.GlyphStyle = gsNormal
-      Glyphs.Layout = lyLeft
-      Glyphs.Number = 1
-      Glyphs.Distance = 0
-      OnClick = DsFancyButton4Click
-    end
-    object RadioGroup3: TRadioGroup
-      Left = 47
-      Top = 35
-      Width = 163
-      Height = 45
-      Caption = 'Print Option'
-      Columns = 2
-      ItemIndex = 0
-      Items.Strings = (
-        'Print All'
-        'By Date')
-      TabOrder = 0
-      OnClick = RadioGroup3Click
-    end
-    object fromdate: TDateTimePicker
-      Left = 28
-      Top = 93
-      Width = 97
-      Height = 21
-      Date = 39223.701722175920000000
-      Time = 39223.701722175920000000
-      Enabled = False
-      TabOrder = 1
-    end
-    object todate: TDateTimePicker
-      Left = 132
-      Top = 93
-      Width = 97
-      Height = 21
-      Date = 39223.701722175920000000
-      Time = 39223.701722175920000000
-      Enabled = False
-      TabOrder = 2
-    end
-  end
   object NxHeaderPanel2: TNxHeaderPanel
-    Left = 30
-    Top = 37
+    Left = 71
+    Top = 254
     Width = 707
     Height = 401
     Caption = 'Consumer Details'
@@ -4083,7 +3721,6 @@ object BillMasterForm: TBillMasterForm
         TabFont.Height = -11
         TabFont.Name = 'Tahoma'
         TabFont.Style = []
-        ExplicitTop = 0
         object DBGrid2: TDBGrid1
           Left = 0
           Top = 0
@@ -4183,6 +3820,7 @@ object BillMasterForm: TBillMasterForm
         TabFont.Height = -11
         TabFont.Name = 'Tahoma'
         TabFont.Style = []
+        ExplicitTop = 0
         object Panel2: TPanel
           Left = 0
           Top = 0
@@ -4220,7 +3858,6 @@ object BillMasterForm: TBillMasterForm
               TabFont.Height = -11
               TabFont.Name = 'MS Sans Serif'
               TabFont.Style = []
-              ExplicitTop = 0
               object DBGrid3: TDBGrid1
                 Left = 0
                 Top = 0
@@ -4306,7 +3943,6 @@ object BillMasterForm: TBillMasterForm
               TabFont.Height = -11
               TabFont.Name = 'MS Sans Serif'
               TabFont.Style = []
-              ExplicitTop = 0
               object DBGrid4: TDBGrid1
                 Left = 0
                 Top = 0
@@ -4403,7 +4039,6 @@ object BillMasterForm: TBillMasterForm
               TabFont.Height = -11
               TabFont.Name = 'MS Sans Serif'
               TabFont.Style = []
-              ExplicitTop = 0
               object DBGrid5: TDBGrid1
                 Left = 0
                 Top = 0
@@ -4524,7 +4159,6 @@ object BillMasterForm: TBillMasterForm
                     Title.Font.Height = -11
                     Title.Font.Name = 'Tahoma'
                     Title.Font.Style = []
-                    Width = 64
                     Visible = True
                   end>
               end
@@ -4539,7 +4173,6 @@ object BillMasterForm: TBillMasterForm
               TabFont.Height = -11
               TabFont.Name = 'MS Sans Serif'
               TabFont.Style = []
-              ExplicitTop = 0
               object DBGrid6: TDBGrid1
                 Left = 0
                 Top = 0
@@ -4591,7 +4224,6 @@ object BillMasterForm: TBillMasterForm
               TabFont.Height = -11
               TabFont.Name = 'MS Sans Serif'
               TabFont.Style = []
-              ExplicitTop = 0
               object DBGrid7: TDBGrid1
                 Left = 0
                 Top = 0
@@ -4690,7 +4322,6 @@ object BillMasterForm: TBillMasterForm
               TabFont.Height = -11
               TabFont.Name = 'MS Sans Serif'
               TabFont.Style = []
-              ExplicitTop = 0
               object CRDBGrid1: TCRDBGrid1
                 Left = 0
                 Top = 0
@@ -4775,7 +4406,6 @@ object BillMasterForm: TBillMasterForm
               TabFont.Height = -11
               TabFont.Name = 'Tahoma'
               TabFont.Style = []
-              ExplicitTop = 0
               object CRDBGrid3: TCRDBGrid1
                 Left = 0
                 Top = 0
@@ -4859,7 +4489,6 @@ object BillMasterForm: TBillMasterForm
         TabFont.Height = -11
         TabFont.Name = 'MS Sans Serif'
         TabFont.Style = []
-        ExplicitTop = 0
         object DBGrid9: TDBGrid1
           Left = 0
           Top = 0
@@ -4899,7 +4528,6 @@ object BillMasterForm: TBillMasterForm
               Expanded = False
               FieldName = 'RateCode'
               Title.Alignment = taCenter
-              Width = 64
               Visible = True
             end
             item
@@ -4912,7 +4540,6 @@ object BillMasterForm: TBillMasterForm
               Expanded = False
               FieldName = 'KilowattHour'
               Title.Alignment = taRightJustify
-              Width = 64
               Visible = True
             end
             item
@@ -4974,7 +4601,6 @@ object BillMasterForm: TBillMasterForm
               Expanded = False
               FieldName = 'TransformerRental'
               Title.Alignment = taRightJustify
-              Width = 64
               Visible = True
             end
             item
@@ -4999,13 +4625,14 @@ object BillMasterForm: TBillMasterForm
         TabFont.Height = -11
         TabFont.Name = 'MS Sans Serif'
         TabFont.Style = []
+        ExplicitTop = 0
         object NxPageControl1: TNxPageControl
           Left = 0
           Top = 0
           Width = 705
           Height = 351
-          ActivePage = NxTabSheet3
-          ActivePageIndex = 2
+          ActivePage = NxTabSheet1
+          ActivePageIndex = 0
           Align = alClient
           TabOrder = 0
           BackgroundColor = clTeal
@@ -5024,10 +4651,6 @@ object BillMasterForm: TBillMasterForm
             TabFont.Height = -11
             TabFont.Name = 'Tahoma'
             TabFont.Style = []
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 705
-            ExplicitHeight = 330
             object Label20: TLabel
               Left = 160
               Top = 88
@@ -5177,10 +4800,6 @@ object BillMasterForm: TBillMasterForm
             TabFont.Height = -11
             TabFont.Name = 'Tahoma'
             TabFont.Style = []
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 705
-            ExplicitHeight = 330
             object DBGrid1: TDBGrid1
               Left = 0
               Top = 0
@@ -5314,10 +4933,6 @@ object BillMasterForm: TBillMasterForm
             TabFont.Height = -11
             TabFont.Name = 'Tahoma'
             TabFont.Style = []
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 705
-            ExplicitHeight = 330
             object CRDBGrid2: TCRDBGrid1
               Left = 0
               Top = 0
@@ -5433,6 +5048,7 @@ object BillMasterForm: TBillMasterForm
         TabFont.Height = -11
         TabFont.Name = 'MS Sans Serif'
         TabFont.Style = []
+        ExplicitTop = 0
         object PageControl4: TPageControl
           Left = 0
           Top = 0
@@ -5444,6 +5060,10 @@ object BillMasterForm: TBillMasterForm
           TabOrder = 0
           object TabSheet15: TTabSheet
             Caption = 'Subsidy'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object DBGrid12: TDBGrid1
               Left = 0
               Top = 0
@@ -5516,6 +5136,10 @@ object BillMasterForm: TBillMasterForm
           object TabSheet16: TTabSheet
             Caption = 'Recovery'
             ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object DBGrid13: TDBGrid1
               Left = 0
               Top = 0
@@ -5574,8 +5198,8 @@ object BillMasterForm: TBillMasterForm
     end
   end
   object Panel8: TPanel
-    Left = 204
-    Top = 212
+    Left = 229
+    Top = 248
     Width = 331
     Height = 197
     BevelInner = bvLowered
@@ -5786,6 +5410,95 @@ object BillMasterForm: TBillMasterForm
       OnKeyPress = Edit1KeyPress
     end
   end
+  object Panel6: TPanel
+    Left = 1
+    Top = 23
+    Width = 257
+    Height = 180
+    BevelInner = bvLowered
+    BorderWidth = 5
+    TabOrder = 9
+    Visible = False
+    object Label11: TLabel
+      Left = 89
+      Top = 16
+      Width = 80
+      Height = 13
+      Caption = 'Print A/R Ledger'
+    end
+    object DsFancyButton3: TDsFancyButton
+      Left = 31
+      Top = 136
+      Width = 97
+      Height = 25
+      Color = clBtnFace
+      Caption = 'Print'
+      FancyEffects.FrameStyle = fmGradient
+      FancyEffects.FrameWidth = 6
+      FancyEffects.HoverColor = clBlue
+      FancyEffects.Shape = btnCapsule
+      FancyEffects.CornerRadius = 3
+      FancyEffects.TextStyle = txLowered
+      Glyphs.GlyphStyle = gsNormal
+      Glyphs.Layout = lyLeft
+      Glyphs.Number = 1
+      Glyphs.Distance = 0
+      OnClick = DsFancyButton3Click
+    end
+    object DsFancyButton4: TDsFancyButton
+      Left = 130
+      Top = 136
+      Width = 97
+      Height = 25
+      Color = clBtnFace
+      Caption = 'Cancel'
+      FancyEffects.FrameStyle = fmGradient
+      FancyEffects.FrameWidth = 6
+      FancyEffects.HoverColor = clBlue
+      FancyEffects.Shape = btnCapsule
+      FancyEffects.CornerRadius = 3
+      FancyEffects.TextStyle = txLowered
+      Glyphs.GlyphStyle = gsNormal
+      Glyphs.Layout = lyLeft
+      Glyphs.Number = 1
+      Glyphs.Distance = 0
+      OnClick = DsFancyButton4Click
+    end
+    object RadioGroup3: TRadioGroup
+      Left = 47
+      Top = 35
+      Width = 163
+      Height = 45
+      Caption = 'Print Option'
+      Columns = 2
+      ItemIndex = 0
+      Items.Strings = (
+        'Print All'
+        'By Date')
+      TabOrder = 0
+      OnClick = RadioGroup3Click
+    end
+    object fromdate: TDateTimePicker
+      Left = 28
+      Top = 93
+      Width = 97
+      Height = 21
+      Date = 39223.701722175920000000
+      Time = 39223.701722175920000000
+      Enabled = False
+      TabOrder = 1
+    end
+    object todate: TDateTimePicker
+      Left = 132
+      Top = 93
+      Width = 97
+      Height = 21
+      Date = 39223.701722175920000000
+      Time = 39223.701722175920000000
+      Enabled = False
+      TabOrder = 2
+    end
+  end
   object BcBarMainMenu1: TBcBarMainMenu
     BiDiMode = bdLeftToRight
     OwnerDraw = True
@@ -5878,6 +5591,11 @@ object BillMasterForm: TBillMasterForm
       end
       object N12: TMenuItem
         Caption = '-'
+      end
+      object ConsumerPriorityNumber1: TMenuItem
+        Caption = 'Consumer Priority Number'
+        ShortCut = 121
+        OnClick = ConsumerPriorityNumber1Click
       end
       object Exit1: TMenuItem
         Caption = 'Exit'
@@ -7231,6 +6949,7 @@ object BillMasterForm: TBillMasterForm
       item
         DataType = ftUnknown
         Name = 'code'
+        Value = nil
       end>
     object BillHistoryCode: TFloatField
       FieldName = 'Code'
@@ -7592,14 +7311,17 @@ object BillMasterForm: TBillMasterForm
       item
         DataType = ftUnknown
         Name = 'code'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'area'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'book'
+        Value = nil
       end>
     object Pantawidcode: TFloatField
       FieldName = 'code'
@@ -7686,6 +7408,7 @@ object BillMasterForm: TBillMasterForm
       item
         DataType = ftUnknown
         Name = 'billmonth'
+        Value = nil
       end>
     object MasterDemandaccountnumber: TStringField
       FieldName = 'accountnumber'
@@ -7773,6 +7496,7 @@ object BillMasterForm: TBillMasterForm
       item
         DataType = ftUnknown
         Name = 'Year'
+        Value = nil
       end>
     object MasterDemandSummaryarea: TStringField
       FieldName = 'area'
@@ -7811,6 +7535,7 @@ object BillMasterForm: TBillMasterForm
       item
         DataType = ftUnknown
         Name = 'code'
+        Value = nil
       end>
     object LateBillsCode: TFloatField
       FieldName = 'Code'
@@ -8183,14 +7908,17 @@ object BillMasterForm: TBillMasterForm
       item
         DataType = ftUnknown
         Name = 'code'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'area'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'book'
+        Value = nil
       end>
     object recoverycode: TFloatField
       FieldName = 'code'
@@ -8249,6 +7977,7 @@ object BillMasterForm: TBillMasterForm
       item
         DataType = ftUnknown
         Name = 'code'
+        Value = nil
       end>
     object PilferBillCode: TFloatField
       FieldName = 'Code'
@@ -8625,10 +8354,12 @@ object BillMasterForm: TBillMasterForm
       item
         DataType = ftUnknown
         Name = 'accountnumber'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'accountnumber'
+        Value = nil
       end>
     object QueryDiscoEntry: TIntegerField
       FieldName = 'Entry'
@@ -8704,6 +8435,7 @@ object BillMasterForm: TBillMasterForm
       item
         DataType = ftUnknown
         Name = 'accountnumber'
+        Value = nil
       end>
   end
 end

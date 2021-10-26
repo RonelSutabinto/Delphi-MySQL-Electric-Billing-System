@@ -40,7 +40,7 @@ uses
   IDGlobal,
   RAPI,
   RAPI2, CRDBGrid1, DBGrid1, NxPageControl, AdvEdit, AdvEdBtn, PlannerDatePicker,
-  AdvPanel, CPortTypes;
+  AdvPanel;
 
 type
   TReadingComputeForm = class(TForm)
@@ -4072,11 +4072,12 @@ var
 begin
    Inc(UpCount);
 
+
+   Serial.ReadStr(UploadStr[UpCount],Count);
    //==Temporarily remove this statement========
-   //Serial.ReadStr(UploadStr[UpCount],Count);
+   //ansiStr := AnsiString(UploadStr[UpCount]);
+   //Serial.ReadStr(ansiStr,Count);
    //===========================================
-   ansiStr := AnsiString(UploadStr[UpCount]);
-   Serial.ReadStr(ansiStr,Count);
 
    Label11.Caption := 'Records Read '+IntToStr(UpCount);
    NxMemo1.Lines.Add(UploadStr[UpCount]);

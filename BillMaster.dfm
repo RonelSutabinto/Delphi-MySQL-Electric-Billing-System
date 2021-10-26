@@ -2317,8 +2317,6 @@ object BillMasterForm: TBillMasterForm
         Zoom = 100
         PrevFormStyle = fsNormal
         PreviewInitialState = wsNormal
-        PreviewWidth = 500
-        PreviewHeight = 500
         PrevInitialZoom = qrZoomToFit
         PreviewDefaultSaveType = stQRP
         PreviewLeft = 0
@@ -2330,6 +2328,7 @@ object BillMasterForm: TBillMasterForm
           Height = 92
           Frame.DrawBottom = True
           AlignToBottom = False
+          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -2346,10 +2345,11 @@ object BillMasterForm: TBillMasterForm
             Height = 17
             Size.Values = (
               44.979166666666670000
-              597.958333333333400000
+              597.958333333333300000
               21.166666666666670000
-              709.083333333333200000)
+              709.083333333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taCenter
             AlignToBand = True
             Caption = 'ZAMBOANGA del NORTE Electric Coop., Inc.'
@@ -2367,9 +2367,10 @@ object BillMasterForm: TBillMasterForm
             Size.Values = (
               44.979166666666670000
               489.479166666666700000
-              74.083333333333340000
-              926.041666666666800000)
+              74.083333333333330000
+              926.041666666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taCenter
             AlignToBand = True
             Caption = 'Detailed List of Consumers with Demand (KW) Consumption'
@@ -2386,10 +2387,11 @@ object BillMasterForm: TBillMasterForm
             Height = 17
             Size.Values = (
               44.979166666666670000
-              791.104166666666800000
+              791.104166666666700000
               121.708333333333300000
-              320.145833333333400000)
+              320.145833333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taCenter
             AlignToBand = True
             Caption = 'For the Billing Month'
@@ -2410,6 +2412,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               259.291666666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Account Number'
@@ -2430,6 +2433,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               259.291666666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Consumer Name'
@@ -2450,6 +2454,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               243.416666666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Consumer Type'
@@ -2470,6 +2475,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               214.312500000000000000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Kilowatt Used'
@@ -2490,6 +2496,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               121.708333333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Amount'
@@ -2506,10 +2513,11 @@ object BillMasterForm: TBillMasterForm
             Height = 17
             Size.Values = (
               44.979166666666670000
-              1725.083333333334000000
+              1725.083333333333000000
               21.166666666666670000
               179.916666666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = True
             Color = clWhite
@@ -2530,6 +2538,7 @@ object BillMasterForm: TBillMasterForm
               21.166666666666670000
               121.708333333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = True
             Color = clWhite
@@ -2546,11 +2555,12 @@ object BillMasterForm: TBillMasterForm
           Width = 720
           Height = 31
           AlignToBottom = False
+          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
           Size.Values = (
-            82.020833333333340000
+            82.020833333333330000
             1905.000000000000000000)
           PreCaluculateBandHeight = False
           KeepOnOnePage = False
@@ -2566,6 +2576,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               238.125000000000000000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Color = clWhite
@@ -2589,6 +2600,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               87.312500000000000000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Color = clWhite
@@ -2612,6 +2624,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               219.604166666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Color = clWhite
@@ -2635,6 +2648,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               193.145833333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = False
             Color = clWhite
@@ -2658,6 +2672,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               111.125000000000000000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = False
             Color = clWhite
@@ -2679,6 +2694,7 @@ object BillMasterForm: TBillMasterForm
           Frame.DrawTop = True
           Frame.DrawBottom = True
           AlignToBottom = False
+          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -2699,6 +2715,7 @@ object BillMasterForm: TBillMasterForm
               21.166666666666670000
               452.437500000000000000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = False
             Color = clWhite
@@ -2721,6 +2738,7 @@ object BillMasterForm: TBillMasterForm
               21.166666666666670000
               534.458333333333400000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = False
             Color = clWhite
@@ -2743,6 +2761,7 @@ object BillMasterForm: TBillMasterForm
               23.812500000000000000
               76.729166666666680000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Total'
@@ -2759,6 +2778,7 @@ object BillMasterForm: TBillMasterForm
           Width = 720
           Height = 40
           AlignToBottom = False
+          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -2832,8 +2852,6 @@ object BillMasterForm: TBillMasterForm
         Zoom = 100
         PrevFormStyle = fsNormal
         PreviewInitialState = wsNormal
-        PreviewWidth = 500
-        PreviewHeight = 500
         PrevInitialZoom = qrZoomToFit
         PreviewDefaultSaveType = stQRP
         PreviewLeft = 0
@@ -2845,6 +2863,7 @@ object BillMasterForm: TBillMasterForm
           Height = 92
           Frame.DrawBottom = True
           AlignToBottom = False
+          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -2861,10 +2880,11 @@ object BillMasterForm: TBillMasterForm
             Height = 17
             Size.Values = (
               44.979166666666670000
-              597.958333333333400000
+              597.958333333333300000
               21.166666666666670000
-              709.083333333333200000)
+              709.083333333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taCenter
             AlignToBand = True
             Caption = 'ZAMBOANGA del NORTE Electric Coop., Inc.'
@@ -2882,9 +2902,10 @@ object BillMasterForm: TBillMasterForm
             Size.Values = (
               44.979166666666670000
               301.625000000000000000
-              74.083333333333340000
+              74.083333333333330000
               1301.750000000000000000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taCenter
             AlignToBand = True
             Caption = 
@@ -2903,10 +2924,11 @@ object BillMasterForm: TBillMasterForm
             Height = 17
             Size.Values = (
               44.979166666666670000
-              854.604166666666800000
+              854.604166666666700000
               121.708333333333300000
               193.145833333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taCenter
             AlignToBand = True
             Caption = 'For the Year'
@@ -2927,6 +2949,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               74.083333333333340000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Area'
@@ -2947,6 +2970,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               185.208333333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Municipality'
@@ -2967,6 +2991,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               243.416666666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Consumer Type'
@@ -2987,6 +3012,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               214.312500000000000000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Kilowatt Used'
@@ -3007,6 +3033,7 @@ object BillMasterForm: TBillMasterForm
               182.562500000000000000
               121.708333333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Amount'
@@ -3023,10 +3050,11 @@ object BillMasterForm: TBillMasterForm
             Height = 17
             Size.Values = (
               44.979166666666670000
-              1725.083333333334000000
+              1725.083333333333000000
               21.166666666666670000
               179.916666666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = True
             Color = clWhite
@@ -3047,6 +3075,7 @@ object BillMasterForm: TBillMasterForm
               21.166666666666670000
               121.708333333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = True
             Color = clWhite
@@ -3063,11 +3092,12 @@ object BillMasterForm: TBillMasterForm
           Width = 720
           Height = 31
           AlignToBottom = False
+          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
           Size.Values = (
-            82.020833333333340000
+            82.020833333333330000
             1905.000000000000000000)
           PreCaluculateBandHeight = False
           KeepOnOnePage = False
@@ -3083,6 +3113,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               68.791666666666680000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Color = clWhite
@@ -3106,6 +3137,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               124.354166666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Color = clWhite
@@ -3129,6 +3161,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               219.604166666666700000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Color = clWhite
@@ -3152,6 +3185,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               193.145833333333300000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = False
             Color = clWhite
@@ -3175,6 +3209,7 @@ object BillMasterForm: TBillMasterForm
               13.229166666666670000
               111.125000000000000000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = False
             Color = clWhite
@@ -3196,6 +3231,7 @@ object BillMasterForm: TBillMasterForm
           Frame.DrawTop = True
           Frame.DrawBottom = True
           AlignToBottom = False
+          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -3216,6 +3252,7 @@ object BillMasterForm: TBillMasterForm
               21.166666666666670000
               600.604166666666800000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = False
             Color = clWhite
@@ -3238,6 +3275,7 @@ object BillMasterForm: TBillMasterForm
               21.166666666666670000
               682.625000000000000000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taRightJustify
             AlignToBand = False
             Color = clWhite
@@ -3260,6 +3298,7 @@ object BillMasterForm: TBillMasterForm
               23.812500000000000000
               76.729166666666680000)
             XLColumn = 0
+            XLNumFormat = nfGeneral
             Alignment = taLeftJustify
             AlignToBand = False
             Caption = 'Total'
@@ -3276,6 +3315,7 @@ object BillMasterForm: TBillMasterForm
           Width = 720
           Height = 40
           AlignToBottom = False
+          Color = clWhite
           TransparentBand = False
           ForceNewColumn = False
           ForceNewPage = False
@@ -4159,6 +4199,7 @@ object BillMasterForm: TBillMasterForm
                     Title.Font.Height = -11
                     Title.Font.Name = 'Tahoma'
                     Title.Font.Style = []
+                    Width = 64
                     Visible = True
                   end>
               end
@@ -4528,6 +4569,7 @@ object BillMasterForm: TBillMasterForm
               Expanded = False
               FieldName = 'RateCode'
               Title.Alignment = taCenter
+              Width = 64
               Visible = True
             end
             item
@@ -4540,6 +4582,7 @@ object BillMasterForm: TBillMasterForm
               Expanded = False
               FieldName = 'KilowattHour'
               Title.Alignment = taRightJustify
+              Width = 64
               Visible = True
             end
             item
@@ -4601,6 +4644,7 @@ object BillMasterForm: TBillMasterForm
               Expanded = False
               FieldName = 'TransformerRental'
               Title.Alignment = taRightJustify
+              Width = 64
               Visible = True
             end
             item

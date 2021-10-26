@@ -9,7 +9,7 @@ uses
   Menus, Buttons, PDJSillyLabel, BarMenus, DB,
   TeEngine, Series, TeeProcs, Chart, DbChart, MemDS, DBAccess, MyAccess,
   Gauges, CRGrid, DsFancyButton, NxPageControl, NxCollection, NxEdit,
-  QRCtrls, QuickRpt, CRDBGrid1, DBGrid1;
+  QRCtrls, QuickRpt, CRDBGrid1, DBGrid1, VclTee.TeeGDIPlus;
 
 type
   TBillMasterForm = class(TForm)
@@ -983,6 +983,7 @@ type
     N15: TMenuItem;
     ViewSpotBill: TMenuItem;
     masterDelete: TMyQuery;
+    ConsumerPriorityNumber1: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure Exit1Click(Sender: TObject);
@@ -1067,6 +1068,7 @@ type
     procedure UnbundledARMonthEndSummaries1Click(Sender: TObject);
     procedure OtherChargesIntegrationInterface1Click(Sender: TObject);
     procedure Zer1Click(Sender: TObject);
+    procedure ConsumerPriorityNumber1Click(Sender: TObject);
   private
     { Private declarations }
     OldPos, DeltaPos      : TPoint;
@@ -1087,7 +1089,7 @@ implementation
 
 uses DateUtils,
      Data,
-     BillMasterMainRecord,
+     //BillMasterMainRecord,
      BillMasterCurrentBill,
      DisconnectionTransaction,
      ReconnectionTransaction,
@@ -1117,7 +1119,8 @@ uses DateUtils,
      billrates,
      Intro,
      BillingPrintBills,
-     pantawidrecovery, RemoveMeter, AR, OCIntegration, ZeroVAT;
+     pantawidrecovery, RemoveMeter, AR, OCIntegration, ZeroVAT,
+  PriorityNumberFrm;
 
 Var
 Lst                : Text     ;
@@ -1183,6 +1186,14 @@ end;
 
 procedure TBillMasterForm.FormShow(Sender: TObject);
 begin
+  if IntroForm.UsersisWan.AsBoolean = false then
+  begin
+    SetBillingFilter1.Enabled := true;
+    LateBills1.Enabled := true;
+    UpdateMasterFromBilling1.Enabled := true;
+    UpdateLateBills1.Enabled := true;
+  end;
+
   Mode := 1;
   PageControl1.ActivePageIndex := 0;
   Search.SetFocus;
@@ -1329,6 +1340,9 @@ end;
 procedure TBillMasterForm.DBGrid1KeyPress(Sender: TObject;
   var Key: Char);
 begin
+   if IntroForm.UsersisWan.AsBoolean = true then
+   exit;
+
    If Key = '+' then
      begin
       If not assigned(BillMasterMainRecordForm) then
@@ -1383,7 +1397,7 @@ begin
                    else
                       CB_isFixedDemand.Checked := false;
 
-                   if MasterWRateCode.Text = 'R' or MasterWRateCode.Text = 'L' then
+                   if (MasterWRateCode.Text = 'R') or (MasterWRateCode.Text = 'L') then
                       CB_isFixedDemand.Enabled := false
                    else
                       CB_isFixedDemand.Enabled := true;
@@ -1742,6 +1756,9 @@ end;
 
 procedure TBillMasterForm.DeleteRecord1Click(Sender: TObject);
 begin
+  if IntroForm.UsersisWan.AsBoolean = true then
+  exit;
+
   Password := '';
   Panel8.Left    := 148;
   Panel8.Left    := 105;
@@ -2555,6 +2572,14 @@ begin
         MasterDemandSummary.Close;
         end;
   end;
+end;
+
+procedure TBillMasterForm.ConsumerPriorityNumber1Click(Sender: TObject);
+begin
+  if not assigned(priorityNoFrm) then
+  priorityNoFrm := TpriorityNoFrm.Create(Application);
+
+  priorityNoFrm.ShowModal
 end;
 
 procedure TBillMasterForm.ConsumerswithDemand1Click(Sender: TObject);

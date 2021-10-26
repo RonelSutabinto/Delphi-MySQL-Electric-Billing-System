@@ -40,7 +40,7 @@ uses
   IDGlobal,
   RAPI,
   RAPI2, CRDBGrid1, DBGrid1, NxPageControl, AdvEdit, AdvEdBtn, PlannerDatePicker,
-  AdvPanel, CPortTypes;
+  AdvPanel;
 
 type
   TReadingComputeForm = class(TForm)
@@ -1362,11 +1362,11 @@ VATGenCo           : Real     ;
 VATTransCo         : Real     ;
 VATSystemLoss      : Real     ;
 Upload             : Text     ;
-UploadStr          : Array[1..2000] of String;
+UploadStr          : Array[1..4000] of String;
 UpCount            : Integer  ;
 
-VerifiedRdng       : Array[0..1500] of String[11];
-consistentRdng     : Array[0..1200] of String[11];
+VerifiedRdng       : Array[0..2500] of String[11];
+consistentRdng     : Array[0..2500] of String[11];
 rdngAve            : Double;
 rdngKwh            : Double;
 VCount             : Integer;
@@ -3592,9 +3592,12 @@ end;
 
 procedure TReadingComputeForm.NxButton7Click(Sender: TObject);
 begin
+{  if (MessageDlg('Are you sure, you want to compute again the CBook reading entry?', mtWarning, [mbYes, mbNo], 0) = mrNo) then exit;
+
   With BillingData do
   begin
     PresRead.ReadOnly := true;
+    Edit1.ReadOnly    := true;
     bill.First;
 
     while not bill.Eof do
@@ -3602,12 +3605,13 @@ begin
       BillingData.Bill.Edit;
       ComputeBill;
       BillingData.Bill.Post;
-      showmessage('AccountNo.: '+BillAccountNumber.Text+#13+
-                  'Successfully computed...');
       bill.Next;
     end;
+
+    showmessage('CBook reading entry successfully recomputed...');
     PresRead.ReadOnly := false;
-  end;
+    Edit1.ReadOnly    := false;
+  end; }
 end;
 
 procedure TReadingComputeForm.NxLinkLabel1Click(Sender: TObject);

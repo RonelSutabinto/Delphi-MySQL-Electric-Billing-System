@@ -61,7 +61,6 @@
         <DCC_DcuOutput>D:\Installer\Embarcadero RAD Studio XE7 Architect\outputFile\</DCC_DcuOutput>
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
         <DCC_DebugDCUs>true</DCC_DebugDCUs>
-        <DCC_Namespace>System.win;$(DCC_Namespace)</DCC_Namespace>
         <DCC_ExeOutput>D:\My Source Code\2021\Delphi\exe\</DCC_ExeOutput>
         <Manifest_File>None</Manifest_File>
     </PropertyGroup>
@@ -347,7 +346,6 @@
         </DCCReference>
         <DCCReference Include="LatebillhistoryReportForm.pas">
             <Form>latebillhistoryFrm</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <None Include="FlexiBilling.todo"/>
         <BuildConfiguration Include="Debug">
@@ -405,10 +403,8 @@
                 </VersionInfoKeys>
                 <Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\15.0\Bpl\tmsdedXE7.bpl">TMS Component Pack design time support</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\15.0\Bpl\GsScroll.bpl">GsScroll</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k210.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp210.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\15.0\Bpl\GsScroller.bpl">(untitled)</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>

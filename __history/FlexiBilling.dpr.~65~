@@ -85,12 +85,26 @@ uses
   RealPropertyTaxFrm in 'RealPropertyTaxFrm.pas' {RPTaxFrm},
   sample in 'sample.pas' {Form3},
   FinalizeSpotBill in 'FinalizeSpotBill.pas' {UnpostedSpotBill},
-  meterMaster in 'meterMaster.pas' {meterMasterRecord};
+  meterMaster in 'meterMaster.pas' {meterMasterRecord},
+  PriorityNumberFrm in 'PriorityNumberFrm.pas' {priorityNoFrm},
+  proceedPriorityNoForm in 'proceedPriorityNoForm.pas' {proceedPriorityFrm},
+  callerNoForm in 'callerNoForm.pas' {callernoFrm},
+  callerHistoryForm in 'callerHistoryForm.pas' {callerHistoryFrm},
+  gram in 'gram.pas' {gramFrm},
+  ContactForm in 'ContactForm.pas' {contactFrm},
+  LatebillhistoryReportForm in 'LatebillhistoryReportForm.pas' {latebillhistoryFrm};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TIntroForm, IntroForm);
+  Application.CreateForm(TBillMenuForm, BillMenuForm);
+  Application.CreateForm(TpriorityNoFrm, priorityNoFrm);
+  Application.CreateForm(TproceedPriorityFrm, proceedPriorityFrm);
+  Application.CreateForm(TcallernoFrm, callernoFrm);
+  Application.CreateForm(TcallerHistoryFrm, callerHistoryFrm);
+  Application.CreateForm(TcontactFrm, contactFrm);
+  Application.CreateForm(TlatebillhistoryFrm, latebillhistoryFrm);
   Application.Run;
 end.

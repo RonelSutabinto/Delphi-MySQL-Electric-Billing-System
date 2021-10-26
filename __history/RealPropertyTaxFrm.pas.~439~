@@ -18,8 +18,6 @@ type
     NxButton2: TNxButton;
     NxEdit1: TNxEdit;
     RadioGroup1: TRadioGroup;
-    AdvGroupBox1: TAdvGroupBox;
-    AdvGroupBox2: TAdvGroupBox;
     NxHeaderPanel23: TNxHeaderPanel;
     NxLinkLabel31: TNxLinkLabel;
     NxHeaderPanel1: TNxHeaderPanel;
@@ -38,7 +36,6 @@ type
     Label6: TLabel;
     NxHeaderPanel2: TNxHeaderPanel;
     NxLinkLabel2: TNxLinkLabel;
-    NxButton5: TNxButton;
     CanvassSaveBtn: TNxButton;
     DBEdit1: TDBEdit;
     Label7: TLabel;
@@ -53,7 +50,7 @@ type
     ArAffctQueryIdRPTax: TIntegerField;
     ArAffctQueryBillMonth: TStringField;
     ArAffctQueryArea: TStringField;
-    NxButton6: TNxButton;
+    closeBtn: TNxButton;
     CountRQuery: TMyQuery;
     RpTaxQueryTmp: TMyQuery;
     RpTaxQueryRateAmnt: TFloatField;
@@ -75,6 +72,11 @@ type
     CRDBGrid13: TCRDBGrid1;
     SubDetailQuery: TMyQuery;
     SubDetailSource: TMyDataSource;
+    Qtmp: TMyQuery;
+    RpTaxQuerycategory: TStringField;
+    addBtn: TNxButton;
+    N1: TMenuItem;
+    RemoveRate1: TMenuItem;
     procedure NxButton2Click(Sender: TObject);
     procedure NxLinkLabel1Click(Sender: TObject);
     procedure NxButton9Click(Sender: TObject);
@@ -87,11 +89,16 @@ type
     procedure FormShow(Sender: TObject);
     procedure CanvassSaveBtnClick(Sender: TObject);
     procedure NxButton11Click(Sender: TObject);
-    procedure NxButton6Click(Sender: TObject);
+    procedure closeBtnClick(Sender: TObject);
     procedure NxButton3Click(Sender: TObject);
     procedure RemoveArea1Click(Sender: TObject);
     procedure NxButton1Click(Sender: TObject);
     procedure CRDBGrid11CellClick(Column: TColumn);
+    procedure NxEdit1Click(Sender: TObject);
+    procedure select_list_rate();
+    procedure CRDBGrid11KeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure RemoveRate1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -103,6 +110,7 @@ var
   BillMonthTmp        : String;
   RPTrateTmp          : double;
   IdRPTaxTmp          : Integer;
+  ratetype            : String;
 
 implementation
 
@@ -112,11 +120,14 @@ uses Data;
 
 procedure TRPTaxFrm.CanvassSaveBtnClick(Sender: TObject);
 begin
+  CRDBGrid11.Enabled     := true;
+
   if (MessageDlg('BillMonth: '+ RpTaxQueryBillMonth.Text +
-  '...Change this RPTax Rate?',mtConfirmation,[mbYes,mbCancel],0) = mrCancel) then
+  '...Change this '+RpTaxQuerycategory.Text+' Rate?',mtConfirmation,[mbYes,mbCancel],0) = mrCancel) then
   begin
     RpTaxQuery.Cancel;
     NxHeaderPanel2.Visible := false;
+
     exit;
   end;
 
@@ -126,9 +137,22 @@ end;
 
 procedure TRPTaxFrm.CRDBGrid11CellClick(Column: TColumn);
 begin
-  MyQueryTmp.Close;
-  MyQueryTmp.SQL.Clear;
-  MyQueryTmp.SQL.Add('Select * from ')
+   select_list_rate();
+end;
+
+procedure TRPTaxFrm.CRDBGrid11KeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  select_list_rate();
+end;
+
+procedure TRPTaxFrm.select_list_rate();
+begin
+  SubDetailQuery.Close;
+  SubDetailQuery.ParamByName('BillMonth').Text := RpTaxQueryBillMonth.Text;
+  SubDetailQuery.ParamByName('RateOrder').Text := RpTaxQueryRateOrder.Text;
+  SubDetailQuery.ParamByName('category').Text := RpTaxQuerycategory.Text;
+  SubDetailQuery.Open;
 end;
 
 procedure TRPTaxFrm.FormShow(Sender: TObject);
@@ -139,46 +163,71 @@ end;
 
 procedure TRPTaxFrm.NxButton11Click(Sender: TObject);
 var
-  RateOrTmp      : String;
-  RPTrateTmp2    : Double;
+  RateOrAmnt     : Double;
+  categoty       : String;
+  orderRate      : String;
+  orderRateCnt   : Integer;
 begin
+
   RpTaxQueryTmp.Close;
   RpTaxQueryTmp.FilterSQL := 'BillMonth like ' + quotedstr(NxEdit2.Text);
   RpTaxQueryTmp.Open;
 
   if not RpTaxQueryTmp.IsEmpty then
   begin
-    RPTrateTmp   := RpTaxQueryTmp.FieldByName('RateAmnt').AsCurrency;
+
+      RpTaxQueryTmp.First;
+      while not RpTaxQueryTmp.Eof do
+      begin
+        //Qtmp.Close;
+        //Qtmp.ParamByName('id').AsInteger :=  RpTaxQueryTmp.FieldByName('IdRPTax').AsInteger;
+        //Qtmp.Open;
+
+        RateOrAmnt   := RpTaxQueryTmp.FieldByName('RateAmnt').AsCurrency;
+        categoty     := RpTaxQueryTmp.FieldByName('category').Text;
+        orderRateCnt := 0;
+
+        CountRQuery.Close;
+        CountRQuery.ParamByName('BillMonth').Text := NxEdit3.Text;
+        CountRQuery.ParamByName('category').Text  := categoty;
+        CountRQuery.Open;
+
+        if not CountRQuery.IsEmpty then
+            orderRateCnt := CountRQuery.FieldByName('OrderR').AsInteger;
+
+        orderRate := 'Rate' + IntTostr(orderRateCnt + 1);
+
+        {Qtmp.Close;
+        Qtmp.FilterSQL := 'BillMonth like ' + quotedstr(NxEdit2.Text) +
+        'And RateOrder like '  + quotedstr(RateOrTmp) +
+        'And category like '  + quotedstr(categoty);
+        Qtmp.Open;
+
+        if not Qtmp.IsEmpty  then RPTrateTmp :=  Qtmp.FieldByName('RateAmnt').AsCurrency;     }
+
+        MyQueryTmp.Close;
+        MyQueryTmp.SQL.Clear;
+        MyQueryTmp.SQL.Add('Insert into rateRPTax (BillMonth,RateAmnt,RateOrder,category)');
+        MyQueryTmp.SQL.Add(' values (:BillMonth,:RateAmnt,:RateOrder,:category)');
+        MyQueryTmp.ParamByName('BillMonth').Text  := NxEdit3.Text;
+        MyQueryTmp.ParamByName('RateAmnt').Text   := FloatToStr(RateOrAmnt);//FloatToStr(RPTrateTmp);
+        MyQueryTmp.ParamByName('RateOrder').Text  := orderRate;//RpTaxQueryTmp.FieldByName('RateOrder').Text;//'Rate' + IntTostr(CountRQuery.FieldByName('OrderR').AsInteger + 1);
+        MyQueryTmp.ParamByName('category').Text   := categoty;
+        MyQueryTmp.Execute;
+
+        RpTaxQueryTmp.Next;
+      end;
     end else begin
-    MessageDlg('source Month not found...',mtWarning,[mbOK],0);
-    exit;
+      MessageDlg('source Month not found...',mtWarning,[mbOK],0);
+      exit;
   end;
 
-  CountRQuery.Close;
-  CountRQuery.ParamByName('BillMonth').Text := NxEdit3.Text;
-  CountRQuery.Open;
-
-  RateOrTmp := 'Rate' + IntTostr(CountRQuery.FieldByName('OrderR').AsInteger + 1);
-  RpTaxQueryTmp.Close;
-  RpTaxQueryTmp.FilterSQL := 'BillMonth like ' + quotedstr(NxEdit2.Text) +
-  ' And RateOrder like '  + quotedstr(RateOrTmp);
-  RpTaxQueryTmp.Open;
-
-  if not RpTaxQueryTmp.IsEmpty  then RPTrateTmp :=  RpTaxQueryTmp.FieldByName('RateAmnt').AsCurrency;
-
-  MyQueryTmp.Close;
-  MyQueryTmp.SQL.Clear;
-  MyQueryTmp.SQL.Add('Insert into rateRPTax (BillMonth,RateAmnt,RateOrder)');
-  MyQueryTmp.SQL.Add(' values (:BillMonth,:RateAmnt,:RateOrder)');
-  MyQueryTmp.ParamByName('BillMonth').Text  := NxEdit3.Text;
-  MyQueryTmp.ParamByName('RateAmnt').Text   := FloatToStr(RPTrateTmp);
-  MyQueryTmp.ParamByName('RateOrder').Text  := 'Rate' + IntTostr(CountRQuery.FieldByName('OrderR').AsInteger + 1);
-  MyQueryTmp.Execute;
 
   RpTaxQuery.Close;
   RpTaxQuery.Open;
   MessageDlg('Copying rate done...',mtInformation,[mbOK],0);
-
+  NxHeaderPanel1.Visible := false;
+  CRDBGrid11.Enabled     := true;
 end;
 
 procedure TRPTaxFrm.NxButton1Click(Sender: TObject);
@@ -190,8 +239,10 @@ end;
 
 procedure TRPTaxFrm.NxButton2Click(Sender: TObject);
 begin
-  NxHeaderPanel1.Left := 213;
-  NxHeaderPanel1.top  := 122;
+  CRDBGrid11.Enabled := false;
+
+  NxHeaderPanel1.Left := 153;
+  NxHeaderPanel1.top  := 82;
   NxHeaderPanel1.BringToFront;
   NxHeaderPanel1.Visible := true;
 end;
@@ -216,9 +267,11 @@ begin
   MyQueryTmp.SQL.Clear;
   MyQueryTmp.SQL.Add('Select * from areatax ');
   MyQueryTmp.SQL.Add('where BillMonth like :BillMonth And ');
-  MyQueryTmp.SQL.Add('Area like :Area');
+  MyQueryTmp.SQL.Add('Area like :Area and RateOrder = :RateOrder and category = :category');
   MyQueryTmp.ParamByName('BillMonth').Text := Label5.Caption;
   MyQueryTmp.ParamByName('Area').Text      := ComboBox2.Text;
+  MyQueryTmp.ParamByName('RateOrder').Text := Label9.Caption;
+  MyQueryTmp.ParamByName('category').Text  := ratetype;
   MyQueryTmp.Open;
 
   if not MyQueryTmp.IsEmpty then
@@ -230,12 +283,13 @@ begin
 
   MyQueryTmp.Close;
   MyQueryTmp.SQL.Clear;
-  MyQueryTmp.SQL.Add('insert into areatax (IdRPTax,BillMonth,Area,RateOrder)');
-  MyQueryTmp.SQL.Add('values (:IdRPTax,:BillMonth,:Area,:RateOrder)');
+  MyQueryTmp.SQL.Add('insert into areatax (IdRPTax,BillMonth,Area,RateOrder,category)');
+  MyQueryTmp.SQL.Add('values (:IdRPTax,:BillMonth,:Area,:RateOrder,:category)');
   MyQueryTmp.ParamByName('IdRPTax').AsInteger    := IdRPTaxTmp;
   MyQueryTmp.ParamByName('BillMonth').Text       := Label5.Caption;
   MyQueryTmp.ParamByName('Area').Text            := ComboBox2.Text;
   MyQueryTmp.ParamByName('RateOrder').Text       := Label9.Caption;
+  MyQueryTmp.ParamByName('category').Text        := ratetype;
   MyQueryTmp.Execute;
 
   MessageDlg('Area successfully submitted...',mtInformation,[mbOK],0);
@@ -250,7 +304,7 @@ begin
     AreaT := AreaQuery.FieldByName('Area').Text;
 
     ArAffctQuery.Close;
-    ArAffctQuery.FilterSQL := 'BillMonth like ' + quotedstr(Label5.Caption) + ' And Area like ' + quotedstr(AreaT);
+    ArAffctQuery.FilterSQL := 'BillMonth like ' + quotedstr(Label5.Caption) + ' And Area like ' + quotedstr(AreaT)+' And category like ' +quotedstr(ratetype) +' And RateOrder like ' + quotedstr(Label9.Caption);
     ArAffctQuery.Open;
 
     if ArAffctQuery.IsEmpty then ComboBox2.AddItem(AreaT,Nil);
@@ -258,45 +312,58 @@ begin
   end;
 
   ArAffctQuery.Close;
-  ArAffctQuery.FilterSQL := 'BillMonth like ' + quotedstr(Label5.Caption) +
-  ' And RateOrder like ' + quotedstr(Label9.Caption);
+  ArAffctQuery.FilterSQL := ' BillMonth like ' + quotedstr(Label5.Caption) +
+                            ' And RateOrder like ' + quotedstr(Label9.Caption) +
+                            ' And category like ' +quotedstr(ratetype);
   ArAffctQuery.Open;
+  select_list_rate();
 
 end;
 
 procedure TRPTaxFrm.NxButton4Click(Sender: TObject);
 begin
+  CRDBGrid11.Enabled      := true;
   NxHeaderPanel23.Visible := false;
 end;
 
 procedure TRPTaxFrm.NxButton5Click(Sender: TObject);
 begin
   RpTaxQuery.Cancel;
+  CRDBGrid11.Enabled     := true;
   NxHeaderPanel2.Visible := false;
 end;
 
-procedure TRPTaxFrm.NxButton6Click(Sender: TObject);
+procedure TRPTaxFrm.closeBtnClick(Sender: TObject);
 begin
   close;
 end;
 
 procedure TRPTaxFrm.NxButton9Click(Sender: TObject);
 begin
+    CRDBGrid11.Enabled     := true;
     NxHeaderPanel1.Visible := false;
+end;
+
+procedure TRPTaxFrm.NxEdit1Click(Sender: TObject);
+begin
+  NxEdit1.SelectAll;
 end;
 
 procedure TRPTaxFrm.NxLinkLabel1Click(Sender: TObject);
 begin
+    CRDBGrid11.Enabled     := true;
     NxHeaderPanel1.Visible := false;
 end;
 
 procedure TRPTaxFrm.NxLinkLabel2Click(Sender: TObject);
 begin
+  CRDBGrid11.Enabled     := true;
   NxHeaderPanel2.Visible := false;
 end;
 
 procedure TRPTaxFrm.NxLinkLabel31Click(Sender: TObject);
 begin
+  CRDBGrid11.Enabled      := true;
   NxHeaderPanel23.Visible := false;
 end;
 
@@ -311,10 +378,11 @@ begin
   MyQueryTmp.SQL.Clear;
   MyQueryTmp.SQL.Add('Delete from AreaTax where BillMonth like :BillMonth');
   MyQueryTmp.SQL.Add(' And Area like :Area');
-  MyQueryTmp.SQL.Add(' And RateOrder like :RateOrder');
+  MyQueryTmp.SQL.Add(' And RateOrder like :RateOrder and category = :category');
   MyQueryTmp.ParamByName('BillMonth').Text := Label5.Caption;
   MyQueryTmp.ParamByName('Area').Text      := ArAffctQueryArea.Text;
   MyQueryTmp.ParamByName('RateOrder').Text := ArAffctQueryRateOrder.Text;
+  MyQueryTmp.ParamByName('category').Text  := ratetype;
   MyQueryTmp.Execute;
 
   MessageDlg('Selected area removed..',mtWarning,[mbOK],0);
@@ -337,10 +405,30 @@ begin
   end;
 
   ArAffctQuery.Close;
-  ArAffctQuery.FilterSQL := 'BillMonth like ' + quotedstr(Label5.Caption) +
-  ' And RateOrder like ' + quotedstr(Label9.Caption);
+  ArAffctQuery.FilterSQL := ' BillMonth like ' + quotedstr(Label5.Caption) +
+                            ' And RateOrder like ' + quotedstr(Label9.Caption)+
+                            ' And category like ' +quotedstr(ratetype);;
   ArAffctQuery.Open;
+  select_list_rate();
 
+end;
+
+procedure TRPTaxFrm.RemoveRate1Click(Sender: TObject);
+begin
+  if (MessageDlg('  Remove BillMonth:      '+ RpTaxQueryBillMonth.Text +  #13+
+  '  Rate Type:                      ' + RpTaxQuerycategory.Text +  #13+
+  '  Rate Order:                    '+ RpTaxQueryRateOrder.Text +  #13+ #13+
+  '  ...Proceed this process?',mtConfirmation,[mbYes,mbCancel],0) = mrCancel) then  Exit;
+
+  Qtmp.Close;
+  Qtmp.ParamByName('Billmonth').Text := RpTaxQueryBillMonth.Text;
+  Qtmp.Open;
+
+  if not Qtmp.IsEmpty then
+  begin
+
+    exit;
+  end;
 end;
 
 procedure TRPTaxFrm.ReprintPowerBillfromBillingArchive1Click(Sender: TObject);
@@ -353,6 +441,7 @@ begin
   Label5.Caption := RpTaxQueryBillMonth.Text;
   Label9.Caption := RpTaxQueryRateOrder.Text;
   IdRPTaxTmp     := RpTaxQueryIdRPTax.AsInteger;
+  ratetype       := RpTaxQuerycategory.Text;
 
   ComboBox2.Clear;
   BMonth := RpTaxQueryBillMonth.Text;
@@ -365,7 +454,7 @@ begin
     AreaT := AreaQuery.FieldByName('Area').Text;
 
     ArAffctQuery.Close;
-    ArAffctQuery.FilterSQL := 'BillMonth like ' + quotedstr(BMonth) + ' And Area like ' + quotedstr(AreaT);
+    ArAffctQuery.FilterSQL := 'BillMonth like ' + quotedstr(BMonth) + ' And Area like ' + quotedstr(AreaT) + ' And category like ' +quotedstr(ratetype) +' And RateOrder like ' + quotedstr(Label9.Caption);
     ArAffctQuery.Open;
 
     if ArAffctQuery.IsEmpty then ComboBox2.AddItem(AreaT,Nil);
@@ -375,25 +464,31 @@ begin
   //AreaTaxQuery.Close;
   //AreaTaxQuery.Open;
   ArAffctQuery.Close;
-  ArAffctQuery.FilterSQL := 'BillMonth like ' + quotedstr(BMonth) +
-  ' And RateOrder like ' + quotedstr(Label9.Caption);
+  ArAffctQuery.FilterSQL := ' BillMonth like ' + quotedstr(BMonth) +
+                            ' And RateOrder like ' + quotedstr(Label9.Caption) +
+                            ' And category like ' +quotedstr(ratetype);
   ArAffctQuery.Open;
+  CRDBGrid11.Enabled := false;
 
-  NxHeaderPanel23.Left := 170;
-  NxHeaderPanel23.top  := 84;
+  NxHeaderPanel23.Left            := 80;
+  NxHeaderPanel23.top             := 44;
   NxHeaderPanel23.BringToFront;
-  NxHeaderPanel23.Visible := true;
+  NxHeaderPanel23.Visible         := true;
+  NxHeaderPanel23.Caption         := 'Select Affected Area ('+ratetype+' rate)';
+
 end;
 
 procedure TRPTaxFrm.SelectAffectedArea1Click(Sender: TObject);
 begin
   RpTaxQuery.Open;
   RpTaxQuery.Edit;
+  CRDBGrid11.Enabled      := false;
 
-  NxHeaderPanel2.Left := 242;
-  NxHeaderPanel2.top  := 123;
+  NxHeaderPanel2.Left     := 152;
+  NxHeaderPanel2.top      := 83;
   NxHeaderPanel2.BringToFront;
-  NxHeaderPanel2.Visible := true;
+  NxHeaderPanel2.Visible  := true;
+  NxHeaderPanel2.Caption := 'Change '+RpTaxQuerycategory.Text+' Rate';
 end;
 
 end.
