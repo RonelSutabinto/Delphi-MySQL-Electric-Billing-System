@@ -99,6 +99,7 @@ type
     procedure CRDBGrid11KeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure RemoveRate1Click(Sender: TObject);
+    procedure checkpostedbill();
   private
     { Private declarations }
   public
@@ -413,7 +414,7 @@ begin
 
 end;
 
-procedure TRPTaxFrm.RemoveRate1Click(Sender: TObject);
+procedure TRPTaxFrm.checkpostedbill;
 begin
   Qtmp.Close;
   Qtmp.ParamByName('Billmonth').Text := RpTaxQueryBillMonth.Text;
@@ -424,6 +425,10 @@ begin
     MessageDlg('Unable to continue this process.'+#13+'Billing month already posted',mtWarning,[mbOK],0);
     exit;
   end;
+end;
+procedure TRPTaxFrm.RemoveRate1Click(Sender: TObject);
+begin
+  checkpostedbill;
 
   if (MessageDlg('  Remove BillMonth:      '+ RpTaxQueryBillMonth.Text +  #13+
   '  Rate Type:                      ' + RpTaxQuerycategory.Text +  #13+
@@ -482,6 +487,8 @@ end;
 
 procedure TRPTaxFrm.SelectAffectedArea1Click(Sender: TObject);
 begin
+  checkpostedbill;
+
   RpTaxQuery.Open;
   RpTaxQuery.Edit;
   CRDBGrid11.Enabled      := false;

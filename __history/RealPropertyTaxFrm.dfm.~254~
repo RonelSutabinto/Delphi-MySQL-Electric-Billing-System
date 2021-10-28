@@ -3,8 +3,8 @@ object RPTaxFrm: TRPTaxFrm
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Tax Rates Table Per Area'
-  ClientHeight = 454
-  ClientWidth = 722
+  ClientHeight = 312
+  ClientWidth = 561
   Color = clBtnFace
   Constraints.MaxHeight = 483
   Constraints.MaxWidth = 728
@@ -85,13 +85,13 @@ object RPTaxFrm: TRPTaxFrm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 722
+    Width = 561
     Height = 39
     Align = alTop
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 721
+    ExplicitLeft = 4
     object Image1: TImage
       Left = 8
       Top = 6
@@ -4355,7 +4355,7 @@ object RPTaxFrm: TRPTaxFrm
     Left = 457
     Top = 45
     Width = 98
-    Height = 259
+    Height = 258
     OptionsEx = [dgeEnableSort, dgeLocalFilter, dgeLocalSorting]
     Color = 12320767
     DataSource = SubDetailSource
@@ -4389,8 +4389,8 @@ object RPTaxFrm: TRPTaxFrm
       end>
   end
   object NxHeaderPanel23: TNxHeaderPanel
-    Left = 385
-    Top = 408
+    Left = 639
+    Top = 243
     Width = 354
     Height = 213
     Caption = 'Select Affected Area'
@@ -4660,8 +4660,8 @@ object RPTaxFrm: TRPTaxFrm
     end
   end
   object NxHeaderPanel1: TNxHeaderPanel
-    Left = 537
-    Top = 409
+    Left = 201
+    Top = 341
     Width = 258
     Height = 165
     Caption = 'Copy Real Property Tax Rate'
@@ -4886,7 +4886,7 @@ object RPTaxFrm: TRPTaxFrm
     end
   end
   object addBtn: TNxButton
-    Left = 5
+    Left = 4
     Top = 243
     Width = 121
     Height = 28
@@ -4904,10 +4904,10 @@ object RPTaxFrm: TRPTaxFrm
     TabOrder = 11
   end
   object NxHeaderPanel2: TNxHeaderPanel
-    Left = 348
-    Top = 230
+    Left = 322
+    Top = 369
     Width = 232
-    Height = 173
+    Height = 172
     Caption = 'Change Rate'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
@@ -4968,7 +4968,7 @@ object RPTaxFrm: TRPTaxFrm
     end
     object CanvassSaveBtn: TNxButton
       Left = 127
-      Top = 130
+      Top = 123
       Width = 91
       Height = 36
       Caption = 'Save    '
@@ -5079,13 +5079,20 @@ object RPTaxFrm: TRPTaxFrm
       Caption = 'Change Rate'
       OnClick = SelectAffectedArea1Click
     end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object RemoveRate1: TMenuItem
+      Caption = 'Remove Rate'
+      OnClick = RemoveRate1Click
+    end
   end
   object RpTaxQuery: TMyQuery
     Connection = BillingData.MyConnection1
     SQL.Strings = (
       'Select * from raterptax')
-    Left = 65534
-    Top = 162
+    Left = 38
+    Top = 194
     object RpTaxQueryRateAmnt: TFloatField
       FieldName = 'RateAmnt'
     end
@@ -5116,14 +5123,14 @@ object RPTaxFrm: TRPTaxFrm
       'Select v.* from vicinity v'
       'group by v.Area')
     Left = 8
-    Top = 207
+    Top = 143
   end
   object ArAffctQuery: TMyQuery
     Connection = BillingData.MyConnection1
     SQL.Strings = (
       'Select * from areatax')
-    Left = 66
-    Top = 162
+    Left = 10
+    Top = 170
     object ArAffctQueryIdRPTArea: TIntegerField
       FieldName = 'IdRPTArea'
     end
@@ -5149,8 +5156,8 @@ object RPTaxFrm: TRPTaxFrm
       'Select count(*) OrderR from rateRPTax  '
       ' where BillMonth = :BillMonth and category = :category'
       '')
-    Left = 200
-    Top = 352
+    Left = 136
+    Top = 360
     ParamData = <
       item
         DataType = ftUnknown
@@ -5167,21 +5174,21 @@ object RPTaxFrm: TRPTaxFrm
     Connection = BillingData.MyConnection1
     SQL.Strings = (
       'Select * from raterptax')
-    Left = 275
-    Top = 295
+    Left = 195
+    Top = 319
   end
   object MyQueryTmp: TMyQuery
     Connection = BillingData.MyConnection1
-    Left = 65528
-    Top = 295
+    Left = 288
+    Top = 311
   end
   object ArAffctSource: TMyDataSource
     DataSet = ArAffctQuery
-    Left = 93
-    Top = 162
+    Left = 37
+    Top = 170
   end
   object PopupMenu2: TPopupMenu
-    Left = 64
+    Left = 160
     Top = 360
     object RemoveArea1: TMenuItem
       Caption = 'Remove Area'
@@ -5195,8 +5202,8 @@ object RPTaxFrm: TRPTaxFrm
       'where BillMonth like :BillMonth and'
       'RateOrder like :RateOrder and'
       'category = :category')
-    Left = 80
-    Top = 291
+    Left = 112
+    Top = 307
     ParamData = <
       item
         DataType = ftUnknown
@@ -5222,13 +5229,28 @@ object RPTaxFrm: TRPTaxFrm
   object Qtmp: TMyQuery
     Connection = BillingData.MyConnection1
     SQL.Strings = (
-      'Select * from raterptax where IdRPTax = :id')
-    Left = 32
-    Top = 287
+      'Select f.* from ('
+      ''
+      
+        '(Select accountnumber,name from billhistory where billmonth = :b' +
+        'illmonth limit 1)'
+      'union'
+      ''
+      
+        '(Select accountnumber,name from tempbill where billmonth = :bill' +
+        'month limit 1)'
+      ') f')
+    Left = 240
+    Top = 319
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'id'
+        Name = 'billmonth'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'billmonth'
         Value = nil
       end>
   end

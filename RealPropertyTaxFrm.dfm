@@ -3,8 +3,8 @@ object RPTaxFrm: TRPTaxFrm
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Tax Rates Table Per Area'
-  ClientHeight = 454
-  ClientWidth = 722
+  ClientHeight = 426
+  ClientWidth = 561
   Color = clBtnFace
   Constraints.MaxHeight = 483
   Constraints.MaxWidth = 728
@@ -85,13 +85,12 @@ object RPTaxFrm: TRPTaxFrm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 722
+    Width = 561
     Height = 39
     Align = alTop
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 721
     object Image1: TImage
       Left = 8
       Top = 6
@@ -4355,7 +4354,7 @@ object RPTaxFrm: TRPTaxFrm
     Left = 457
     Top = 45
     Width = 98
-    Height = 259
+    Height = 258
     OptionsEx = [dgeEnableSort, dgeLocalFilter, dgeLocalSorting]
     Color = 12320767
     DataSource = SubDetailSource
@@ -4660,8 +4659,8 @@ object RPTaxFrm: TRPTaxFrm
     end
   end
   object NxHeaderPanel1: TNxHeaderPanel
-    Left = 193
-    Top = 98
+    Left = 201
+    Top = 341
     Width = 258
     Height = 165
     Caption = 'Copy Real Property Tax Rate'
@@ -4904,8 +4903,8 @@ object RPTaxFrm: TRPTaxFrm
     TabOrder = 11
   end
   object NxHeaderPanel2: TNxHeaderPanel
-    Left = 457
-    Top = 241
+    Left = 322
+    Top = 369
     Width = 232
     Height = 172
     Caption = 'Change Rate'
@@ -5122,15 +5121,15 @@ object RPTaxFrm: TRPTaxFrm
     SQL.Strings = (
       'Select v.* from vicinity v'
       'group by v.Area')
-    Left = 64
-    Top = 215
+    Left = 8
+    Top = 143
   end
   object ArAffctQuery: TMyQuery
     Connection = BillingData.MyConnection1
     SQL.Strings = (
       'Select * from areatax')
-    Left = 66
-    Top = 162
+    Left = 10
+    Top = 170
     object ArAffctQueryIdRPTArea: TIntegerField
       FieldName = 'IdRPTArea'
     end
@@ -5184,8 +5183,8 @@ object RPTaxFrm: TRPTaxFrm
   end
   object ArAffctSource: TMyDataSource
     DataSet = ArAffctQuery
-    Left = 93
-    Top = 162
+    Left = 37
+    Top = 170
   end
   object PopupMenu2: TPopupMenu
     Left = 160
